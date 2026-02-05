@@ -4,9 +4,9 @@ import { Search, MapPin, Menu, ChevronDown } from 'lucide-react';
 function GlobalSearch() {
   return (
     
-    <div className="flex justify-center">
+    <div className="flex justify-center mt-20 mb-20">
 
- <div className="flex items-center bg-[#4f46e5] p-1.5 rounded-full w-full ">
+ <div className="flex items-center bg-[#4f46e5] p-1.5 rounded-full mx-auto ">
       
       
       <div className="flex-1 flex items-center gap-2 px-4 bg-[#1e1b4b] text-white rounded-full h-12 min-w-[160px]">
