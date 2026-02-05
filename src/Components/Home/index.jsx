@@ -1,10 +1,15 @@
-import Slide from "./Slide";
-
-
+import { Statistic } from "./Statistic"
 export function Home(){
     return (
          <>
-         <Slide />
+         <Statistic/>
         </>
+
+
+
+
+
+
+   
     )
 }
