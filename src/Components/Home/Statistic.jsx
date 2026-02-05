@@ -1,28 +1,31 @@
 export function Statistic(){
     return(
         <>
-        <div className="grid grid-cols-4 bg-secondary justify-items-center px-2 py-6 gap-2 overflow-x-auto">
-            
-            <div className="text-white border-r border-white pr-2 sm:pr-10 lg:pr-20 text-center">
-                <h3 className="text-lg sm:text-2xl lg:text-3xl">1,000</h3>
-                <p className="text-xs sm:text-base">Avilble Services</p>
+        <div className="grid grid-cols-4 grid-rows-1 bg-secondary justify-items-center px-4 py-8">
+            <div className="text-white text-white border-r border-white pr-20 ">
+                <div className="justify-items-center">
+                <h3 className="text-3xl">1,000</h3>
+                </div>
+                <p className="1xl">avilble services</p>
             </div>
-
-            <div className="text-white border-r border-white pr-2 sm:pr-10 lg:pr-20 text-center">
-                <h3 className="text-lg sm:text-2xl large:text-3xl">15k+</h3>
-                <p className="text-xs sm:text-base">Server Clientes</p>
+            <div className="text-white border-r border-white pr-20">
+                <div className="justify-items-center">
+                <h3 className="text-3xl">15k+</h3>
+                </div>
+                <p className="text-1xl">server clientes</p>
             </div>
-
-            <div className="text-white border-r border-white pr-2 sm:pr-10 lg:pr-20 text-center">
-                <h3 className="text-lg sm:text-2xl lg:text-3xl">87%</h3>
-                <p className="text-xs sm:text-base">Happy Clientes</p>
+            <div className="text-white border-r border-white pr-20">
+                <div className="justify-items-center">
+                <h3 className="text-3xl">87%</h3>
+                </div>
+                <p className="text-1xl">happy clientes</p>
             </div>
-
-            <div className="text-white text-center">
-                <h3 className="text-lg sm:text-2xl lg:text-3xl">30+</h3>
-                <p className="text-xs sm:text-base">Services Categotys</p>
+            <div className="text-white">
+                <div className="justify-items-center">
+                <h3 className="text-3xl">30+</h3>
+                </div>
+                <p className="text-1xl">services categotys</p>
             </div>
-
         </div>
         </>
     )
