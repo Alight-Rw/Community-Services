@@ -10,5 +10,12 @@ export function Home(){
          <Statistic/>
          <Slide />
         </>
+
+
+
+
+
+
+   
     )
 }
