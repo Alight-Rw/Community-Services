@@ -6,7 +6,7 @@ const testimonials = [
     id: 1,
     name: "NIYOMUFASHA Alice",
     email: "niyoalice@gmail.com",
-    message: "From start to finish, the experience was smooth, professional, and stress-free. The results exceeded expectations, and the attention to detail really stood out.",
+    message: "From start to finish, the experience was smooth and professional. The results exceeded expectations, and the attention to detail really stood out.",
     image: "/happyClient1.png" 
   },
   {
@@ -58,41 +58,53 @@ const TestimonialCard = () => {
   }, []); 
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4 overflow-hidden bg-white">
+    
+    <div className="flex flex-col items-center justify-center min-h-screen py-10 lg:componentPadding  px-[60px] overflow-hidden bg-white">
       
      
      
-      <div className="relative max-w-5xl w-full h-[350px] sm:h-[450px] md:h-[550px] lg:h-[600px] transition-all duration-500">
+      <div className="relative flex flex-col md:block max-w-7xl w-full h-auto md:h-[550px] lg:h-[650px] transition-all duration-500">
         
-  
-        <div className="absolute left-0 top-[20%] w-[50%] h-[250px] sm:h-[300px] md:h-[380px] lg:h-[420px] z-10 transition-all duration-700 ease-in-out">
+       
+       
+        <div className="
+          relative md:absolute left-0 md:top-[20%] 
+          w-full md:w-[55%] 
+          h-[300px] sm:h-[400px] md:h-[380px] lg:h-[450px] 
+          z-10 transition-all duration-700 ease-in-out order-2 md:order-none
+        ">
           <img
             src={testimonials[current].image}
             alt={testimonials[current].name}
-            className="w-full h-full object-cover shadow-xl rounded-2xl"
+            className="w-full h-full object-cover shadow-xl "
           />
         </div>
 
         
         
-        <div className="absolute left-[50%] top-0 w-[50%] h-[280px] sm:h-[320px] md:h-[400px] lg:h-[450px] z-20 transition-all duration-700 ease-in-out">
-          <div className="w-full h-full bg-light-secondary p-3 sm:p-6 lg:p-10 relative flex flex-col justify-between shadow-lg rounded-[20px] sm:rounded-[30px]">
+        <div className="
+          relative md:absolute md:left-[45%] top-0 
+          w-full md:w-[60%] 
+          h-auto md:h-[400px] lg:h-[480px] 
+          z-20 transition-all duration-700 ease-in-out order-1 md:order-none mb-6 md:mb-0
+        ">
+          <div className="w-full h-full bg-light-secondary p-5 sm:p-8 lg:p-12 relative flex flex-col justify-between shadow-lg ">
             
-            <div className="border border-secondary rounded-xl sm:rounded-2xl h-full p-3 sm:p-6 md:p-8 space-y-2 sm:space-y-4 md:space-y-6 flex flex-col justify-center">
+            <div className="border border-secondary rounded-xl h-full p-4 sm:p-8 md:p-10 space-y-4 md:space-y-6 flex flex-col justify-center">
               
-              <span className="text-secondary text-2xl sm:text-5xl font-serif absolute top-4 sm:top-10 left-4 sm:left-10 leading-none">
+              <span className="text-secondary text-4xl px-8 sm:text-6xl font-serif absolute top-6 sm:top-14 left-8 leading-none">
                  "
               </span>
 
-              <div className="mt-4 sm:mt-6">
-                <p className="text-[9px] sm:text-xs md:text-sm lg:text-base font-medium leading-relaxed px-1 sm:px-6">
+              <div className="mt-6">
+                <p className="text-sm sm:text-base lg:text-lg font-medium leading-relaxed px-2 sm:px-4">
                   {testimonials[current].message}
                 </p>
               </div>
 
               <div className="text-right">
-                <p className="font-bold text-universal-900 text-[10px] sm:text-sm md:text-lg">{testimonials[current].name}</p>
-                <p className="text-universal-300 text-[8px] sm:text-xs">{testimonials[current].email}</p>
+                <p className="font-bold text-universal-900 text-base sm:text-xl">{testimonials[current].name}</p>
+                <p className="text-universal-300 text-xs sm:text-sm">{testimonials[current].email}</p>
               </div>
             </div>
           </div>
@@ -100,12 +112,13 @@ const TestimonialCard = () => {
       </div>
 
       
-      <div className="flex justify-center space-x-2 sm:space-x-3 mt-12 ">
+      
+      <div className="flex justify-center space-x-3 mt-12">
         {testimonials.map((t, index) => (
           <span
             key={t.id}
-            className={`h-2 sm:h-3 transition-all duration-500 cursor-pointer rounded-full ${
-              index === current ? "w-6 sm:w-10 bg-secondary" : "w-3 sm:w-4 bg-hard-universal opacity-20"
+            className={`h-2 sm:h-3 transition-all duration-500 cursor-pointer  ${
+              index === current ? "w-8 sm:w-12 bg-secondary" : "w-3 sm:w-4 bg-hard-universal opacity-20"
             }`}
             onClick={() => setCurrent(index)}
           ></span>
