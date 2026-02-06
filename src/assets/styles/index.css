@@ -1,11 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-    --color-purple: #E7E4FF;
     --color-primary: #FFFFFF;
     --color-secondary: #1961BA;
     --color-universal: #EFEFEF;
 
     --padding-componentPadding:60px;
     --paddind-mobilePadding:30px
+    --padding-componentPadding:60px
+    --color-universal: #1F2937;
+     --color-light-secondary: #CDE3FF;
+     --color-hard-universal:#1F2937;
 }
