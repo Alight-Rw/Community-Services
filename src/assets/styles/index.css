@@ -1,14 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-    --text-xsmall: 12px;
-    --text-small: 14px;
-    --text-base: 16px;
-    --text-medium: 18px;
-    --text-large: 20px;
-    --text-xlarge: 24px;
-
-    --color-purple: #E7E4FF;
     --color-primary: #FFFFFF;
     --color-secondary: #1961BA;
     --color-universal: #EFEFEF;
