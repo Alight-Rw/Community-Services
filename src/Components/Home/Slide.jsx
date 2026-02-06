@@ -7,42 +7,42 @@ const testimonials = [
     name: "NIYOMUFASHA Alice",
     email: "niyoalice@gmail.com",
     message: "From start to finish, the experience was smooth and professional. The results exceeded expectations, and the attention to detail really stood out.",
-    image: "/happyClient1.png" 
+    image: "/happyClient1.jpg" 
   },
   {
     id: 2,
     name: "Tyga Brown",
     email: "tygabrown780@gmail.com",
     message: "What impressed us most was how well they understood our goals. Every suggestion felt thoughtful and tailored, and the final outcome was exactly what we hoped for.",
-    image: "happyClient2.png"
+    image: "happyClient2.jpg"
   },
   {
     id: 3,
     name: "Chetan Nada",
     email: "chetan@example.com",
     message: "Deadlines were always met, communication was clear, and the quality of work was outstanding. We felt confident and supported throughout the entire process.",
-    image: "happyClient3.png"
+    image: "happyClient3.jpg"
   },
   {
     id: 4,
     name: "Jackson",
     email: "tij79907@gmail.com",
     message: "We came in with a simple idea and ended up with something even better than we imagined. The dedication and expertise really made the difference.",
-    image: "happyClient4.png" 
+    image: "happyClient4.jpg" 
   },
   {
     id: 5,
     name: "John Doe",
     email: "johndoe@gmail.com",
     message: "The value delivered far surpassed the cost. High-quality work, excellent communication, and results we’re proud of.",
-    image: "happyClient5.png"
+    image: "happyClient5.jpg"
   },
   {
     id: 6,
     name: "Tuyikunde Jackson",
     email: "tuyikundejackson74@gmail.com",
     message: "Everything was handled with care and precision, making the whole process incredibly easy for us. We’d happily work together again.",
-    image: "happyClient6.png"
+    image: "happyClient6.jpg"
   }
 ];
 
@@ -58,41 +58,36 @@ const TestimonialCard = () => {
   }, []); 
 
   return (
-    
-    <div className="flex flex-col items-center justify-center min-h-screen py-10 lg:componentPadding  px-[60px] overflow-hidden bg-white">
+    <div className="flex flex-col items-center justify-center min-h-screen py-10 px-[60px] overflow-hidden bg-white">
       
-     
-     
+      
+      
       <div className="relative flex flex-col md:block max-w-7xl w-full h-auto md:h-[550px] lg:h-[650px] transition-all duration-500">
         
-       
-       
         <div className="
           relative md:absolute left-0 md:top-[20%] 
-          w-full md:w-[55%] 
+          w-full md:w-[45%] 
           h-[300px] sm:h-[400px] md:h-[380px] lg:h-[450px] 
           z-10 transition-all duration-700 ease-in-out order-2 md:order-none
         ">
           <img
             src={testimonials[current].image}
             alt={testimonials[current].name}
-            className="w-full h-full object-cover shadow-xl "
+            className="w-full h-full object-cover shadow-xl rounded-2xl"
           />
         </div>
 
-        
-        
         <div className="
           relative md:absolute md:left-[45%] top-0 
-          w-full md:w-[60%] 
+          w-full md:w-[55%] 
           h-auto md:h-[400px] lg:h-[480px] 
           z-20 transition-all duration-700 ease-in-out order-1 md:order-none mb-6 md:mb-0
         ">
-          <div className="w-full h-full bg-light-secondary p-5 sm:p-8 lg:p-12 relative flex flex-col justify-between shadow-lg ">
+          <div className="w-full h-full bg-light-secondary p-5 sm:p-8 lg:p-12 relative flex flex-col justify-between shadow-lg rounded-[30px]">
             
-            <div className="border border-secondary rounded-xl h-full p-4 sm:p-8 md:p-10 space-y-4 md:space-y-6 flex flex-col justify-center">
+            <div className="border border-secondary sm:rounded-2xl h-full p-4 sm:p-8 md:p-10 space-y-4 md:space-y-6 flex flex-col justify-center">
               
-              <span className="text-secondary text-4xl px-8 sm:text-6xl font-serif absolute top-6 sm:top-14 left-8 leading-none">
+              <span className="text-secondary text-4xl sm:text-6xl font-serif absolute top-6 sm:top-12 left-8 leading-none">
                  "
               </span>
 
@@ -112,12 +107,11 @@ const TestimonialCard = () => {
       </div>
 
       
-      
       <div className="flex justify-center space-x-3 mt-12">
         {testimonials.map((t, index) => (
           <span
             key={t.id}
-            className={`h-2 sm:h-3 transition-all duration-500 cursor-pointer  ${
+            className={`h-2 sm:h-3 transition-all duration-500 cursor-pointer rounded-full ${
               index === current ? "w-8 sm:w-12 bg-secondary" : "w-3 sm:w-4 bg-hard-universal opacity-20"
             }`}
             onClick={() => setCurrent(index)}
