@@ -6,5 +6,6 @@
     --color-secondary: #1961BA;
     --color-universal: #EFEFEF;
 
-    --padding-componentPadding:60px
+    --padding-componentPadding:60px;
+    --paddind-mobilePadding:30px
 }

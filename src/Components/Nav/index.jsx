@@ -11,7 +11,7 @@ export function NavigationBar() {
     
       <div
         className="
-          w-full flex justify-between items-center px-componentPadding pt-6
+          w-full flex justify-between items-center px-mobilePadding md:px-componentPadding pt-6
           h-[60px] lg:h-[100px]
         "
       >
