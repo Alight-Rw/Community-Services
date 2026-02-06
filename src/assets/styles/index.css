@@ -14,5 +14,6 @@
     --color-universal: #EFEFEF;
 
     --padding-componentPadding:60px;
-    --padding-mobilePadding:30px
+    --padding-mobilePadding:30px;
+    --color-dark-light-secondary: #7BB7FF;
 }
