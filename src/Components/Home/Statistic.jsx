@@ -9,7 +9,7 @@ export function Statistic(){
             </div>
 
             <div className="text-white border-r border-white pr-2 sm:pr-10 lg:pr-20 text-center">
-                <h3 className="text-lg sm:text-2xl lg:text-3xl">15k+</h3>
+                <h3 className="text-lg sm:text-2xl large:text-3xl">15k+</h3>
                 <p className="text-xs sm:text-base">Server Clientes</p>
             </div>
 
