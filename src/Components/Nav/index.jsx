@@ -27,7 +27,7 @@ export function NavigationBar() {
       
         <ul className="hidden lg:flex text-black gap-10 font-bold text-xl">
           <li>
-            <Link to="/services" className="hover:text-secondary">
+            <Link to="/service" className="hover:text-secondary">
               Service
             </Link>
           </li>
