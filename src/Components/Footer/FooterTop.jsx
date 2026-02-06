@@ -6,7 +6,7 @@ const Footertop = () => {
 
 
             <div >
-                <h1 className="flex flex-col-1  font-bold  border-b-4  w-18 gap-2 sm:px-mobilePadding">
+                <h1 className="flex flex-col-1  font-bold  border-b-4  w-18 gap-2">
                     <span className="text-2xl">About</span>
                     <span className="py-1"> community</span>
                     <span className="py-1">service</span></h1>
