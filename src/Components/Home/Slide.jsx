@@ -83,11 +83,11 @@ const TestimonialCard = () => {
           h-auto md:h-[400px] lg:h-[480px] 
           z-20 transition-all duration-700 ease-in-out order-1 md:order-none mb-6 md:mb-0
         ">
-          <div className="w-full h-full bg-light-secondary p-5 sm:p-8 lg:p-12 relative flex flex-col justify-between shadow-lg ">
+          <div className="w-full h-full bg-[CDE3FF]-500 p-5 sm:p-8 lg:p-12 relative flex flex-col justify-between shadow-lg ">
             
             <div className="border border-secondary sm:rounded-2xl h-full p-4 sm:p-8 md:p-10 space-y-4 md:space-y-6 flex flex-col justify-center">
               
-              <span className="text-secondary px-8 text-4xl sm:text-6xl font-serif absolute top-6 sm:top-12 left-8 leading-none">
+              <span className="text-secondary lg:px-10 md:px-10 sm:px-10 text-4xl sm:text-6xl font-serif absolute top-6 sm:top-14 md:top-14 lg:top-14 left-8 leading-none">
                  "
               </span>
 
@@ -112,7 +112,7 @@ const TestimonialCard = () => {
           <span
             key={t.id}
             className={`h-2 sm:h-3 transition-all duration-500 cursor-pointer  ${
-              index === current ? "w-8 sm:w-12 bg-secondary" : "w-3 sm:w-4 bg-hard-universal opacity-20"
+              index === current ? "w-8 sm:w-12 bg-secondary" : "w-3 sm:w-4 bg-gray-500 opacity-20"
             }`}
             onClick={() => setCurrent(index)}
           ></span>
@@ -123,3 +123,5 @@ const TestimonialCard = () => {
 };
 
 export default TestimonialCard;
+
+
