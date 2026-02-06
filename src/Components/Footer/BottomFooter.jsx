@@ -1,8 +1,8 @@
- BottomFooter
- function BottomFooter() {
+function BottomFooter() {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center px-60 bg-white">
-            <p>
+        <div className="flex flex-col items-center md:flex-row md:justify-between gap-10 px-mobilePadding md:px-componentPadding bg-primary">
+
+            <p className="flex flex-col md:flex-row">
                 &copy; 2026 Community Services
                 <span className="underline font-bold ml-2">All Right Reserved</span>
             </p>
@@ -20,25 +20,3 @@
     );
 }
 export default BottomFooter
-/** @format */
-
-export function BottomFooter() {
-  return (
-    <div className='grid grid-cols-1 md:grid-cols-3 gap-6 text-center py-10 bg-white'>
-      <p>
-        &copy; 2026 Community Services
-        <span className='underline font-bold ml-2'>All Right Reserved</span>
-      </p>
-
-      <p>
-        Developed with by
-        <span className='underline font-bold ml-1'>Coding School</span>
-      </p>
-
-      <p>
-        In partnership with
-        <span className='underline font-bold ml-1'>Alight Rwanda</span>
-      </p>
-    </div>
-  );
-} develop
