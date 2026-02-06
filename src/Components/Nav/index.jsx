@@ -80,7 +80,7 @@ export function NavigationBar() {
             <ul className="flex flex-col gap-6 font-bold text-xl">
               <li>
                 <Link
-                  to="/services"
+                  to="/service"
                   onClick={() => setOpenMenu(false)}
                   className="hover:text-secondary"
                 >
