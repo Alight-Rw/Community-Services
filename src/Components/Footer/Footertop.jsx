@@ -15,10 +15,10 @@ const Footertop = () => {
         }
     ]
     return (
-        <div className="flex  bg-universal px-60">
-            <div>
+        <div className="bg-universal justify-between grid grid-cols-2">
+            <div className="justify-between lg:grid grid-cols-1 flex px-20">
                 <div className="flex">
-                    <h1 className="text-2xl font-bold mb-5 border-b ">About</h1><span className="font-extrabold mt-1 m-0 lg:text-xl ">community service</span>
+                    <h1 className="text-2xl font-bold mb-5 border-b  ">About</h1><span className="font-extrabold mt-1 m-0 lg:text-xl ">community service</span>
                 </div>
                 <ul className="list-disc pl-5 ">
                     <li>About Us</li>
@@ -34,7 +34,7 @@ const Footertop = () => {
 
 
             </div>
-            <div className="ml-40 justify-between  ">
+            <div>
                 <div className="grid grid-cols-2 ">
                     {items.map((item, index) => (
                         <div key={index}>
