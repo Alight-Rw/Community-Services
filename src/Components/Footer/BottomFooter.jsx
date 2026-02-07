@@ -1,6 +1,6 @@
 function BottomFooter() {
     return (
-        <div className="flex flex-col items-center md:flex-row md:justify-between gap-10 px-mobilePadding md:px-componentPadding bg-primary">
+        <div className="flex flex-col items-center py-10 md:flex-row md:justify-between gap-10 px-mobilePadding md:px-componentPadding bg-primary">
 
             <p className="flex flex-col md:flex-row">
                 &copy; 2026 Community Services
