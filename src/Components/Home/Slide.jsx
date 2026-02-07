@@ -83,7 +83,7 @@ const TestimonialCard = () => {
           h-auto md:h-[400px] lg:h-[480px] 
           z-20 transition-all duration-700 ease-in-out order-1 md:order-none mb-6 md:mb-0
         ">
-          <div className="w-full h-full bg-[CDE3FF]-500 p-5 sm:p-8 lg:p-12 relative flex flex-col justify-between shadow-lg ">
+          <div className="w-full h-full bg-[#CDE3FF] p-5 sm:p-8 lg:p-12 relative flex flex-col justify-between shadow-lg ">
             
             <div className="border border-secondary sm:rounded-2xl h-full p-4 sm:p-8 md:p-10 space-y-4 md:space-y-6 flex flex-col justify-center">
               
