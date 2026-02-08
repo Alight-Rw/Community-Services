@@ -88,7 +88,7 @@ const TestimonialCard = () => {
             <div className="border border-secondary sm:rounded-2xl h-full p-4 sm:p-8 md:p-10 space-y-4 md:space-y-6 flex flex-col justify-center">
               
               <span className="text-secondary lg:px-10 md:px-10 sm:px-10 text-4xl sm:text-6xl font-serif absolute top-6 sm:top-14 md:top-14 lg:top-14 left-8 leading-none">
-                 "
+                    "
               </span>
 
               <div className="mt-6">
@@ -122,6 +122,6 @@ const TestimonialCard = () => {
   );
 };
 
-export default TestimonialCard;
+export default TestimonialCard
 
 
