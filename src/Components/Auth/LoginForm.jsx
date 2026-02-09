@@ -7,31 +7,21 @@ function LoginForm() {
 
   return (
     <div className="relative w-full h-screen flex items-center justify-center bg-gray-100">
-      
-      {/* POPUP */}
       <div className="bg-white w-[90%] max-w-[850px] rounded-2xl shadow-2xl overflow-hidden">
-
-        {/* TITLE Desktop Only */}
         <div className="hidden md:flex justify-center py-6 bg-white">
-          <h2 className="text-2xl font-bold text-center">
-            Community Service
-          </h2>
+          <h2 className="text-2xl font-bold text-center">Community Service</h2>
         </div>
 
-        {/* CONTENT */}
         <div className="flex justify-center">
-
-          {/* IMAGE */}
           <div className="hidden md:flex w-1/2 items-center justify-center">
             <img src={ImageLeft} alt="Illustration" className="w-[280px]" />
           </div>
 
-          {/* FORM */}
-         <div className="w-2/3 md:w-1/2 p-8 md:p-10 flex flex-col justify-center ">
-         <div className="hidden md:flex w-[2px] h-[300px] absolute bg-gray-300 z-10 ml-[-80px]"> </div>
+          <div className="w-2/3 md:w-1/2 p-8 md:p-10 flex flex-col justify-center ">
+            <div className="hidden md:flex w-[2px] h-[300px] absolute bg-gray-300 z-10 ml-[-80px]">
+              {" "}
+            </div>
 
-
-            {/* TITLE Mobile Only */}
             <div className="flex md:hidden justify-center mb-6">
               <h2 className="text-2xl font-bold text-center">
                 Community Service
@@ -42,10 +32,10 @@ function LoginForm() {
               <span className="text-blue-600 border-b-2 border-blue-600 pb-1 cursor-pointer">
                 Login
               </span>
-              <div className="w-[2px] h-[20px] absolute bg-gray-300 z-10 ml-[-20px] "> </div>
-              <span className="text-gray-500 cursor-pointer">
-                Register
-              </span>
+              <div className="w-[2px] h-[20px] absolute bg-gray-300 z-10 ml-[-20px] ">
+                {" "}
+              </div>
+              <span className="text-gray-500 cursor-pointer">Register</span>
             </div>
 
             <form className="flex flex-col gap-4">
@@ -91,7 +81,6 @@ function LoginForm() {
                 Login
               </button>
             </form>
-
           </div>
         </div>
       </div>
@@ -100,4 +89,3 @@ function LoginForm() {
 }
 
 export default LoginForm;
-
