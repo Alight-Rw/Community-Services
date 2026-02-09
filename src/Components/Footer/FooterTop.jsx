@@ -2,7 +2,7 @@
 const Footertop = () => {
 
     return (
-         <div className="flex flex-col items-center md:items-start py-10 md:flex-row md:justify-between gap-10 px-mobilePadding md:px-componentPadding bg-universal">
+         <div className="flex flex-col items-center md:items-start py-10 md:flex-row md:justify-between gap-10 px-mobilePaddingn md:px-componentPadding bg-universal">
 
 
             <div >
