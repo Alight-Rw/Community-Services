@@ -1,6 +1,6 @@
 const Hero = () => {
   return (
-    <div className=" w-full grid  grid-cols-1 justify-between md:grid-cols-2 px-mobilePadding md:px-componentPadding">
+    <div className=" w-full grid grid-cols-1 justify-between md:grid-cols-2 px-mobilePadding md:px-componentPadding">
       <div className=" flex items-center justify-center p-6">
         <div className="border border-secondary rounded-2xl p-6 md:p-8 max-w-xl">
           <h2 className="text-2xl font-semibold">We are community</h2>
