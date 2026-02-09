@@ -22,12 +22,13 @@ function LoginForm() {
         <div className="flex justify-center">
 
           {/* IMAGE */}
-          <div className="hidden md:flex w-1/2 items-center justify-center bg-gray-50">
+          <div className="hidden md:flex w-1/2 items-center justify-center">
             <img src={ImageLeft} alt="Illustration" className="w-[280px]" />
           </div>
 
           {/* FORM */}
-         <div className="w-2/3 md:w-1/2 p-8 md:p-10 flex flex-col justify-center md:border-l-2 md:border-gray-300 mb-2">
+         <div className="w-2/3 md:w-1/2 p-8 md:p-10 flex flex-col justify-center ">
+         <div className="hidden md:flex w-[2px] h-[300px] absolute bg-gray-300 z-10 ml-[-80px]"> </div>
 
 
             {/* TITLE Mobile Only */}
@@ -37,10 +38,11 @@ function LoginForm() {
               </h2>
             </div>
 
-            <div className="flex justify-center gap-6 mb-6 font-semibold">
+            <div className="flex justify-center gap-20 mb-6 font-semibold">
               <span className="text-blue-600 border-b-2 border-blue-600 pb-1 cursor-pointer">
                 Login
               </span>
+              <div className="w-[2px] h-[20px] absolute bg-gray-300 z-10 ml-[-20px] "> </div>
               <span className="text-gray-500 cursor-pointer">
                 Register
               </span>
