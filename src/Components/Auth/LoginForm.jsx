@@ -6,7 +6,7 @@ function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="relative w-full h-screen flex items-center justify-center bg-gray-100">
+    <div className="relative w-full h-screen flex items-center justify-center">
       <div className="bg-white w-[90%] max-w-[850px] rounded-2xl shadow-2xl overflow-hidden">
         <div className="hidden md:flex justify-center py-6 bg-white">
           <h2 className="text-2xl font-bold text-center">Community Service</h2>
