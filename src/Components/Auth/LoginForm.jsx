@@ -17,7 +17,7 @@ function LoginForm() {
             <img src={ImageLeft} alt="Illustration" className="w-[280px]" />
           </div>
 
-          <div className="w-2/3 md:w-1/2 p-8 md:p-10 flex flex-col justify-center ">
+          <div className="w-3/3 md:w-1/2 p-8 md:p-10 flex flex-col justify-center ">
             <div className="hidden md:flex w-[2px] h-[300px] absolute bg-gray-300 z-10 ml-[-80px]">
               {" "}
             </div>
