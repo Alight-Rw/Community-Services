@@ -6,7 +6,7 @@ import { Search, MapPin, Menu, ChevronDown } from 'lucide-react';
 function GlobalSearch() {
   return (
     
-    <div className="flex justify-center mt-10 mb-10 md:mt-20 md:mb-20 px-4">
+    <div className="flex justify-center p-componentPadding ">
       
       
       
