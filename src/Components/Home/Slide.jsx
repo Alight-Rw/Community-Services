@@ -63,12 +63,12 @@ const TestimonialCard = () => {
       
       
       
-      <div className="relative    w-full h-auto md:h-[550px] lg:h-[650px] transition-all duration-500">
+      <div className="relative fle flex-col-1   w-full h-auto md:h-[550px] lg:h-[650px] transition-all duration-500">
         
         <div className="
-          relative md:absolute lg:left-25 md:top-[15%]  sm:left-1 md:left-10
+          relative md:absolute lg:left-25 md:top-[15%]  sm:left-1 md:right-20
           w-full md:w-[45%] 
-          h-[300px] sm:h-[400px] md:h-[380px] lg:h-[450px] lg:max-w-2xl
+          h-[300px]  md:h-[380px] lg:h-[450px] lg:max-w-2xl
           z-10 transition-all duration-700 ease-in-out order-2 md:order-none
         ">
           <img
