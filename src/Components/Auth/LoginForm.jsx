@@ -6,7 +6,7 @@ function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="relative w-full h-screen flex items-center justify-center bg-gray-100">
+    <div className="relative w-full h-screen flex items-center justify-center">
       <div className="bg-white w-[90%] max-w-[850px] rounded-2xl shadow-2xl overflow-hidden">
         <div className="hidden md:flex justify-center py-6 bg-white">
           <h2 className="text-2xl font-bold text-center">Community Service</h2>
@@ -17,7 +17,7 @@ function LoginForm() {
             <img src={ImageLeft} alt="Illustration" className="w-[280px]" />
           </div>
 
-          <div className="w-2/3 md:w-1/2 p-8 md:p-10 flex flex-col justify-center ">
+          <div className="w-3/3 md:w-1/2 p-8 md:p-10 flex flex-col justify-center ">
             <div className="hidden md:flex w-[2px] h-[300px] absolute bg-gray-300 z-10 ml-[-80px]">
               {" "}
             </div>
