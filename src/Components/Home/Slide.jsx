@@ -1,4 +1,5 @@
 
+
 import React, { useState, useEffect } from "react";
 
 const testimonials = [
@@ -62,12 +63,12 @@ const TestimonialCard = () => {
       
       
       
-      <div className="relative flex flex-col md:block max-w-7xl w-full h-auto md:h-[550px] lg:h-[650px] transition-all duration-500">
+      <div className="relative    w-full h-auto md:h-[550px] lg:h-[650px] transition-all duration-500">
         
         <div className="
-          relative md:absolute left-0 md:top-[20%] 
+          relative md:absolute lg:left-25 md:top-[15%]  sm:left-1 md:left-10
           w-full md:w-[45%] 
-          h-[300px] sm:h-[400px] md:h-[380px] lg:h-[450px] 
+          h-[300px] sm:h-[400px] md:h-[380px] lg:h-[450px] lg:max-w-2xl
           z-10 transition-all duration-700 ease-in-out order-2 md:order-none
         ">
           <img
@@ -80,7 +81,7 @@ const TestimonialCard = () => {
         <div className="
           relative md:absolute md:left-[45%] top-0 
           w-full md:w-[55%] 
-          h-auto md:h-[400px] lg:h-[480px] 
+          h-auto md:h-[380px] lg:h-[480px] lg:max-w-3xl
           z-20 transition-all duration-700 ease-in-out order-1 md:order-none mb-6 md:mb-0
         ">
           <div className="w-full h-full bg-[#CDE3FF] p-5 sm:p-8 lg:p-12 relative flex flex-col justify-between shadow-lg ">
