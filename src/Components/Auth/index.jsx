@@ -1,7 +1,6 @@
-export function Auth(){
-    return (
-        <div className="flex justify-center items-center h-[95vh]">
-            <h1>Welcome to authantocation page</h1>
-        </div>
-    )
+import LoginForm from "./LoginForm"
+function Auth(){
+    return <LoginForm />
 }
+
+export default Auth;
