@@ -56,71 +56,67 @@ const TestimonialCard = () => {
     }, 5000); 
 
     return () => clearInterval(slideInterval);
-  }, []); 
+  }, [current]); 
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-10 px-componentPadding overflow-hidden bg-white">
+    <div className="flex flex-col items-center justify-center min-h-screen p-8 md:p-20 xl:p-40 overflow-hidden  mt-40">
       
-      
-      
-      <div className="relative fle flex-col-1   w-full h-auto md:h-[550px] lg:h-[650px] transition-all duration-500">
+
+
+      <div className="md:translate-y-25 w-full grid grid-cols-1 md:grid-cols-2 items-stretch">
         
-        <div className="
-          relative md:absolute lg:left-25 md:top-[15%]  sm:left-1 md:right-20
-          w-full md:w-[45%] 
-          h-[300px]  md:h-[380px] lg:h-[450px] lg:max-w-2xl
-          z-10 transition-all duration-700 ease-in-out order-2 md:order-none
-        ">
+        
+        <div className="w-full h-[350px] md:h-[400px] lg:h-[400px]">
           <img
             src={testimonials[current].image}
             alt={testimonials[current].name}
-            className="w-full h-full object-cover shadow-xl "
+            className="w-full h-full object-cover transition-opacity duration-700 ease-in-out"
           />
         </div>
 
-        <div className="
-          relative md:absolute md:left-[45%] top-0 
-          w-full md:w-[55%] 
-          h-auto md:h-[380px] lg:h-[480px] lg:max-w-3xl
-          z-20 transition-all duration-700 ease-in-out order-1 md:order-none mb-6 md:mb-0
-        ">
-          <div className="w-full h-full bg-[#CDE3FF] p-5 sm:p-8 lg:p-12 relative flex flex-col justify-between shadow-lg ">
+     
+        <div className="relative z-10 w-full bg-[#CDE3FF] flex flex-col justify-center p-6 sm:p-10 lg:p-16 md:-translate-y-50 ">
+          
+          <div className="border border-secondary rounded-2xl h-full md:h-[400px] p-6 sm:p-8 md:p-10 relative flex flex-col justify-center space-y-4">
             
-            <div className="border border-secondary sm:rounded-2xl h-full p-4 sm:p-8 md:p-10 space-y-4 md:space-y-6 flex flex-col justify-center">
-              
-              <span className="text-secondary lg:px-10 md:px-10 sm:px-10 text-4xl sm:text-6xl font-serif absolute top-6 sm:top-14 md:top-14 lg:top-14 left-8 leading-none">
-                    "
-              </span>
+            <span className="text-secondary text-5xl sm:text-7xl font-serif absolute top-1 left-6 leading-none px-2">
+              "
+            </span>
 
-              <div className="mt-6">
-                <p className="text-sm sm:text-base lg:text-lg font-medium leading-relaxed px-2 sm:px-4">
-                  {testimonials[current].message}
-                </p>
-              </div>
+            <div className="mt-4 transition-all duration-500">
+              <p className="text-gray-800 text-sm sm:text-base lg:text-lg font-medium leading-relaxed">
+                {testimonials[current].message}
+              </p>
+            </div>
 
-              <div className="text-right">
-                <p className="font-bold text-universal-900 text-base sm:text-xl">{testimonials[current].name}</p>
-                <p className="text-universal-300 text-xs sm:text-sm">{testimonials[current].email}</p>
-              </div>
+            <div className="text-right pt-4">
+              <p className="font-bold text-universal-900 text-base sm:text-xl uppercase tracking-tighter">
+                {testimonials[current].name}
+              </p>
+              <p className="text-universal-300 text-xs sm:text-sm">
+                {testimonials[current].email}
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      
-      <div className="flex justify-center space-x-3 mt-12">
+     
+     
+      <div className="flex justify-center space-x-3 mt-8 md:mt-10 py-25">
         {testimonials.map((t, index) => (
-          <span
+          <button
             key={t.id}
-            className={`h-2 sm:h-3 transition-all duration-500 cursor-pointer  ${
-              index === current ? "w-8 sm:w-12 bg-secondary" : "w-3 sm:w-4 bg-gray-500 opacity-20"
-            }`}
             onClick={() => setCurrent(index)}
-          ></span>
+            className={`h-2 transition-all duration-500  ${
+              index === current ? "w-12 bg-blue-800" : "w-4 h-2 bg-gray-400"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
         ))}
       </div>
     </div>
   );
 };
 
-export default TestimonialCard
+export default TestimonialCard;
