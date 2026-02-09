@@ -1,11 +1,12 @@
 /** @format */
 
 import { HomePage } from './Pages/Home';
-import { Authantication } from './Pages/Auth';
+import Authantication from './Pages/Auth';
 import { ServicePage } from './Pages/Service';
 import { WorkGallery } from './Pages/Gallery';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { SowOuter } from './Components/ShowOuter';
+
 
 export function Routers() {
   return (
@@ -34,7 +35,7 @@ export function Routers() {
           />
         </Route>
 
-        <Route
+         <Route
           path='authantication'
           element={<Authantication/>}
         />
