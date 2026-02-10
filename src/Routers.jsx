@@ -46,6 +46,10 @@ export function Routers() {
           path='register'
           element={<Authentication/>}
         />
+         <Route
+          path='reset'
+          element={<Authentication/>}
+        />
         <Route path="dashboard" element={<DashboardPage/>}/>
       </Routes>
     </BrowserRouter>
