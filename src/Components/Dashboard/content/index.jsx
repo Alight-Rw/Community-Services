@@ -1,9 +1,10 @@
 import DashboardNav from "./DashboardNav";
-import ServicesStatics from "./ServicesStatistics";
+import ServicesStatics from "./ServicesStatics";
 
 export function DashboardContent(){
     return(
-        <div className="pt-20"> {/* padding-top = height ya nav bar */}
+        <div className="pt-20"> 
+        
             <DashboardNav />
             <ServicesStatics />
         </div>
