@@ -4,7 +4,7 @@ const Verify = () => {
     return (
        
         <div className="flex justify-center items-center min-h-screen ">
-            <div className="bg-white shadow-xl rounded-xl p-8 m-6 text-center max-w-md w-full ">
+            <div className="bg-white shadow-xl rounded-md p-8 m-6 text-center max-w-md w-full ">
 
                 <img
                     src="/image7.png"
