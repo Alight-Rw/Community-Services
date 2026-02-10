@@ -3,7 +3,7 @@ import image7 from "../../../public/image7.png"
 const Verify = () => {
     return (
        
-        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+        <div className="flex justify-center items-center min-h-screen ">
             <div className="bg-white shadow-xl rounded-xl p-8 m-6 text-center max-w-md w-full ">
 
                 <img
