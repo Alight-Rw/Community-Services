@@ -43,6 +43,8 @@ export function NavigationBar() {
               Contact Us
             </Link>
           </li>
+            
+            
         </ul>
 
       
@@ -54,7 +56,7 @@ export function NavigationBar() {
             Login
           </Link>
         </div>
-
+    
        
         <button
           onClick={() => setOpenMenu(true)}
@@ -106,6 +108,10 @@ export function NavigationBar() {
                 >
                   Contact Us
                 </Link>
+              </li>
+               <li>
+               
+               
               </li>
             </ul>
 
