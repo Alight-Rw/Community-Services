@@ -1,12 +1,13 @@
 /** @format */
 
 import { HomePage } from './Pages/Home';
-import Authantication from './Pages/Auth';
+import Authentication from './Pages/Auth';
 import { ServicePage } from './Pages/Service';
 import { WorkGallery } from './Pages/Gallery';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { SowOuter } from './Components/ShowOuter';
 import {  DashboardPage } from './Pages/Dashboard';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 export function Routers() {
@@ -37,8 +38,13 @@ export function Routers() {
         </Route>
 
          <Route
-          path='authantication'
-          element={<Authantication/>}
+          path='login'
+          element={<Authentication/>}
+        />
+        
+         <Route
+          path='register'
+          element={<Authentication/>}
         />
         <Route path="dashboard" element={<DashboardPage/>}/>
       </Routes>
