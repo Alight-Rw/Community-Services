@@ -41,7 +41,7 @@ const testimonials = [
   {
     id: 6,
     name: "Tuyikunde Jackson",
-    email: "tuyikundejackson74@gmail.com",
+    email: "jackson74@gmail.com",
     message: "Everything was handled with care and precision, making the whole process incredibly easy for us. We’d happily work together again.",
     image: "happyClient6.jpg"
   }
@@ -59,7 +59,7 @@ const TestimonialCard = () => {
   }, [current]); 
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-8 md:p-20 xl:p-40 overflow-hidden  mt-30">
+    <div className="flex flex-col items-center justify-center min-h-screen p-8 md:p-15 xl:p-40 overflow-hidden  mt-30">
       
 
 
