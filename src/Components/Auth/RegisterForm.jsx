@@ -2,8 +2,9 @@ import { useState } from "react";
 import ImageLeft from "../../assets/images/paint.png";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-function LoginForm({onClick}) {
+function RegisterForm({onClick}) {
   const [showPassword, setShowPassword] = useState(false);
+  const [reapetPassword, setReapetPassword] = useState(false);
 
   return (
     <div className="relative w-full h-screen flex items-center justify-center">
@@ -29,33 +30,45 @@ function LoginForm({onClick}) {
             </div>
 
             <div className="flex justify-center gap-20 mb-6 font-semibold">
-              <span className="text-secondary border-b-2 border-secondary pb-1 cursor-pointer" >
-                Login
-              </span>
+              <span className="text-gray-500 cursor-pointer" onClick={onClick}>Login</span>
               <div className="w-[2px] h-[20px] absolute bg-dark-light-secondary z-10 ml-[-20px] ">
                 {" "}
               </div>
-              <span className="text-gray-500 cursor-pointer" onClick={onClick}>Register</span>
+              <span className="text-secondary border-b-2 border-secondary pb-1 cursor-pointer">
+                Register
+              </span>
             </div>
 
             <form className="flex flex-col gap-4">
               <input
                 type="text"
-                placeholder="Username"
+                placeholder="FirstName"
                 className="border rounded-lg bg-universal border-primary px-4 py-2 focus:outline-secondary"
               />
 
+              <input
+                type="text"
+                placeholder="LastName"
+                className="border rounded-lg bg-universal border-primary px-4 py-2 focus:outline-secondary"
+              />
+
+              <input
+                type="email"
+                placeholder="Email"
+                className="border rounded-lg bg-universal border-primary px-4 py-2 focus:outline-secondary"
+              />
+              {/* Password */}
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
-                  className="border rounded-lg bg-universal border-primary px-4 py-2 w-full focus:outline-secondary"
+                  className="border rounded-lg bg-universal border-primary px-4 py-2 focus:outline-secondary w-full"
                 />
 
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-2.5 "
+                  className="absolute right-3 top-2.5"
                 >
                   {showPassword ? (
                     <FaEyeSlash size={18} />
@@ -65,20 +78,29 @@ function LoginForm({onClick}) {
                 </button>
               </div>
 
-              <div className="flex items-center gap-2 text-sm">
-                <input type="checkbox" />
-                <span>Remember</span>
+              {/* Re-enter Password */}
+              <div className="relative">
+                <input
+                  type={reapetPassword ? "text" : "password"}
+                  placeholder="Re-enter Password"
+                  className="border rounded-lg bg-universal border-primary px-4 py-2 focus:outline-secondary w-full"
+                />
+
+                <button
+                  type="button"
+                  onClick={() => setReapetPassword(!reapetPassword)}
+                  className="absolute right-3 top-2.5"
+                >
+                  {reapetPassword ? (
+                    <FaEyeSlash size={18} />
+                  ) : (
+                    <FaEye size={18} />
+                  )}
+                </button>
               </div>
 
-              <p className="text-sm text-gray-500">
-                Forgot your password? 
-                <span className="text-secondary cursor-pointer font-medium">
-                  Change Password
-                </span>
-              </p>
-
               <button className="bg-secondary hover:bg-dark-light-secondary text-primary cursor-pointer py-2 rounded-lg font-semibold mt-2 ">
-                Login
+                Sign Up
               </button>
             </form>
           </div>
@@ -88,4 +110,4 @@ function LoginForm({onClick}) {
   );
 }
 
-export default LoginForm;
+export default RegisterForm;
