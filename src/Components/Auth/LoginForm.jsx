@@ -71,7 +71,7 @@ function LoginForm() {
               </div>
 
               <p className="text-sm text-gray-500">
-                Forgot your password?{" "}
+                Forgot your password?
                 <span className="text-secondary cursor-pointer font-medium">
                   Change Password
                 </span>
