@@ -42,14 +42,14 @@ function LoginForm() {
               <input
                 type="text"
                 placeholder="Username"
-                className="border rounded-lg border-primary px-4 py-2 focus:outline-secondary"
+                className="border rounded-lg bg-universal border-primary px-4 py-2 focus:outline-secondary"
               />
 
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
-                  className="border rounded-lg border-primary px-4 py-2 w-full focus:outline-secondary"
+                  className="border rounded-lg bg-universal border-primary px-4 py-2 w-full focus:outline-secondary"
                 />
 
                 <button
@@ -71,7 +71,7 @@ function LoginForm() {
               </div>
 
               <p className="text-sm text-gray-500">
-                Forgot your password?{" "}
+                Forgot your password?
                 <span className="text-secondary cursor-pointer font-medium">
                   Change Password
                 </span>
