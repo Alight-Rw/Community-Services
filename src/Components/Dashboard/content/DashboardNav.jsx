@@ -8,20 +8,20 @@ import { FaBell } from "react-icons/fa";
 
 const DashboardNav= () => {
   return (
-    <div className="  min-h-screen  font-sans">
+    <div className="  min-h-screen  font-san ">
       
       
       
-      <div className="flex justify-end items-center gap-4  bg-primary shadow-lg w-full h-20">
+      <div className="flex justify-end px-10 gap-3 items-center gap-4  bg-primary shadow-lg w-full h-20  ">
        
-         <button className="p-2 bg-primary rounded-xl shadow-sm border border-universal hover:bg-gray-50 transition-colors">
+         <button className="p-2 bg-primary rounded-xl shadow-sm border border-universal hover:bg-universal transition-colors ">
            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" />
            </svg>
         </button>
            
-        <div className="relative p-2 bg-white rounded-xl shadow-sm border border-universal cursor-pointer">
-          <span className="absolute -top-1 -right-1  text-white h-auto w-auto bg-heart  rounded-full text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center border-2 border-white">
+        <div className="relative p-2 bg-white rounded-xl hover:bg-universal shadow-sm  border border-universal cursor-pointer">
+          <span className="absolute -top-1 -right-1  text-primary h-auto w-auto bg-heart  rounded-full text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center border-2 border-white">
             22
           </span>
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -31,7 +31,7 @@ const DashboardNav= () => {
               
         </div>
 
-        <div className="w-10 h-10 rounded-full border-2 border-white shadow-md overflow-hidden bg-universal">
+        <div className="w-10 h-10 rounded-full border-2 border-white shadow-md overflow-hidden bg-universal ">
           <img 
             src="/image.jpg" 
             alt="User profile" 
