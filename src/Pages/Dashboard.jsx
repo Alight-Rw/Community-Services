@@ -1,5 +1,7 @@
-import DashboardNav from "../Components/DashboardNav";
+import Dashboard from "../Components/Dashboard";
 
-export function Dashboard(){
-    return <DashboardNav />
+
+
+export function DashboardPage(){
+    return <Dashboard />
 }
