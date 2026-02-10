@@ -50,7 +50,7 @@ export function NavigationBar() {
       
         <div className="hidden lg:block">
           <Link
-              to="/authantication"
+            to="/login"
             className="font-bold text-secondary px-8 py-2 rounded-2xl border hover:bg-secondary hover:text-white"
           >
             Login
@@ -117,7 +117,7 @@ export function NavigationBar() {
 
          
             <Link
-              to="/authantication"
+              to="/login"
               onClick={() => setOpenMenu(false)}
               className="mt-10 block text-center font-bold text-secondary py-3 rounded-2xl border hover:bg-secondary text-white"
             >
