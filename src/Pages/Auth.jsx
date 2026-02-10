@@ -1,8 +1,11 @@
 import { Auth } from "../Components/Auth";
+import { useLocation } from "react-router-dom";
 
 
-function Authantication(){
-    return <Auth/>
+function Authentication(){
+    const location = useLocation();
+
+    return <Auth pathURL={location.pathname}/>
 }
 
-export default Authantication;
+export default Authentication;
