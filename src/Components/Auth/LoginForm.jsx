@@ -1,8 +1,9 @@
 import { useState } from "react";
-import ImageLeft from "../../assets/images/paint.png";
+import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import ImageLeft from "../../assets/images/paint.png";
 
-function LoginForm({onClick}) {
+function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -29,13 +30,9 @@ function LoginForm({onClick}) {
             </div>
 
             <div className="flex justify-center gap-20 mb-6 font-semibold">
-              <span className="text-secondary border-b-2 border-secondary pb-1 cursor-pointer" >
-                Login
-              </span>
-              <div className="w-[2px] h-[20px] absolute bg-dark-light-secondary z-10 ml-[-20px] ">
-                {" "}
-              </div>
-              <span className="text-gray-500 cursor-pointer" onClick={onClick}>Register</span>
+              <span className="text-secondary border-b-2 border-secondary pb-1 cursor-pointer" > Login </span>
+              <div className="w-0.5 h-5 absolute bg-dark-light-secondary z-10 -ml-5" />
+              <Link to="/register" className="text-gray-500 cursor-pointer" > Register </Link>
             </div>
 
             <form className="flex flex-col gap-4">
@@ -52,16 +49,8 @@ function LoginForm({onClick}) {
                   className="border rounded-lg bg-universal border-primary px-4 py-2 w-full focus:outline-secondary"
                 />
 
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-2.5 "
-                >
-                  {showPassword ? (
-                    <FaEyeSlash size={18} />
-                  ) : (
-                    <FaEye size={18} />
-                  )}
+                <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-2.5 " >
+                  {showPassword ? ( <FaEyeSlash size={18} /> ) : ( <FaEye size={18} /> )}
                 </button>
               </div>
 
@@ -71,15 +60,11 @@ function LoginForm({onClick}) {
               </div>
 
               <p className="text-sm text-gray-500">
-                Forgot your password? 
-                <span className="text-secondary cursor-pointer font-medium">
-                  Change Password
-                </span>
+                Forgot your password  ?
+                <span className="text-secondary cursor-pointer font-medium"> Change Password </span>
               </p>
 
-              <button className="bg-secondary hover:bg-dark-light-secondary text-primary cursor-pointer py-2 rounded-lg font-semibold mt-2 ">
-                Login
-              </button>
+              <button className="bg-secondary hover:bg-dark-light-secondary text-primary cursor-pointer py-2 rounded-lg font-semibold mt-2 "> Login </button>
             </form>
           </div>
         </div>
