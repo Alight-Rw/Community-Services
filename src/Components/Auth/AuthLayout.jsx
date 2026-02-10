@@ -5,47 +5,51 @@ const AuthLayout = () => {
         <img
           src="/images/logo.png"
           alt="OnlineBooking"
-          className="h-20 md:h-32 w-20 md:w-32"
+          className="h-25 w-25 md:h-40 md:w-40"
         />
       </div>
 
-      <div className="flex flex-1">
+      <div className="flex flex-1 text-xs sm:text-sm md:text-base">
         <div
-          className="w-[51.2%]"
+          className="w-1/2 flex flex-col justify-end py-4 sm:py-6 md:py-10 text-universal"
           style={{
             backgroundImage: "url(/images/blueCard.png)",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
           }}
-        ></div>
+        >
+          <div className="flex flex-col md:flex-row  justify-between items-end gap-2 sm:gap-0">
+            <div className="px-2 sm:px-4 md:px-mobilePadding lg:px-componentPadding text-center sm:text-left w-full sm:w-auto">
+              &copy; 2025 Community Services -
+              <span className="underline">All Rights Reserved</span>
+            </div>
+            <div className="pr-2 sm:pr-4 md:pr-6 text-center sm:text-right whitespace-nowrap w-full sm:w-auto">
+              Developed with Love
+            </div>
+          </div>
+        </div>
 
         <div
-          className="w-[48.8%]"
+          className="w-1/2 flex flex-col justify-end py-4 sm:py-6 md:py-10 "
           style={{
             backgroundImage: "url(/images/whiteCard.png)",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
           }}
-        ></div>
+        >
+          <div className="flex flex-col md:flex-row justify-between items-end gap-2 sm:gap-0">
+            <div className="pl-2 sm:pl-4  md:pl-6 text-center sm:text-left w-full sm:w-auto">
+              By <span className="underline">Coding School</span>
+            </div>
+            <div className="px-2 sm:px-4 md:px-mobilePadding lg:px-componentPadding text-center sm:text-right w-full sm:w-auto">
+              In Partnership with 
+               <span className="underline">Alight Rwanda</span>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <footer className=" absolute bottom-10 left-0 right-0 py-3 px-mobilePadding md:px-componentPadding 
-      flex flex-col md:flex-row gap-2 md:gap-0 md:justify-between items-center  md:text-sm text-center md:text-left">
-        <div className="text-universal text-medium">
-          ©2025 Community Services -
-          <strong className="underline text-medium">All Right Reserved</strong>
-        </div>
-
-        <div className="text-universal text-medium pr-2">
-          Developed with 
-          <span className="text-gray-600"> Love By Coding School</span>
-        </div>
-
-        <div className="text-gray-600 text-medium">
-          In Partnership with
-          <strong className="underline text-medium">Alight Rwanda</strong>
-        </div>
-      </footer>
     </div>
   );
 };
