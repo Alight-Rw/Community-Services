@@ -7,8 +7,8 @@ function LoginForm() {
 
   return (
     <div className="relative w-full h-screen flex items-center justify-center">
-      <div className="bg-white w-[90%] max-w-[850px] rounded-2xl shadow-2xl overflow-hidden">
-        <div className="hidden md:flex justify-center py-6 bg-white">
+      <div className="bg-primary w-[90%] max-w-[850px] rounded-2xl shadow-2xl overflow-hidden">
+        <div className="hidden md:flex justify-center py-6 bg-primary">
           <h2 className="text-2xl font-bold text-center">Community Service</h2>
         </div>
 
@@ -18,7 +18,7 @@ function LoginForm() {
           </div>
 
           <div className="w-3/3 md:w-1/2 p-8 md:p-10 flex flex-col justify-center ">
-            <div className="hidden md:flex w-[2px] h-[300px] absolute bg-gray-300 z-10 ml-[-80px]">
+            <div className="hidden md:flex w-[2px] h-[300px] absolute bg-dark-light-secondary z-10 ml-[-80px]">
               {" "}
             </div>
 
@@ -29,10 +29,10 @@ function LoginForm() {
             </div>
 
             <div className="flex justify-center gap-20 mb-6 font-semibold">
-              <span className="text-blue-600 border-b-2 border-blue-600 pb-1 cursor-pointer">
+              <span className="text-secondary border-b-2 border-secondary pb-1 cursor-pointer">
                 Login
               </span>
-              <div className="w-[2px] h-[20px] absolute bg-gray-300 z-10 ml-[-20px] ">
+              <div className="w-[2px] h-[20px] absolute bg-dark-light-secondary z-10 ml-[-20px] ">
                 {" "}
               </div>
               <span className="text-gray-500 cursor-pointer">Register</span>
@@ -42,20 +42,20 @@ function LoginForm() {
               <input
                 type="text"
                 placeholder="Username"
-                className="border rounded-lg border-gray-300 px-4 py-2 focus:outline-blue-500"
+                className="border rounded-lg border-primary px-4 py-2 focus:outline-secondary"
               />
 
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
-                  className="border rounded-lg border-gray-300 px-4 py-2 w-full focus:outline-blue-500"
+                  className="border rounded-lg border-primary px-4 py-2 w-full focus:outline-secondary"
                 />
 
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-2.5 text-gray-500"
+                  className="absolute right-3 top-2.5 "
                 >
                   {showPassword ? (
                     <FaEyeSlash size={18} />
@@ -72,12 +72,12 @@ function LoginForm() {
 
               <p className="text-sm text-gray-500">
                 Forgot your password?{" "}
-                <span className="text-blue-600 cursor-pointer font-medium">
+                <span className="text-secondary cursor-pointer font-medium">
                   Change Password
                 </span>
               </p>
 
-              <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold mt-2">
+              <button className="bg-secondary hover:bg-dark-light-secondary text-primary cursor-pointer py-2 rounded-lg font-semibold mt-2 ">
                 Login
               </button>
             </form>
