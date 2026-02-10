@@ -1,6 +1,10 @@
-import LoginForm from "./LoginForm"
-function Auth(){
-    return <LoginForm />
-}
 
-export default Auth;
+import AuthLayout from "./AuthLayout";
+
+export function Auth(){
+    return (
+        <div >
+        <AuthLayout />
+        </div>
+    )
+}
