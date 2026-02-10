@@ -16,7 +16,7 @@ function GlobalSearch() {
 
   return (
     <div className="flex justify-center p-componentPadding">
-      <div className="flex flex-col md:flex-row items-center bg-[#7BB7FF] p-2 md:p-1.5 rounded-2xl md:rounded-full w-full max-w-5xl gap-2 md:gap-0">
+      <div className="flex flex-col md:flex-row items-center bg-[#7BB7FF] p-2 md:p-1.5 rounded-2xl md:rounded-full w-full gap-2 md:gap-0">
         
         
         <div className="relative w-full md:flex-1">
