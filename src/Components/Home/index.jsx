@@ -8,6 +8,9 @@ export function Home(){
          <Hero />
          <Statistic/>
          <Slide />
+         <VerifyEmailForm />
+         
+         
         </>
 
 
