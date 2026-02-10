@@ -11,14 +11,14 @@ const DashboardNav = () => {
 
       <div className="flex justify-end px-5 gap-1 lg:px-10 lg:gap-3 items-center gap-4  bg-primary shadow-lg w-full h-20  ">
 
-        <button className="p-2 bg-primary rounded-xl shadow-sm border border-universal hover:bg-universal h-10 w-10 py-[2.5.px] px-[1px]  md:h-9 md:w-9 lg:h-10 lg:w-12 transition-colors ">
+        <button className="p-2 bg-primary rounded-xl shadow-sm border border-universal hover:bg-universal h-10 w-10 py-[2.5.px] px-[1px]  md:h-9 md:w-10 lg:px-1.5 lg:h-10 lg:w-12 transition-colors ">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-10 lg:h-7 lg:w-8  " fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" />
           </svg>
         </button>
 
         <div className="relative p-2 bg-primary rounded-xl hover:bg-universal shadow-sm  border border-universal h-10 w-10 py-[2.5.px] px-[1px] md:h-9 md:w-9 lg:h-10 lg:w-12 cursor-pointer">
-          <span className="absolute top-[1px] right-[1px]  text-primary h-auto w-auto bg-dark-red py-[5.5.px] px-[2px] md:py-[1.5px] md:px-1 lg:py-[2.5px] lg:px-1 rounded-full text-[10px] font-bold rounded-full  flex items-center justify-center border-2 border-white">
+          <span className="absolute top-[2px] right-[4px]  text-primary h-auto w-auto bg-dark-red py-[5.5.px] px-[2px] md:py-[1.5px] md:px-1 lg:py-[2.5px] lg:px-1 rounded-full text-[10px] font-bold rounded-full  flex items-center justify-center border-2 border-white">
             22
           </span>
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-9   lg:h-7 lg:w-8  " fill="none" viewBox="0 0 24 24" stroke="currentColor">
