@@ -6,6 +6,7 @@ export function Footer(){
       <>
       <Footertop />
      <BottomFooter/>
+     <SetBar/>
     </>
     )
 }
