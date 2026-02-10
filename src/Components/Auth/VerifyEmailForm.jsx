@@ -3,6 +3,7 @@ import ImageLeft from "../../assets/images/paint.png";
 
 
 function VerifyEmailForm() {
+  
 
   return (
     <div className="relative w-full h-screen flex items-center justify-center">
@@ -43,6 +44,8 @@ function VerifyEmailForm() {
                 placeholder="Email"
                 className="border rounded-lg bg-universal border-primary px-4 py-2 focus:outline-secondary"
               />
+
+              
 
               <p className="text-sm text-gray-500">
                 Already remember account ? 
