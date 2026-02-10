@@ -31,6 +31,7 @@ export function Routers() {
             path='service'
             element={<ServicePage />}
           />
+         
           <Route
             path='gallery'
             element={<WorkGallery />}
