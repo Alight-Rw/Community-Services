@@ -7,7 +7,7 @@ const testimonials = [
     id: 1,
     name: "NIYOMUFASHA Alice",
     email: "niyoalice@gmail.com",
-    message: "From start to finish, the experience was smooth and professional. The results exceeded expectations, and the attention to detail really stood out.",
+    message: "From start to finish, the experience was smooth and professional. The results and exceeded expectations ",
     image: "/happyClient1.jpg" 
   },
   {
@@ -41,7 +41,7 @@ const testimonials = [
   {
     id: 6,
     name: "Tuyikunde Jackson",
-    email: "tuyikundejackson74@gmail.com",
+    email: "jackson74@gmail.com",
     message: "Everything was handled with care and precision, making the whole process incredibly easy for us. We’d happily work together again.",
     image: "happyClient6.jpg"
   }
@@ -59,14 +59,14 @@ const TestimonialCard = () => {
   }, [current]); 
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-8 md:p-20 xl:p-40 overflow-hidden  mt-40">
+    <div className="flex flex-col items-center justify-center min-h-screen p-8 md:p-15 xl:p-40 overflow-hidden  mt-30">
       
 
 
       <div className="md:translate-y-25 w-full grid grid-cols-1 md:grid-cols-2 items-stretch">
         
         
-        <div className="w-full h-[350px] md:h-[400px] lg:h-[400px]">
+        <div className="w-full h-[350px] md:h-[400px] lg:h-[500px]">
           <img
             src={testimonials[current].image}
             alt={testimonials[current].name}
@@ -109,7 +109,7 @@ const TestimonialCard = () => {
             key={t.id}
             onClick={() => setCurrent(index)}
             className={`h-2 transition-all duration-500  ${
-              index === current ? "w-12 bg-blue-800" : "w-4 h-2 bg-gray-400"
+              index === current ? "w-12 bg-secondary" : "w-4 h-2 bg-universal"
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />
