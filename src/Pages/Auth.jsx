@@ -1,4 +1,6 @@
-import Auth from "../Components/Auth"
+import { Auth } from "../Components/Auth";
+
+
 function Authantication(){
     return <Auth/>
 }
