@@ -45,7 +45,7 @@ const ChangePassword = () => {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-10"
+                  className="absolute right-3 top-9.5"
                 >
                   {showPassword ? (
                     <FaEyeSlash size={22} color="gray" />
@@ -64,7 +64,7 @@ const ChangePassword = () => {
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-7"
+                  className="absolute right-3 top-6.5"
                 >
                   {showConfirmPassword ? (
                     <FaEyeSlash size={22} color="gray" />
