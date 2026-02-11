@@ -23,8 +23,8 @@ const DashboardSection = () => {
             <div className="max-w-xl">
               <h2 className="text-sky-blue text-2xl md:text-3xl font-bold">Services Statics</h2>
               <p className="text-hard-gray text-sm md:text-base leading-tight mt-2 opacity-80">
-               This section presents analytical insights and metrics related to community services, enabling administrators to 
-               monitor usage, efficiency, and service outcomes.
+               section presents analytical insights and metrics related to community services,
+               enabling administrators to monitor usage, efficiency, and service outcomes.
               </p>
             </div>
 
@@ -85,12 +85,12 @@ const DashboardSection = () => {
             </div>
             
             <p className="text-base md:text-lg leading-relaxed opacity-100 mb-6 font-medium">
-               This section helps you alert authorities or service providers about critical situations that need quick action,
-                ensuring the community gets timely help when it matters most.
+               section helps you alert authorities or service providers about critical situations that need quick action, 
+               ensuring the community gets timely help when it matters most.
             </p>
           </div>
 
-          <button className="relative z-10 w-full bg-primary text-sky-blue font-black py-4 rounded-2xl flex items-center justify-center gap-3 hover:bg-universal transition-all transform active:scale-95 group shadow-lg">
+          <button className="relative z-10 w-full bg-primary text-sky-blue font-bold  py-3  flex items-center justify-center gap-3 hover:bg-universal transition-all transform active:scale-95 group shadow-lg">
             <span className="text-sm uppercase tracking-wider">Make Request Now</span>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
