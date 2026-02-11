@@ -1,13 +1,15 @@
+import { Link } from "react-router-dom";
+
 const AuthLayout = () => {
   return (
     <div className="relative min-h-screen flex flex-col">
-      <div className="absolute top-4 md:top-8 right-4 md:right-8 z-10">
+      <Link to="/" className="absolute top-4 md:top-8 right-4 md:right-8 z-10">
         <img
           src="/images/logo.png"
           alt="OnlineBooking"
           className="h-25 w-25 md:h-40 md:w-40"
         />
-      </div>
+      </Link>
 
       <div className="flex flex-1 text-xs sm:text-sm md:text-base">
         <div
