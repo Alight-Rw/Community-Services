@@ -11,20 +11,19 @@ const DashboardSection = () => {
   const [activeFilter, setActiveFilter] = useState("Week");
 
   return (
-    <div className="w-full min-h-screen p-4 md:p-8 lg:p-14 ">
-      
-     
-     
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
+    <div className="w-full min-h-screen p-4 md:p-8 lg:p-14">
+      <div className="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-6 items-stretch">
+
         
-        
-        <div className="lg:col-span-8 bg-primary shadow-sm p-6 md:p-8 rounded-[32px] flex flex-col justify-between border border-gray-100 min-h-[400px]">
+        <div className="md:col-span-9 lg:col-span-9 bg-primary shadow-sm p-6 md:p-10 rounded-[32px] flex flex-col justify-between border border-gray-100 min-h-[400px]">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 gap-4">
-            <div className="max-w-xl">
-              <h2 className="text-sky-blue text-2xl md:text-3xl font-bold">Services Statics</h2>
-              <p className="text-hard-gray text-sm md:text-base leading-tight mt-2 opacity-80">
-               section presents analytical insights and metrics related to community services,
-               enabling administrators to monitor usage, efficiency, and service outcomes.
+            <div className="max-w-2xl">
+              <h2 className="text-sky-blue text-2xl md:text-4xl font-bold tracking-tight">
+                Services Statics
+              </h2>
+              <p className="text-hard-gray text-sm md:text-base leading-snug mt-3 opacity-80">
+                section presents analytical insights and metrics related to community services,
+                enabling administrators to monitor usage, efficiency, and service outcomes.
               </p>
             </div>
 
@@ -45,17 +44,13 @@ const DashboardSection = () => {
             </div>
           </div>
 
-         
-         
-          <div className="flex items-end justify-between h-56 md:h-64 gap-1.5 md:gap-3 px-2">
+          <div className="flex items-end justify-between h-56 md:h-72 gap-2 md:gap-4 px-2">
             {dataSets[activeFilter].map((height, index) => (
               <div
                 key={index}
                 style={{ height: `${height}%` }}
-                className="flex-1 bg-sky-blue/60 rounded-t-lg hover:bg-sky-blue transition-all duration-300 cursor-pointer group relative"
+                className="flex-1 bg-sky-blue/60 rounded-t-xl hover:bg-sky-blue transition-all duration-300 cursor-pointer group relative"
               >
-                
-                
                 <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
                   {height}%
                 </span>
@@ -65,35 +60,53 @@ const DashboardSection = () => {
         </div>
 
         
-        <div className="hidden lg:block lg:col-span-1"></div>
-
-        
-        <div className="lg:col-span-3 relative overflow-hidden bg-sky-blue text-white p-8 md:p-10 rounded-[32px] flex flex-col justify-between shadow-xl min-h-[450px]">
-          
-         
-          <div className="absolute top-[-5%] right-[-10%] w-32 h-32 bg-primary/10 rounded-full " />
-          <div className="absolute bottom-[-5%] left-[-10%] w-32 h-32 bg-primary/10 rounded-full " />
+        <div className="md:col-span-3 lg:col-span-3 relative overflow-hidden bg-sky-blue text-white p-6 md:p-8 rounded-[32px] flex flex-col justify-between shadow-xl min-h-[450px]">
+          <div className="absolute top-[-5%] right-[-10%] w-32 h-32 bg-primary/10 rounded-full" />
+          <div className="absolute bottom-[-5%] left-[-10%] w-32 h-32 bg-primary/10 rounded-full" />
 
           <div className="relative z-10">
             <div className="flex items-center gap-3 mb-8">
-              <div className="bg-primary/20 p-2.5 rounded-2xl backdrop-blur-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <div className="bg-primary/20 p-2 rounded-2xl backdrop-blur-sm">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2.5}
+                    d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold tracking-tight">Urgent Request</h3>
+              <h3 className="text-xl font-bold tracking-tight">Urgent Request</h3><br/>
             </div>
-            
-            <p className="text-base md:text-lg leading-relaxed opacity-100 mb-6 font-medium">
-               section helps you alert authorities or service providers about critical situations that need quick action, 
-               ensuring the community gets timely help when it matters most.
+
+            <p className="text-sm md:text-base leading-relaxed opacity-100 mb-6 font-medium ">
+             section helps you alert authorities or service providers about
+              critical situations that need quick action,
+              ensuring the community gets timely help when it matters most.
             </p>
           </div>
 
-          <button className="relative z-10 w-full bg-primary text-sky-blue font-bold  py-3  flex items-center justify-center gap-3 hover:bg-universal transition-all transform active:scale-95 group shadow-lg">
-            <span className="text-sm uppercase tracking-wider">Make Request Now</span>
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          <button className="relative z-10 w-full bg-primary text-sky-blue font-bold py-2.5  flex items-center justify-center gap-2 hover:bg-universal transition-all transform active:scale-95 group shadow-lg">
+            <span className="text-xl  tracking-widest">Make Request Now</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4 transform transition-transform group-hover:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={3}
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
             </svg>
           </button>
         </div>
