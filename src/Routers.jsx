@@ -50,7 +50,14 @@ export function Routers() {
           path='change-password'
           element={<Authentication/>}
         />
-        <Route path="dashboard" element={<DashboardPage/>}/>
+         <Route
+          path='account-verified'
+          element={<Authentication/>}
+        />
+         <Route
+          path='dashboard'
+          element={<DashboardPage/>}
+        />
       </Routes>
     </BrowserRouter>
   );
