@@ -47,7 +47,7 @@ export function Routers() {
           element={<Authentication/>}
         />
          <Route
-          path='reset'
+          path='change-password'
           element={<Authentication/>}
         />
         <Route path="dashboard" element={<DashboardPage/>}/>
