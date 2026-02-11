@@ -49,7 +49,7 @@ function LoginForm() {
                   className="border rounded-lg bg-universal border-primary px-4 py-2 w-full focus:outline-secondary"
                 />
 
-                <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-2.5 " >
+                <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-3 " >
                   {showPassword ? ( <FaEyeSlash size={18} /> ) : ( <FaEye size={18} /> )}
                 </button>
               </div>
