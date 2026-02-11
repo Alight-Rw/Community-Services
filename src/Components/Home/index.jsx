@@ -1,8 +1,10 @@
 import { Statistic } from "./Statistic"
 
+
 import Hero from "./Hero";
 import Slide from "./Slide"
 import GlobalSearch from "./GlobalSearch";
+import { MyStatistic } from "./MyStatistic";
 export function Home(){
     return (
          <> 
@@ -10,6 +12,8 @@ export function Home(){
          <Hero />
          <Statistic/>
          <Slide />
+         <MyStatistic/>
+         
         </>
 
 
