@@ -17,18 +17,15 @@ const steps = [
 export default function ServiceFlow() {
   return (
     <section className="w-full bg-white py-16 px-0 overflow-hidden">
-      {/* Main wrapper: justify-center keeps the whole group centered 
-         on very large screens if they don't fill the full width.
-      */}
       <div className="flex flex-nowrap items-start justify-center w-full">
         {steps.map((step, index) => (
           <div 
             key={step.id} 
             className="flex items-center"
           >
-            {/* Step Card Container */}
+            
             <div className="flex flex-col items-center flex-none">
-              {/* Diamond Container */}
+              
               <div className="
                 relative flex justify-center items-center rotate-45 border-2 border-universal bg-white
                 w-10 h-10       /* Mobile */
@@ -43,10 +40,10 @@ export default function ServiceFlow() {
                 />
               </div>
 
-              {/* Label */}
+              
               <div className="mt-8 md:mt-10 text-center max-w-[55px] sm:max-w-[80px] md:max-w-[120px]">
                 <p className="
-                  font-bold text-gray-800 uppercase leading-tight tracking-tighter
+                  font-bold text-gray-800 Capitalize leading-tight tracking-tighter
                   text-[7px]       /* Tiny Mobile */
                   sm:text-[9px]     /* Mobile */
                   md:text-[11px]    /* Tablet */
@@ -57,7 +54,6 @@ export default function ServiceFlow() {
               </div>
             </div>
 
-            {/* The "Small Line" Connector */}
             {index !== steps.length - 1 && (
               <div className="
                 /* Line dimensions */
