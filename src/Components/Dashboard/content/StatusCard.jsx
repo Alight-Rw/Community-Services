@@ -15,28 +15,23 @@ const StatusCard = () => {
             justifyContent: 'center',
             gap: '7px', 
             width: '100%',
-            
             padding: '5px 2px', 
             boxSizing: 'border-box'
         },
         card: {
-            
             display: 'flex',
-            
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            width:'300px',            
+            width: '300px',            
             padding: '10px 5px', 
-            border: '1px solid #ad1d1d',
+            border: '1px solid #eee', 
             borderRadius: '6px', 
-            textDecoration: 'none',
             backgroundColor: '#fff',
             boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
             position: 'relative', 
             minHeight: '110px',
         },
-        
         trendImgStyle: {
             position: 'absolute',
             top: '30px',    
@@ -45,7 +40,6 @@ const StatusCard = () => {
             width: '44px',
             transform: 'translateX(50%)' 
         },
-        
         totalImgStyle: {
             position: 'absolute',
             top: '0px',    
@@ -61,25 +55,31 @@ const StatusCard = () => {
             marginTop: '15px', 
             marginBottom: '2px' 
         },
-        title: {
+        titleLink: {
             fontSize: '20px', 
             fontWeight: '600',
-            color: '#333',
+            color: '#007bff', 
             margin: '0',
             textAlign: 'center',
-            whiteSpace: 'nowrap'
+            whiteSpace: 'nowrap',
+            textDecoration: 'none', 
         }
     };
 
     return (
         <div className="status-grid" style={styles.grid}>
             {statusData.map((item) => (
-                <a key={item.id} href={item.path} style={styles.card}>
+                <div key={item.id} style={styles.card}>
+                    
                     <img src={item.trend} alt="trend" style={styles.trendImgStyle} />
                     <img src={item.totalImg} alt="total" style={styles.totalImgStyle} />
                     <img src={item.icon} alt="icon" style={styles.iconImg} />
-                    <h3 style={styles.title}>{item.title}</h3>
-                </a>
+                    
+                    
+                    <a href={item.path} style={styles.titleLink}>
+                        {item.title}
+                    </a>
+                </div>
             ))}
         </div>
     );
