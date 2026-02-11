@@ -1,78 +1,58 @@
+import { useState } from "react";
 
-import { useState } from "react"
+const menuItems = [
+  { id: "dashboard", label: "Dashboard", icon: "/Icon(11).png" },
+  { id: "requested", label: "Requested Services", icon: "/icon2.png" },
+  { id: "completed", label: "Completed Services", icon: "/icon3.png" },
+  { id: "rejected", label: "Rejected Services", icon: "/icon4.png" },
+  { id: "settings", label: "Settings", icon: "/icon5.png" },
+];
 
 const SidBar = () => {
-  const [isOpen, setIsOpen] = useState(false)
-
-  const menuItems = [
-    { name: "Dashboard", icon: "/Icon(11).png", active: true },
-    { name: "Requested Services", icon: "/icon2.png" },
-    { name: "Completed Services", icon: "/icon3.png" },
-    { name: "Rejected Services", icon: "/icon4.png" },
-    { name: "Settings", icon: "/icon5.png" },
-  ]
+  const [active, setActive] = useState("dashboard"); // default selected
 
   return (
-    <div className="flex">
+    <div className="flex flex-col lg:w-64 w-full h-screen bg-primary shadow-lg">
+      {/* Logo & Close button */}
+      <div className="flex items-center justify-between p-4">
+        <img src="/Logo(2).png" alt="Logo" className="h-12" />
+        <img
+          src="/Close Icon.png"
+          alt="Close"
+          className="w-10 h-10 rounded-full bg-blue-200"
+        />
+      </div>
 
-      
-      <div
-        className={`
-          bg-primary shadow-lg h-screen p-4
-          transition-all duration-300
-          ${isOpen ? "w-[300px]" : "w-[90px]"}
-          lg:w-[300px]
-          flex flex-col justify-between
-        `}
-      >
-
-        
-        <div className="flex justify-between items-center">
-          <img src="/Logo(2).png" alt="logo" className="w-10 h-10" />
-
-          
+      {/* Menu items */}
+      <div className="flex-1 mt-4">
+        {menuItems.map((item) => (
           <div
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden"
+            key={item.id}
+            onClick={() => setActive(item.id)}
+            className={`flex items-center p-4 cursor-pointer rounded-lg m-2 transition-colors ${
+              active === item.id
+                ? "bg-blue-600 text-white"
+                : "text-gray-800 hover:bg-blue-100"
+            }`}
           >
-            <img className="w-8 h-8" src="/Close Icon.png" alt="toggle" />
+            <img src={item.icon} alt={item.label} className="w-8 h-8" />
+            <span className="ml-4 font-bold">{item.label}</span>
           </div>
-        </div>
+        ))}
+      </div>
 
-        
-        <div className="mt-6 space-y-6">
-          {menuItems.map((item, idx) => (
-            <div
-              key={idx}
-              className={`flex items-center gap-4 p-3 rounded-xl cursor-pointer
-                ${item.active ? "bg-blue-600 text-white":''}
-              `}
-            >
-              <img className="w-6 h-6" src={item.icon} alt={item.name} />
-              
-              <span className={`${isOpen ? "block":''} lg:block`}>
-                {item.name}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        
-        <div className={`flex items-center mt-10 ${!isOpen ? "justify-center" : "justify-between"} lg:justify-between`}>
-          <h1 className="rounded-2xl  font-bold bg-blue-100 px-2 py-2">Ni</h1>
-          <span className={`${isOpen ? "block" : ""} lg:block ml-5 truncate`}>
-            niyo.alice@codingschool...
-          </span>
-          {isOpen && (
-            <button>
-              <img className="w-10 h-10 ml-10" src="/Close Icon(1).png" alt="logout" />
-            </button>
-          )}
-        </div>
-
+      {/* User info */}
+      <div className="flex items-center p-4 border-t mt-auto">
+        <h1 className="bg-blue-100 rounded-2xl p-3 text-2xl font-bold">Na</h1>
+        <span className="ml-4 text-xl">niyo.alice@codingschool</span>
+        <img
+          src="/icon(3).png"
+          alt="User"
+          className="w-10 h-10 ml-auto rounded-full"
+        />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SidBar
+export default SidBar;
