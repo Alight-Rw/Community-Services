@@ -13,7 +13,7 @@ const StatusCard = () => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            gap: '2px', 
+            gap: '7px', 
             width: '100%',
             
             padding: '5px 2px', 
@@ -28,7 +28,7 @@ const StatusCard = () => {
             justifyContent: 'center',
             width:'300px',            
             padding: '10px 5px', 
-            border: '1px solid #f0f0f0',
+            border: '1px solid #ad1d1d',
             borderRadius: '6px', 
             textDecoration: 'none',
             backgroundColor: '#fff',
@@ -40,7 +40,7 @@ const StatusCard = () => {
         trendImgStyle: {
             position: 'absolute',
             top: '30px',    
-            right: '10%',  
+            right: '25%',  
             height: '29px',
             width: '44px',
             transform: 'translateX(50%)' 
@@ -49,7 +49,7 @@ const StatusCard = () => {
         totalImgStyle: {
             position: 'absolute',
             top: '0px',    
-            left: '10%',  
+            left: '11%',  
             height: '59px',
             width: '64px',
             transform: 'translateX(-50%)'
@@ -58,16 +58,16 @@ const StatusCard = () => {
             width: '178px',
             height: '135px',
             objectFit: 'contain',
-            marginTop: '15px', // Adds space so icon doesn't hit the absolute images
+            marginTop: '15px', 
             marginBottom: '2px' 
         },
         title: {
-            fontSize: '10px', // Slightly smaller font to prevent text wrapping
+            fontSize: '20px', 
             fontWeight: '600',
             color: '#333',
             margin: '0',
             textAlign: 'center',
-            whiteSpace: 'nowrap' // Keeps text on one line
+            whiteSpace: 'nowrap'
         }
     };
 
