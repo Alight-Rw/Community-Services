@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 const StatusCard = () => {
-
     const [hoveredId, setHoveredId] = useState(null);
 
     const statusData = [
@@ -13,76 +12,84 @@ const StatusCard = () => {
 
     const styles = {
         grid: {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '7px',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)', 
+            gap: '25px', 
             width: '100%',
-            padding: '5px 2px',
-            boxSizing: 'border-box'
+            
+            padding: '25px 25px 25px 25px', 
+            boxSizing: 'border-box',
+            backgroundColor: '#fff' 
         },
         card: (isHovered) => ({
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'center',
-            width: '300px',
-            padding: '10px 5px',
-            
-            border: isHovered ? '4px solid #7BB7FF' : '1px solid #7BB7FF',
-            borderRadius: '6px',
+            justifyContent: 'flex-end', 
             backgroundColor: '#fff',
-            boxShadow: isHovered ? '0 4px 8px rgba(40, 167, 69, 0.2)' : '0 1px 3px rgba(0,0,0,0.04)',
+            padding: '20px 15px',
+            borderRadius: '12px',
+            border: '5px solid',
+            borderColor: isHovered ? '#87CEEB' : 'transparent', 
+            
+
+            
+            outline: isHovered ? 'none' : '1px solid #7BB7FF',
+            outlineOffset: '-5px',
+            
+            boxShadow: isHovered ? '0 10px 20px rgba(135, 206, 235, 0.4)' : '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
+            
             position: 'relative',
-            minHeight: '110px',
-            transition: 'all 0.3s ease', 
-            cursor: 'pointer'
-        }),
+            height: '210px', 
         
-        imageHover: (isHovered) => ({
-            filter: isHovered 
-                ? 'sepia(100%) hue-rotate(90deg) saturate(300%)' 
-                : 'none',
-            transition: 'filter 0.3s ease'
+            transition: 'border-color 0.25s ease, box-shadow 0.25s ease, outline-color 0.25s ease',
+            cursor: 'pointer',
+            boxSizing: 'border-box',
+            
+            
         }),
-        trendImgStyle: {
-            position: 'absolute',
-            top: '30px',
-            right: '15%',
-            height: '29px',
-            width: '50px',
-            transform: 'translateX(50%)'
-        },
         totalImgStyle: {
             position: 'absolute',
-            top: '0px',
-            left: '11%',
-            height: '59px',
-            width: '64px',
-            transform: 'translateX(-50%)'
+            
+            top: '-25px',
+            left: '-15px',
+            width: '65px',
+            height: 'auto',
+            zIndex: '10'
+        },
+        trendImgStyle: {
+            position: 'absolute',
+            top: '15px',
+            right: '15px',
+            width: '45px',
+            height: 'auto',
+        },
+        iconContainer: {
+            flex: 1,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '100%',
         },
         iconImg: {
-            width: '178px',
-            height: '135px',
-            objectFit: 'contain',
-            marginTop: '20px',
-            marginBottom: '2px'
+            maxWidth: '85%',
+            maxHeight: '100px',
+            objectFit: 'contain'
         },
         titleLink: (isHovered) => ({
-            fontSize: '20px',
-            fontWeight: '600',
-            // 
-            color: isHovered ? 'blue' : 'black',
-            margin: '0',
+            fontSize: '18px', 
+            fontWeight: '700',
+            color: isHovered ? '#00BFFF' : '#334155', 
+            margin: '10px 0 0 0',
             textAlign: 'center',
-            whiteSpace: 'nowrap',
             textDecoration: 'none',
-            transition: 'color 0.3s ease'
+            transition: 'color 0.3s ease',
+            fontFamily: 'sans-serif'
         })
     };
 
     return (
-        <div className="status-grid" style={styles.grid}>
+        <div style={styles.grid}>
             {statusData.map((item) => {
                 const isHovered = hoveredId === item.id;
                 
@@ -92,15 +99,19 @@ const StatusCard = () => {
                         style={styles.card(isHovered)}
                         onMouseEnter={() => setHoveredId(item.id)}
                         onMouseLeave={() => setHoveredId(null)}
+                        onClick={() => window.location.href = item.path}
                     >
                         
-                        <img src={item.trend} alt="trend" style={{...styles.trendImgStyle, ...styles.imageHover(isHovered)}} />
-                        <img src={item.totalImg} alt="total" style={{...styles.totalImgStyle, ...styles.imageHover(isHovered)}} />
-                        <img src={item.icon} alt="icon" style={{...styles.iconImg, ...styles.imageHover(isHovered)}} />
+                        <img src={item.totalImg} alt="total" style={styles.totalImgStyle} />
+                        <img src={item.trend} alt="trend" style={styles.trendImgStyle} />
                         
-                        <a href={item.path} style={styles.titleLink(isHovered)}>
+                        <div style={styles.iconContainer}>
+                            <img src={item.icon} alt="icon" style={styles.iconImg} />
+                        </div>
+                        
+                        <p style={styles.titleLink(isHovered)}>
                             {item.title}
-                        </a>
+                        </p>
                     </div>
                 );
             })}
