@@ -1,3 +1,4 @@
+import ServiceFlow from "./ServiceFlow"
 import { Statistic } from "./Statistic"
 
 import Hero from "./Hero";
@@ -10,7 +11,6 @@ export function Home(){
          <GlobalSearch />
          <Hero />
          <Statistic/>
-         <Slide />
          <ServiceFlow />
         </>
 
