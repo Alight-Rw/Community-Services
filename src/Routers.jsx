@@ -58,6 +58,11 @@ export function Routers() {
           path='dashboard'
           element={<DashboardPage/>}
         />
+        <Route
+          path='resend-password'
+          element={<Authentication/>}
+        />
+        <Route path="dashboard" element={<DashboardPage/>}/>
       </Routes>
     </BrowserRouter>
   );
