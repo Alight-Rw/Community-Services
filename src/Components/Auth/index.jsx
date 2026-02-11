@@ -1,4 +1,5 @@
 import AuthLayout from "./AuthLayout";
+import ChangePassword from "./ChangePassword";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 
@@ -9,6 +10,8 @@ export function Auth({ pathURL }) {
       <div className="absolute z-10 w-full">
         {pathURL === '/register' && (<RegisterForm />)}
        {pathURL === '/login' && (<LoginForm />)}
+       {pathURL === '/reset' && (<ChangePassword />)}
+       
       </div>
       <AuthLayout />
     </div>
