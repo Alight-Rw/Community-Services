@@ -1,6 +1,6 @@
 import image7 from "../../../public/image7.png"
 
-const Verify = () => {
+const AccountVerifiedForm = () => {
     return (
        
         <div className="flex justify-center items-center min-h-screen ">
@@ -26,5 +26,5 @@ const Verify = () => {
     )
 }
 
-export default Verify
+export default AccountVerifiedForm
 

@@ -6,8 +6,6 @@ import { ServicePage } from './Pages/Service';
 import { WorkGallery } from './Pages/Gallery';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { SowOuter } from './Components/ShowOuter';
-import VerifyAccount from './Pages/VerifyAccountPage';
-
 
 
 export function Routers() {
@@ -41,7 +39,11 @@ export function Routers() {
           path='authantication'
           element={<Authantication/>}
         />
-        <Route path='verifyaccount' element={<VerifyAccount/>}/>
+
+         <Route
+          path='account-verified'
+          element={<Authantication/>}
+        />
       </Routes>
     </BrowserRouter>
   );
