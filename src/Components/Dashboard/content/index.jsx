@@ -1,3 +1,4 @@
+import SidBar from "../SidBar";
 import DashboardNav from "./DashboardNav";
 import ServicesStatics from "./ServicesStatics";
 
