@@ -11,25 +11,27 @@ const StatusCard = () => {
    const styles = {
         grid: {
             display: 'flex',
-            // --- REDUCED FROM 5px TO 2px ---
+            alignItems: 'center',
+            justifyContent: 'center',
             gap: '2px', 
             width: '100%',
-            // --- REDUCED HORIZONTAL PADDING ---
+            
             padding: '5px 2px', 
             boxSizing: 'border-box'
         },
         card: {
-            flex: '1',
+            
             display: 'flex',
+            
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            // --- TIGHTER PADDING TO FIT CLOSER CARDS ---
+            width:'300px',            
             padding: '10px 5px', 
             border: '1px solid #f0f0f0',
-            borderRadius: '6px', // Slightly sharper corners look better when close
+            borderRadius: '6px', 
             textDecoration: 'none',
-            backgroundColor: '#ffffff',
+            backgroundColor: '#fff',
             boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
             position: 'relative', 
             minHeight: '110px',
@@ -37,24 +39,24 @@ const StatusCard = () => {
         
         trendImgStyle: {
             position: 'absolute',
-            top: '12px',    
-            right: '20%',  
-            height: '14px',
-            width: 'auto',
+            top: '30px',    
+            right: '10%',  
+            height: '29px',
+            width: '44px',
             transform: 'translateX(50%)' 
         },
         
         totalImgStyle: {
             position: 'absolute',
-            top: '12px',    
-            left: '20%',  
-            height: '20px',
-            width: 'auto',
+            top: '0px',    
+            left: '10%',  
+            height: '59px',
+            width: '64px',
             transform: 'translateX(-50%)'
         },
         iconImg: {
-            width: '32px',
-            height: '32px',
+            width: '178px',
+            height: '135px',
             objectFit: 'contain',
             marginTop: '15px', // Adds space so icon doesn't hit the absolute images
             marginBottom: '2px' 
