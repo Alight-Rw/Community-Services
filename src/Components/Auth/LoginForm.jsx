@@ -61,7 +61,12 @@ function LoginForm() {
 
               <p className="text-sm text-gray-500">
                 Forgot your password  ?
-                <span className="text-secondary cursor-pointer font-medium"> Change Password </span>
+                 <Link
+                  to="/change-password"
+                  className="text-secondary cursor-pointer font-medium hover:underline"
+                >
+                  Change Password
+                </Link>
               </p>
 
               <button className="bg-secondary hover:bg-dark-light-secondary text-primary cursor-pointer py-2 rounded-lg font-semibold mt-2 "> Login </button>

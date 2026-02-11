@@ -10,7 +10,7 @@ export function Auth({ pathURL }) {
       <div className="absolute z-10 w-full">
         {pathURL === '/register' && (<RegisterForm />)}
        {pathURL === '/login' && (<LoginForm />)}
-       {pathURL === '/reset' && (<ChangePassword />)}
+       {pathURL === '/change-password' && (<ChangePassword />)}
        
       </div>
       <AuthLayout />
