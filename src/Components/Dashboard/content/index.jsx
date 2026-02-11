@@ -6,6 +6,7 @@ export function DashboardContent(){
         <div className="pt-20 bg-universal"> 
         
             <DashboardNav />
+        <StatusCard />
             <ServicesStatics />
         </div>
     )
