@@ -13,13 +13,13 @@ const StatusCard = () => {
     const styles = {
         grid: {
             display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)', 
+            
+            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', 
             gap: '25px', 
             width: '100%',
-            
-            padding: '25px 25px 25px 25px', 
+            padding: '50px 25px 25px 25px', 
             boxSizing: 'border-box',
-            backgroundColor: '#fff' 
+            backgroundColor: 'transparent' 
         },
         card: (isHovered) => ({
             display: 'flex',
@@ -29,28 +29,27 @@ const StatusCard = () => {
             backgroundColor: '#fff',
             padding: '20px 15px',
             borderRadius: '12px',
-            border: '5px solid',
-            borderColor: isHovered ? '#87CEEB' : 'transparent', 
             
-
+            
+            border: '3px solid',
+            borderColor: isHovered ? 'var(--color-secondary)' : 'transparent', 
+            
             
             outline: isHovered ? 'none' : '1px solid #7BB7FF',
             outlineOffset: '-5px',
             
-            boxShadow: isHovered ? '0 10px 20px rgba(135, 206, 235, 0.4)' : '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
+            
+            boxShadow: isHovered ? '0 10px 20px rgba(25, 97, 186, 0.2)' : '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
             
             position: 'relative',
             height: '210px', 
-        
             transition: 'border-color 0.25s ease, box-shadow 0.25s ease, outline-color 0.25s ease',
             cursor: 'pointer',
             boxSizing: 'border-box',
             
-            
         }),
         totalImgStyle: {
             position: 'absolute',
-            
             top: '-25px',
             left: '-15px',
             width: '65px',
@@ -79,7 +78,8 @@ const StatusCard = () => {
         titleLink: (isHovered) => ({
             fontSize: '18px', 
             fontWeight: '700',
-            color: isHovered ? '#00BFFF' : '#334155', 
+            
+            color: isHovered ? 'var(--color-secondary)' : '#334155', 
             margin: '10px 0 0 0',
             textAlign: 'center',
             textDecoration: 'none',
@@ -101,7 +101,6 @@ const StatusCard = () => {
                         onMouseLeave={() => setHoveredId(null)}
                         onClick={() => window.location.href = item.path}
                     >
-                        
                         <img src={item.totalImg} alt="total" style={styles.totalImgStyle} />
                         <img src={item.trend} alt="trend" style={styles.trendImgStyle} />
                         
