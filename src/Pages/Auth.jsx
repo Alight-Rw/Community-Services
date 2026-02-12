@@ -6,6 +6,7 @@ function Authentication(){
     const location = useLocation();
 
     return <Auth pathURL={location.pathname}/>
+    
 }
 
 export default Authentication;
