@@ -1,4 +1,4 @@
-import { Auth } from "../Components/Auth";
+import { Auth } from "../../Components/Auth";
 import { useLocation } from "react-router-dom";
 
 

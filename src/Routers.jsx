@@ -1,13 +1,15 @@
 /** @format */
 
-import { HomePage } from './Pages/Home';
+import { HomePage } from './Pages/Client/Home';
 import Authentication from './Pages/Auth';
-import { ServicePage } from './Pages/Service';
-import { WorkGallery } from './Pages/Gallery';
-import { SowOuter } from './Components/ShowOuter';
-import {  DashboardPage } from './Pages/Dashboard';
+import { ServicePage } from './Pages/Client/Service';
+import { WorkGallery } from './Pages/Client/Gallery';
+import { ShowOuter } from './Components/Client/ShowOuter';
+import { DashboardClientPage } from './Pages/Client/DashboardClient';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AdminDashboardPage } from './Pages/Admin';
+import { ProviderDashboardPage } from './Pages/Provider';
 
 
 export function Routers() {
@@ -16,7 +18,7 @@ export function Routers() {
       <Routes>
         <Route
           path='/'
-          element={<SowOuter />}
+          element={<ShowOuter />}
         >
           <Route
             index
@@ -54,15 +56,13 @@ export function Routers() {
           path='account-verified'
           element={<Authentication/>}
         />
-         <Route
-          path='dashboard'
-          element={<DashboardPage/>}
-        />
         <Route
           path='resend-password'
           element={<Authentication/>}
         />
-        <Route path="dashboard" element={<DashboardPage/>}/>
+        <Route path="dashboard" element={<DashboardClientPage/>}/>
+        <Route path="admin-dashboard" element={<AdminDashboardPage/>}/>
+        <Route path="provider-dashboard" element={<ProviderDashboardPage/>}/>
       </Routes>
     </BrowserRouter>
   );
