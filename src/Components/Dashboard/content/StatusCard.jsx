@@ -1,121 +1,68 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const StatusCard = () => {
-    const [hoveredId, setHoveredId] = useState(null);
+  const [hoveredId, setHoveredId] = useState(null);
+  const navigate = useNavigate();
 
-    const statusData = [
-        { id: 1, title: "Available Services", icon: "/images/Available-services.png", trend: "/images/Trends.png", totalImg: "/images/Total.png", path: "/services/available" },
-        { id: 2, title: "Requested Services", icon: "/images/Requested-services.png", trend: "/images/Trends1.png", totalImg: "/images/Total1.png", path: "/services/requested" },
-        { id: 3, title: "Completed Services", icon: "/images/Completed-services.png", trend: "/images/Trends2.png", totalImg: "/images/Total2.png", path: "/services/completed" },
-        { id: 4, title: "Rejected Services", icon: "/images/Rejected-services.png", trend: "/images/Trends3.png", totalImg: "/images/Total3.png", path: "/services/rejected" }
-    ];
+  const statusData = [
+    { id: 1, title: "Available Services", icon: "/images/Available-services.png", trend: "/images/Trends.png", totalImg: "/images/Total.png", path: "/services/available" },
+   { id: 2, title: "Requested Services", icon: "/images/Requested-services.png", trend: "/images/Trends1.png", totalImg: "/images/Total1.png", path: "/services/requested" },
+    { id: 3, title: "Waiting Services", icon: "/images/Waiting-services.png", trend: "/images/Trends4.png", totalImg: "/images/Total4.png", path: "/services/waiting" },
+    { id: 4, title: "Completed Services", icon: "/images/Completed-services.png", trend: "/images/Trends2.png", totalImg: "/images/Total2.png", path: "/services/completed" },
+    { id: 5, title: "Rejected Services", icon: "/images/Rejected-services.png", trend: "/images/Trends3.png", totalImg: "/images/Total3.png", path: "/services/rejected" }
+    
+];
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 px-5 lg:px-10 pt-24 pb-6 font-san flex justify-center w-full pt-24 pb-6">
+      {statusData.map((item) => {
+        const isHovered = hoveredId === item.id;
 
-    const styles = {
-        grid: {
-            display: 'grid',
+        return (
+          <div
+            key={item.id}
+            onMouseEnter={() => setHoveredId(item.id)}
+            onMouseLeave={() => setHoveredId(null)}
+            onClick={() => navigate(item.path)}
+            className={`relative bg-white rounded-xl shadow-md border-2 
+              ${isHovered ? "border-secondary shadow-lg scale-[1.02]" : "border-universal"} 
+              transition-all duration-300 cursor-pointer h-[210px] flex flex-col justify-end items-center p-4`}
+          >
             
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', 
-            gap: '25px', 
-            width: '100%',
-            padding: '50px 25px 25px 25px', 
-            boxSizing: 'border-box',
-            backgroundColor: 'transparent' 
-        },
-        card: (isHovered) => ({
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'flex-end', 
-            backgroundColor: '#fff',
-            padding: '20px 15px',
-            borderRadius: '12px',
-            
-            
-            border: '3px solid',
-            borderColor: isHovered ? 'var(--color-secondary)' : 'transparent', 
-            
-            
-            outline: isHovered ? 'none' : '1px solid #7BB7FF',
-            outlineOffset: '-5px',
-            
-            
-            boxShadow: isHovered ? '0 10px 20px rgba(25, 97, 186, 0.2)' : '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
-            
-            position: 'relative',
-            height: '210px', 
-            transition: 'border-color 0.25s ease, box-shadow 0.25s ease, outline-color 0.25s ease',
-            cursor: 'pointer',
-            boxSizing: 'border-box',
-            
-        }),
-        totalImgStyle: {
-            position: 'absolute',
-            top: '-25px',
-            left: '-15px',
-            width: '65px',
-            height: 'auto',
-            zIndex: '10'
-        },
-        trendImgStyle: {
-            position: 'absolute',
-            top: '15px',
-            right: '15px',
-            width: '45px',
-            height: 'auto',
-        },
-        iconContainer: {
-            flex: 1,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '100%',
-        },
-        iconImg: {
-            maxWidth: '85%',
-            maxHeight: '100px',
-            objectFit: 'contain'
-        },
-        titleLink: (isHovered) => ({
-            fontSize: '18px', 
-            fontWeight: '700',
-            
-            color: isHovered ? 'var(--color-secondary)' : '#334155', 
-            margin: '10px 0 0 0',
-            textAlign: 'center',
-            textDecoration: 'none',
-            transition: 'color 0.3s ease',
-            fontFamily: 'sans-serif'
-        })
-    };
+            <img
+              src={item.totalImg}
+              alt="total"
+              className="absolute -top-6 -left-4 w-16"
+            />
 
-    return (
-        <div style={styles.grid}>
-            {statusData.map((item) => {
-                const isHovered = hoveredId === item.id;
-                
-                return (
-                    <div 
-                        key={item.id} 
-                        style={styles.card(isHovered)}
-                        onMouseEnter={() => setHoveredId(item.id)}
-                        onMouseLeave={() => setHoveredId(null)}
-                        onClick={() => window.location.href = item.path}
-                    >
-                        <img src={item.totalImg} alt="total" style={styles.totalImgStyle} />
-                        <img src={item.trend} alt="trend" style={styles.trendImgStyle} />
-                        
-                        <div style={styles.iconContainer}>
-                            <img src={item.icon} alt="icon" style={styles.iconImg} />
-                        </div>
-                        
-                        <p style={styles.titleLink(isHovered)}>
-                            {item.title}
-                        </p>
-                    </div>
-                );
-            })}
-        </div>
-    );
+            
+            <img
+              src={item.trend}
+              alt="trend"
+              className="absolute top-4 right-4 w-10"
+            />
+
+        
+            <div className="flex-1 flex items-center justify-center w-full">
+              <img
+                src={item.icon}
+                alt="icon"
+                className="max-h-[100px] object-contain"
+              />
+            </div>
+
+        
+            <p
+              className={`text-lg font-bold mt-2 transition-colors duration-300 
+                ${isHovered ? "text-secondary" : "text-slate-700"}`}
+            >
+              {item.title}
+            </p>
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
 export default StatusCard;
