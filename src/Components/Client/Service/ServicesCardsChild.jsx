@@ -47,12 +47,12 @@ function ServicesPageChild(Props) {
 
        
         <div className="mt-auto pt-4 border-t border-hard-gray flex justify-center">
-          <div className="flex items-center gap-2  text-sky-blue px-8 py-2 m-4 rounded-full text-xs font-bold hover:bg-small-soft-blue transition-colors">
-            
+          
+          
            <ServiceButton />
            
-            </div>
-            
+          
+          
             
         </div>
       </div>
