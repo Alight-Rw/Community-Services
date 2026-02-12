@@ -3,7 +3,7 @@ import React from "react";
 
 const DashboardNav = () => {
   return (
-    <div className="fixed top-0 left-0 z-50 w-full bg-primary shadow-lg h-20 flex justify-end items-center px-5 lg:px-10 gap-4 lg:gap-3 font-san">
+    <div className="w-full bg-primary shadow-lg h-20 flex justify-end items-center px-5 lg:px-10 gap-4 lg:gap-3 font-san">
       
       <button className="p-2 bg-primary rounded-xl shadow-sm border border-universal hover:bg-universal h-10 w-10 py-[2.5px] px-[1px] md:h-9 md:w-10 lg:px-1.5 lg:h-10 lg:w-12 transition-colors">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-10 lg:h-7 lg:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
