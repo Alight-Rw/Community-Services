@@ -1,4 +1,4 @@
-import image7 from "../../../public/image7.png"
+
 
 const AccountVerifiedForm = () => {
     return (

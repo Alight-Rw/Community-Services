@@ -2,6 +2,8 @@
 
 
 import { MapPin, Phone, Clock, CalendarCheck } from "lucide-react";
+import ServicesPage from "./ServicesCards";
+import ServiceButton from "./ServiceButton";
 
 function ServicesPageChild(Props) {
   return (
@@ -45,10 +47,13 @@ function ServicesPageChild(Props) {
 
        
         <div className="mt-auto pt-4 border-t border-hard-gray flex justify-center">
-          <button className="flex items-center gap-2 border border-secondary text-sky-blue px-8 py-2 m-4 rounded-full text-xs font-bold hover:bg-small-soft-blue transition-colors">
-            <CalendarCheck size={16} />
-            Book Now
-          </button>
+          <div className="flex items-center gap-2  text-sky-blue px-8 py-2 m-4 rounded-full text-xs font-bold hover:bg-small-soft-blue transition-colors">
+            
+           <ServiceButton />
+           
+            </div>
+            
+            
         </div>
       </div>
     </div>
