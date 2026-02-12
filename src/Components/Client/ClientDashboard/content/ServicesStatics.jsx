@@ -1,5 +1,6 @@
 
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const DashboardSection = () => {
   const dataSets = {
@@ -9,16 +10,17 @@ const DashboardSection = () => {
   };
 
   const [activeFilter, setActiveFilter] = useState("Week");
+  const navigate = useNavigate();
 
   return (
-    <div className="w-full min-h-screen p-4 sm:p-6 md:p-8 lg:p-14">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+    <div className="w-full min-h-screen  p-4 sm:p-4 md:p-5 lg:p-10">
+      <div className="grid grid-cols-1  lg:grid-cols-12 gap-6">
 
        
        
-        <div className="md:col-span-9 bg-primary shadow-sm p-5 sm:p-6 md:p-10 rounded-[28px] md:rounded-[32px] flex flex-col justify-between border border-gray-100 min-h-[350px] md:min-h-[400px]">
+        <div className="md:col-span-9 bg-primary shadow-sm p-5 sm:p-6 md:p-6 rounded-[28px] md:rounded-[32px] flex flex-col justify-between border border-gray-100 min-h-[350px] md:min-h-[400px]">
 
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 md:mb-10 gap-4">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 md:mb-10  gap-4">
 
             <div className="max-w-2xl">
               <h2 className="text-sky-blue text-xl sm:text-2xl md:text-4xl font-bold tracking-tight">
@@ -35,7 +37,7 @@ const DashboardSection = () => {
                 <button
                   key={filter}
                   onClick={() => setActiveFilter(filter)}
-                  className={`px-3 sm:px-4 md:px-6 py-1.5 md:py-2 rounded-xl text-[10px] sm:text-xs md:text-sm font-bold transition-all ${
+                  className={`px-3 sm:px-4 md:px-2 py-1.5 lg:px-2 md:py-2 rounded-xl text-[10px] sm:text-xs md:text-sm font-bold transition-all ${
                     activeFilter === filter
                       ? "bg-primary shadow-md text-hard-gray"
                       : "text-hard-gray/60 hover:text-hard-gray"
@@ -49,7 +51,7 @@ const DashboardSection = () => {
 
          
          
-          <div className="flex items-end h-48 sm:h-56 md:h-72 gap-1 sm:gap-2 md:gap-4 px-1 sm:px-2 overflow-x-auto">
+          <div className="flex items-end h-48 sm:h-56 md:h-72  gap-1 sm:gap-2 md:gap-4 px-1 sm:px-2 overflow-x-auto">
             {dataSets[activeFilter].map((height, index) => (
               <div
                 key={index}
@@ -66,7 +68,7 @@ const DashboardSection = () => {
 
        
        
-        <div className="md:col-span-3 relative z-0 overflow-hidden bg-sky-blue text-white p-5 sm:p-6 md:p-8 rounded-[28px] md:rounded-[32px] flex flex-col justify-between shadow-xl min-h-[340px] sm:min-h-[380px] md:min-h-[420px]">
+        <div className="md:col-span-3 relative z-0 overflow-hidden bg-sky-blue  text-white p-5 sm:p-6 md:p-8 rounded-[28px] md:rounded-[32px] flex flex-col justify-between shadow-xl min-h-[340px] sm:min-h-[380px] md:min-h-[420px] md:w-full">
 
           <div className="absolute top-[-5%] right-[-10%] w-28 sm:w-32 h-28 sm:h-32 bg-primary/10 rounded-full z-0" />
           <div className="absolute bottom-[-5%] left-[-10%] w-28 sm:w-32 h-28 sm:h-32 bg-primary/10 rounded-full z-0" />
@@ -89,7 +91,7 @@ const DashboardSection = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-lg sm:text-xl font-bold tracking-tight">
+              <h3 className="text-lg sm:text-xl font-bold tracking-tight ">
                 Urgent Request
               </h3>
             </div>
@@ -101,7 +103,11 @@ const DashboardSection = () => {
             </p>
           </div>
 
-          <button className="relative z-10 w-full bg-primary text-sky-blue font-bold py-2.5 sm:py-3  flex items-center justify-center gap-2 hover:bg-universal transition-all transform active:scale-95 group shadow-lg">
+          <button className="relative z-10 w-full bg-primary text-sky-blue font-bold py-2.5 sm:py-3  flex items-center justify-center gap-2 
+          hover:bg-universal transition-all transform active:scale-95 group shadow-lg"
+          onClick={()=>navigate("/service")}>
+            
+              
             <span className="text-sm sm:text-base md:text-lg tracking-widest">
               Make Request Now
             </span>
@@ -118,7 +124,9 @@ const DashboardSection = () => {
                 strokeWidth={3}
                 d="M14 5l7 7m0 0l-7 7m7-7H3"
               />
+              
             </svg>
+            
           </button>
         </div>
 
