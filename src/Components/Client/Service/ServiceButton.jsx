@@ -1,5 +1,5 @@
 
-import image from "../../assets/image.png";
+import image from "../../../assets/image.png";
 
 const ServiceButton = () => {
 
@@ -8,7 +8,7 @@ const ServiceButton = () => {
   };
 
   return (
-    <div className="flex gap-x-0.5 items-center border-2 border-blue-400 rounded-2xl w-[120px] p-2 my-[25px]">
+    <div className="flex gap-x-0.5 items-center border-2 border-blue-400 rounded-2xl w-[120px] p-2">
       <img src={image} alt="image" className="w-5 h-5 object-cover" />
       
       <button 
