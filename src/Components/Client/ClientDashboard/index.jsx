@@ -1,7 +1,7 @@
 import { DashboardContent } from "./content"
 
 
-function Dashboard(){
+function DashboardClients(){
     return (
         <>
         <DashboardContent />
@@ -10,4 +10,4 @@ function Dashboard(){
         </>
     )
 }
-export default Dashboard
+export default DashboardClients
