@@ -16,13 +16,13 @@ export function NavigationBar() {
         "
       >
        
-        <div>
+        <Link to="/">
           <img
             src={Logo}
             alt="logo"
             className="w-20 sm:w-26 md:w-28 lg:w-40"
           />
-        </div>
+        </Link>
 
       
         <ul className="hidden lg:flex text-black gap-10 font-bold text-xl">

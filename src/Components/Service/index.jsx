@@ -1,10 +1,12 @@
-import ServiceButton from "./ServiceButton";
+import ServicesPage from "./ServicesCards";
+import GlobalSearch from "../Home/GlobalSearch";
 
 export function Service(){
     return (
-         <div className="ml-10 ">
-            <h1>Welcome to service</h1>
-            <ServiceButton/>
+         <div>
+            
+             <GlobalSearch />
+            <ServicesPage />
          </div>
     )
 }
