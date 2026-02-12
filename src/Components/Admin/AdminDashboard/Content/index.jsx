@@ -1,7 +1,11 @@
+import Paragraphy from "../../../__Share__/Dashboard/Title";
+
 export function AdminDashboardContent(){
     return (
         <>
-        <h1>Welcome to admin pannel</h1>
+        <h1>Welcome to admin </h1>
+        
+
         </>
     )
 }
