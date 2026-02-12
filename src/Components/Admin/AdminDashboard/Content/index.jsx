@@ -1,10 +1,10 @@
-import Paragraphy from "./Paragraphy";
+import Paragraphy from "../../../__Share__/Dashboard/Title";
 
 export function AdminDashboardContent(){
     return (
         <>
-        <h1></h1>
-        <Paragraphy highlight={"Dashboard"} title={"Overview"} description={"Quick summary of key metrics, recent activities, and service performance"}/>
+        <h1>Welcome to admin </h1>
+        
 
         </>
     )
