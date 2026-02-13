@@ -11,7 +11,7 @@ function ServicesPageChild({ Img, title, ServiceName, description, place, phoneN
         <img src={Img} className="w-full h-full object-cover" alt={title} />
       </div>
 
-      <div className="bg-universal rounded-b-[10px] py-4">
+      <div className="bg-soft-gray rounded-b-[10px] py-4">
         <div className="flex flex-col flex-grow px-2">
           <div className="flex justify-between items-start mb-2">
             <h3 className="text-md font-bold leading-tight">{title}</h3>
@@ -28,7 +28,7 @@ function ServicesPageChild({ Img, title, ServiceName, description, place, phoneN
             </div>
           </div>
 
-          <span className="inline-block bg-small-soft- text-[#2196F3] text-[10px] font-bold px-3 py-1 rounded-lg w-fit mb-3">
+          <span className="inline-block bg-small-soft-blue text-[#2196F3] text-[10px] font-bold px-3 py-1 rounded-lg w-fit mb-3">
             {ServiceName}
           </span>
 
@@ -51,7 +51,7 @@ function ServicesPageChild({ Img, title, ServiceName, description, place, phoneN
             </div>
           </div>
 
-          {/* Availability */}
+         
           <div
             className={`flex items-center gap-2 px-3 py-2 rounded-xl mb-6 border ${
               isAvailable ? "bg-[#E8F5E9] text-[#2E7D32] border-[#C8E6C9]/30" 
