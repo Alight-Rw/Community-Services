@@ -1,38 +1,35 @@
 
 import image from "../../../assets/image.png";
 
-const ServiceButton = ({ disabled }) => {
 
-  const handleClick = () => {
-    if (!disabled) {
-      alert("Button clicked!");
-    }
-  };
-
+const ServiceButton = ({ disabled, serviceData }) => {
+  
+  
   return (
     <div
-      className={`flex gap-x-0.5 items-center border-2 rounded-2xl w-[120px] p-2 my-[25px]
+    
+      className={`flex gap-x-0.5 items-center border-2 rounded-2xl w-[125px] p-2 my-[10px] transition-all
       ${
         disabled
-          ? "border-blue-200 bg-blue-50 opacity-60 cursor-not-allowed"
-          : "border-blue-400 cursor-pointer"
+          ? "border-blue-100 bg-gray-50 opacity-60 cursor-not-allowed"
+          : "border-blue-400 cursor-pointer hover:bg-blue-50 active:scale-95"
       }`}
     >
       <img
         src={image}
-        alt="image"
-        className={`w-5 h-5 object-cover ${disabled ? "opacity-50" : ""}`}
+        alt="icon"
+        className={`w-5 h-5 object-cover ${disabled ? "grayscale" : ""}`}
       />
 
       <button
         type="button"
-        onClick={handleClick}
+       
         disabled={disabled}
-        className={`text-[14px]
+        className={`text-[13px] font-bold ml-1
           ${
             disabled
-              ? "text-blue-300 cursor-not-allowed"
-              : "text-blue-500 hover:bg-small-soft-blue"
+              ? "text-blue-200 cursor-not-allowed"
+              : "text-blue-500"
           }`}
       >
         Book Now
@@ -42,3 +39,24 @@ const ServiceButton = ({ disabled }) => {
 };
 
 export default ServiceButton;
+
+
+
+
+
+
+
+          
+       
+
+
+
+
+
+      
+      
+         
+
+
+       
+       
