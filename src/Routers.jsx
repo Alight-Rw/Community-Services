@@ -8,7 +8,6 @@ import { ShowOuter } from './Components/Client/ShowOuter';
 import { DashboardClientPage } from './Pages/Client/DashboardClient';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { AdminDashboardPage } from './Pages/Admin';
 import { ProviderDashboardPage } from './Pages/Provider';
 
 
@@ -61,7 +60,6 @@ export function Routers() {
           element={<Authentication/>}
         />
         <Route path="dashboard" element={<DashboardClientPage/>}/>
-        <Route path="admin-dashboard" element={<AdminDashboardPage/>}/>
         <Route path="provider-dashboard" element={<ProviderDashboardPage/>}/>
       </Routes>
     </BrowserRouter>
