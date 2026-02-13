@@ -8,13 +8,13 @@ const ServiceButton = () => {
   };
 
   return (
-    <div className="flex gap-x-0.5 items-center border-2 border-blue-400 rounded-2xl w-[120px] p-2">
+    <div className="flex gap-x-0.5 items-center border-2 border-blue-400 rounded-2xl w-[120px] p-2 my-[25px] ">
       <img src={image} alt="image" className="w-5 h-5 object-cover" />
       
       <button 
         type="button" 
         onClick={handleClick}
-        className="text-blue-500 text-[14px]"
+        className="text-blue-500 text-[14px] hover:bg-small-soft-blue "
       >
         Book Now
       </button>
