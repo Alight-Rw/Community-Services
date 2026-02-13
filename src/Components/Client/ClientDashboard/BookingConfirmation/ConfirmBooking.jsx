@@ -31,7 +31,7 @@ const ConfirmBooking = () => {
           <div className="flex flex-col lg:flex-row gap-8 items-start justify-center">
             
             
-            <div className="w-full lg:w-[400px] bg-primary rounded-[30px] p-6 shadow-sm border border-universal sticky top-8">
+            <div className="w-full lg:w-[400px] bg-primary rounded-[30px] p-6 shadow-sm border border-universal ">
               <img src={state.Img} className="w-full h-48 object-cover rounded-2xl mb-4" alt="" />
               
               <div className="flex justify-between items-start mb-2">
