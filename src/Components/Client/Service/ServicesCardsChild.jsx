@@ -11,10 +11,11 @@ function ServicesPageChild({ Img, title, ServiceName, description, place, phoneN
     if (isAvailable) {
      
       navigate("/booking", { 
-        state: { title, price, Img, ServiceName,description,place,time,phoneNumber } 
+        state: { title, price, Img, ServiceName, description, place, time, phoneNumber } 
       });
     }
   };
+
   return (
     <div className="flex flex-col rounded-[30px] p-4 h-full">
       <div className="w-full h-48 overflow-hidden rounded-t-[10px]">
@@ -23,6 +24,7 @@ function ServicesPageChild({ Img, title, ServiceName, description, place, phoneN
 
       <div className="bg-soft-gray rounded-b-[10px] py-4">
         <div className="flex flex-col flex-grow px-2">
+          
           <div className="flex justify-between items-start mb-2">
             <h3 className="text-md font-bold leading-tight">{title}</h3>
             <div className="flex items-center gap-1 shrink-0">
@@ -46,63 +48,53 @@ function ServicesPageChild({ Img, title, ServiceName, description, place, phoneN
             {description}
           </p>
 
+         
           <div className="space-y-2 mb-4">
-            <div className="flex items-start gap-3  ">
-              <MapPin size={14} className="
-               mt-0.5" />
+            <div className="flex items-start gap-3">
+              <MapPin size={14} className="mt-0.5" />
               <span className="text-[11px] leading-tight">{place}</span>
             </div>
-            <div className="flex items-center gap-3 ">
-              <Phone size={14} className="    " />
+            <div className="flex items-center gap-3">
+              <Phone size={14} />
               <span className="text-[11px]">{phoneNumber}</span>
             </div>
-            <div className="flex items-center gap-3  ">
-              <Clock size={14} className="  " />
+            <div className="flex items-center gap-3">
+              <Clock size={14} />
               <span className="text-[11px]">{time}</span>
-
             </div>
-           <div className="flex items-center gap-3 text-sm font-bold text-secondary pt-2">
-               <Banknote size={18} />
-                <span>{price}</span>
-               </div>
-
-            <div>
-
+            <div className="flex items-center gap-3 text-sm font-bold text-secondary pt-2">
+              <Banknote size={18} />
+              <span>{price}</span>
             </div>
           </div>
 
+         
           <div
-            className={`flex items-center gap-2 px-3 py-2 rounded-xl mb-6 border ${isAvailable ? "bg-small-soft-green text-glass-green border-soft-green/30"
+            className={`flex items-center gap-2 px-3 py-2 rounded-xl mb-6 border ${
+              isAvailable 
+                ? "bg-small-soft-green text-glass-green border-soft-green/30"
                 : "bg-[#FFEBEE] text-dark-red/60 border-soft-green/30"
-              }`}
+            }`}
           >
             <div
-              className={`rounded-full p-0.5 ${isAvailable ? "bg-soft-yellow text-[#2E7D32]" : "bg-soft-yellow text-dark-red/60"
-                }`}
+              className={`rounded-full p-0.5 ${
+                isAvailable ? "bg-soft-yellow text-[#2E7D32]" : "bg-soft-yellow text-dark-red/60"
+              }`}
             >
-              <Info size={12} strokeWidth={3}  />
+              <Info size={12} strokeWidth={3} />
             </div>
             <span className="text-[11px] font-bold">
               {isAvailable ? "Service Available" : "Service Not Available"}
             </span>
           </div>
 
-         <div className="mt-auto pt-4 border-t border-hard-gray flex justify-center">
           
-        <button
-          onClick={handleBooking} 
-          disabled={!isAvailable}
-          
-          className={`w-full max-w-xs text-white py-2 px-4 rounded-lg font-bold ${
-            isAvailable
-              ? "bg-secondary hover:bg-secondary cursor-pointer"
-              : "bg-blue-100 text-blue-300 cursor-not-allowed"
-          }`}>
-            Book now
-            </button>
-       
-         
-      </div>
+          <div className="mt-auto pt-4 border-t border-hard-gray flex justify-center">
+            <ServiceButton
+              onClick={handleBooking} 
+              disabled={!isAvailable}
+            />
+          </div>
         </div>
       </div>
     </div>

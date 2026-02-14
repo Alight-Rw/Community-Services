@@ -1,13 +1,11 @@
 
 import image from "../../../assets/image.png";
 
-
-const ServiceButton = ({ disabled, serviceData }) => {
-  
-  
+const ServiceButton = ({ disabled, onClick }) => {
   return (
     <div
-    
+      
+      onClick={!disabled ? onClick : undefined}
       className={`flex gap-x-0.5 items-center border-2 rounded-2xl w-[125px] p-2 my-[10px] transition-all
       ${
         disabled
@@ -23,7 +21,6 @@ const ServiceButton = ({ disabled, serviceData }) => {
 
       <button
         type="button"
-       
         disabled={disabled}
         className={`text-[13px] font-bold ml-1
           ${
@@ -39,24 +36,3 @@ const ServiceButton = ({ disabled, serviceData }) => {
 };
 
 export default ServiceButton;
-
-
-
-
-
-
-
-          
-       
-
-
-
-
-
-      
-      
-         
-
-
-       
-       
