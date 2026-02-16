@@ -9,6 +9,8 @@ import { DashboardClientPage } from './Pages/Client/DashboardClient';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ProviderDashboardPage } from './Pages/Provider';
+import ConfirmBookingPage from './Pages/Client/ConfirmBookingPage';
+
 
 
 export function Routers() {
@@ -61,6 +63,7 @@ export function Routers() {
         />
         <Route path="dashboard" element={<DashboardClientPage/>}/>
         <Route path="provider-dashboard" element={<ProviderDashboardPage/>}/>
+        <Route path="/booking" element={<ConfirmBookingPage />} />
       </Routes>
     </BrowserRouter>
   );
