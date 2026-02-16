@@ -1,12 +1,10 @@
 import { DashboardContent } from "./content"
-
-
 function DashboardClients(){
     return (
         <>
         <DashboardContent />
         
-        
+
         </>
     )
 }
