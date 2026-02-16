@@ -3,8 +3,8 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeft, MapPin, Phone, Clock, Star, Info, Banknote } from 'lucide-react';
 
-import DashboardNav from '../../../__Share__/Dashboard/DashboardNav';
 import BookingSystem from './BookingSystem';
+import DashboardNav from '../../Shared/DashboardNav';
 
 const ConfirmBooking = () => {
   const { state } = useLocation();

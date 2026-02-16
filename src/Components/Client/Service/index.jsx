@@ -1,5 +1,5 @@
 import ServicesPage from "./ServicesCards";
-import GlobalSearch from "../../__Share__/GlobalSearch";
+import GlobalSearch from "../../Shared/GlobalSearch";
 
 export function Service(){
     return (
