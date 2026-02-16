@@ -1,5 +1,4 @@
-
-import image from "../../../assets/image.png";
+import image from "../../../assets/images/image.png";
 
 const ServiceButton = ({ disabled, onClick }) => {
   return (
