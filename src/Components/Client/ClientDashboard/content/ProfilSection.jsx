@@ -1,5 +1,5 @@
 
-import { FaEdit } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa"
 
 export function ProfileSection() {
   return (
