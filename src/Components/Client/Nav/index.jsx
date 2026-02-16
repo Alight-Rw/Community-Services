@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import Logo from "../../../assets/logo/Logo.png";
+import Logo from "../../../assets/images/Logo.png";
 
 export function NavigationBar() {
   const [openMenu, setOpenMenu] = useState(false);
