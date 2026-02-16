@@ -1,6 +1,6 @@
  import ConfirmBooking from "../../Components/Client/ClientDashboard/BookingConfirmation/ConfirmBooking";
 
- function BookingForm() {
+ function ConfirmBookingPage() {
     return <ConfirmBooking />
   }
-  export default BookingForm
+  export default ConfirmBookingPage
