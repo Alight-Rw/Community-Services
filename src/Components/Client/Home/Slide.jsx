@@ -43,7 +43,7 @@ const testimonials = [
     name: "Tuyikunde Jackson",
     email: "jackson74@gmail.com",
     message: "Everything was handled with care and precision, making the whole process incredibly easy for us. We’d happily work together again.",
-    image: "happyClient6.jpg"
+    image: "happyClient6.png"
   }
 ];
 
