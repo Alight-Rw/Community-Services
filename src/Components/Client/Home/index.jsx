@@ -1,8 +1,7 @@
 import { Statistic } from "./Statistic"
 import Hero from "./Hero";
 import Slide from "./Slide"
-import GlobalSearch from "../../__Share__/GlobalSearch";
-import { ServicesClient } from "../ServicesClient";
+import GlobalSearch from "../../Shared/GlobalSearch";
 
 
 export function Home(){
@@ -12,7 +11,6 @@ export function Home(){
          <Hero />
          <Statistic/>
          <Slide />
-        <ServicesClient />
         </>
     )
 }
