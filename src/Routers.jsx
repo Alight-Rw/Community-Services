@@ -10,6 +10,12 @@ import { DashboardClientPage } from './Pages/Client/Dashboard';
 import ConfirmBookingPage from './Pages/Client/Booking';
 import { DashboardPage } from './Pages/Provider/Dashboard';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+<<<<<<< HEAD
+=======
+import { ProviderDashboardPage } from './Pages/Provider';
+import ConfirmBookingPage from './Pages/Client/ConfirmBookingPage';
+import RequestedServicesPage from './Pages/Client/RequestedServicesPage';
+>>>>>>> 94b6b1b (final codes)
 
 
 
@@ -64,7 +70,12 @@ export function Routers() {
 
         <Route path="dashboard" element={<DashboardClientPage/>}/>
         <Route path="/booking" element={<ConfirmBookingPage />} />
+<<<<<<< HEAD
         <Route path="provider-dashboard" element={<DashboardPage/>}/>
+=======
+        <Route path="/requested-services" element={<RequestedServicesPage />} />
+        
+>>>>>>> 94b6b1b (final codes)
       </Routes>
     </BrowserRouter>
   );
