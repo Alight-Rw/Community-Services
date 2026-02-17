@@ -40,9 +40,8 @@ export function Settings() {
             
           
             <Paragraphy 
-              highlight={"Dashboard"} 
-              title={"Overview"} 
-              description={"Quick summary of key metrics and activities"} 
+              highlight={"Settings"} 
+              description={"Manage your account preferences, system options, and personal settings."} 
             />
           </div>
         </main>

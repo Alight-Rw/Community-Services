@@ -38,9 +38,8 @@ export function WaitingSevices() {
             
           
             <Paragraphy 
-              highlight={"Dashboard"} 
-              title={"Overview"} 
-              description={"Quick summary of key metrics and activities"} 
+              highlight={"Waiting Services"} 
+              description={"Quick overview of services the client has requested and is awaiting."} 
             />
           </div>
         </main>

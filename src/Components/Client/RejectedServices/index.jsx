@@ -40,9 +40,8 @@ export function RejectedSevices() {
             
           
             <Paragraphy 
-              highlight={"Dashboard"} 
-              title={"Overview"} 
-              description={"Quick summary of key metrics and activities"} 
+              highlight={"Rejected Services"} 
+              description={"Overview of services requested by the client that were not approved or denied."} 
             />
           </div>
         </main>

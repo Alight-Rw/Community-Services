@@ -38,9 +38,8 @@ export function RequestedSevices() {
             
           
             <Paragraphy 
-              highlight={"Dashboard"} 
-              title={"Overview"} 
-              description={"Quick summary of key metrics and activities"} 
+              highlight={"Requested Services"} 
+              description={"Quick summary of services that have been requested by the client"} 
             />
           </div>
         </main>

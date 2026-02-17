@@ -39,9 +39,8 @@ export function CompletedSevices() {
             
           
             <Paragraphy 
-              highlight={"Dashboard"} 
-              title={"Overview"} 
-              description={"Quick summary of key metrics and activities"} 
+              highlight={"Completed Services"} 
+              description={"Quick summary of services that have been successfully delivered and finalized."} 
             />
           </div>
         </main>
