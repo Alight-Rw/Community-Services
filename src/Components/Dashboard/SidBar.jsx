@@ -9,48 +9,48 @@ const menuItems = [
 ];
 
 const SidBar = () => {
-  const [active, setActive] = useState("dashboard"); 
+  const [isOpen, setIsOpen] = useState(true); // sidebar ifunguye
+  const [active, setActive] = useState("dashboard");
 
   return (
-    <div className="w-[370px] flex flex-col justify-between shrink-0 p-5 h-screen bg-primary shadow-lg">
-     <div className="flex flex-col gap-4">
-        {/* Logo & Close button */}
-      <div className="flex items-center justify-between">
-        <img src="/Logo(2).png" alt="Logo" className="h-12" />
+    <div className="flex flex-col justify-between h-screen bg- shadow-lg w-64 transition-all duration-300 ml-5">
+      
+      {/* Logo + Close Icon */}
+      <div className="flex items-center justify-between p-4 sticky top-0 bg-white z-10 border-b border-gray-200">
+        <img src="/Logo(2).png" alt="Logo" className="h-12 w-12" />
         <img
           src="/Close Icon.png"
           alt="Close"
-          className="w-10 h-10 rounded-full bg-blue-200"
+          className="w-10 h-10 rounded-full bg-blue-200 cursor-pointer"
+          onClick={() => setIsOpen(!isOpen)}
         />
       </div>
 
-      {/* Menu items */}
-      <div className="flex-1 mt-4">
+      {/* Menu Items */}
+      <div className="flex flex-col mt-6 space-y-3">
         {menuItems.map((item) => (
           <div
             key={item.id}
             onClick={() => setActive(item.id)}
-            className={`flex items-center cursor-pointer rounded-lg m-2 transition-colors ${
-              active === item.id
-                ? "bg-blue-600 text-white"
-                : "text-gray-800 hover:bg-blue-100"
-            }`}
+            className={`flex items-center cursor-pointer rounded-lg p-2 transition-colors
+                        ${item.id === "dashboard" ? "bg-blue-900 text-white" : "text-gray-900 hover:bg-gray-200"}`}
           >
             <img src={item.icon} alt={item.label} className="w-8 h-8" />
-            <span className="ml-4 font-bold">{item.label}</span>
+            {isOpen && (
+              <span className="ml-4 font-semibold text-md">{item.label}</span>
+            )}
           </div>
         ))}
       </div>
-     </div>
 
-      {/* User info */}
-      <div className="flex items-center gap-2">
-        <h1 className="rounded-full border-2 border-blue-400 p-2 text-xl font-bold">NA</h1>
-        <span>niyo.alice@codingschool</span>
+      {/* User Info */}
+      <div className="flex items-center gap-3 p-4 border-t border-gray-200">
+        <h1 className="rounded-full border-2 border-blue-700 p-2 text-xl font-bold">NA</h1>
+        {isOpen && <span className="font-semibold text-sm">niyo.alice@codingschool</span>}
         <img
           src="/icon(3).png"
           alt="User"
-          className="w-10 h-10 ml-auto rounded-full"
+          className="w-10 h-10 ml-auto rounded-full bg-blue-200"
         />
       </div>
     </div>
