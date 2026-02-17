@@ -65,6 +65,7 @@ export function Routers() {
         <Route path="dashboard" element={<DashboardClientPage/>}/>
         <Route path="/booking" element={<ConfirmBookingPage />} />
         <Route path="provider-dashboard" element={<DashboardPage/>}/>
+        <Route path="provider" element={<Authentication/>}/>
       </Routes>
     </BrowserRouter>
   );
