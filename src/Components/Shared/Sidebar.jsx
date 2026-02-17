@@ -1,4 +1,5 @@
 import Logo from "../../assets/images/Logo.png";
+import { useNavigate } from "react-router-dom";
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom'; 
 import { 
@@ -10,12 +11,13 @@ import {
   Settings, 
   ChevronLeft, 
   ChevronRight,
-  LogOut
+  ChevronsUpDown
 } from 'lucide-react';
 
 const Sidebar = () => {
   const [isExpanded, setIsExpanded] = useState(true);
   const location = useLocation(); 
+  const navigate = useNavigate(false);
 
   const menuItems = [
     { icon: <LayoutGrid size={22} />, label: 'Dashboard', path: '/dashboard' },
@@ -77,7 +79,8 @@ const Sidebar = () => {
               <div className="overflow-hidden">
                 <p className="text-[11px] text-slate-500 truncate font-medium">niyo.alice@codingsch...</p>
               </div>
-              <LogOut size={18} className="text-slate-400 hover:text-red-500 cursor-pointer ml-2" />
+              <ChevronsUpDown size={18} className="text-slate-400 hover:text-red-500 cursor-pointer ml-2"
+              onClick={()=>navigate("/login")} />
             </div>
           )}
         </div>
