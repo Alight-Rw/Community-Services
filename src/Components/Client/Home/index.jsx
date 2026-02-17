@@ -2,6 +2,7 @@ import { Statistic } from "./Statistic"
 import Hero from "./Hero";
 import Slide from "./Slide"
 import GlobalSearch from "../../Shared/GlobalSearch";
+import SectionHeader from "../../SectionHeader";
 
 
 export function Home(){
@@ -11,6 +12,8 @@ export function Home(){
          <Hero />
          <Statistic/>
          <Slide />
+         <SectionHeader
+         title="Our Recent Works"/>
         </>
     )
 }
