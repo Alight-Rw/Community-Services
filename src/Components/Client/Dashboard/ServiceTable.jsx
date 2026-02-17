@@ -1,5 +1,5 @@
 import { Calendar } from "lucide-react";
-import Table from "./Table";
+import Table from "../../Shared/Table";
 
 
 export default function ServiceTable() {
