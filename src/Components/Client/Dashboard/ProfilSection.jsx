@@ -3,7 +3,7 @@ import { FaEdit } from "react-icons/fa"
 
 export function ProfileSection() {
   return (
-    <div className="bg-gray-800 p-4 rounded-lg w-[274.64px]">
+    <div className="bg-gray-800 p-4 rounded-lg ">
       <img
         src="/image.png"
         alt="profile"

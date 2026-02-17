@@ -13,7 +13,7 @@ const DashboardSection = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full min-h-screen  p-4 sm:p-4 md:p-5 lg:p-10">
+    <div className="w-full  p-4 sm:p-4 md:p-5 lg:p-10">
       <div className="grid grid-cols-1  lg:grid-cols-12 gap-6">
 
        
