@@ -1,5 +1,7 @@
 /** @format */
 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import Authentication from './Pages/Auth';
 import { HomePage } from './Pages/Client/Home';
 import { ServicePage } from './Pages/Client/Service';
@@ -9,8 +11,11 @@ import { DashboardClientPage } from './Pages/Client/Dashboard';
 
 import ConfirmBookingPage from './Pages/Client/Booking';
 import { DashboardPage } from './Pages/Provider/Dashboard';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Contact from './Pages/Client/Contact';
+import { RequestedServicesPage } from './Pages/Client/RequestedSevices';
+import { WaitingServicesPage } from './Pages/Client/WaitingServices';
+import { CompletedServicesPage } from './Pages/Client/CompleteServices';
+import { RejectedServicesPage } from './Pages/Client/RejectedService';
+import { SettingsPage } from './Pages/Client/Setting';
 
 
 
@@ -69,10 +74,21 @@ export function Routers() {
           element={<Authentication/>}
         />
 
-        <Route path="dashboard" element={<DashboardClientPage/>}/>
         <Route path="/booking" element={<ConfirmBookingPage />} />
-        <Route path="provider-dashboard" element={<DashboardPage/>}/>
+        <Route path="dashboard" element={<DashboardClientPage/>}/>
+        <Route path="requested-services" element={<RequestedServicesPage/>}/>
+         <Route path="waiting-services" element={<WaitingServicesPage/>}/>
+          <Route path="Completed-services" element={<CompletedServicesPage/>}/>
+           <Route path="rejected-services" element={<RejectedServicesPage/>}/>
+           <Route path="settings" element={<SettingsPage/>}/>
+
+
+
+
+
+
         <Route path="provider" element={<Authentication/>}/>
+        <Route path="provider-dashboard" element={<DashboardPage/>}/>
       </Routes>
     </BrowserRouter>
   );

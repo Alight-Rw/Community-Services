@@ -1,4 +1,9 @@
+ import { useNavigate} from "react-router-dom";
+
+
 const Hero = () => {
+  const navigate = useNavigate(false)
+  
   return (
     <div className=" w-full grid grid-cols-1 justify-between md:grid-cols-2 px-mobilePadding md:px-componentPadding">
       <div className=" flex items-center justify-center p-6">
@@ -10,7 +15,9 @@ const Hero = () => {
             services on time you want
             
           </p>
-          <button className="bg-secondary py-2 px-2.5 md:px-4 mt-3 rounded-md text-universal">
+          <button 
+          onClick={()=>navigate("/requested-services")}
+          className="bg-secondary py-2 px-2.5 md:px-4 mt-3 rounded-md text-universal">
             Request Service
           </button>
         </div>

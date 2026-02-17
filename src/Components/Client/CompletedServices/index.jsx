@@ -1,12 +1,10 @@
+
 import React, { useState } from "react";
-import StatusCard from "./StatusCard";
 import Paragraphy from "../../Shared/Title";
-import ServicesStatics from "./ServicesStatics";
-import { ProfileSection } from "./ProfilSection";
 import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar"; 
 
-export function Dashboard() {
+export function CompletedSevices() {
   const [isExpanded, setIsExpanded] = useState(false); 
 
   return (
@@ -45,20 +43,6 @@ export function Dashboard() {
               title={"Overview"} 
               description={"Quick summary of key metrics and activities"} 
             />
-
-            <div className="container">
-              <section>
-                <StatusCard />
-              </section>
-
-              <div className="xl:col-span-2">
-                <ServicesStatics />
-              </div>
-
-              <div className="xl:col-span-1">
-                <ProfileSection />
-              </div>
-            </div>
           </div>
         </main>
       </div>
