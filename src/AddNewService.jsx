@@ -4,17 +4,14 @@ export function AddNewService() {
   return (
     <div className="flex items-center justify-center  bg-gray-100  ">
       
-      <div className=" w-full  bg-white p-5 sm:p-10 rounded-2xl shadow-2xl border border-blue-100 ">
+      <div className=" w-250  bg-white p-5 sm:p-10 rounded-2xl shadow-2xl border border-blue-100 ">
         
-        <button className=" md:top-5 md: bg-gray-50 rounded-full hover:bg-red-50 hover:text-red-500 ">
-          <FaTimes className="text-gray-400 size-4 sm:size-5" />
-        </button>
         <div className="mb-6 sm:mb-10 text-left">
-          <h1 className="text-xl md: text-gray-900  bg-gray-300">
-            Add New Service
+          <h1 className="text-xl md: text-gray-900 underline">
+            Add New <span>Service</span>
           </h1>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4 md:gap-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 py-2 md:px-6 gap-2">
           
           <div className="flex flex-col gap-1">
             <label className="font-bold text-gray-800 text-sm">Service Name<span className="text-red-600 ml-0.5">*</span></label>
