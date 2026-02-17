@@ -2,7 +2,7 @@ import { Calendar } from "lucide-react";
 import Table from "../../Shared/Table";
 
 
-export default function ServiceTable() {
+export  function ServiceTable() {
   const allServicesData = [
    
     
