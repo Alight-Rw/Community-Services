@@ -11,6 +11,8 @@ import { DashboardClientPage } from './Pages/Client/Dashboard';
 
 import ConfirmBookingPage from './Pages/Client/Booking';
 import { DashboardPage } from './Pages/Provider/Dashboard';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Contact from './Pages/Client/Contact';
 import { RequestedServicesPage } from './Pages/Client/RequestedSevices';
 import { WaitingServicesPage } from './Pages/Client/WaitingServices';
 import { CompletedServicesPage } from './Pages/Client/CompleteServices';
