@@ -1,11 +1,13 @@
 import SectionHeader from "./SectionHeader";
 
-export function WorkedGallery (){
-    return (
-         <div className="px-6 w-full py-2">
-
-            <SectionHeader
-            title={"Our Recents Works"}/>
-         </div>
-    )
+export function WorkedGallery() {
+  return (
+    <div className="w-full py-4 px-[40px] md:px-[60px]">
+      <SectionHeader
+        title="Our Recent Works"
+        subtitle="Explore our portfolio of successfully completed projects showcasing our quality and dedication to every client"
+      />
+    </div>
+  );
 }
+export default SectionHeader

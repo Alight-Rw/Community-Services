@@ -1,16 +1,17 @@
 const SectionHeader = ({ title, subtitle }) => {
   return (
-    <div className="bg-blue-800 py-6 px-4 sm:px-6 lg:px-8 w-full max-w-[calc(100%-48px)] mx-auto rounded-xl">
-      <h2 className="text-white text-xl sm:text-2xl md:text-2xl font-bold -mt-8 px-5 py-5">
+    <div className="bg-blue-600 w-full rounded-3xl  py-6  ">
+      <h2 className="text-white text-3xl sm:text-2xl md:text-4xl px-10 font-bold">
         {title}
       </h2>
 
       {subtitle && (
-        <p className="text-blue-100 text-sm md:text-base mt-2">
+        <p className="text-white sm:text-lg md:text-2xl mt-3 px-10  text-base">
           {subtitle}
         </p>
       )}
     </div>
   );
 };
-export default SectionHeader
+
+export default SectionHeader;
