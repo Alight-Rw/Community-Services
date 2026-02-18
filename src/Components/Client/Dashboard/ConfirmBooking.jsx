@@ -16,7 +16,7 @@ const ConfirmBooking = () => {
     <>
       <DashboardNav />
       
-      <div className="min-h-screen bg-soft-gray p-4 md:p-25 ">
+      <div className="min-h-screen  p-6 md:p-8 ">
         
         
         <div className=" mx-auto">
@@ -31,7 +31,7 @@ const ConfirmBooking = () => {
           <div className="flex flex-col lg:flex-row gap-8 items-start justify-center ">
             
             
-            <div className="  lg:w-[800px] lg:h-[800px] bg-primary rounded-[30px] p-6 shadow-sm border border-universal ">
+            <div className="  lg:w-[700px] lg:h-[800px] bg-primary rounded-[30px] p-6 shadow-sm border border-universal ">
               <img src={state.Img} className="w-full h-68 object-cover rounded-2xl mb-4" alt="" />
               
               <div className="flex justify-between items-start mb-2">

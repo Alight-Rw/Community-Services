@@ -41,7 +41,7 @@ const BookingSystem = () => {
   };
 
   return (
-    <div className="max-w-8xl mx-auto p-4 bg-primary space-y-20 px-componentPadding ">
+    <div className="max-w-8xl mx-auto p-4 bg-primary p-10 space-y-20 px-componentPadding ">
       
    
       <section className=" border border-universal rounded-2xl p-6 shadow-sm ">
