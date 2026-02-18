@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Paragraphy from "../../Shared/Title";
 import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar"; 
-import SettingCards from "./SettingCards";
 
 export function Settings() {
   const [isExpanded, setIsExpanded] = useState(false); 
@@ -42,8 +41,6 @@ export function Settings() {
               highlight={"Account Settings"} 
               description={"Quick Manage and update your personal account information settings"} 
             />
-            
-            <SettingCards/>
           </div>
         </main>
       </div>
