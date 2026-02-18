@@ -31,7 +31,7 @@ const ServicesProcess = () => {
                       style={{ clipPath: lozengePath }}
                     />
                     <div className="absolute inset-0 flex items-center justify-center z-10">
-                      <img
+                      <img 
                         src={step.icon}
                         alt={step.title}
                         className="h-3 w-3 sm:h-7 sm:w-7 md:h-8 md:w-8 "

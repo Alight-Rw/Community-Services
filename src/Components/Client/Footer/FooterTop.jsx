@@ -1,10 +1,10 @@
-import { FaFacebookSquare } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa";
 import { FaSquareInstagram } from "react-icons/fa6";
 import { FaXTwitter } from "react-icons/fa6";
 const Footertop = () => {
 
     return (
-         <div className="flex flex-col items-center md:items-start py-10 md:flex-row md:justify-between gap-10 px-mobilePaddingn md:px-componentPadding bg-universal">
+        <div className="flex flex-col items-center md:items-start py-10 md:flex-row md:justify-between gap-10 px-mobilePaddingn md:px-componentPadding bg-universal">
 
 
             <div >
@@ -18,11 +18,13 @@ const Footertop = () => {
                     <li>About Us</li>
                     <li>Years of experience</li>
                     <li>Why customers trust us</li>
-                </ul><div className="flex gap-10 mt-5 mb-5">
-  <FaFacebookSquare color="blue" size={40} />
-  <FaSquareInstagram color="red-blue" size={40} />
-  <FaXTwitter color="black" size={40} />
-</div>
+                </ul>
+                <div className="flex gap-10 mt-5 mb-5">
+                    <FaFacebookF  color="" size={40} />
+                    <FaSquareInstagram 
+                     size={40} />
+                    <FaXTwitter color="black" size={40} />
+                </div>
             </div>
 
             <div>
