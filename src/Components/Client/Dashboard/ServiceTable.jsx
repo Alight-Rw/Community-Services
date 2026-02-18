@@ -48,7 +48,7 @@ export  function ServiceTable() {
     return false;
   };
 
-  // Define columns with correct structure
+  
   const columns = [
     {
       header: "Service Avatar",
