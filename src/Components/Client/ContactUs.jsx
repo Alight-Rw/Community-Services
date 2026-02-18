@@ -9,7 +9,7 @@ export const ContactUs = () => {
 
     return (
         <div className="min-h-screen bg-primary  font-sans p-16 ">
-            <div className="max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-3 md:max-w-9xl md:gap-4  lg:gap-8">
 
 
                 <div className="md:col-span-2 border rounded-2xl p-8 shadow-sm">
@@ -46,7 +46,7 @@ export const ContactUs = () => {
                             <div className="p-2 bg-small-soft-blue text-secondary rounded-lg"><Mail size={20} /></div>
                             <div>
                                 <p className="text-xs text-hard-gray uppercase font-bold">Email</p>
-                                <p className="text-sm font-bold border-b border-hard-gray pb-3">tuyikundejackson74@.com</p>
+                                <p className="text-sm font-bold border-b border-hard-gray pb-3">coding@gmail.com</p>
                             </div>
                         </div>
                         <div className="flex items-start gap-4">
