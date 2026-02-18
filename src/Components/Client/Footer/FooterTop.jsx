@@ -1,4 +1,6 @@
-
+import { FaFacebookSquare } from "react-icons/fa";
+import { FaSquareInstagram } from "react-icons/fa6";
+import { FaXTwitter } from "react-icons/fa6";
 const Footertop = () => {
 
     return (
@@ -16,12 +18,11 @@ const Footertop = () => {
                     <li>About Us</li>
                     <li>Years of experience</li>
                     <li>Why customers trust us</li>
-                </ul>
-                <div className="flex gap-10 mt-5 mb-5">
-                    <img src="/footerImg1.png" alt="icon" />
-                    <img src="/footerImg2.png" alt="icon" />
-                    <img src="/footerImg3.png" alt="icon" />
-                </div>
+                </ul><div className="flex gap-10 mt-5 mb-5">
+  <FaFacebookSquare color="blue" size={40} />
+  <FaSquareInstagram color="red-blue" size={40} />
+  <FaXTwitter color="black" size={40} />
+</div>
             </div>
 
             <div>
