@@ -5,10 +5,10 @@ function SettingProfileSection (){
     return(
         <>
          
-        <div className=" border border-b border-hard-gray rounded-[10px] max-w-4xl p-20 py-10 ">
+        <div className=" border border-b border-hard-gray m-5 p-4 px-4 md:m-10 md:px-10  rounded-[10px]  max-w-2xl  lg:max-w-4xl lg:p-20 lg:py-10 ">
              <p className="text-sky-blue text-end "><span className="bg-small-soft-blue rounded-[15px] p-2">premium</span></p>
 
-            <div  className="grid grid-col-1 md:grid-cols-2 gap-3">
+            <div  className="grid grid-col-1 sm:grid-cols-2 md:grid-cols-2  gap-3 sm:gap-5 md-gap-8 lg:gap-10   p-2 px-5  sm:px-15 sm:gap-15 md:m-10 md:px-5 md:gap-10">
              <div>
               
             <p ><img src="/image.png" alt="photo" className="w-40 h-40 rounded-full border border-2 border-secondary rounded-[100px] "></img></p>
@@ -47,7 +47,7 @@ function SettingProfileSection (){
                             
                             
                         </div>
-                        <div className="flex text-primary justify-center bg-sky-blue w-[400px] rounded-[15px] p-2 gap-4 mt-4">
+                        <div className="flex text-primary justify-center bg-sky-blue w-[150px] sm:[240px]  md:w-[240px] lg:w-[400px] rounded-[15px] p-2 gap-4 mt-4">
                             <FaEdit size={22} />
                            <button className="">Edit Profile</button>
                         </div>
