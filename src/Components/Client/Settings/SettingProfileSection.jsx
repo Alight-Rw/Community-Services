@@ -5,7 +5,7 @@ function SettingProfileSection (){
     return(
         <>
          
-        <div className=" border border-b border-hard-gray m-5 p-4 px-4 md:m-10 md:px-10  rounded-[10px]  max-w-2xl  lg:max-w-4xl lg:p-20 lg:py-10 ">
+        <div className=" border border-b border-hard-gray m-5 p-4 px-4 md:m-10 md:px-10  rounded-[10px]  max-w-2xl  lg:max-w-7xl lg:p-20 lg:py-10 ">
              <p className="text-sky-blue text-end "><span className="bg-small-soft-blue rounded-[15px] p-2">premium</span></p>
 
             <div  className="grid grid-col-1 sm:grid-cols-2 md:grid-cols-2  gap-3 sm:gap-5 md-gap-8 lg:gap-10   p-2 px-5  sm:px-15 sm:gap-15 md:m-10 md:px-5 md:gap-10">
