@@ -2,17 +2,23 @@ import { FaUpload, FaTimes } from "react-icons/fa";
 
 export function AddNewService() {
   return (
-    <div className=" sm flex items-center justify-center  bg-gray-100 px-8 ">
+    <div className="  flex items-center justify-center  bg-gray-100 p-8 w-full lg:px-20">
       
-      <div className=" w-250  bg-white p-5 sm:p-10 rounded-2xl shadow-2xl border border-blue-100 ">
-       
+      <div className=" w-250  bg-white p-7 sm:p-10 lg:p-20 rounded-2xl shadow-2xl border border-blue-100 ">
+      <div className="grid grid-cols-2">
 <div className="mb-6 sm:mb-10 text-left w-full">
   <h1 className="font-bold text-2xl sm:text-3xl text-gray-800 underline decoration-2 decoration-black">
     Add New <span>Service</span>
   </h1>
 </div>
+<div className="flex items-center justify-end">
+    <button className=" md:top-5 md: bg-gray-50 rounded-full hover:bg-red-50 hover:text-red-500 ">
+          <FaTimes className="text-gray-400 size-4 sm:size-5" />
+        </button>
+        </div>
+</div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4 sm:gap-y-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4 sm:gap-y-6 w-full">
           
           <div className="flex flex-col gap-1">
             <label className="font-bold text-gray-800 text-sm">Service Name<span className="text-red-600 ml-0.5">*</span></label>
@@ -109,7 +115,7 @@ export function AddNewService() {
             </label>
           </div>
         </div>
-        <div className="sm-10 flex flex-col-reverse sm:flex-row items-center justify-center gap-4">
+        <div className="sm-10 flex flex-col-reverse sm:flex-row items-center justify-end gap-4">
           <button className="w-full md:w-56 h-[45px] border border-gray-300 text-gray-900 font-bold rounded-xl hover:bg-gray-50 transition-all active:scale-95">
             Cancel
           </button>
