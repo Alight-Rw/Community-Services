@@ -59,11 +59,11 @@ const TestimonialCard = () => {
   }, [current]); 
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-8 md:p-15 xl:p-20 overflow-hidden -mt-10 sm:mt-10 md:-mt-10  lg:mt-10">
+    <div className="flex flex-col items-center justify-center min-h-screen p-8  md:p-15 xl:p-20 overflow-hidden   md:-mt-10  lg:mt-15">
       
 
 
-      <div className="md:translate-y-25 w-full grid grid-cols-1 md:grid-cols-2 items-stretch">
+      <div className="mt-10 sm:mt-40 md:mt-60 lg:mt-30 w-full grid grid-cols-1 md:grid-cols-2 items-stretch">
         
         
         <div className="w-full h-[350px] md:h-[400px] lg:h-[500px]">
@@ -108,7 +108,7 @@ const TestimonialCard = () => {
           <button
             key={t.id}
             onClick={() => setCurrent(index)}
-            className={`h-2 transition-all duration-500 mt-10 sm:mt-14 md:mt-30 lg:mt-30 lg:mb-10  ${
+            className={`h-2 transition-all duration-500  mt-10 mb-50 sm:mt-14 sm:mb-40 md:mt-8 lg:mt-20 lg:mb-10  ${
               index === current ? "w-12 bg-secondary" : "w-4 h-2 bg-universal"
             }`}
             aria-label={`Go to slide ${index + 1}`}
