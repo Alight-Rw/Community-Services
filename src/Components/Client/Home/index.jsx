@@ -2,7 +2,7 @@ import { Statistic } from "./Statistic"
 import Hero from "./Hero";
 import Slide from "./Slide"
 import GlobalSearch from "../../Shared/GlobalSearch";
-import { AddNewService } from "../AddNewService";
+import { AddNewService } from "../../Provider/Dashboard/AddNewService";
 
 
 export function Home(){
