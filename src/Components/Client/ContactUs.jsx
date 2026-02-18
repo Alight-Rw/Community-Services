@@ -16,19 +16,19 @@ export const ContactUs = () => {
                     <form className="space-y-4">
                         <div>
                             <label className="block text-sm font-bold mb-1">Full Name</label>
-                            <input type="text" placeholder="John Doe" className="w-full p-3 bg-soft-gray border rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" />
+                            <input type="text" placeholder="John Doe" className="w-full p-3 bg-soft-gray border border-hard-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" />
                         </div>
                         <div>
                             <label className="block text-sm font-bold mb-1">Email Address</label>
-                            <input type="email" placeholder="tuyikundejackson74@example.com" className="w-full p-3 bg-soft-gray border rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" />
+                            <input type="email" placeholder="tuyikundejackson74@example.com" className="w-full p-3 bg-soft-gray border border-hard-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" />
                         </div>
                         <div>
                             <label className="block text-sm font-bold mb-1">Subject</label>
-                            <input type="text" placeholder="How can we help?" className="w-full p-3 bg-soft-gray border rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" />
+                            <input type="text" placeholder="How can we help?" className="w-full p-3 bg-soft-gray border border-hard-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" />
                         </div>
                         <div>
                             <label className="block text-sm font-bold mb-1">Message</label>
-                            <textarea rows="5" placeholder="Tell us more about your inquiry..." className="w-full p-3 bg-soft-gray border rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
+                            <textarea rows="5" placeholder="Tell us more about your inquiry..." className="w-full p-3 bg-soft-gray border border-hard-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
                         </div>
                         <button className="w-full bg-secondary hover:bg-sky-blue text-primary font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition">
                             <Send size={18} />
@@ -90,7 +90,7 @@ export const ContactUs = () => {
             </div>
 
 
-            <div className="max-w-7.4xl mx-auto  mt-12 p-30 bg-small-small-soft-blue rounded-3xl p-16 flex flex-col items-center justify-center text-center space-y-2 border border-soft-blue">
+            <div className="max-w-7.4xl mx-auto  mt-12 p-30 bg-small-soft-blue rounded-3xl p-16 flex flex-col items-center justify-center text-center space-y-2">
                 <div className=" p-3  text-secondary mb-2">
                     <MapPin size={32} />
                 </div>
