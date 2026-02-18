@@ -6,6 +6,7 @@ export function Service(){
          <div>
              <GlobalSearch />
             <ServicesPage />
+            
          </div>
     )
 }
