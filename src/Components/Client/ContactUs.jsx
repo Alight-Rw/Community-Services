@@ -12,23 +12,23 @@ export const ContactUs = () => {
             <div className="max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-3 md:max-w-9xl md:gap-4  lg:gap-8">
 
 
-                <div className="md:col-span-2 border rounded-2xl p-8 shadow-sm">
+                <div className="md:col-span-2 border rounded-2xl border-universal p-8 shadow-sm">
                     <form className="space-y-4">
                         <div>
                             <label className="block text-sm font-bold mb-1">Full Name</label>
-                            <input type="text" placeholder="John Doe" className="w-full p-3 bg-soft-gray border border-hard-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" />
+                            <input type="text" placeholder="John Doe" className="w-full p-3 bg-soft-gray border border-universal rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" />
                         </div>
                         <div>
                             <label className="block text-sm font-bold mb-1">Email Address</label>
-                            <input type="email" placeholder="tuyikundejackson74@example.com" className="w-full p-3 bg-soft-gray border border-hard-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" />
+                            <input type="email" placeholder="tuyikundejackson74@example.com" className="w-full p-3 bg-soft-gray border border-universal rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" />
                         </div>
                         <div>
                             <label className="block text-sm font-bold mb-1">Subject</label>
-                            <input type="text" placeholder="How can we help?" className="w-full p-3 bg-soft-gray border border-hard-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" />
+                            <input type="text" placeholder="How can we help?" className="w-full p-3 bg-soft-gray border border-universal rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" />
                         </div>
                         <div>
                             <label className="block text-sm font-bold mb-1">Message</label>
-                            <textarea rows="5" placeholder="Tell us more about your inquiry..." className="w-full p-3 bg-soft-gray border border-hard-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
+                            <textarea rows="5" placeholder="Tell us more about your inquiry..." className="w-full p-3 bg-soft-gray border border-universal rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
                         </div>
                         <button className="w-full bg-secondary hover:bg-sky-blue text-primary font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition">
                             <Send size={18} />
@@ -40,20 +40,20 @@ export const ContactUs = () => {
 
                 <div className="space-y-6">
 
-                    <div className="border rounded-2xl p-6 shadow-sm space-y-6">
+                    <div className="border border-universal rounded-2xl p-6 shadow-sm space-y-6">
                         <h3 className="font-bold ">Contact Information</h3>
                         <div className="flex items-start gap-4">
                             <div className="p-2 bg-small-soft-blue text-secondary rounded-lg"><Mail size={20} /></div>
                             <div>
                                 <p className="text-xs text-hard-gray uppercase font-bold">Email</p>
-                                <p className="text-sm font-bold border-b border-hard-gray pb-3">coding@gmail.com</p>
+                                <p className="text-sm font-bold border-b border-universal pb-3">coding@gmail.com</p>
                             </div>
                         </div>
                         <div className="flex items-start gap-4">
                             <div className="p-2 bg-small-soft-blue text-secondary rounded-lg"><Phone size={20} /></div>
                             <div>
                                 <p className="text-xs text-hard-gray uppercase font-bold">Phone</p>
-                                <p className="text-sm font-bold border-b border-hard-gray pb-4">+250 788 888 888</p>
+                                <p className="text-sm font-bold border-b border-universal pb-4">+250 788 888 888</p>
                             </div>
                         </div>
                         <div className="flex items-start gap-4">
@@ -66,7 +66,7 @@ export const ContactUs = () => {
                     </div>
 
 
-                    <div className="border rounded-2xl p-6 shadow-sm">
+                    <div className="border border-universal rounded-2xl p-6 shadow-sm">
                         <h3 className="font-bold mb-4">Follow Us</h3>
                         <div className="flex flex-wrap gap-6 ">
                            

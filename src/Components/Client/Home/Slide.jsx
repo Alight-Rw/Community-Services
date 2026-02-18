@@ -59,7 +59,7 @@ const TestimonialCard = () => {
   }, [current]); 
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-8 md:p-15 xl:p-40 overflow-hidden  mt-10">
+    <div className="flex flex-col items-center justify-center min-h-screen p-8 md:p-15 xl:p-20 overflow-hidden -mt-10 sm:mt-10 md:-mt-10  lg:mt-10">
       
 
 
@@ -103,12 +103,12 @@ const TestimonialCard = () => {
 
      
      
-      <div className="flex justify-center space-x-3 mt-8  py-6 ">
+      <div className="flex justify-center space-x-3  justify-center spaye  ">
         {testimonials.map((t, index) => (
           <button
             key={t.id}
             onClick={() => setCurrent(index)}
-            className={`h-2 transition-all duration-500 mt-15 xl:mt-20  ${
+            className={`h-2 transition-all duration-500 mt-10 sm:mt-14 md:mt-30 lg:mt-30 lg:mb-10  ${
               index === current ? "w-12 bg-secondary" : "w-4 h-2 bg-universal"
             }`}
             aria-label={`Go to slide ${index + 1}`}
