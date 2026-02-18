@@ -63,7 +63,7 @@ const TestimonialCard = () => {
       
 
 
-      <div className="mt-10 sm:mt-40 md:mt-60 lg:mt-30 w-full grid grid-cols-1 md:grid-cols-2 items-stretch">
+      <div className="mt-10 sm:mt-40 md:mt-60 lg:mt-29 w-full grid grid-cols-1 md:grid-cols-2 items-stretch">
         
         
         <div className="w-full h-[350px] md:h-[400px] lg:h-[500px]">
@@ -108,7 +108,7 @@ const TestimonialCard = () => {
           <button
             key={t.id}
             onClick={() => setCurrent(index)}
-            className={`h-2 transition-all duration-500  mt-10 mb-50 sm:mt-14 sm:mb-40 md:mt-8 lg:mt-20 lg:mb-10  ${
+            className={`h-2 transition-all duration-500  mt-10 mb-50 sm:mt-14 sm:mb-40 md:mt-8 lg:mt-10 lg:mb-10  ${
               index === current ? "w-12 bg-secondary" : "w-4 h-2 bg-universal"
             }`}
             aria-label={`Go to slide ${index + 1}`}
