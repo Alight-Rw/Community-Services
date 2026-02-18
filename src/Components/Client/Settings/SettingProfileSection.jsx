@@ -1,61 +1,94 @@
-import { MapPin,Phone,Mail,User  } from "lucide-react"
-import { FaEdit } from "react-icons/fa"
+import { MapPin, Phone, Mail, User } from "lucide-react";
+import { FaEdit } from "react-icons/fa";
 
-function SettingProfileSection (){
-    return(
-        <>
-         
-        <div className=" border border-b border-hard-gray m-5 p-4 px-4 md:m-10 md:px-10  rounded-[10px]  max-w-2xl  lg:max-w-7xl lg:p-20 lg:py-10 ">
-             <p className="text-sky-blue text-end "><span className="bg-small-soft-blue rounded-[15px] p-2">premium</span></p>
+function SettingProfileSection() {
+  return (
+    <>
+      <div className="w-full p-5 md:p-6">
+       
+    
+       
+        <div className="border border-hard-gray rounded-[20px] p-6 md:p-10 w-full bg-primary relative">
+          
+        
+          <div className="absolute top-0 sm:top-3 md:top-5 lg:top-6 right-6">
+            <span className="bg-small-soft-blue text-sky-blue text-xs font-bold px-4 py-1 sm rounded-full ">
+              Premium
+            </span>
+          </div>
 
-            <div  className="grid grid-col-1 sm:grid-cols-2 md:grid-cols-2  gap-3 sm:gap-5 md-gap-8 lg:gap-10   p-2 px-5  sm:px-15 sm:gap-15 md:m-10 md:px-5 md:gap-10">
-             <div>
+          <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start">
+           
+            <div className="flex flex-col items-center">
+              <div className="relative">
+                <img
+                  src="/image.png"
+                  alt="profile"
+                  className="w-48 h-48 rounded-full border-3 border-secondary object-cover"
+                />
+              </div>
+              <button className="text-secondary border-2 border-secondary rounded-xl py-2 px-8 mt-4 font-medium">
+                Change Photo
+              </button>
+            </div>
+
+           
+            <div className="flex-1 w-full">
+              <h1 className="text-2xl font-bold mb-8">Alice Niyomufasha</h1>
+
+              <div className="space-y-6">
+               
+                <div className="flex items-center gap-4 ">
+                  <Mail className="text-secondary" size={24} />
+                  <div>
+                    <p className="text-xs text-hard-gray  font-semibold ">Email</p>
+                    <p className="text-lg sm:flex">jackson74@gmail.com</p>
+                  </div>
+                </div>
+
               
-            <p ><img src="/image.png" alt="photo" className="w-40 h-40 rounded-full border border-2 border-secondary rounded-[100px] "></img></p>
-            <button className="text-secondary  border border-2 border-secondary rounded-[10px] p-2 mt-3 px-6">Change Photo</button>
-            </div>
+                <div className="flex items-center gap-4">
+                  <Phone className="text-secondary" size={24} />
+                  <div>
+                    <p className="text-xs text-hard-gray  font-semibold">Phone</p>
+                    <p className="text-lg">+250788888888</p>
+                  </div>
+                </div>
 
-            <div className="">
-              <p className="text-xl font-bold mb-3">Alice Niyomufasha</p>
-               <div className="flex items-start gap-4">
-                            <div className="p-2  text-secondary rounded-lg"><Mail size={20} /></div>
-                            <div>
-                                <p className="text-xs text-hard-gray ">Email</p>
-                                <p className="text-sm  border-b border-hard-gray pb-3 mb-3">coding@gmail.com</p>
-                            </div>
-                        </div>
-                        <div className="flex items-start gap-4">
-                            <div className="p-2  text-secondary rounded-lg"><Phone size={20} /></div>
-                            <div>
-                                <p className="text-xs text-hard-gray ">Phone</p>
-                                <p className="text-sm  border-b border-hard-gray pb-3 mb-3">+250 788 888 888</p>
-                            </div>
-                        </div>
-                        <div className="flex items-start gap-4">
-                            <div className="p-2  text-secondary rounded-lg"><MapPin size={20} /></div>
-                            <div>
-                                <p className="text-xs text-hard-gray ">Location</p>
-                                <p className="text-sm  border-b border-hard-gray pb-4 mb-3">KG 9 Avenue, Kigali Rwanda</p>
-                            </div>
-                        </div>
-                         <div className="flex items-start gap-4">
-                            <div className="p-2  text-secondary rounded-lg"><User size={20} /></div>
-                            <div>
-                                <p className="text-xs  text-hard-gray  ">Member since</p>
-                                <p className="text-sm  text-wrap mb-3">KG 9 Avenue, Kigali Rwanda</p>
-                            </div>
-                            
-                            
-                        </div>
-                        <div className="flex text-primary justify-center bg-sky-blue w-[150px] sm:[240px]  md:w-[240px] lg:w-[400px] rounded-[15px] p-2 gap-4 mt-4">
-                            <FaEdit size={22} />
-                           <button className="">Edit Profile</button>
-                        </div>
+               
+                <div className="flex items-center gap-4">
+                  <MapPin className="text-secondary" size={24} />
+                  <div>
+                    <p className="text-xs text-hard-gray  font-semibold">Location</p>
+                    <p className="text-lg">Kigali, Rwanda</p>
+                  </div>
+                </div>
+
+              
+                <div className="flex items-center gap-4">
+                  <User className="text-secondary" size={24} />
+                  <div>
+                    <p className="text-xs text-hard-gray  font-semibold">Member Since</p>
+                    <p className="text-lg">January 2024</p>
+                  </div>
+                </div>
+                <div className="mt-10">
+            <button className="w-full bg-sky-blue text-primary py-4 rounded-xl flex items-center justify-center gap-3 font-bold text-lg hover:opacity-90 transition-opacity">
+              <FaEdit size={20} />
+              Edit Profile
+            </button>
+          </div>
+              </div>
             </div>
-            </div>
+            
+          </div>
+
+      
+          
         </div>
-
-        </>
-    )
+      </div>
+    </>
+  );
 }
-export default SettingProfileSection
+
+export default SettingProfileSection;
