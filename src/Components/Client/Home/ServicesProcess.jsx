@@ -12,7 +12,7 @@ const ServicesProcess = () => {
   const lozengePath = "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)";
 
   return (
-    <div className="w-full  mb-15 sm:mb-20 px-7.5 md:px-15 p-9">
+    <div className="w-full  mb-15  -mt-40 sm:mb-20 md:-mt-40 t-px-7.5 md:px-15 md:-mt-20 lg:-mt-20 p-9">
       <div className="">
         <div className="relative w-full">
           <div className="absolute top-4 sm:top-14 md:top-16 left-0 right-0 h-[1.5px] bg-gray-300 z-0"></div>
