@@ -16,10 +16,10 @@ const ConfirmBooking = () => {
     <>
       <DashboardNav />
       
-      <div className="min-h-screen bg-soft-gray p-4 md:p-8">
+      <div className="min-h-screen bg-soft-gray p-4 md:p-25 ">
         
         
-        <div className="max-w-7xl mx-auto">
+        <div className=" mx-auto">
           
         
           <div className="mb-8">
@@ -28,11 +28,11 @@ const ConfirmBooking = () => {
           </div>
 
          
-          <div className="flex flex-col lg:flex-row gap-8 items-start justify-center">
+          <div className="flex flex-col lg:flex-row gap-8 items-start justify-center ">
             
             
-            <div className="w-full lg:w-[400px] bg-primary rounded-[30px] p-6 shadow-sm border border-universal ">
-              <img src={state.Img} className="w-full h-48 object-cover rounded-2xl mb-4" alt="" />
+            <div className="  lg:w-[800px] lg:h-[800px] bg-primary rounded-[30px] p-6 shadow-sm border border-universal ">
+              <img src={state.Img} className="w-full h-68 object-cover rounded-2xl mb-4" alt="" />
               
               <div className="flex justify-between items-start mb-2">
                 <h2 className="text-lg font-bold">{state.title}</h2>

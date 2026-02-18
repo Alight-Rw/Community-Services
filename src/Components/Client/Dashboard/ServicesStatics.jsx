@@ -1,6 +1,7 @@
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ArrowRight,AlertCircle } from 'lucide-react';
 
 const DashboardSection = () => {
   const dataSets = {
@@ -16,8 +17,8 @@ const DashboardSection = () => {
     <div className="w-full  p-4 sm:p-4 md:p-5 lg:p-10">
       <div className="grid grid-cols-1  lg:grid-cols-12 gap-6">
 
-       
-       
+
+
         <div className="md:col-span-9 bg-primary shadow-sm p-5 sm:p-6 md:p-6 rounded-[28px] md:rounded-[32px] flex flex-col justify-between border border-gray-100 min-h-[350px] md:min-h-[400px]">
 
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 md:mb-10  gap-4">
@@ -37,11 +38,10 @@ const DashboardSection = () => {
                 <button
                   key={filter}
                   onClick={() => setActiveFilter(filter)}
-                  className={`px-3 sm:px-4 md:px-2 py-1.5 lg:px-2 md:py-2 rounded-xl text-[10px] sm:text-xs md:text-sm font-bold transition-all ${
-                    activeFilter === filter
+                  className={`px-3 sm:px-4 md:px-2 py-1.5 lg:px-2 md:py-2 rounded-xl text-[10px] sm:text-xs md:text-sm font-bold transition-all ${activeFilter === filter
                       ? "bg-primary shadow-md text-hard-gray"
                       : "text-hard-gray/60 hover:text-hard-gray"
-                  }`}
+                    }`}
                 >
                   {filter}
                 </button>
@@ -49,8 +49,6 @@ const DashboardSection = () => {
             </div>
           </div>
 
-         
-         
           <div className="flex items-end h-48 sm:h-56 md:h-72  gap-1 sm:gap-2 md:gap-4 px-1 sm:px-2 overflow-x-auto">
             {dataSets[activeFilter].map((height, index) => (
               <div
@@ -66,8 +64,6 @@ const DashboardSection = () => {
           </div>
         </div>
 
-       
-       
         <div className="md:col-span-3 relative z-0 overflow-hidden bg-sky-blue  text-white p-5 sm:p-6 md:p-8 rounded-[28px] md:rounded-[32px] flex flex-col justify-between shadow-xl min-h-[340px] sm:min-h-[380px] md:min-h-[420px] md:w-full">
 
           <div className="absolute top-[-5%] right-[-10%] w-28 sm:w-32 h-28 sm:h-32 bg-primary/10 rounded-full z-0" />
@@ -76,20 +72,8 @@ const DashboardSection = () => {
           <div className="relative z-10">
             <div className="flex items-center gap-3 mb-6 md:mb-8">
               <div className="bg-primary/20 p-2 rounded-2xl backdrop-blur-sm">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 sm:h-6 sm:w-6 text-white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2.5}
-                    d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
+
+                 <AlertCircle size={22} />
               </div>
               <h3 className="text-lg sm:text-xl font-bold tracking-tight ">
                 Urgent Request
@@ -105,28 +89,16 @@ const DashboardSection = () => {
 
           <button className="relative z-10 w-full bg-primary text-sky-blue font-bold py-2.5 sm:py-3  flex items-center justify-center gap-2 
           hover:bg-universal transition-all transform active:scale-95 group shadow-lg"
-          onClick={()=>navigate("/service")}>
-            
-              
-            <span className="text-sm sm:text-base md:text-lg tracking-widest">
-              Make Request Now
-            </span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4 transform transition-transform group-hover:translate-x-1"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={3}
-                d="M14 5l7 7m0 0l-7 7m7-7H3"
-              />
-              
-            </svg>
-            
+            onClick={() => navigate("/service")}>
+
+            <div className="flex items-center justify-between">
+              <span className="text-sm sm:text-base md:text-lg ">
+                Book Available Services
+              </span>
+              <ArrowRight size={22} />
+            </div>
+
+
           </button>
         </div>
 

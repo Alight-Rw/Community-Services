@@ -47,7 +47,7 @@ export function Routers() {
             element={<WorkGallery />}
           />
            <Route
-          path='contact'
+          path='contact-us'
           element={<Contact/>}
         />
         </Route>
@@ -83,10 +83,6 @@ export function Routers() {
           <Route path="Completed-services" element={<CompletedServicesPage/>}/>
            <Route path="rejected-services" element={<RejectedServicesPage/>}/>
            <Route path="settings" element={<SettingsPage/>}/>
-
-
-
-
 
 
         <Route path="provider" element={<Authentication/>}/>
