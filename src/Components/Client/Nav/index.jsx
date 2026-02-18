@@ -47,7 +47,7 @@ export function NavigationBar() {
 
           <li>
             <NavLink
-              to="/Contact"
+              to="/contact-us"
               className={({ isActive }) =>
                isActive
                   ? "text-secondary relative after:absolute after:bottom-0 after:left-0 after:w-1/2 after:h-[2px] after:bg-secondary"
@@ -106,7 +106,7 @@ export function NavigationBar() {
 
               <li>
                 <Link
-                  to="/contact"
+                  to="/contact-us"
                   onClick={() => setOpenMenu(false)}
                   className="hover:text-secondary"
                 >

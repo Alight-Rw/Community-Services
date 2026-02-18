@@ -43,7 +43,7 @@ const Sidebar = () => {
 
      
       <div className="px-1  mb-4 flex ">
-        <img src={Logo} alt="Logo" className={`px-2 gap-2
+        <img src={Logo} alt="Logo"   onClick={()=>navigate("/dashboard")} className={`px-2 gap-2
         ${isExpanded ? 'w-24' : 'w-20 '}`} /> 
       </div>
 
