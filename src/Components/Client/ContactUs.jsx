@@ -8,7 +8,7 @@ export const ContactUs = () => {
 
 
     return (
-        <div className="min-h-screen bg-primary p-10 font-sans ">
+        <div className="min-h-screen bg-primary  font-sans p-16 ">
             <div className="max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
 
 
