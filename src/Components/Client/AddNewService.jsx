@@ -2,12 +2,12 @@ import { FaUpload, FaTimes } from "react-icons/fa";
 
 export function AddNewService() {
   return (
-    <div className=" sm flex items-center justify-center  bg-gray-100  ">
+    <div className=" sm flex items-center justify-center  bg-gray-100 px-8 ">
       
       <div className=" w-250  bg-white p-5 sm:p-10 rounded-2xl shadow-2xl border border-blue-100 ">
        
 <div className="mb-6 sm:mb-10 text-left w-full">
-  <h1 className="text-2xl sm:text-3xl text-gray-800 underline decoration-2 decoration-black">
+  <h1 className="font-bold text-2xl sm:text-3xl text-gray-800 underline decoration-2 decoration-black">
     Add New <span>Service</span>
   </h1>
 </div>
@@ -17,14 +17,14 @@ export function AddNewService() {
           <div className="flex flex-col gap-1">
             <label className="font-bold text-gray-800 text-sm">Service Name<span className="text-red-600 ml-0.5">*</span></label>
             <input 
-              className="border border-gray-300 rounded-lg w-250 sm:w-100 h-[32px] sm:h-[25px] px-3 focus:border-blue-500 text-sm "
+              className="border border-gray-300 rounded-lg w-full sm:w-100 h-[32px] sm:h-[25px] px-3 focus:border-blue-500 text-sm "
               type="text" 
               placeholder="eg,. Auto Repair Solutions" 
             />
           </div>
 
           <div className="sm flex flex-col gap-1">
-            <label className=" text-gray-800 text-sm">Service Category<span className="text-red-600 ml-0.5">*</span></label>
+            <label className="font-bold text-gray-800 text-sm">Service Category<span className="text-red-600 ml-0.5">*</span></label>
             <div className="relative">
               <select
                 className="sm  border border-gray-300 rounded-lg w-full sm:w-100 h-[32px] md:h-[25px] px-3 text-gray-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-200 outline-none text-sm bg-white cursor-pointer"
@@ -91,7 +91,7 @@ export function AddNewService() {
           </div>
         </div>
 
-        <div className="sm-6 flex flex-col gap-1">
+        <div className="sm-6 flex flex-col gap-1 py-6">
           <label className="font-bold text-gray-800 text-sm">Notes</label>
           <textarea 
             className="border border-gray-300 rounded-lg w-full sm:w-full h-[80px] md:h-[60px] px-3 py-2 focus:border-blue-500 outline-none text-sm resize-none"
