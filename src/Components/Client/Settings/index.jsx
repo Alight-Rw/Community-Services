@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import Paragraphy from "../../Shared/Title";
 import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar"; 
+import SettingProfileSection from "./SettingProfileSection";
+import { SettingsPage } from "../../../Pages/Client/Setting";
+import SettingsCard from "./SettingCards";
+
 
 export function Settings() {
   const [isExpanded, setIsExpanded] = useState(false); 
@@ -34,13 +38,18 @@ export function Settings() {
             ${!isExpanded ? "ml-25 sm:33 md:ml-35 lg:ml-30 w-full xl:ml-11" : "ml-0"} /* Avoid going behind sidebar when collapsed */
           `}
         >
-          <div className="max-w-[1600px] not-[]:mx-auto py-20 md:space-y-10">
+          <div className="max-w-[1600px] not-[]:mx-auto py-20 md:space-y-10 ">
             
+            <div className="">
           
             <Paragraphy 
               highlight={"Account Settings"} 
               description={"Quick Manage and update your personal account information settings"} 
+
             />
+            </div>
+            <SettingProfileSection />
+            <SettingsCard />
           </div>
         </main>
       </div>

@@ -1,9 +1,9 @@
 import React from "react";
 import { FaShieldAlt, FaBell, FaLock } from "react-icons/fa";
 
-const Settings = () => {
+const SettingsCard = () => {
     return (
-        <div className=" bg-gray-100 py-10 px-4 sm:px-6 lg:px-8 mt-[300px]  " >
+        <div className=" bg-gray-100 py-2 px-4 sm:px-6 lg:px-8   " >
 
 
 
@@ -103,4 +103,4 @@ const Settings = () => {
     );
 };
 
-export default Settings;
+export default SettingsCard;
