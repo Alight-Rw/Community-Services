@@ -89,6 +89,15 @@ export function WaitingServices() {
             header: "Service Hours",
             accessor: "hours",
         },
+          {
+            header: "Request Status",
+            accessor: "status",
+            render:(row)=>(
+                <div className='bg-gray-300  p-2 justify-items-center rounded-full'>
+                    <p>{row}</p>
+                </div>
+            )
+        },
         {
             header: "Request Notes",
             accessor: "requestnotes"
@@ -122,7 +131,7 @@ export function WaitingServices() {
 
     return (
         
-            <div className='pr-12'>
+            <div className='  pr-12'>
 
                 <Table
                     columns={columns}
