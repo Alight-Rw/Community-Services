@@ -5,25 +5,25 @@ export function AddNewService() {
     <div className=" sm flex items-center justify-center  bg-gray-100 px-8 ">
       
       <div className=" w-250  bg-white p-5 sm:p-10 rounded-2xl shadow-2xl border border-blue-100 ">
-    <div className="grid grid-cols-2 flex items-center justify-end"> 
-<div className="mb-6 sm:mb-10 text-left w-full">
-  <h1 className="font-bold text-2xl sm:text-3xl text-gray-800 underline decoration-2 decoration-black">
+   <div className="flex items-center justify-between mb-6 sm:mb-10 w-full">
+  
+  <h1 className="font-bold text-xl sm:text-3xl text-gray-800 underline decoration-2 decoration-black">
     Add New <span>Service</span>
   </h1>
+
+  <button className="bg-gray-50 rounded-full p-2 hover:bg-red-50 hover:text-red-500 transition">
+    <FaTimes className="font-bold text-gray-400 size-4 sm:size-5 border border-black rounded" />
+  </button>
+
 </div>
-<div className="flex items-center justify-end">
-   <button className=" md:top-5 md: bg-gray-50 rounded-full hover:bg-red-50 hover:text-red-500 ">
-          <FaTimes className="text-gray-400 size-4 sm:size-5" />
-        </button> 
-        </div>
-</div>
+
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4 sm:gap-y-6">
           
           <div className="flex flex-col gap-1">
             <label className="font-bold text-gray-800 text-sm">Service Name<span className="text-red-600 ml-0.5">*</span></label>
             <input 
-              className="border border-gray-300 rounded-lg w-full sm:w-100 h-[32px] sm:h-[25px] px-3 focus:border-blue-500 text-sm "
+              className="border border-gray-300 rounded-lg w-40 sm:w-100 h-[32px] sm:h-[25px] px-3 focus:border-blue-500 text-sm "
               type="text" 
               placeholder="eg,. Auto Repair Solutions" 
             />
@@ -33,7 +33,7 @@ export function AddNewService() {
             <label className="font-bold text-gray-800 text-sm">Service Category<span className="text-red-600 ml-0.5">*</span></label>
             <div className="relative">
               <select
-                className="sm  border border-gray-300 rounded-lg w-full sm:w-100 h-[32px] md:h-[25px] px-3 text-gray-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-200 outline-none text-sm bg-white cursor-pointer"
+                className="sm  border border-gray-300 rounded-lg w-40 sm:w-100 h-[32px] md:h-[25px] px-3 text-gray-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-200 outline-none text-sm bg-white cursor-pointer"
                 name="serviceCategory"
               >
                 <option value="">Select Category</option>
@@ -49,7 +49,7 @@ export function AddNewService() {
           <div className="sm sm flex flex-col gap-1">
             <label className="font-bold text-gray-800 text-sm">Service Price<span className="text-red-600 ml-0.5">*</span></label>
             <input 
-              className="border border-gray-300 rounded-lg w-full md:w-100 h-[32px] md:h-[25px] px-3 focus:border-blue-500 outline-none text-sm"
+              className="border border-gray-300 rounded-lg w-40 md:w-100 h-[32px] md:h-[25px] px-3 focus:border-blue-500 outline-none text-sm"
               type="text" 
               placeholder="eg,. 15000 RWF/hr" 
             />
@@ -57,7 +57,7 @@ export function AddNewService() {
           <div className="sm flex flex-col gap-1">
             <label className="font-bold text-gray-800 text-sm">Service Location<span className="text-red-600 ml-0.5">*</span></label>
             <input 
-              className="border border-gray-300 rounded-lg w-full md:w-100 h-[32px] md:h-[25px] px-3 focus:border-blue-500 outline-none text-sm"
+              className="border border-gray-300 rounded-lg w-40 md:w-100 h-[32px] md:h-[25px] px-3 focus:border-blue-500 outline-none text-sm"
               type="text" 
               placeholder="eg,. KG 9 Avenue, Kigali" 
             />
@@ -66,7 +66,7 @@ export function AddNewService() {
           <div className="sm flex flex-col gap-1">
             <label className="font-bold text-gray-800 text-sm">Service Telephone<span className="text-red-600 ml-0.5">*</span></label>
             <input 
-              className="border border-gray-300 rounded-lg w-full md:w-100 h-[32px] md:h-[25px] px-3 focus:border-blue-500 outline-none text-sm"
+              className="border border-gray-300 rounded-lg w-40 md:w-100 h-[32px] md:h-[25px] px-3 focus:border-blue-500 outline-none text-sm"
               type="tel" 
               placeholder="eg,. +250788888888" 
             />
@@ -74,7 +74,7 @@ export function AddNewService() {
           <div className="sm flex flex-col gap-1">
             <label className="font-bold text-gray-800 text-sm">Service Email<span className="text-red-600 ml-0.5">*</span></label>
             <input 
-              className="border border-gray-300 rounded-lg w-full md:w-100 h-[32px] md:h-[25px] px-3 focus:border-blue-500 outline-none text-sm"
+              className="border border-gray-300 rounded-lg w-40 md:w-100 h-[32px] md:h-[25px] px-3 focus:border-blue-500 outline-none text-sm"
               type="email" 
               placeholder="eg,. provider@codingschool.com" 
             />
@@ -82,7 +82,7 @@ export function AddNewService() {
           <div className="sm flex flex-col gap-1">
             <label className="font-bold text-gray-800 text-sm">Service From<span className="text-red-600 ml-0.5">*</span></label>
             <input 
-              className="border border-gray-300 rounded-lg w-full sm:w-100 h-[32px] md:h-[25px] px-3 focus:border-blue-500 outline-none text-sm"
+              className="border border-gray-300 rounded-lg w-40 sm:w-100 h-[32px] md:h-[25px] px-3 focus:border-blue-500 outline-none text-sm"
               type="text" 
               placeholder="eg,. 08:00 AM" 
             />
@@ -90,7 +90,7 @@ export function AddNewService() {
           <div className="flex flex-col gap-1">
             <label className="font-bold text-gray-800 text-sm">Service To<span className="text-red-600 ml-0.5">*</span></label>
             <input 
-              className="border border-gray-300 rounded-lg w-full md:w-100 h-[32px] md:h-[25px] px-3 focus:border-blue-500 outline-none text-sm"
+              className="border border-gray-300 rounded-lg w-40 md:w-100 h-[32px] md:h-[25px] px-3 focus:border-blue-500 outline-none text-sm"
               type="text" 
               placeholder="eg,. 17:00 PM" 
             />
