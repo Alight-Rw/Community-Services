@@ -20,9 +20,9 @@ const DashboardSearch = ({ onSearch, onStartDateChange, onEndDateChange, placeho
         if (!val) return "";
         const [y, m, d] = val.split("-"); return `${d}/${m}/${y}`;
     };
-    const inputBaseStyles = "h-11 w-full border border-gray-300 rounded-md bg-white focus:outline-none text-sm font-bold placeholder:text-gray-400 transition-shadow shadow-sm";
+    const inputBaseStyles = "h-11 w-full border border-gray-300 rounded-md focus:outline-none text-sm font-bold placeholder:text-gray-400 transition-shadow shadow-sm";
     return (
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between w-full bg-white px-6 lg:px-10 py-4 gap-4">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between w-full px-7 lg:px-7 py-4 gap-4">
             <div className="relative w-full lg:w-1/2">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-black" size={18} />
                 <input type="text" placeholder={placeholder} value={search} onChange={handleSearch} className={`${inputBaseStyles} pl-10 pr-4`} /> </div>
