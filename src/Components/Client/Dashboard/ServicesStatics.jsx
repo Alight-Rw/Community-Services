@@ -89,7 +89,7 @@ const DashboardSection = () => {
 
           <button className="relative z-10 w-full bg-primary text-sky-blue font-bold py-2.5 sm:py-3  flex items-center justify-center gap-2 
           hover:bg-universal transition-all transform active:scale-95 group shadow-lg"
-            onClick={() => navigate("/service")}>
+            onClick={() => navigate("/available-services")}>
 
             <div className="flex items-center justify-between">
               <span className="text-sm sm:text-base md:text-lg ">

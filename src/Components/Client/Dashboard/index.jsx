@@ -40,12 +40,13 @@ export function Dashboard() {
         >
           <div className="max-w-[1600px] mx-auto py-20 md:space-y-10">
 
-
+           <div className="px-6">
             <Paragraphy
               highlight={"Dashboard"}
               title={"Overview"}
               description={"Quick summary of key metrics and activities"}
             />
+            </div>
 
             <div className="container">
               <section>

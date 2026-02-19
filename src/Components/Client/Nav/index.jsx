@@ -22,7 +22,7 @@ export function NavigationBar() {
         <ul className="hidden lg:flex text-black gap-10 font-bold text-xl">
           <li>
             <NavLink
-              to="/service"
+              to="/available-services"
               className={({ isActive }) =>
                isActive
                   ? "text-secondary relative after:absolute after:bottom-0 after:left-0 after:w-1/2 after:h-[2px] after:bg-secondary"
@@ -34,7 +34,7 @@ export function NavigationBar() {
           </li>
           <li>
             <NavLink
-              to="/gallery"
+              to="/work-gallery"
               className={({ isActive }) =>
                 isActive
                   ? "text-secondary relative after:absolute after:bottom-0 after:left-0 after:w-1/2 after:h-[2px] after:bg-secondary"
@@ -86,7 +86,7 @@ export function NavigationBar() {
             <ul className="flex flex-col gap-6 font-bold text-xl">
               <li>
                 <Link
-                  to="/service"
+                  to="/available-services"
                   onClick={() => setOpenMenu(false)}
                   className="hover:text-secondary"
                 >
@@ -96,7 +96,7 @@ export function NavigationBar() {
 
               <li>
                 <Link
-                  to="/gallery"
+                  to="/work-gallery"
                   onClick={() => setOpenMenu(false)}
                   className="hover:text-secondary"
                 >

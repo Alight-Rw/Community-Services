@@ -39,7 +39,7 @@ export function Routers() {
             element={<HomePage />}
           />
           <Route
-            path='service'
+            path='available-services'
             element={<ServicePage />}
           />
           <Route

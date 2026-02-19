@@ -46,7 +46,7 @@ export const ContactUs = () => {
                             <div className="p-2 bg-small-soft-blue text-secondary rounded-lg"><Mail size={20} /></div>
                             <div>
                                 <p className="text-xs text-hard-gray uppercase font-bold">Email</p>
-                                <p className="text-sm font-bold border-b border-universal pb-3">coding@gmail.com</p>
+                                <p className="text-sm font-bold border-b border-universal pb-3">coding-school@gmail.com</p>
                             </div>
                         </div>
                         <div className="flex items-start gap-4">
@@ -59,7 +59,7 @@ export const ContactUs = () => {
                         <div className="flex items-start gap-4">
                             <div className="p-2 bg-small-soft-blue text-secondary rounded-lg"><MapPin size={20} /></div>
                             <div>
-                                <p className="text-xs text-soft-gray uppercase font-bold">Address</p>
+                                <p className="text-xs text-hard-gray uppercase font-bold">Address</p>
                                 <p className="text-sm font-bold text-wrap">KG 9 Avenue, Kigali Rwanda</p>
                             </div>
                         </div>

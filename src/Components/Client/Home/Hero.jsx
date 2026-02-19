@@ -11,7 +11,7 @@ const Hero = () => {
             Here we are helping you in different services and give you Those
             services on time you want
           </p>
-          <Link to="/service">
+          <Link to="/available-services">
             <button className="bg-secondary py-2 px-2.5 md:px-4 mt-3 rounded-md text-universal">
               Book Service
             </button>
