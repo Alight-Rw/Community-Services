@@ -64,7 +64,7 @@ const DashboardSection = () => {
           </div>
         </div>
 
-        <div className="md:col-span-3 relative z-0 overflow-hidden bg-sky-blue  text-white p-5 sm:p-6 md:p-8 rounded-[28px] md:rounded-[32px] flex flex-col justify-between shadow-xl min-h-[340px] sm:min-h-[380px] md:min-h-[420px] md:w-full">
+        <div className="md:col-span-3 relative z-0 overflow-hidden bg-sky-blue  text-white p-5 sm:p-6 md:p-8 rounded-[28px] md:rounded-[32px] flex flex-col justify-between shadow-xl min-h-[340px] sm:min-h-[380px] md:min-h-[420px]- md:w-full">
 
           <div className="absolute top-[-5%] right-[-10%] w-28 sm:w-32 h-28 sm:h-32 bg-primary/10 rounded-full z-0" />
           <div className="absolute bottom-[-5%] left-[-10%] w-28 sm:w-32 h-28 sm:h-32 bg-primary/10 rounded-full z-0" />
