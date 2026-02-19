@@ -1,3 +1,4 @@
+import Pagination from "../../Shared/Pagination";
 import ServicesPageChild from "./ServicesCardsChild";
 
 function ServicesPage() {
@@ -32,6 +33,7 @@ function ServicesPage() {
           />
         ))}
       </div>
+      <Pagination/>
     </div>
   );
 }

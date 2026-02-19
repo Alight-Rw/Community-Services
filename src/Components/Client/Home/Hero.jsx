@@ -1,9 +1,6 @@
-
-
+import { Link } from "react-router-dom";
 
 const Hero = () => {
- 
-  
   return (
     <div className=" w-full grid grid-cols-1 justify-between md:grid-cols-2 px-mobilePadding md:px-componentPadding">
       <div className=" flex items-center justify-center p-6">
@@ -13,12 +10,12 @@ const Hero = () => {
           <p className="md:pr-12">
             Here we are helping you in different services and give you Those
             services on time you want
-            
           </p>
-          <button 
-          className="bg-secondary py-2 px-2.5 md:px-4 mt-3 rounded-md text-universal">
-            Request Service
-          </button>
+          <Link to="/available-services">
+            <button className="bg-secondary py-2 px-2.5 md:px-4 mt-3 rounded-md text-universal">
+              Book Service
+            </button>
+          </Link>
         </div>
       </div>
       <div className="relative  min-h-[420px] flex items-center justify-center p-8  ">
@@ -80,4 +77,3 @@ const Hero = () => {
 };
 
 export default Hero;
-

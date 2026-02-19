@@ -39,15 +39,15 @@ export function Routers() {
             element={<HomePage />}
           />
           <Route
-            path='service'
+            path='available-services'
             element={<ServicePage />}
           />
           <Route
-            path='gallery'
+            path='work-gallery'
             element={<WorkGallery />}
           />
            <Route
-          path='contact'
+          path='contact-us'
           element={<Contact/>}
         />
         </Route>
@@ -80,13 +80,9 @@ export function Routers() {
         <Route path="dashboard" element={<DashboardClientPage/>}/>
         <Route path="requested-services" element={<RequestedServicesPage/>}/>
          <Route path="waiting-services" element={<WaitingServicesPage/>}/>
-          <Route path="Completed-services" element={<CompletedServicesPage/>}/>
+          <Route path="completed-services" element={<CompletedServicesPage/>}/>
            <Route path="rejected-services" element={<RejectedServicesPage/>}/>
            <Route path="settings" element={<SettingsPage/>}/>
-
-
-
-
 
 
         <Route path="provider" element={<Authentication/>}/>

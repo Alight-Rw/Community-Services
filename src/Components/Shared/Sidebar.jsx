@@ -11,8 +11,11 @@ import {
   Settings, 
   ChevronLeft, 
   ChevronRight,
-  ChevronsUpDown
+  ChevronsUpDown,
+  LogOut,
+  MousePointer
 } from 'lucide-react';
+
 
 const Sidebar = () => {
   const [isExpanded, setIsExpanded] = useState(true);
@@ -36,14 +39,14 @@ const Sidebar = () => {
       
       <button 
         onClick={() => setIsExpanded(!isExpanded)}
-        className=" absolute -right-0 top-5  border border-gray-200 rounded-full p-1 text-blue-500 hover:bg-blue-50 z-50 shadow-sm"
+       style={{cursor:'pointer'}} className=" absolute -right-0 top-5  border border-gray-200 rounded-full p-1 text-blue-500 hover:bg-blue-50 z-50 shadow-sm"
       >
         {isExpanded ? <ChevronLeft size={17} /> : <ChevronRight size={17} />}
       </button>
 
      
-      <div className="px-1  mb-4 flex ">
-        <img src={Logo} alt="Logo" className={`px-2 gap-2
+      <div  style={{cursor:"pointer"}} className="px-1  mb-4 flex ">
+        <img src={Logo} alt="Logo"   onClick={()=>navigate("/dashboard")} className={`px-2 gap-2
         ${isExpanded ? 'w-24' : 'w-20 '}`} /> 
       </div>
 
@@ -74,15 +77,15 @@ const Sidebar = () => {
             NA
           </div>
           
-          {isExpanded && (
+          
             <div className="flex flex-1 items-center justify-between overflow-hidden">
               <div className="overflow-hidden">
-                <p className="text-[11px] text-slate-500 truncate font-medium">niyo.alice@codingsch...</p>
-              </div>
-              <ChevronsUpDown size={18} className="text-slate-400 hover:text-red-500 cursor-pointer ml-2"
+                <p className={`text-[11px] text-slate-500 truncate font-medium ${isExpanded ? 'justify-center':'hidden'}`}>niyo.alice@codingsch...</p>
+              </div >
+              <LogOut  style={{cursor:'pointer'}} className={ `text-secondary ${ isExpanded ? 'w-5 h-5':`w-5 h-5`}`}
               onClick={()=>navigate("/login")} />
             </div>
-          )}
+         
         </div>
       </div>
     </div>

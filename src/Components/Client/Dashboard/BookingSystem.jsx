@@ -41,10 +41,10 @@ const BookingSystem = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-4 bg-primary space-y-6 ">
+    <div className="max-w-8xl mx-auto p-4 bg-primary p-10 space-y-20 px-componentPadding ">
       
    
-      <section className="border border-universal rounded-2xl p-6 shadow-sm">
+      <section className=" border border-universal rounded-2xl p-6 shadow-sm ">
         <div className="flex items-center gap-2 mb-6 font-bold ">
           <CalendarIcon size={18} /> <span>Select Date</span>
         </div>
@@ -119,7 +119,7 @@ const BookingSystem = () => {
       </section>
 
       
-      <section className="border border-universal rounded-2xl p-6 shadow-sm space-y-5">
+      <section className="max-w-8xl border border-universal rounded-2xl p-6 shadow-sm space-y-5">
         <div className="space-y-2">
           <label className="text-xs font-bold flex items-center gap-2"><MapPin size={14}/> Service Location</label>
           <input type="text" placeholder="KG 8 St Remera-Kabeza" className="w-full p-3 universal border border-universal rounded-xl text-sm focus:ring-2 ring-soft-small-soft-blue outline-none" />
@@ -150,7 +150,7 @@ const BookingSystem = () => {
 
         <div className="flex gap-4 pt-4">
           <button className="flex-1 py-4 border border-universal rounded-2xl font-bold text-sm hover:universal transition-colors">Cancel</button>
-          <button className="flex-1 py-4 bg-secondary text-primary rounded-2xl font-bold text-sm hover:bg-blue-700 shadow-xl shadow-soft-small-soft-blue transition-all">Confirm Booking</button>
+          <button className="flex-1 py-4 bg-secondary text-primary rounded-2xl font-bold text-sm hover:bg-sky-blue shadow-xl shadow-soft-small-soft-blue transition-all">Confirm Booking</button>
         </div>
       </section>
     </div>

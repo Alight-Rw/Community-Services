@@ -40,12 +40,13 @@ export function Dashboard() {
         >
           <div className="max-w-[1600px] mx-auto py-20 md:space-y-10">
 
-
+           <div className="px-6">
             <Paragraphy
               highlight={"Dashboard"}
               title={"Overview"}
               description={"Quick summary of key metrics and activities"}
             />
+            </div>
 
             <div className="container">
               <section>
@@ -56,7 +57,7 @@ export function Dashboard() {
                 <ServicesStatics />
               </div>
 
-              <div className="flex flex-col lg:flex-row gap-8 justify-between px-[20px] md:px-componentPadding lg:px-12 items-center pb-10">
+              <div className="flex flex-col lg:flex-row gap-8 justify-between px-[20px] lg:px-12 items-center pb-10">
                 <div className="w-full lg:w-3/4">
                   <ServiceTable />
                 </div>
