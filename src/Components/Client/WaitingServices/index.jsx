@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Paragraphy from "../../Shared/Title";
 import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar"; 
+import { WaitingServices } from "./WaitingServices";
 
 export function WaitingSevices() {
   const [isExpanded, setIsExpanded] = useState(false); 
@@ -42,6 +43,7 @@ export function WaitingSevices() {
               description={"Quick overview of services the client has requested and is awaiting."} 
             />
           </div>
+           < WaitingServices /> 
         </main>
       </div>
     </div>
