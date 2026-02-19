@@ -87,7 +87,12 @@ export function RejectedServiceTable() {
         },
         {
             header: "Status",
-            accessor: "status"
+            accessor: "status",
+            render:(row)=>(
+              <div className="bg-red-50 rounded-xl p-2">
+                <p className="text-red-900 text-xs">{row}</p>
+              </div>
+            )
         },
 
         {
@@ -120,7 +125,7 @@ export function RejectedServiceTable() {
     ];
 
     return (
-        <div>
+        <div className="pr-12">
             <Table columns={columns} data={allServicesData} />
         </div>
     );
