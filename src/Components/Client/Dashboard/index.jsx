@@ -57,7 +57,7 @@ export function Dashboard() {
                 <ServicesStatics />
               </div>
 
-              <div className="flex flex-col lg:flex-row gap-8 justify-between px-[20px]  lg:px-12 items-center pb-10">
+              <div className="flex flex-col lg:flex-row gap-8 justify-between px-[20px] lg:px-12 items-center pb-10">
                 <div className="w-full lg:w-3/4">
                   <ServiceTable />
                 </div>

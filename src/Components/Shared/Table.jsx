@@ -62,3 +62,4 @@ const Table = ({ columns, data, alternatingRows = false }) => {
 };
 
 export default Table;
+
