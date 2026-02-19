@@ -29,7 +29,7 @@ const Pagination = () => {
         
         <div
           className={`px-6 py-2 rounded-xl text-lg font-semibold transition ${
-            page > 1 ? "text-secondary" : "text-black"
+            page > 1 ? "text-secondary " : "text-black bg-gray-200 hover:bg-gray-300"
           }`}
         >
           {page.toString().padStart(2, "0")}
