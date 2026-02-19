@@ -3,7 +3,7 @@ import Paragraphy from "../../Shared/Title";
 import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar"; 
 
-export function DashboardProvider() {
+export function WaitingSevicesProvider() {
   const [isExpanded, setIsExpanded] = useState(false); 
 
   return (

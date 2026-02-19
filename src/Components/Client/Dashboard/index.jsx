@@ -40,7 +40,7 @@ export function Dashboard() {
         >
           <div className="max-w-[1600px] mx-auto py-20 md:space-y-10">
 
-           <div className="px-6">
+           <div className="px-14">
             <Paragraphy
               highlight={"Dashboard"}
               title={"Overview"}

@@ -3,7 +3,9 @@ import Paragraphy from "../../Shared/Title";
 import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar"; 
 
-export function DashboardProvider() {
+
+
+export function SettingsProvider() {
   const [isExpanded, setIsExpanded] = useState(false); 
 
   return (
@@ -34,13 +36,16 @@ export function DashboardProvider() {
             ${!isExpanded ? "ml-25 sm:33 md:ml-35 lg:ml-30 w-full xl:ml-11" : "ml-0"} /* Avoid going behind sidebar when collapsed */
           `}
         >
-          <div className="max-w-[1600px] mx-auto py-20 md:space-y-10">
+          <div className="max-w-[1600px] not-[]:mx-auto py-20 md:space-y-10 ">
             
+            <div className="">
           
             <Paragraphy 
-              highlight={"Requested Services"} 
-              description={"Quick summary of services that have been requested by the client"} 
+              highlight={"Account Settings"} 
+              description={"Quick Manage and update your personal account information settings"} 
+
             />
+            </div>
            
           </div>
         </main>

@@ -1,5 +1,5 @@
-import { Dashboard } from "../../Components/Provider/Dashboard";
+import { DashboardProvider } from "../../Components/Provider/Dashboard";
 
-export function DashboardPage(){
-    return <Dashboard/>
+export function Dashboard(){
+    return <DashboardProvider/>
 }
