@@ -7,7 +7,7 @@ const GlobalHeader = ({ title, subtitle }) => {
       </h2>
 
       {subtitle && (
-        <p className="text-white sm:text-lg md:text-2xl mt-3 px-10  text-base">
+        <p className="text-universal text-xm px-10 text-base">
           {subtitle}
         </p>
       )}
