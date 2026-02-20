@@ -4,7 +4,7 @@ import { Calendar } from "lucide-react";
 import Pagination from "../../Shared/Pagination";
 import Table from "../../Shared/Table";
 
-export function RequestedSevicesTable() {
+export function RequestedSevicesTable({width}) {
   const allServicesData = [
     {
       id: 13,
@@ -148,7 +148,7 @@ export function RequestedSevicesTable() {
 
   return (
     <>
-      <Table columns={columns} data={allServicesData} />
+      <Table columns={columns} data={allServicesData} width={width}/>
       <Pagination />
     </>
   )

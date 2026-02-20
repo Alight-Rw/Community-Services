@@ -7,7 +7,7 @@ const Table = ({ columns, data, alternatingRows = false, width }) => {
   return (
     <div
       className="rounded-lg shadow px-3 bg-white"
-      style={{ width: width }}
+      style={{ width: width || "100%" }}
     >
       <div className="overflow-x-auto">
         <table className="w-full min-w-[600px]">

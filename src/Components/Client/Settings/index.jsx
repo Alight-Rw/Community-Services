@@ -8,7 +8,7 @@ import SettingsCard from "./SettingCards";
 
 
 export function Settings() {
-  const [isExpanded, setIsExpanded] = useState(false); 
+  const [isExpanded, setIsExpanded] = useState(true); 
 
   return (
     <div className="flex flex-col h-screen bg-universal overflow-hidden">
