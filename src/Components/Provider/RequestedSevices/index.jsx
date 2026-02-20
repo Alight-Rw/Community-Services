@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Paragraphy from "../../Shared/Title";
 import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar"; 
+import { RequestedSevicesTable } from "../../Client/RequestedSevices/RequestedSevicesTable";
 
-export function DashboardProvider() {
+export function RequestedSevicesProvider() {
   const [isExpanded, setIsExpanded] = useState(false); 
 
   return (
@@ -41,7 +42,7 @@ export function DashboardProvider() {
               highlight={"Requested Services"} 
               description={"Quick summary of services that have been requested by the client"} 
             />
-           
+           <RequestedSevicesTable />
           </div>
         </main>
       </div>

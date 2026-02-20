@@ -1,10 +1,13 @@
+
+
 import React, { useState } from "react";
 import Paragraphy from "../../Shared/Title";
 import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar"; 
 
-export function DashboardProvider() {
+export function CompletedServicesProvider() {
   const [isExpanded, setIsExpanded] = useState(false); 
+  
 
   return (
     <div className="flex flex-col h-screen bg-universal overflow-hidden">
@@ -38,8 +41,8 @@ export function DashboardProvider() {
             
           
             <Paragraphy 
-              highlight={"Requested Services"} 
-              description={"Quick summary of services that have been requested by the client"} 
+              highlight={"Completed Services"} 
+              description={"Quick summary of services that have been successfully delivered and finalized."} 
             />
            
           </div>
