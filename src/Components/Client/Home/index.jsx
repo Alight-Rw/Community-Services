@@ -3,6 +3,7 @@ import Hero from "./Hero";
 import Slide from "./Slide"
 import GlobalSearch from "../../Shared/GlobalSearch";
 import ServicesProcess from "./ServicesProcess";
+import { AddNewService } from "../../Provider/Dashboard/AddNewService";
 
 
 export function Home(){
@@ -12,6 +13,7 @@ export function Home(){
          <Hero />
          <Statistic/>
          <Slide />
+         <AddNewService />
          <ServicesProcess />
         </>
     )
