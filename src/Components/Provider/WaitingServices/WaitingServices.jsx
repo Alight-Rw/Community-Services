@@ -3,7 +3,7 @@ import { Calendar } from 'lucide-react';
 import Table from '../../Shared/Table';
 import Pagination from '../../Shared/Pagination';
 
-export function WaitingServices() {
+export function WaitingServicesTable() {
 
     const allServicesData = [
         {
@@ -132,15 +132,15 @@ export function WaitingServices() {
 
     return (
         
-            <div className='  pr-12 '>
+               <div className='  pr-12'>
 
                 <Table
                     columns={columns}
                     data={allServicesData}
-
+                    width='1550px'
                 />
-                <Pagination />
             </div>
+        
         
     )
 }

@@ -1,5 +1,5 @@
-import { RejectedSevicesProvider } from "../../Components/Provider/RejectedServices";
+import { RejectedServicesProvider } from "../../Components/Provider/RejectedServices";
 
  export function RejectedServices(){
-    return< RejectedSevicesProvider/>
+    return< RejectedServicesProvider/>
  }

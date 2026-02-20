@@ -1,60 +1,68 @@
-import { Calendar } from "lucide-react";
-import Table from "../../Shared/Table";
-import Pagination from "../../Shared/Pagination";
 
-export function RejectedServiceTable() {
+
+import { Calendar } from 'lucide-react';
+import Table from '../../Shared/Table';
+import Pagination from '../../Shared/Pagination';
+
+export function RejectedServicesTable() {
+
     const allServicesData = [
         {
-            id: 13,
-            image: "/ServicesImage/ServiceImg1.png",
-            name: "Car Auto Repair LTD",
-            location: "KG 9 Avenue, Kigali",
+            id: 6,
+            image: "/images/dec.png",
+            name: "K.C Decorators Group",
+            location: "KG 8 St Remera-Kabeza",
             contact: "+250788888888",
-            hours: "08:00AM - 18:00PM",
+            hours: "08:00AM - 17:00PM",
             status: "Rejected",
-            RequestNotes: "Please schedule the service for Friday morning and call before arrival.",
-            RejectionNotes: "Request declined due to unavailable time slot on the selected date."
-        },
+            requestnotes: "Please schedule the servicefor Friday morning and call before arrival.",
+            rejection: "N/A"
 
-        {
-            id: 14,
-            image: "/images/sewer.png",
-            name: "Quality Sewing Services",
-            location: "NY 8 Rd, Nyamirambo",
-            contact: "+250788222222",
-            hours: "09:00AM - 18:00PM",
-            status: "Rejected",
-            RequestNotes: "Please schedule the service for Friday morning and call before arrival.",
-            RejectionNotes: "Request declined due to unavailable time slot on the selected date."
         },
         {
-            id: 15,
+            id: 7,
             image: "/images/car-wash.png",
             name: "Sparkle Auto Wash",
             location: "KK 25 Rd, Gisozi",
             contact: "+250788333333",
             hours: "06:00AM - 20:00PM",
             status: "Rejected",
-            RequestNotes: "Please schedule the service for Friday morning and call before arrival.",
-            RejectionNotes: "Request declined due to unavailable time slot on the selected date."
+            requestnotes: "Please schedule the servicefor Friday morning and call before arrival.",
+            rejection: "N/A"
+        },
+        {
+            id: 8,
+            image: "/images/sewer.png",
+            name: "Quality Sewing Services",
+            location: "NY 8 Rd, Nyamirambo",
+            contact: "+250788222222",
+            hours: "09:00AM - 18:00PM",
+            status: "Rejected",
+            requestnotes: "Please schedule the servicefor Friday morning and call before arrival.",
+            rejection: "N/A"
         },
 
         {
-            id: 16,
-            image: "/images/dec.png",
-            name: "K.C Decorators Group",
-            location: "KG 8 St Remera-Kabeza",
-            contact: "+250788866666",
-            hours: "08:00AM - 17:00PM",
-            status: "Rejected",
-            RequestNotes: "Please schedule the service for Friday morning and call before arrival.",
-            RejectionNotes: "Request declined due to unavailable time slot on the selected date."
+            id: 9,
+            image: "/ServicesImage/ServiceImg1.png",
+            name: "Car Auto Repair LTD",
+            location: "KG 9 Avenue, Kigali",
+            contact: "+250788888888",
+            hours: "08:00AM - 18:00PM",
+            status: "Completed",
+            requestnotes: "Please schedule the servicefor Friday morning and call before arrival.",
+            rejection: "N/A"
         },
+    ]
 
-    ];
-
-    const canBook = (service) => service.status === "Rejected";
-
+    const canBook = (service) => {
+        if (service.status === "Rejected") return true;
+        if (service.status === "Rejected") return true;
+        if (service.status === "Rejected") return true;
+        if (service.status === "Rejected") return true;
+        if (service.status === "Rejected") return true;
+        return true;
+    };
     const columns = [
         {
             header: "Service Avatar",
@@ -63,56 +71,48 @@ export function RejectedServiceTable() {
                 <img
                     src={value}
                     alt={row.name}
-                    className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg object-cover "
+                    className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg object-cover"
                 />
             ),
         },
-
         {
             header: "Service Name",
-            accessor: "name"
+            accessor: "name",
         },
-
         {
             header: "Service Location",
-            accessor: "location"
-
+            accessor: "location",
         },
-
         {
             header: "Service Contacts",
-            accessor: "contact"
-
+            accessor: "contact",
         },
-
         {
             header: "Service Hours",
-            accessor: "hours"
-
+            accessor: "hours",
         },
         {
-            header: "Status",
+            header: "Rejected Status",
             accessor: "status",
-            render: (value) => {
-                return (
-                    <div className="px-3 py-1 rounded-full text-red-900 text-xs bg-red-50 text-center">
-                        {value}
-                    </div>
-                );
-            }
+            render: (row) => (
+                <div className='px-3 py-1 rounded-full text-red-900 text-xs bg-red-50 text-center'>
+                    <p>{row}</p>
+                </div>
+            )
         },
-
         {
             header: "Request Notes",
-            accessor: "RequestNotes"
+            accessor: "requestnotes"
         },
         {
             header: "Rejection Notes",
-            accessor: "RejectionNotes"
+            accessor: "rejection"
         },
+
         {
             header: "Action",
             accessor: "id",
+
             render: (value, row) => {
                 const isBookable = canBook(row);
                 return (
@@ -132,78 +132,17 @@ export function RejectedServiceTable() {
     ];
 
     return (
-        <div className="pr-12 ">
-            <Table columns={columns} data={allServicesData} />
-            <Pagination />
-        </div>
-    );
+
+       <div className='  pr-12'>
+
+                <Table
+                    columns={columns}
+                    data={allServicesData}
+                    width='1550px'
+                />
+            </div>
+
+    )
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const allServicesData = [
-        {
-            id: 13,
-            image: "/images/repair.png",
-            name: "Car Auto Repair LTD",
-            location: "KG 9 Avenue, Kigali",
-            contact: "+250788888888",
-            hours: "08:00AM - 18:00PM",
-            status: "Rejected",
-            RequestNotes: "Please schedule the service for Friday morning and call before arrival.",
-            RejectionNotes: "Request declined due to unavailable time slot on the selected date."
-        },
-
-        {
-            id: 14,
-            image: "/images/sewer.png",
-            name: "Quality Sewing Services",
-            location: "NY 8 Rd, Nyamirambo",
-            contact: "+250788222222",
-            hours: "09:00AM - 18:00PM",
-            status: "Rejected",
-            RequestNotes: "Please schedule the service for Friday morning and call before arrival.",
-            RejectionNotes: "Request declined due to unavailable time slot on the selected date."
-        },
-        {
-            id: 15,
-            image: "/images/car-wash.png",
-            name: "Sparkle Auto Wash",
-            location: "KK 25 Rd, Gisozi",
-            contact: "+250788333333",
-            hours: "06:00AM - 20:00PM",
-            status: "Rejected",
-            RequestNotes: "Please schedule the service for Friday morning and call before arrival.",
-            RejectionNotes: "Request declined due to unavailable time slot on the selected date."
-        },
-
-        {
-            id: 16,
-            image: "/images/dec.png",
-            name: "K.C Decorators Group",
-            location: "KG 8 St Remera-Kabeza",
-            contact: "+250788866666",
-            hours: "08:00AM - 17:00PM",
-            status: "Rejected",
-            RequestNotes: "Please schedule the service for Friday morning and call before arrival.",
-            RejectionNotes: "Request declined due to unavailable time slot on the selected date."
-        },
-
-    ];

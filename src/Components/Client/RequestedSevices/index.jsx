@@ -1,4 +1,4 @@
-/** @format */
+
 
 import React, { useState } from 'react';
 import Paragraphy from '../../Shared/Title';

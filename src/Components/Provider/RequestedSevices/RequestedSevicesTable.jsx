@@ -145,15 +145,14 @@ export  function RequestedSevicesTable() {
 
   return (
     
-      
-        <div className="lg:pr-12">
-          <Table
-            columns={columns} 
-            data={allServicesData}
-          />
-      
-    
-      <Pagination />
-    </div>
+          <div className='  pr-12'>
+
+                <Table
+                    columns={columns}
+                    data={allServicesData}
+                    width='1550px'
+                />
+            </div>
+        
   );
 }
