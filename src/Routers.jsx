@@ -24,6 +24,7 @@ import { RequestedService } from './Pages/Provider/RequestedServices';
 import { RejectedServices } from './Pages/Provider/RejectedServices';
 import { WaitingServices } from './Pages/Provider/WaitingServices';
 import { SettingProvider } from './Pages/Provider/Setting';
+import NotFoundPage from './Components/Shared/NotFoundPage';
 
 
 
@@ -97,6 +98,7 @@ export function Routers() {
         <Route path='provider-rejected-services' element={< RejectedServices/>}/>
         <Route path='provider-waiting-services' element={<WaitingServices />}/>
         <Route path='provider-settings' element={<SettingProvider />}/>
+        <Route path="*" element={<NotFoundPage />} />
         
         
         
