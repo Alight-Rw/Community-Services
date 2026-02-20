@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 export default function NotFoundPage() {
   return (
-    <div className=" bg-universal  ">
-      <div className="bg-primary   flex flex-col items-center justify-center  min-h-screen w-full">
+   
+      <div className="bg-univeral   flex flex-col items-center justify-center  min-h-screen w-full">
         <div className="text-5xl text-secondary">404</div>
 
        
@@ -52,6 +52,6 @@ export default function NotFoundPage() {
           </Link>
      
       </div>
-    </div>
+   
   );
 }

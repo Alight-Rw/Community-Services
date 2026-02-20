@@ -1,16 +1,17 @@
 
-import React from 'react';
+
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeft, MapPin, Phone, Clock, Star, Info, Banknote } from 'lucide-react';
 
 import BookingSystem from './BookingSystem';
 import DashboardNav from '../../Shared/DashboardNav';
+import NotFoundPage from '../../Shared/NotFoundPage';
 
 const ConfirmBooking = () => {
-  const { state } = useLocation();
+  const  { state }  = useLocation();
   const navigate = useNavigate();
 
-  if (!state) return <div className="p-10">No service selected. Please return to services page.</div>;
+  if (!state) window.location.replace("/not-found");
 
   return (
     <>
