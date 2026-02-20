@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Paragraphy from "../../Shared/Title";
 import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar";
-import {RejectedServiceTable } from "./RejectedServiceTable"; // <-- import the table component
+import { RejectionServicesTable } from "./RejectionServiceTable";
+import DashboardSearch from "../../Shared/DashboardSearch";
 
 export function RejectedSevices() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -25,22 +26,26 @@ export function RejectedSevices() {
 
         <main
           className={`
-            flex-1 overflow-y-auto  
+              
             transition-all duration-300 ease-in-out
             ${!isExpanded ? "ml-25 sm:33 md:ml-35 lg:ml-30 w-full xl:ml-11" : "ml-0"}
           `}
         >
-          <div className="max-w-[1600px] mx-auto py-20 md:space-y-10">
+          <div className="max-w-[1600px] mx-auto py-20 md:space-y-10 px-7 sm:px-7 md:px-0 lg:px-0">
             <Paragraphy
               highlight={"Rejected Services"}
               description={
                 "Overview of services requested by the client that were not approved or denied."
               }
             />
+            <div className="px-8 md:px-0 md:pr-14 py-10 w-[350px] md:w-full">
+           <DashboardSearch/>
+          </div>
 
           
-            <div className="mt-8">
-              <RejectedServiceTable />
+            <div className="mt-8 flex-1 overflow-y-auto">
+              <RejectionServicesTable />
+              
             </div>
           </div>
         </main>
