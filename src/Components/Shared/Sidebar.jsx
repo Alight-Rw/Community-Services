@@ -1,7 +1,5 @@
 import Logo from "../../assets/images/Logo.png";
-import { useNavigate } from "react-router-dom";
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import {
   LayoutGrid,
   HelpCircle,
@@ -11,16 +9,12 @@ import {
   Settings,
   ChevronLeft,
   ChevronRight,
-  ChevronsUpDown,
   LogOut,
-  MousePointer
-} from 'lucide-react';
+} from "lucide-react";
 
-
-const Sidebar = () => {
-  const [isExpanded, setIsExpanded] = useState(true);
+const Sidebar = ({ isExpanded, setIsExpanded }) => {
   const location = useLocation();
-  const navigate = useNavigate(false);
+  const navigate = useNavigate();
 
   const menuItems = [
     { icon: <LayoutGrid size={22} />, label: 'Dashboard', path: '/dashboard' },
@@ -37,7 +31,8 @@ const Sidebar = () => {
     { icon: <XCircle size={22} />, label: 'Rejected Services', path: '/provider-rejected-services' },
     { icon: <Settings size={22} />, label: 'Settings', path: '/provider-settings' },
   ];
- const isProviderPath = location.pathname.startsWith("/provider-");
+
+  const isProviderPath = location.pathname.startsWith("/provider-");
 
   return (
     <div

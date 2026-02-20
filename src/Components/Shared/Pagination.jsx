@@ -14,7 +14,7 @@ const Pagination = () => {
   };
 
   return (
-    <div className=" flex justify-end">
+    <div className=" flex justify-end pr-1 md:pr-6">
       <div className="flex items-center gap-4 bg-transparent p-4 rounded-2xl ">
         
         <button

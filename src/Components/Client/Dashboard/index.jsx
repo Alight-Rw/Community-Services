@@ -8,7 +8,7 @@ import Sidebar from "../../Shared/Sidebar";
 import { ServiceTable } from "./ServiceTable";
 
 export function Dashboard() {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
 
   return (
     <div className="flex flex-col h-screen bg-universal overflow-hidden">

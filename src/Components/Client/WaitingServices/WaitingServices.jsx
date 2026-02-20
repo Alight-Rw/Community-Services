@@ -2,7 +2,7 @@
 import { Calendar } from 'lucide-react';
 import Table from '../../Shared/Table';
 
-export function WaitingServices() {
+export function WaitingServices({width}) {
 
     const allServicesData = [
         {
@@ -131,12 +131,12 @@ export function WaitingServices() {
 
     return (
         
-            <div className='  pr-12'>
+            <div className='pr-12'>
 
                 <Table
                     columns={columns}
                     data={allServicesData}
-                    width='1560px'
+                    width={width}
                 />
             </div>
         
