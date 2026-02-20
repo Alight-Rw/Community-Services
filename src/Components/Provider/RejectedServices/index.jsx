@@ -38,6 +38,7 @@ export function RejectedSevicesProvider() {
                   "Overview of services requested by the client that were not approved or denied."
                 }
               />
+              
             </div>
           </main>
         </div>

@@ -1,6 +1,8 @@
 import React from "react";
-import Table from "../../Shared/Table"; 
+
 import { Calendar } from "lucide-react";
+import Pagination from "../../Shared/Pagination";
+import Table from "../../Shared/Table";
 
 export function RequestedSevicesTable() {
   const allServicesData = [
@@ -65,7 +67,7 @@ export function RequestedSevicesTable() {
       header: "Service Avatar",
       accessor: "image",
       render: (value) => (
-        <div className="w-[90px]"> 
+        <div className="w-[100px]"> 
           <img
             src={value}
             alt="service"
@@ -77,7 +79,7 @@ export function RequestedSevicesTable() {
     {
       header: "Service Name" ,
       accessor: "name",
-      render: (value) => <span className="font-bold text-slate-600 block  w-[150px]    whitespace-nowrap  text-ellipsis">{value}</span>,
+      render: (value) => <span className="font-bold text-slate-600 block      whitespace-nowrap ">{value}</span>,
     },
     {
       header: "Service Location",
@@ -87,12 +89,12 @@ export function RequestedSevicesTable() {
     {
       header: "Service Contacts",
       accessor: "contact",
-      render: (value) => <span className="font-bold text-slate-500 block w-[120px]">{value}</span>,
+      render: (value) => <span className="font-bold text-slate-500 block ">{value}</span>,
     },
     {
       header: "Service Hours",
       accessor: "hours",
-      render: (value) => <span className="font-bold text-slate-500 block w-[130px]">{value}</span>,
+      render: (value) => <span className="font-bold text-slate-500 block ">{value}</span>,
     },
     {
       header: "Request Status",
@@ -109,7 +111,7 @@ export function RequestedSevicesTable() {
       header: "Request Notes",
       accessor: "requestedNotes",
       render: (value) => (
-        <p className="font-medium text-slate-500 text-xs leading-relaxed w-[180px]">
+        <p className="font-medium text-slate-500 text-xs leading-relaxed ">
           {value}
         </p>
       ),
@@ -118,7 +120,7 @@ export function RequestedSevicesTable() {
       header: "Rejection Notes",
       accessor: "rejectedNotes",
       render: (value) => (
-        <p className="font-medium text-slate-400 text-xs leading-relaxed w-[180px]">
+        <p className="font-medium text-slate-400 text-xs leading-relaxed ">
           {value === "N/A" ? "N/A" : value}
         </p>
       ),
@@ -145,18 +147,12 @@ export function RequestedSevicesTable() {
   ];
 
   return (
-   
-     
-      <div className=" -left-10 top-20  rounded-[10px]  "> 
-      <div className="">
-        <Table 
-          columns={columns} 
-          data={allServicesData} 
-          alternatingRows={true} 
-        />
-       
-      </div>
-       
-    </div>
-  );
+    <>
+      <Table columns={columns} data={allServicesData} />
+      <Pagination />
+    </>
+  )
+
+
+  
 }

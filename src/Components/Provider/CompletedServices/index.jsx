@@ -44,6 +44,7 @@ export function CompletedServicesProvider() {
               highlight={"Completed Services"} 
               description={"Quick summary of services that have been successfully delivered and finalized."} 
             />
+           
           </div>
         </main>
       </div>

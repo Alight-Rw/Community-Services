@@ -9,11 +9,11 @@ const Table = ({ columns, data, alternatingRows = false }) => {
     }
   };
   return (
-    <div className="rounded-lg shadow px-3 bg-white w-full">
+    <div className="rounded-lg shadow px-3 bg-white w-full border  border-universal">
       <div className="overflow-x-auto">
         <table className="w-full min-w-[600px]  ">
-          <thead>
-            <tr className="">
+          <thead className=" border-b border-universal">
+            <tr >
               {columns.map((column, index) => (
                 <th
                   key={index}
