@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Paragraphy from "../../Shared/Title";
 import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar"; 
-import StatusCard from "../../Client/Dashboard/StatusCard";
 
 export function DashboardProvider() {
   const [isExpanded, setIsExpanded] = useState(false); 
@@ -42,7 +41,7 @@ export function DashboardProvider() {
               highlight={"Dashboard Overview"} 
               description={"Quick summary of key metrics, recent activities, and service performance"} 
             />
-           <StatusCard />
+           
           </div>
         </main>
       </div>
