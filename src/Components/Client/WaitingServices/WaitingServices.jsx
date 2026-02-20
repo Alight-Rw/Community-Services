@@ -93,7 +93,7 @@ export function WaitingServices() {
             header: "Request Status",
             accessor: "status",
             render:(row)=>(
-                <div className='bg-gray-300  p-2 justify-items-center rounded-full'>
+                <div className='bg-gray-300  p-2 justify-items-center rounded-full w-full'>
                     <p>{row}</p>
                 </div>
             )
