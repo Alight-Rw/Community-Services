@@ -1,23 +1,22 @@
-const Table = ({ columns, data, alternatingRows = false }) => {
+const Table = ({ columns, data, alternatingRows = false, width }) => {
   const getRowBgColor = (index) => {
     if (!alternatingRows) return "bg-white hover:bg-gray-50";
-
-    if (index % 2 === 0) {
-      return "bg-gray-50";
-    } else {
-      return "bg-white";
-    }
+    return index % 2 === 0 ? "bg-gray-50" : "bg-white";
   };
+
   return (
-    <div className="rounded-lg shadow px-3 bg-white w-[1720px]">
+    <div
+      className="rounded-lg shadow px-3 bg-white"
+      style={{ width: width }}
+    >
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[600px]  ">
-          <thead className=" border-b border-universal">
-            <tr >
+        <table className="w-full min-w-[600px]">
+          <thead className="border-b border-universal">
+            <tr>
               {columns.map((column, index) => (
                 <th
                   key={index}
-                  className="px-6 py-4 text-left text-sm font-bold text-gray "
+                  className="px-6 py-4 text-left text-sm font-bold text-gray"
                 >
                   {column.header}
                 </th>
@@ -62,4 +61,3 @@ const Table = ({ columns, data, alternatingRows = false }) => {
 };
 
 export default Table;
-

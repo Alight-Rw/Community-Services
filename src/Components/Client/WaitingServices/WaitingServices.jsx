@@ -136,7 +136,7 @@ export function WaitingServices() {
                 <Table
                     columns={columns}
                     data={allServicesData}
-
+                    width='1550px'
                 />
             </div>
         
