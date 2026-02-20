@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Paragraphy from "../../Shared/Title";
 import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar"; 
+import { CompletedServicesTable } from "./CompletedServicesTable";
 
 export function CompletedServicesProvider() {
   const [isExpanded, setIsExpanded] = useState(false); 
@@ -37,14 +38,14 @@ export function CompletedServicesProvider() {
             ${!isExpanded ? "ml-25 sm:33 md:ml-35 lg:ml-30 w-full xl:ml-11" : "ml-0"} /* Avoid going behind sidebar when collapsed */
           `}
         >
-          <div className="max-w-[1600px] mx-auto py-20 md:space-y-10">
+          <div className="max-w-[1600px] mx-auto py-20 md:space-y-10 pl-12 ">
             
-          
+           
             <Paragraphy 
               highlight={"Completed Services"} 
               description={"Quick summary of services that have been successfully delivered and finalized."} 
             />
-           
+           <CompletedServicesTable />
           </div>
         </main>
       </div>

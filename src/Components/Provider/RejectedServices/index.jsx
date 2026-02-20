@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Paragraphy from "../../Shared/Title";
 import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar";
+import { RejectedServiceTable } from "./RejectedServicesTable";
 
 
 export function RejectedSevicesProvider() {
@@ -31,14 +32,15 @@ export function RejectedSevicesProvider() {
             ${!isExpanded ? "ml-25 sm:33 md:ml-35 lg:ml-30 w-full xl:ml-11" : "ml-0"} /* Avoid going behind sidebar when collapsed */
           `}
           >
-            <div className="max-w-[1600px] mx-auto py-20 md:space-y-10">
-              <Paragraphy
+            <div className="max-w-[1600px] mx-auto py-20 md:space-y-10 pl-12">
+              
+              <Paragraphy  
                 highlight={"Rejected Services"}
                 description={
                   "Overview of services requested by the client that were not approved or denied."
                 }
               />
-              
+              <RejectedServiceTable />
             </div>
           </main>
         </div>
