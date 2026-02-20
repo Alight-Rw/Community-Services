@@ -7,7 +7,7 @@ export default function NotFoundPage() {
   return (
    
       <div className="bg-univeral   flex flex-col items-center justify-center  min-h-screen w-full">
-        <div className="text-5xl text-secondary">404</div>
+        <div className="text-5xl font-bold text-secondary">404</div>
 
        
           <div className=" w-16 h-16 my-4 rounded-full bg-red-50 border-2 border-red-100 flex items-center justify-center">
@@ -19,13 +19,13 @@ export default function NotFoundPage() {
           Page Not Found
         </h1>
 
-        <p className=" text-gray-400 text-base  mb-8 max-w-sm">
+        <p className=" text-gray-400 text-base text-center  mb-8 max-w-sm">
           Oops! It looks like the page you're searching for doesn't exist or has
           been moved. Don't worry, we've got you covered.
         </p>
 
         <Link to="/">
-          <button className="flex gap-2 bg-blue-700 justify-center items-center py-2 px-3 rounded-md text-primary">
+          <button className="flex gap-2 bg-secondary justify-center items-center py-2 px-3 rounded-md text-primary">
             <div>
               <FaLongArrowAltLeft />
             </div>
