@@ -1,7 +1,6 @@
 import React from "react";
 import Table from "../../Shared/Table"; 
 import { Calendar } from "lucide-react";
-import Pagination from "../../Shared/Pagination";
 
 export function RequestedSevicesTable() {
   const allServicesData = [
@@ -66,7 +65,7 @@ export function RequestedSevicesTable() {
       header: "Service Avatar",
       accessor: "image",
       render: (value) => (
-        <div className="w-[100px]"> 
+        <div className="w-[90px]"> 
           <img
             src={value}
             alt="service"
@@ -78,7 +77,7 @@ export function RequestedSevicesTable() {
     {
       header: "Service Name" ,
       accessor: "name",
-      render: (value) => <span className="font-bold text-slate-600 block  w-[150px]    whitespace-nowrap overflow-hidden text-ellipsis">{value}</span>,
+      render: (value) => <span className="font-bold text-slate-600 block  w-[150px]    whitespace-nowrap  text-ellipsis">{value}</span>,
     },
     {
       header: "Service Location",
@@ -148,14 +147,14 @@ export function RequestedSevicesTable() {
   return (
    
      
-      <div className="min-w-max border h-200 rounded-[10px] "> 
+      <div className=" -left-10 top-20  rounded-[10px]  "> 
+      <div className="">
         <Table 
           columns={columns} 
           data={allServicesData} 
           alternatingRows={true} 
         />
-         <div className="  py-37 px-2  ">
-         <Pagination />
+       
       </div>
        
     </div>

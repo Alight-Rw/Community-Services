@@ -38,13 +38,18 @@ export function RequestedSevices() {
         >
           <div className="max-w-[1600px] mx-auto py-20 md:space-y-10">
             
-           
-            <Paragraphy 
+            <div className="px-7 sm:px-8">
+              <div className="py-5">
+            <Paragraphy className=""
               highlight={"Requested Services"} 
               description={"Quick summary of services that have been requested by the client"} 
+
             />
+            </div>
+             <RequestedSevicesTable />
+            </div >
            
-            <RequestedSevicesTable />
+           
           </div>
         </main>
       </div>
