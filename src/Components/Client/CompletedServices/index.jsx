@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import Paragraphy from "../../Shared/Title";
 import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar"; 
+import AvailableServiceTable from "./AvailableServiceTable";
+
 
 export function CompletedSevices() {
   const [isExpanded, setIsExpanded] = useState(false); 
@@ -42,6 +44,7 @@ export function CompletedSevices() {
               highlight={"Completed Services"} 
               description={"Quick summary of services that have been successfully delivered and finalized."} 
             />
+            <AvailableServiceTable/>
           </div>
         </main>
       </div>
