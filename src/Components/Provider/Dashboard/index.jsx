@@ -4,8 +4,9 @@ import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar";
 import StatusCard from "../../Client/Dashboard/StatusCard";
 import ServicesStatistics from "../../Shared/ServicesStatics"
-import {ServiceTable} from "../../Client/Dashboard/ServiceTable"
+import { ServiceTable } from "../../Client/Dashboard/ServiceTable"
 import RecentServicesTab from "../../../Pages/Provider/RecentServicesTab";
+import AddNewButton from "./AddNewButton";
 export function DashboardProvider() {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -39,23 +40,26 @@ export function DashboardProvider() {
         >
           <div className="max-w-[1600px] mx-auto py-20 md:space-y-10">
 
+            <div className="grid grid-cols-1 md:grid-cols-2 items-start gap-4">
+              <Paragraphy
+                highlight={"Dashboard Overview"}
+                description={"Quick summary of key matrix, recent activities and service performance"}
+              />
+              <AddNewButton />
+            </div>
 
-            <Paragraphy
-              highlight={"Dashboard Overview"}
-              description={"Quick summary of key matrix, recent activities and service performance"}
-            />
             <div className="w-full">
               <StatusCard />
             </div>
-            
+
             <div className="w-full">
-<ServicesStatistics />
+              <ServicesStatistics />
             </div>
             <div>
               <RecentServicesTab />
             </div>
             <div className="w-full">
-              <ServiceTable role={"provider"}/>
+              <ServiceTable role={"provider"} />
             </div>
           </div>
         </main>
