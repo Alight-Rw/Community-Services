@@ -134,7 +134,7 @@ export function RequestedSevicesTable({width}) {
             disabled={!canBook(status)}
             className={`flex items-center justify-center gap-2 mx-auto px-4 py-1.5 rounded-full border-2 transition-all duration-200 ${
               canBook(status)
-                ? "border-blue-400 text-secondary hover:bg-secondary hover:text-white"
+                ? "border-blue-400  text-secondary hover:bg-secondary hover:text-white"
                 : "border-slate-100 text-slate-200 cursor-not-allowed"
             }`}
           >
