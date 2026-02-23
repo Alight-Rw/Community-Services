@@ -1,8 +1,7 @@
+import { Calendar } from "lucide-react";
+import Table from "../../Shared/Table";
 
-import { Calendar } from 'lucide-react';
-import Table from '../../Shared/Table';
-
-export function RejectedServices({width}) {
+export function RejectedServices({ width }) {
 
     const allServicesData = [
         {
@@ -16,7 +15,6 @@ export function RejectedServices({width}) {
             RequestNotes: "Please schedule the service for Friday morning and call before arrival.",
             RejectionNotes: "Request declined due to unavailable time slot on the selected date."
         },
-
         {
             id: 14,
             image: "/images/sewer.png",
@@ -39,7 +37,6 @@ export function RejectedServices({width}) {
             RequestNotes: "Please schedule the service for Friday morning and call before arrival.",
             RejectionNotes: "Request declined due to unavailable time slot on the selected date."
         },
-
         {
             id: 16,
             image: "/images/dec.png",
@@ -51,16 +48,20 @@ export function RejectedServices({width}) {
             RequestNotes: "Please schedule the service for Friday morning and call before arrival.",
             RejectionNotes: "Request declined due to unavailable time slot on the selected date."
         },
-    ]
+    ];
 
+   
     const canBook = (service) => {
-        if (service.status === "Waiting") return false;
-        if (service.status === "Waiting") return false;
-        if (service.status === "Waiting") return false;
-        if (service.status === "Waiting") return false;
-        if (service.status === "Waiting") return false;
-        return false;
+        return service.status === "Rejected";
     };
+
+    
+    const handleBook = (service) => {
+        console.log("Re-booking service:", service);
+
+        alert(`Booking ${service.name}`);
+    };
+
     const columns = [
         {
             header: "Service Avatar",
@@ -69,7 +70,7 @@ export function RejectedServices({width}) {
                 <img
                     src={value}
                     alt={row.name}
-                    className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg object-cover"
+                    className="w-12 h-12 sm:w-14 sm:h-16 rounded-lg object-cover"
                 />
             ),
         },
@@ -89,38 +90,40 @@ export function RejectedServices({width}) {
             header: "Service Hours",
             accessor: "hours",
         },
-          {
+        {
             header: "Rejection Status",
             accessor: "status",
-            render:(row)=>(
-                <div className='bg-red-50 text-red-900 text-xs p-2 justify-items-center rounded-full w-full'>
-                    <p>{row}</p>
+            render: (value) => (
+                <div className="bg-red-50 text-red-900 text-xs p-2 text-center rounded-full w-full">
+                    {value}
                 </div>
-            )
+            ),
         },
         {
             header: "Request Notes",
-            accessor: "RequestNotes"
+            accessor: "RequestNotes",
         },
         {
             header: "Rejection Notes",
-            accessor: "RejectionNotes"
+            accessor: "RejectionNotes",
         },
-
-         {
+        {
             header: "Action",
             accessor: "id",
             render: (value, row) => {
                 const isBookable = canBook(row);
+
                 return (
                     <button
                         disabled={!isBookable}
-                        className={`flex items-center gap-1 px-3 py-2 text-xs text-nowrap duration-200 border rounded-full font-medium transition-all${isBookable
-                            ? "bg-primary border-2 border-secondary text-secondary hover:bg-secondary hover:text-primary cursor-pointer"
-                            : "bg-gray-100 border-2 border-blue-300 text-blue-400 cursor-not-allowed"
-                            }`}
+                        onClick={() => handleBook(row)}
+                        className={`flex items-center gap-1 sm:gap-2 px-3 sm:px-4 text-nowrap py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
+                            isBookable
+                                ? "bg-primary border-2 border-secondary text-secondary hover:bg-secondary hover:text-primary cursor-pointer"
+                                : "bg-gray-100 border-2 border-gray-300 text-gray-400 cursor-not-allowed"
+                        }`}
                     >
-                        <Calendar className="w-4 h-4 " />
+                        <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
                         Book Now
                     </button>
                 );
@@ -129,16 +132,13 @@ export function RejectedServices({width}) {
     ];
 
     return (
-        
-            <div className='pr-12'>
-
-                <Table
-                   columns={columns} data={allServicesData} width={width}
-                />
-                
-            </div>
-        
-    )
+        <div className="pr-12">
+            <Table
+                columns={columns}
+                data={allServicesData}
+                width={width}
+            />
+        </div>
+    );
 }
-
 
