@@ -4,9 +4,11 @@ import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar";
 import StatusCard from "../../Client/Dashboard/StatusCard";
 import ServicesStatistics from "../../Shared/ServicesStatics"
-import { ServiceTable } from "../../Client/Dashboard/ServiceTable"
+
 import RecentServicesTab from "../../../Pages/Provider/RecentServicesTab";
 import AddNewButton from "./AddNewButton";
+import { AvailableServicesTable } from "../AvailableServices/AvailableServicesTable";
+
 export function DashboardProvider() {
   const [isExpanded, setIsExpanded] = useState(true);
 
@@ -41,7 +43,7 @@ export function DashboardProvider() {
         <div className="max-w-[1600px] mx-auto px-4 md:px-8 xl:px-12 py-20 space-y-10">
 
             <div className="grid grid-cols-1 md:grid-cols-2 items-start gap-4">
-              <Paragraphy
+              <Paragraphy 
                 highlight={"Dashboard Overview"}
                 description={"Quick summary of key matrix, recent activities and service performance"}
               />
@@ -58,9 +60,9 @@ export function DashboardProvider() {
             <div>
               <RecentServicesTab />
             </div>
-            <div className="">
-              <ServiceTable role={"provider"} />
-            </div>
+           
+           <AvailableServicesTable />
+            
           </div>
         </main>
 
