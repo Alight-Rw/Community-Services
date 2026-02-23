@@ -3,7 +3,7 @@ import { FaShieldAlt, FaBell, FaLock } from "react-icons/fa";
 
 const SettingsCard = () => {
     return (
-        <div className=" bg-gray-100 py-10 pr-3 " >
+        <div className="py-10 pr-3 " >
 
 
 

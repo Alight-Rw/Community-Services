@@ -35,7 +35,7 @@ export function Settings() {
                 }
               />
             </div>
-            <div className="ml-8 md:ml-0 overflow-y-auto">
+            <div className="ml-8 md:ml-0">
               <SettingProfileSection />
               <SettingsCard />
             </div>
