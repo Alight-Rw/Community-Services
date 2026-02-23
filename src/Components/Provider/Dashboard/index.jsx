@@ -4,9 +4,10 @@ import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar";
 import StatusCard from "../../Client/Dashboard/StatusCard";
 import ServicesStatistics from "../../Shared/ServicesStatics";
-import { ServiceTable } from "../../Client/Dashboard/ServiceTable";
+
 import RecentServicesTab from "../../../Pages/Provider/RecentServicesTab";
-import AddNewButton from "./AddNewButton";
+import AddNewServiceButton from "./AddNewServiceButton";
+import AddNewService from "./AddNewService";
 import { AvailableServicesTable } from "../AvailableServices/AvailableServicesTable";
 
 export function DashboardProvider() {
@@ -56,9 +57,9 @@ export function DashboardProvider() {
             <div>
               <RecentServicesTab />
             </div>
-           
-           <AvailableServicesTable />
-            
+            <div className="">
+              <AvailableServicesTable role={"provider"} />
+            </div>
           </div>
         </main>
       </div>
