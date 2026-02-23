@@ -12,7 +12,8 @@ export function AvailableServiceTable() {
       status: "Completed",
       requestNotes:
         "Please schedule the service for Friday morning and call before arrival.",
-      rejectionNotes: "Request declined due tounavailable time slot on theselected date.",
+      rejectionNotes:
+        "Request declined due tounavailable time slot on theselected date.",
     },
     {
       id: 15,
@@ -36,7 +37,8 @@ export function AvailableServiceTable() {
       status: "Completed",
       requestNotes:
         "Please schedule the service for Friday morning and call before arrival.",
-      rejectionNotes: "Request declined due tounavailable time slot on theselected date.",
+      rejectionNotes:
+        "Request declined due tounavailable time slot on theselected date.",
     },
     {
       id: 13,
@@ -54,76 +56,69 @@ export function AvailableServiceTable() {
 
   const getStatusStyle = (status) => {
     switch (status) {
-      case "Available":
-        return "bg-green-100 text-green-700";
       case "Completed":
-        return "bg-blue-100 text-blue-700";
-      case "Waiting":
-        return "bg-yellow-100 text-yellow-700";
-      case "Rejected":
-        return "bg-red-100 text-red-700";
-      default:
-        return "bg-gray-100 text-gray-600";
+        return "bg-green-100  ";
+      
+        
     }
   };
 
-  const canBook = (status) => status === "Available" || status === "Completed";
+  const canBook = (status) =>
+    status === "Available" || status === "Completed";
 
-  const handleBookClick = (service) => {
-    if (!canBook(service.status)) {
-      alert("This service cannot be booked right now!");
-      return;
-    }
-    alert(`You have booked: ${service.name}`);
-    console.log("Booking service:", service.name);
+  
+  const BookClick = (service) => {
+    if (!canBook(service.status)) return;
+
+    console.log("Booked:", service.name);
   };
 
   return (
-    <div className="w-full bg-white rounded-2xl shadow-md p-4 md:p-6 max-h-[80vh] overflow-y-auto">
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[700px] md:min-w-[1200px] text-left">
+    <div className="w-full bg-white rounded-2xl shadow-md p-6 space-y-6 overflow-hidden">
+      <div className="w-full overflow-x-auto">
+        <table className="w-full min-w-[1000px] text-left">
           <thead>
             <tr className="text-gray-700 text-sm">
-              <th className="pb-4">Service</th>
-              <th className="pb-4">Contact</th>
-              <th className="pb-4">Hours</th>
-              <th className="pb-4">Status</th>
-              <th className="pb-4">Request Notes</th>
-              <th className="pb-4">Rejection Notes</th>
-              <th className="pb-4 text-center">Action</th>
+              <th className="pb-4 px-3">Service</th>
+              <th className="pb-4 px-3">Contact</th>
+              <th className="pb-4 px-3">Hours</th>
+              <th className="pb-4 px-3">Status</th>
+              <th className="pb-4 px-3">Request Notes</th>
+              <th className="pb-4 px-3">Rejection Notes</th>
+              <th className="pb-4 px-3 text-center">Action</th>
             </tr>
           </thead>
+
           <tbody>
             {Services.map((service) => (
-              <tr
-                key={service.id}
-                className="last:border-none hover:bg-gray-50 transition"
-              >
-                {/* Service */}
-                <td className="py-4">
+              <tr key={service.id} className="hover:bg-gray-50 transition">
+                <td className="py-4 px-3">
                   <div className="flex items-center gap-4">
                     <img
                       src={service.image}
                       alt={service.name}
-                      className="w-14 h-14 rounded-xl object-cover"
+                      className="w-14 h-14 rounded-xl object-cover flex-shrink-0"
                     />
                     <div>
                       <p className="font-semibold text-gray-800">
                         {service.name}
                       </p>
-                      <p className="text-sm text-gray-500">{service.location}</p>
+                      <p className="text-sm text-gray-500">
+                        {service.location}
+                      </p>
                     </div>
                   </div>
                 </td>
 
-                {/* Contact */}
-                <td className="py-4 text-gray-700 ">{service.contact}</td>
+                <td className="py-4 px-3 text-gray-700">
+                  {service.contact}
+                </td>
 
-                {/* Hours */}
-                <td className="py-4 text-gray-700">{service.hours}</td>
+                <td className="py-4 px-3 text-gray-700">
+                  {service.hours}
+                </td>
 
-                {/* Status */}
-                <td className="py-4">
+                <td className="py-4 px-3">
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusStyle(
                       service.status
@@ -133,31 +128,30 @@ export function AvailableServiceTable() {
                   </span>
                 </td>
 
-                {/* Request Notes */}
-                <td className="py-4 text-gray-600 max-w-[250px] whitespace-normal">
+                <td className="py-4 px-3 text-gray-600 max-w-[250px] break-words">
                   {service.requestNotes}
                 </td>
 
-                {/* Rejection Notes */}
-                <td className="py-4 text-gray-600 max-w-[250px] whitespace-normal">
+                <td className="py-4 px-3 text-gray-600 max-w-[250px] break-words">
                   {service.rejectionNotes}
                 </td>
 
-                {/* Action */}
-                <td className="py-4 text-center flex justify-center">
-                  <button
-                    onClick={() => BookClick(service)}
-                    className={`inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full font-medium transition
-                      ${
-                        canBook(service.status)
-                          ? "bg-blue-600 text-white hover:bg-blue-800 cursor-pointer"
-                          : "bg-gray-200 text-gray-400 hover:bg-gray-300 cursor-not-allowed"
-                      } max-w-[150px] truncate`}
-                    style={{ boxSizing: "border-box" }}
-                  >
-                    <Calendar className="w-4 h-4" />
-                    <span className="whitespace-nowrap text-center ">Book Now</span>
-                  </button>
+                <td className="py-4 px-3 text-center">
+                  <div className="flex justify-center">
+                    <button
+                      onClick={() => BookClick(service)}
+                      
+                      className={`inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full font-medium transition
+                        ${
+                          canBook(service.status)
+                            ? "bg-blue-600 text-white hover:bg-blue-800"
+                            : "bg-gray-200 text-gray-400 cursor-not-allowed"
+                        }`}
+                    >
+                      <Calendar className="w-4 h-4" />
+                      Book Now
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
