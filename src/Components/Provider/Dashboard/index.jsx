@@ -1,72 +1,82 @@
 import React, { useState } from "react";
-import Paragraphy from "../../Shared/Title";
-import DashboardNav from "../../Shared/DashboardNav";
-import Sidebar from "../../Shared/Sidebar";
-import StatusCard from "../../Client/Dashboard/StatusCard";
-import ServicesStatistics from "../../Shared/ServicesStatics";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import RecentServicesTab from "../../../Pages/Provider/RecentServicesTab";
-import AddNewServiceButton from "./AddNewServiceButton";
-import AddNewService from "./AddNewService";
-import { AvailableServicesTable } from "../AvailableServices/AvailableServicesTable";
-import StatusButton from "./StatusesButtons";
+const StatusCard = () => {
+  const [hoveredId, setHoveredId] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-export function DashboardProvider() {
-  const [visible, setVisible] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const isProviderPath = location.pathname.startsWith("/provider-");
 
-  const handleVIsible = () => setVisible(!visible);
+  const statusData = [
+    { id: "client-1", title: "Available Services", total: 1007, icon: "/images/Available-services.png", trend: "/images/Trends.png", path: "/client-available-services" },
+    { id: "client-2", title: "Requested Services", total: 17, icon: "/images/Requested-services.png", trend: "/images/Trends1.png", path: "/client-requested-services" },
+    { id: "client-3", title: "Waiting Services", total: 1, icon: "/images/Waiting-services.png", trend: "/images/Trends4.png", path: "/client-waiting-services" },
+    { id: "client-4", title: "Completed Services", total: 9, icon: "/images/Completed-services.png", trend: "/images/Trends2.png", path: "/client-completed-services" },
+    { id: "client-5", title: "Rejected Services", total: 2, icon: "/images/Rejected-services.png", trend: "/images/Trends3.png", path: "/client-rejected-services" },
 
+    { id: "provider-1", title: "Available Services", total: 3, icon: "/images/Available-services.png", trend: "/images/Trends.png", path: "/provider-available-services" },
+    { id: "provider-2", title: "Requested Services", total: 309, icon: "/images/Requested-services.png", trend: "/images/Trends1.png", path: "/provider-requested-services" },
+    { id: "provider-3", title: "Waiting Services", total: 42, icon: "/images/Waiting-services.png", trend: "/images/Trends4.png", path: "/provider-waiting-services" },
+    { id: "provider-4", title: "Completed Services", total: 207, icon: "/images/Completed-services.png", trend: "/images/Trends2.png", path: "/provider-completed-services" },
+    { id: "provider-5", title: "Rejected Services", total: 60, icon: "/images/Rejected-services.png", trend: "/images/Trends3.png", path: "/provider-rejected-services" }
+  ];
 
   return (
-    <div className="flex flex-col h-screen bg-universal overflow-hidden">
-      <DashboardNav />
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 pt-12 pb-6">
+      {statusData
+        .filter(item =>
+          isProviderPath
+            ? item.path.startsWith("/provider-")
+            : item.path.startsWith("/client-")
+        )
+        .map((item) => {
+          const isHovered = hoveredId === item.id;
 
-      <div className="flex flex-1 overflow-hidden relative">
-        {isExpanded && (
-          <div
-            className="fixed inset-0 bg-black/50 z-20 xl:hidden transition-opacity"
-            onClick={() => setIsExpanded(false)}
-          />
-        )}
+          return (
+            <div
+              key={item.path}
+              onMouseEnter={() => setHoveredId(item.id)}
+              onMouseLeave={() => setHoveredId(null)}
+              onClick={() => navigate(item.path)}
+              className={`relative bg-white rounded-xl shadow-md border-2
+                ${isHovered 
+                  ? "border-secondary shadow-lg scale-[1.02]" 
+                  : "border-secondary/30"} 
+                transition-all duration-300 cursor-pointer h-[210px] 
+                flex flex-col justify-end items-center p-4`}
+            >
+              <div className="absolute -top-6 -left-4 bg-white text-secondary
+                              w-14 h-14 rounded-lg flex items-center 
+                              justify-center text-lg font-bold shadow-md border border-secondary">
+                {item.total}
+              </div>
 
-        <div className="fixed inset-y-0 left-0 z-50 xl:relative">
-          <Sidebar isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
-        </div>
-
-        <main
-          className={` flex-1 overflow-y-auto transition-all duration-300 ease-in-out ${!isExpanded ? "ml-25 sm:33 md:ml-35 lg:ml-30 w-full xl:ml-11" : "ml-0"} /* Avoid going behind sidebar when collapsed */ `}
-        >
-          <div className="max-w-[1600px] mx-auto px-4 md:px-8 xl:px-12 py-20 space-y-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 items-start gap-4">
-              <Paragraphy
-                highlight={"Dashboard Overview"}
-                description={
-                  "Quick summary of key matrix, recent activities and service performance"
-                }
+              <img
+                src={item.trend}
+                alt="trend"
+                className="absolute top-4 right-4 w-10"
               />
-              <AddNewServiceButton onClick={handleVIsible} />
-            </div>
 
-            <div className="">
-              <StatusCard />
-            </div>
+              <div className="flex-1 flex items-center justify-center w-full">
+                <img
+                  src={item.icon}
+                  alt="icon"
+                  className="max-h-[100px] object-contain"
+                />
+              </div>
 
-            <div className="">
-              <ServicesStatistics />
+              <p
+                className={`text-lg font-bold mt-2 transition-colors duration-300 
+                  ${isHovered ? "text-secondary" : "text-slate-700"}`}
+              >
+                {item.title}
+              </p>
             </div>
-            <div>
-              <RecentServicesTab />
-            </div>
-            <div className="">
-              <AvailableServicesTable role={"provider"} />
-            </div>
-          </div>
-        </main>
-      </div>
-
-      {visible === true && <AddNewService onClick={handleVIsible} />}
-      <StatusButton / >
+          );
+        })}
     </div>
   );
-}
+};
+
+export default StatusCard;
