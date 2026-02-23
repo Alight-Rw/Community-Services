@@ -6,8 +6,8 @@ import StatusCard from "../../Client/Dashboard/StatusCard";
 import ServicesStatistics from "../../Shared/ServicesStatics";
 import { ServiceTable } from "../../Client/Dashboard/ServiceTable";
 import RecentServicesTab from "../../../Pages/Provider/RecentServicesTab";
-import AddNewServiceButton from "./AddNewServiceButton";
-import AddNewService from "./AddNewService";
+import AddNewButton from "./AddNewButton";
+import { AvailableServicesTable } from "../AvailableServices/AvailableServicesTable";
 
 export function DashboardProvider() {
   const [visible, setVisible] = useState(false);
@@ -56,9 +56,9 @@ export function DashboardProvider() {
             <div>
               <RecentServicesTab />
             </div>
-            <div className="">
-              <ServiceTable role={"provider"} />
-            </div>
+           
+           <AvailableServicesTable />
+            
           </div>
         </main>
       </div>
