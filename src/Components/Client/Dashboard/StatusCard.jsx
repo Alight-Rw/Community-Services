@@ -8,11 +8,11 @@ const StatusCard = () => {
   const navigate = useNavigate();
 
   const statusData = [
-    { id: 1, title: "Available Services", icon: "/images/Available-services.png", trend: "/images/Trends.png", totalImg: "/images/Total.png", path: "/client-available-services" },
-   { id: 2, title: "Requested Services", icon: "/images/Requested-services.png", trend: "/images/Trends1.png", totalImg: "/images/Total1.png", path: "/client-requested-services" },
-    { id: 3, title: "Waiting Services", icon: "/images/Waiting-services.png", trend: "/images/Trends4.png", totalImg: "/images/Total4.png", path: "/client-waiting-services" },
-    { id: 4, title: "Completed Services", icon: "/images/Completed-services.png", trend: "/images/Trends2.png", totalImg: "/images/Total2.png", path: "/client-completed-services" },
-    { id: 5, title: "Rejected Services", icon: "/images/Rejected-services.png", trend: "/images/Trends3.png", totalImg: "/images/Total3.png", path: "/client-rejected-services" },
+    { id: 1, title: "Available Services", icon: "/images/Available-services.png", trend: "/images/Trends.png", totalImg: "/images/Total.png", path: "/available-services" },
+   { id: 2, title: "Requested Services", icon: "/images/Requested-services.png", trend: "/images/Trends1.png", totalImg: "/images/Total1.png", path: "/requested-services" },
+    { id: 3, title: "Waiting Services", icon: "/images/Waiting-services.png", trend: "/images/Trends4.png", totalImg: "/images/Total4.png", path: "/waiting-services" },
+    { id: 4, title: "Completed Services", icon: "/images/Completed-services.png", trend: "/images/Trends2.png", totalImg: "/images/Total2.png", path: "/completed-services" },
+    { id: 5, title: "Rejected Services", icon: "/images/Rejected-services.png", trend: "/images/Trends3.png", totalImg: "/images/Total3.png", path: "/rejected-services" },
 
      { id: 1, title: "Available Services", icon: "/images/Available-services.png", trend: "/images/Trends.png", totalImg: "/images/Total.png", path: "/provider-available-services" },
    { id: 2, title: "Requested Services", icon: "/images/Requested-services.png", trend: "/images/Trends1.png", totalImg: "/images/Total1.png", path: "/provider-requested-services" },
