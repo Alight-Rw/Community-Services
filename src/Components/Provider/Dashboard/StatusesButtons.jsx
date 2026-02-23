@@ -1,41 +1,47 @@
-
-
 import React from "react";
 
+const StatusButton = ({ type, onClick, isActive = false }) => {
+  const variants = {
+    waiting: {
+      base: "border-gray-400 text-gray-400 hover:bg-gray-50",
+      active: "bg-gray-400 text-white border-gray-400 cursor-not-allowed",
+      label: "Waiting"
+    },
+    approve: {
+      base: "border-green-500 text-green-500 hover:bg-green-50",
+      active: "bg-green-500 text-white border-green-500 cursor-not-allowed",
+      label: "Approve"
+    },
+    complete: {
+      base: "border-blue-500 text-blue-500 hover:bg-blue-50",
+      active: "bg-blue-500 text-white border-blue-500 cursor-not-allowed",
+      label: "Complete"
+    },
+    reject: {
+      base: "border-red-500 text-red-500 hover:bg-red-50",
+      active: "bg-red-800/80 text-white border-red-800/30 cursor-not-allowed",
+      label: "Reject"
+    }
+  };
 
-export default function StatusButtons({ onEdit, onDelete }) {
+  const style = variants[type?.toLowerCase()] || variants.waiting;
+
   return (
-    <div className=" gap-2">
-        <div className="grid grid-cols-2">
-      <button
-        onClick={onEdit}
-        className="flex items-center gap-1 px-7 py-1 border-2 border-hard-gray rounded-[10px] w-[120px] h-[40px] text-black  hover:text-white"
-      >
-      
-        Waiting
-      </button>
-      <button
-        onClick={onDelete}
-        className="flex items-center gap-1 px-7 py-1 border-2 border-green-500 rounded-[10px] w-[120px] h-[40px]  hover:bg-red-800 hover:text-white"
-      >
-       
-        Approve
-      </button>
-      </div>
-       <button
-        onClick={onEdit}
-        className="flex items-center gap-1 px-7 py-1 border-2 rounded-[10px] w-[120px] h-[40px] text-blue-600 hover:bg-secondary hover:text-white"
-      >
-       
-        Reject
-      </button>
-      <button
-        onClick={onDelete}
-        className="flex items-center gap-1 px-7 py-1 border-2 rounded-[10px] w-[120px] h-[40px] text-red-600 hover:bg-red-800 hover:text-white"
-      >
-        
-        Accept
-      </button>
-    </div>
+    <button
+      onClick={onClick}
+      disabled={isActive} 
+      className={`
+        flex items-center justify-center 
+        rounded-full border-2 
+        text-[10px] font-bold 
+        w-[75px] h-[28px] 
+        transition-all duration-200 
+        ${isActive ? style.active : style.base}
+      `}
+    >
+      {style.label}
+    </button>
   );
-}
+};
+
+export default StatusButton;

@@ -3,8 +3,9 @@
 import { Calendar } from 'lucide-react';
 import Table from '../../Shared/Table';
 import Pagination from '../../Shared/Pagination';
+import StatusButton from '../Dashboard/StatusesButtons';
 
-export function RejectedServicesTable({width}) {
+export function RejectedServicesTable({ width }) {
 
     const allServicesData = [
         {
@@ -49,20 +50,39 @@ export function RejectedServicesTable({width}) {
             location: "KG 9 Avenue, Kigali",
             contact: "+250788888888",
             hours: "08:00AM - 18:00PM",
-            status: "Completed",
+            status: "Rejected",
             requestnotes: "Please schedule the servicefor Friday morning and call before arrival.",
             rejection: "N/A"
         },
     ]
 
-    const canBook = (service) => {
-        if (service.status === "Rejected") return true;
-        if (service.status === "Rejected") return true;
-        if (service.status === "Rejected") return true;
-        if (service.status === "Rejected") return true;
-        if (service.status === "Rejected") return true;
-        return true;
+    const ActionGrid = ({ currentStatus, onStatusChange }) => {
+        const statusList = ["waiting", "approve", "complete", "reject"];
+
+        const isButtonActive = (btnType) => {
+            const normalizedStatus = currentStatus?.toLowerCase();
+
+            if (normalizedStatus === "approved" && btnType === "approve") return true;
+            if (normalizedStatus === "completed" && btnType === "complete") return true;
+            if (normalizedStatus === "rejected" && btnType === "reject") return true;
+            return normalizedStatus === btnType;
+        };
+
+        return (
+            <div className="grid grid-cols-2 gap-x-15 gap-y-3 w-fit">
+                {statusList.map((status) => (
+                    <StatusButton
+                        key={status}
+                        type={status}
+                        isActive={isButtonActive(status)}
+                        onClick={() => onStatusChange(status)}
+                    />
+                ))}
+            </div>
+        );
     };
+
+   
     const columns = [
         {
             header: "Service Avatar",
@@ -111,37 +131,27 @@ export function RejectedServicesTable({width}) {
 
         {
             header: "Action",
-            accessor: "id",
-
-            render: (value, row) => {
-                const isBookable = canBook(row);
-                return (
-                    <button
-                        disabled={!isBookable}
-                        className={`flex items-center gap-1 sm:gap-2 px-3 sm:px-4 text-nowrap py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${isBookable
-                            ? "bg-primary border-2 border-secondary text-secondary hover:bg-secondary hover:text-primary cursor-pointer"
-                            : "bg-gray-100 border-2 border-gray-300 text-gray-400 cursor-not-allowed"
-                            }`}
-                    >
-                        <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
-                        Book Now
-                    </button>
-                );
-            },
+            accessor: "status",
+            render: (status, row) => (
+                <ActionGrid
+                    currentStatus={status}
+                    onStatusChange={(newStatus) => console.log(`Updating ID ${row.id} to ${newStatus}`)}
+                />
+            ),
         },
     ];
 
     return (
 
-       <>
+        <>
 
-             
-      <Table columns={columns} data={allServicesData} width={width}/>
-       <div className='px-1'>
-      <Pagination />
-      </div>
-   
-     </>
+
+            <Table columns={columns} data={allServicesData} width={width} />
+            <div className='px-1'>
+                <Pagination />
+            </div>
+
+        </>
 
     )
 }
