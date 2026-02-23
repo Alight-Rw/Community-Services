@@ -5,9 +5,9 @@ import Paragraphy from '../../Shared/Title';
 import DashboardNav from '../../Shared/DashboardNav';
 import Sidebar from '../../Shared/Sidebar';
 import DashboardSearch from '../../Shared/DashboardSearch';
-import { WaitingServicesTable } from './WaitingServices';
+import { AvailableServicesTable } from './AvailableServicesTable';
 
-export function WaitingSevicesProvider() {
+export function AvailableServicesProvider() {
   const [isExpanded, setIsExpanded] = useState(true);
 
   return (
@@ -43,7 +43,7 @@ export function WaitingSevicesProvider() {
             <DashboardSearch />
           </div>
           <div className='ml-8 md:ml-0 overflow-y-auto'>
-            <WaitingServicesTable
+            <AvailableServicesTable
               width={isExpanded == true ? '1467px' : '1680px'}
             />
           </div>

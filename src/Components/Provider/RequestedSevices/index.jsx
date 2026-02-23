@@ -1,11 +1,11 @@
-/** @format */
+
 
 import React, { useState } from 'react';
 import Paragraphy from '../../Shared/Title';
 import DashboardNav from '../../Shared/DashboardNav';
 import Sidebar from '../../Shared/Sidebar';
-import { RequestedSevicesTable } from '../../Client/RequestedSevices/RequestedSevices';
 import DashboardSearch from '../../Shared/DashboardSearch';
+import { RequestedSevicesTable } from './RequestedSevices';
 
 export function RequestedSevicesProvider() {
   const [isExpanded, setIsExpanded] = useState(true);
@@ -44,7 +44,7 @@ export function RequestedSevicesProvider() {
           </div>
           <div className='ml-8 md:ml-0 overflow-y-auto'>
             <RequestedSevicesTable
-              width={isExpanded == true ? '1530px' : '1680px'}
+              width={isExpanded == true ? '1467px' : '1680px'}
             />
           </div>
         </main>
