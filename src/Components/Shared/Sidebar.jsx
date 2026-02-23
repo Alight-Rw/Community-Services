@@ -17,12 +17,12 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
   const navigate = useNavigate();
 
   const menuItems = [
-    { icon: <LayoutGrid size={22} />, label: 'Dashboard', path: '/dashboard' },
-    { icon: <HelpCircle size={22} />, label: 'Requested Services', path: '/requested-services' },
-    { icon: <Clock size={22} />, label: 'Waiting Services', path: '/waiting-services' },
-    { icon: <CheckCircle2 size={22} />, label: 'Completed Services', path: '/completed-services' },
-    { icon: <XCircle size={22} />, label: 'Rejected Services', path: '/rejected-services' },
-    { icon: <Settings size={22} />, label: 'Settings', path: '/settings' },
+    { icon: <LayoutGrid size={22} />, label: 'Dashboard', path: '/client-dashboard' },
+    { icon: <HelpCircle size={22} />, label: 'Requested Services', path: '/client-requested-services' },
+    { icon: <Clock size={22} />, label: 'Waiting Services', path: '/client-waiting-services' },
+    { icon: <CheckCircle2 size={22} />, label: 'Completed Services', path: '/client-completed-services' },
+    { icon: <XCircle size={22} />, label: 'Rejected Services', path: '/client-rejected-services' },
+    { icon: <Settings size={22} />, label: 'Settings', path: '/client-settings' },
 
     { icon: <LayoutGrid size={22} />, label: 'Dashboard', path: '/provider-dashboard' },
     { icon: <HelpCircle size={22} />, label: 'Requested Services', path: '/provider-requested-services' },
