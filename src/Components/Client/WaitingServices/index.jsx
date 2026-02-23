@@ -29,8 +29,12 @@ export function WaitingSevices() {
           />
         </div>
 
-        <main className='flex-1 pl-20 overflow-y-auto transition-all duration-300'>
-          <div className='px-8 md:px-0 pt-20 md:space-y-1 '>
+
+        <main className="flex-1 pl-20 overflow-y-auto transition-all duration-300">
+
+
+
+          <div className="px-8 md:px-0 pt-20 md:space-y-1 ">
             <Paragraphy
               highlight={'Waiting Services'}
               description={
@@ -42,8 +46,14 @@ export function WaitingSevices() {
           <div className='px-8 md:px-0 md:pr-14 py-10 w-[350px] md:w-full'>
             <DashboardSearch />
           </div>
-          <div className='ml-8 md:ml-0 overflow-y-auto'>
-            <WaitingServices width={isExpanded == true ? '1530px' : '1680px'} />
+          <div className="ml-8 md:ml-0 overflow-y-auto">
+              <WaitingServices 
+  width={isExpanded==true 
+    ? "1530px"   
+    : "1680px"   
+  } 
+/>
+
           </div>
         </main>
       </div>
