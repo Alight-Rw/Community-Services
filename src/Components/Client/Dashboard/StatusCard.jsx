@@ -23,11 +23,9 @@ const StatusCard = () => {
 ];
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6   pt-12 pb-3 font-san flex justify-center w-full ">
-     {statusData.map((item, index) => {
-          const isActive = location.pathname === item.path;
+     {statusData.map((item) => {
           const isProviderNav = item.path.startsWith("/provider-");
           const isProviderPath = location.pathname.startsWith("/provider-");
-          if (isProviderPath) console.log('TEST-LOG', isProviderPath)
 
           if (isProviderNav && isProviderPath) 
         return (

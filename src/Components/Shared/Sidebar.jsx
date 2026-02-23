@@ -68,7 +68,6 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
           const isActive = location.pathname === item.path;
           const isProviderNav = item.path.startsWith("/provider-");
           const isProviderPath = location.pathname.startsWith("/provider-");
-          if (isProviderPath) console.log('TEST-LOG', isProviderPath)
 
           if (isProviderNav && isProviderPath) return (
             <Link
