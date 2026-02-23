@@ -3,7 +3,7 @@ import { Plus } from "lucide-react";
 
 function AddNewButton({ onClick }) {
   return (
-    <div className="pt-6 flex justify-end mr-4 sm:mr-8">
+    <div className="pt-6 flex justify-end  ">
       <button
         onClick={onClick}
         className="

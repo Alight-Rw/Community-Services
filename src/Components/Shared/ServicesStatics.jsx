@@ -10,7 +10,7 @@ const ServicesStatics = () => {
   const [activeFilter, setActiveFilter] = useState("Week");
 
   return (
-    <div className="lg:col-span-9 bg-primary shadow-sm p-5 sm:p-6 md:p-6 rounded-[28px] md:rounded-[32px] flex flex-col justify-between border border-gray-100 min-h-[350px] md:min-h-[400px]">
+    <div className="lg:col-span-9 bg-primary shadow-sm p-5 sm:p-6 md:p-6 rounded-[28px] md:rounded-[32px] flex flex-col justify-between border border-gray-100 min-h-[350px] md:min-h-[400px] ">
 
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 md:mb-10 gap-4">
         <div className="max-w-2xl">
