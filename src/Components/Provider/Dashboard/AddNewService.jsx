@@ -132,7 +132,7 @@ export default function AddNewService({ onClick }) {
           </label>
         </div>
 
-        <div className="flex justify-end gap-4 pt-1">
+        <div className="flex justify-end  gap-4 pt-1">
           <button
             type="button"
             className="w-100 py-3 rounded-full border border-gray-300 text-gray-800 font-bold text-sm hover:bg-gray-50 transition"
