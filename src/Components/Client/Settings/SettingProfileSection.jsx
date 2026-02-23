@@ -15,7 +15,7 @@ function SettingProfileSection() {
   };
 
   return (
-    <div className="w-full p-3 md:p-6">
+    <div className="w-full pr-3 pt-10">
       <div className="border border-hard-gray rounded-[20px] p-4 md:p-10 w-full bg-primary relative">
 
         {isEditing ? (
