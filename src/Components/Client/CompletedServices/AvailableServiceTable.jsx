@@ -1,7 +1,7 @@
 import { Calendar } from "lucide-react";
 
 export function AvailableServiceTable() {
-  const services = [
+  const Services = [
     {
       id: 17,
       image: "/Service.png",
@@ -9,10 +9,10 @@ export function AvailableServiceTable() {
       location: "KG 15 Ave, Kigali",
       contact: "+250788555555",
       hours: "08:00AM - 18:00PM",
-      status: "Available",
+      status: "Completed",
       requestNotes:
         "Please schedule the service for Friday morning and call before arrival.",
-      rejectionNotes: "N/A",
+      rejectionNotes: "Request declined due tounavailable time slot on theselected date.",
     },
     {
       id: 15,
@@ -21,7 +21,7 @@ export function AvailableServiceTable() {
       location: "NY 8 Rd, Nyamirambo",
       contact: "+250788222222",
       hours: "09:00AM - 18:00PM",
-      status: "Waiting",
+      status: "Completed",
       requestNotes:
         "Please schedule the service for Friday morning and call before arrival.",
       rejectionNotes: "N/A",
@@ -36,7 +36,7 @@ export function AvailableServiceTable() {
       status: "Completed",
       requestNotes:
         "Please schedule the service for Friday morning and call before arrival.",
-      rejectionNotes: "N/A",
+      rejectionNotes: "Request declined due tounavailable time slot on theselected date.",
     },
     {
       id: 13,
@@ -45,7 +45,7 @@ export function AvailableServiceTable() {
       location: "KG 8 St Remera-Kabeza",
       contact: "+250788888888",
       hours: "08:00AM - 17:00PM",
-      status: "Available",
+      status: "Completed",
       requestNotes:
         "Please schedule the service for Friday morning and call before arrival.",
       rejectionNotes: "N/A",
@@ -67,15 +67,21 @@ export function AvailableServiceTable() {
     }
   };
 
-  const canBook = (status) => {
-    return status === "Available" || status === "Completed";
+  const canBook = (status) => status === "Available" || status === "Completed";
+
+  const handleBookClick = (service) => {
+    if (!canBook(service.status)) {
+      alert("This service cannot be booked right now!");
+      return;
+    }
+    alert(`You have booked: ${service.name}`);
+    console.log("Booking service:", service.name);
   };
 
   return (
-    <div className="w-full bg-white rounded-2xl shadow-md p-4 md:p-6 max-h-[80vh]">
-      {/* wrapper for horizontal scroll on mobile */}
-      <div className="w-full overflow-x-auto max-h-[80vh]">
-        <table className="w-full min-w-[700px] md:min-w-[1200px] text-left ">
+    <div className="w-full bg-white rounded-2xl shadow-md p-4 md:p-6 max-h-[80vh] overflow-y-auto">
+      <div className="overflow-x-auto">
+        <table className="w-full min-w-[700px] md:min-w-[1200px] text-left">
           <thead>
             <tr className="text-gray-700 text-sm">
               <th className="pb-4">Service</th>
@@ -87,9 +93,8 @@ export function AvailableServiceTable() {
               <th className="pb-4 text-center">Action</th>
             </tr>
           </thead>
-
           <tbody>
-            {services.map((service) => (
+            {Services.map((service) => (
               <tr
                 key={service.id}
                 className="last:border-none hover:bg-gray-50 transition"
@@ -112,7 +117,7 @@ export function AvailableServiceTable() {
                 </td>
 
                 {/* Contact */}
-                <td className="py-4 text-gray-700">{service.contact}</td>
+                <td className="py-4 text-gray-700 ">{service.contact}</td>
 
                 {/* Hours */}
                 <td className="py-4 text-gray-700">{service.hours}</td>
@@ -139,17 +144,19 @@ export function AvailableServiceTable() {
                 </td>
 
                 {/* Action */}
-                <td className="py-4 text-center">
+                <td className="py-4 text-center flex justify-center">
                   <button
-                    disabled={!canBook(service.status)}
-                    className={`flex items-center justify-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition ${
-                      canBook(service.status)
-                        ? "bg-blue-600 text-white hover:bg-blue-700"
-                        : "bg-gray-200 text-gray-400 cursor-not-allowed"
-                    }`}
+                    onClick={() => BookClick(service)}
+                    className={`inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full font-medium transition
+                      ${
+                        canBook(service.status)
+                          ? "bg-blue-600 text-white hover:bg-blue-800 cursor-pointer"
+                          : "bg-gray-200 text-gray-400 hover:bg-gray-300 cursor-not-allowed"
+                      } max-w-[150px] truncate`}
+                    style={{ boxSizing: "border-box" }}
                   >
                     <Calendar className="w-4 h-4" />
-                    Book Now
+                    <span className="whitespace-nowrap text-center ">Book Now</span>
                   </button>
                 </td>
               </tr>
