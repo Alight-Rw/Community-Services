@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Paragraphy from "../../Shared/Title";
 import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar";
-import { RejectionServicesTable } from "./RejectionServiceTable";
+import { RejectedServices, } from "./RejectedServices";
 import DashboardSearch from "../../Shared/DashboardSearch";
 
 export function RejectedSevices() {
@@ -38,15 +38,16 @@ export function RejectedSevices() {
                 "Overview of services requested by the client that were not approved or denied."
               }
             />
-            <div className="px-8 md:px-0 md:pr-14 py-10 w-[350px] md:w-full">
+            <div className="px-0 mx-0 md:px-0 md:pr-14 py-10 w-[350px] md:w-full">
               <DashboardSearch />
             </div>
 
 
-            <div className="mt-8 flex-1 overflow-y-auto">
-              <RejectionServicesTable />
-
-            </div>
+             <div className='ml-8 md:ml-0 overflow-y-auto'>
+                        <RejectedServices
+                          width={isExpanded == true ? '1530px' : '1680px'}
+                        />
+                      </div>
           </div>
         </main>
       </div>
