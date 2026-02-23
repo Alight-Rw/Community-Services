@@ -8,7 +8,7 @@ import { ServiceTable } from "../../Client/Dashboard/ServiceTable"
 import RecentServicesTab from "../../../Pages/Provider/RecentServicesTab";
 import AddNewButton from "./AddNewButton";
 export function DashboardProvider() {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
 
   return (
     <div className="flex flex-col h-screen bg-universal overflow-hidden">

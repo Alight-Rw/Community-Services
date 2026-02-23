@@ -44,7 +44,7 @@ export function RequestedSevicesProvider() {
           </div>
           <div className='ml-8 md:ml-0 overflow-y-auto'>
             <RequestedSevicesTable
-              width={isExpanded == true ? '1467px' : '1680px'}
+              width={isExpanded == true ? '1530px' : '1680px'}
             />
           </div>
         </main>

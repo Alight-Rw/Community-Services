@@ -44,7 +44,7 @@ export function CompletedServicesProvider() {
           </div>
           <div className='ml-8 md:ml-0 overflow-y-auto'>
             <CompletedServicesTable
-              width={isExpanded == true ? '1467px' : '1680px'}
+              width={isExpanded == true ? '1530px' : '1680px'}
             />
           </div>
         </main>
