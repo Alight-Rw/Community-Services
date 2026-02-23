@@ -1,7 +1,7 @@
 import React from "react";
 import { Plus } from "lucide-react";
 
-function AddNewButton({ onClick }) {
+function AddNewServiceButton({ onClick }) {
   return (
     <div className="pt-6 flex justify-end  ">
       <button
@@ -38,4 +38,4 @@ function AddNewButton({ onClick }) {
   );
 }
 
-export default AddNewButton;
+export default AddNewServiceButton;
