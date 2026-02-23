@@ -31,7 +31,7 @@ export function RejectedSevices() {
             ${!isExpanded ? "ml-25 sm:33 md:ml-35 lg:ml-30 w-full xl:ml-11" : "ml-0"}
           `}
         >
-          <div className="max-w-[1600px] mx-auto py-20 md:space-y-10 px-7 sm:px-7 md:px-0 lg:px-0">
+          <div className="max-w-[1600px] mx-auto py-16 md:py-20 space-y-8 md:space-y-10 px-4 sm:px-6 md:px-8">
             <Paragraphy
               highlight={"Rejected Services"}
               description={
@@ -39,13 +39,13 @@ export function RejectedSevices() {
               }
             />
             <div className="px-8 md:px-0 md:pr-14 py-10 w-[350px] md:w-full">
-           <DashboardSearch/>
-          </div>
+              <DashboardSearch />
+            </div>
 
-          
+
             <div className="mt-8 flex-1 overflow-y-auto">
               <RejectionServicesTable />
-              
+
             </div>
           </div>
         </main>
