@@ -38,7 +38,7 @@ export function DashboardProvider() {
             ${!isExpanded ? "ml-25 sm:33 md:ml-35 lg:ml-30 w-full xl:ml-11" : "ml-0"} /* Avoid going behind sidebar when collapsed */
           `}
         >
-          <div className="max-w-[1600px] mx-auto py-20 md:space-y-10">
+        <div className="max-w-[1600px] mx-auto px-4 md:px-8 xl:px-12 py-20 space-y-10">
 
             <div className="grid grid-cols-1 md:grid-cols-2 items-start gap-4">
               <Paragraphy
@@ -48,17 +48,17 @@ export function DashboardProvider() {
               <AddNewButton />
             </div>
 
-            <div className="w-full">
+            <div className="">
               <StatusCard />
             </div>
 
-            <div className="w-full">
+            <div className="">
               <ServicesStatistics />
             </div>
             <div>
               <RecentServicesTab />
             </div>
-            <div className="w-full">
+            <div className="">
               <ServiceTable role={"provider"} />
             </div>
           </div>

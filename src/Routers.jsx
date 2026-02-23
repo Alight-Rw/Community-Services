@@ -46,7 +46,7 @@ export function Routers() {
             element={<HomePage />}
           />
           <Route
-            path='available-services'
+            path='client-available-services'
             element={<ServicePage />}
           />
           <Route
@@ -84,12 +84,12 @@ export function Routers() {
         />
 
         <Route path="/booking" element={<ConfirmBookingPage />} />
-        <Route path="dashboard" element={<DashboardClientPage/>}/>
-        <Route path="requested-services" element={<RequestedServicesPage/>}/>
-        <Route path="waiting-services" element={<WaitingServicesPage/>}/>
-        <Route path="completed-services" element={<CompletedServicesPage/>}/>
-        <Route path="rejected-services" element={<RejectedServicesPage/>}/>
-        <Route path="settings" element={<SettingsPage/>}/>
+        <Route path="/client-dashboard" element={<DashboardClientPage/>}/>
+        <Route path="/client-requested-services" element={<RequestedServicesPage/>}/>
+        <Route path="/client-waiting-services" element={<WaitingServicesPage/>}/>
+        <Route path="/client-completed-services" element={<CompletedServicesPage/>}/>
+        <Route path="/client-rejected-services" element={<RejectedServicesPage/>}/>
+        <Route path="client-settings" element={<SettingsPage/>}/>
 
         <Route path="provider-login" element={<Authentication/>}/>
         <Route path="provider-Dashboard" element={<Dashboard/>}/>
