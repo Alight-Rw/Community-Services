@@ -4,7 +4,7 @@ export default function AddNewService({ onClick }) {
   const inputClass = "w-full mt-1 px-4 py-2.5 rounded-full border border-hard-gray bg-primary text-hard-gray text-sm placeholder-hard-gray outline-none focus:border-2 focus:border-sky-blue";
 
   return (
-    <div className="fixed inset-0 px-[100px] bg-black/40 flex justify-center items-center z-50 p-4">
+    <div className="fixed inset-0 px-[100px] bg-black/40 flex justify-center items-center z-50 p-4 overflow-y-auto ">
     <div className="bg-primary w-full  rounded-2xl p-6 relative shadow-2xl">
 
       <button onClick={onClick} className="absolute top-5 right-5 border border-gray-300 rounded-xl p-2 hover:bg-gray-100 text-gray-500 transition" >
@@ -17,7 +17,7 @@ export default function AddNewService({ onClick }) {
 
       <div className="mt-4 space-y-3">
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
             <label className="text-sm font-semibold text-gray-800">
               Service Name<span className="text-red-500">*</span>
@@ -42,7 +42,7 @@ export default function AddNewService({ onClick }) {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
             <label className="text-sm font-semibold text-gray-800">
               Service Price<span className="text-red-500">*</span>
@@ -65,7 +65,7 @@ export default function AddNewService({ onClick }) {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
             <label className="text-sm font-semibold text-gray-800">
               Service Telephone<span className="text-red-500">*</span>
@@ -88,7 +88,7 @@ export default function AddNewService({ onClick }) {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
             <label className="text-sm font-semibold text-gray-800">
               Service From<span className="text-red-500">*</span>
@@ -124,7 +124,7 @@ export default function AddNewService({ onClick }) {
           <label className="text-sm font-semibold text-gray-800 mb-2 self-center">
             Service Image<span className="text-red-500">*</span>
           </label>
-          <label className="w-[580px] border border-gray-200 rounded-2xl py-5 flex flex-col items-center justify-center text-gray-400 cursor-pointer hover:bg-gray-50">
+          <label className="w-[350px] md:w-[580px] border border-gray-200 rounded-2xl py-5 flex flex-col items-center justify-center text-gray-400 cursor-pointer hover:bg-gray-50">
             <Upload size={26} className="text-gray-500 mb-2" />
             <p className="text-sm text-gray-500">Click to upload image</p>
             <p className="text-xs text-gray-400">PNG, JPG, GIF up to 10MB</p>
@@ -132,16 +132,16 @@ export default function AddNewService({ onClick }) {
           </label>
         </div>
 
-        <div className="flex justify-end  gap-4 pt-1">
+        <div className="flex flex-col sm:flex-row justify-center- md:justify-end  gap-4 pt-1">
           <button
             type="button"
-            className="w-100 py-3 rounded-full border border-gray-300 text-gray-800 font-bold text-sm hover:bg-gray-50 transition"
+            className="w-70 md:w-100 py-3 rounded-full border border-gray-300 text-gray-800 font-bold text-sm hover:bg-gray-50 transition"
           >
             Cancel
           </button>
           <button
             type="button"
-            className="w-100 py-3 rounded-full bg-sky-blue text-white font-bold text-sm hover:bg-secondary"
+            className="w-70 md:w-100 py-3 rounded-full bg-sky-blue text-white font-bold text-sm hover:bg-secondary"
           >
             Create Service
           </button>
