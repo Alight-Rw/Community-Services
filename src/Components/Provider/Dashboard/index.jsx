@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Paragraphy from "../../Shared/Title";
 import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar";
-import StatusCard from "../../Client/Dashboard/StatusCard";
+import StatusCard from "../../Shared/StatusCard";
 import ServicesStatistics from "../../Shared/ServicesStatics"
 import RecentServicesTab from "../../../Pages/Provider/RecentServicesTab";
 import { AvailableServicesTable } from "../AvailableServices/AvailableServicesTable";

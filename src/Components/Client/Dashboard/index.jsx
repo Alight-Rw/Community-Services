@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import StatusCard from "./StatusCard";
+import StatusCard from "../../Shared/StatusCard";
 import Paragraphy from "../../Shared/Title";
 import ServicesStatics from "../../Shared/ServicesStatics";
 import UrgentRequest from "./UrgentRequest";

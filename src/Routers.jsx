@@ -88,14 +88,13 @@ export function Routers() {
           element={<Authentication/>}
         />
 
-        
-        <Route path="/dashboard" element={<DashboardClientPage/>}/>
-        <Route path="/available-services" element={<AvailableServices />} />
-        <Route path="/client-requested-services" element={<RequestedServicesPage/>}/>
-        <Route path="/client-waiting-services" element={<WaitingServicesPage/>}/>
-        <Route path="/client-completed-services" element={<CompletedServicesPage/>}/>
-        <Route path="/client-rejected-services" element={<RejectedServicesPage/>}/>
-        <Route path="client-settings" element={<SettingsPage/>}/>
+        <Route path="dashboard" element={<DashboardClientPage/>}/>
+        <Route path="available-services" element={<AvailableServices />} />
+        <Route path="requested-services" element={<RequestedServicesPage/>}/>
+        <Route path="waiting-services" element={<WaitingServicesPage/>}/>
+        <Route path="completed-services" element={<CompletedServicesPage/>}/>
+        <Route path="rejected-services" element={<RejectedServicesPage/>}/>
+        <Route path="settings" element={<SettingsPage/>}/>
 
         <Route path="provider-login" element={<Authentication/>}/>
         <Route path="provider-dashboard" element={<Dashboard/>}/>
@@ -106,11 +105,6 @@ export function Routers() {
          <Route path="provider-available-services" element={<AvailableServicesProvider/>}/>
         <Route path='provider-settings' element={<SettingProvider />}/>
         <Route path="*" element={<NotFoundPage />} />
-        
-        
-        
-        
-        
       </Routes>
     </BrowserRouter>
   );

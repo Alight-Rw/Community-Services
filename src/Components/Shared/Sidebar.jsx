@@ -16,6 +16,7 @@ import { FiCheckCircle } from "react-icons/fi";
 const Sidebar = ({ isExpanded, setIsExpanded }) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const isProviderPath = location.pathname.startsWith("/provider-");
 
   const menuItems = [
     { icon: <LayoutGrid size={22} />, label: 'Dashboard', path: '/dashboard' },
@@ -33,8 +34,6 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
     { icon: <XCircle size={22} />, label: 'Rejected Services', path: '/provider-rejected-services' },
     { icon: <Settings size={22} />, label: 'Settings', path: '/provider-settings' },
   ];
-
-  const isProviderPath = location.pathname.startsWith("/provider-");
 
   return (
     <div
@@ -114,7 +113,7 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
               <p className={`text-[11px] text-slate-500 truncate font-medium ${isExpanded ? 'justify-center' : 'hidden'}`}>{isProviderPath ? 'gedeon74@gmail.com...':'niyo.alice@codingsch...'}</p>
             </div >
             <LogOut style={{ cursor: 'pointer' }} className={`text-secondary ${isExpanded ? 'w-5 h-5' : `w-5 h-5`}`}
-              onClick={() => navigate("/login")} />
+              onClick={() => navigate(isProviderPath ? "/provider-login" : "/login")} />
           </div>
 
         </div>
