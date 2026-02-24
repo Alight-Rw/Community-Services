@@ -12,8 +12,17 @@ export function WaitingSevices() {
 
   return (
     <div className='flex flex-col h-screen bg-universal overflow-hidden '>
-      <DashboardNav />
-
+      <DashboardNav
+        notificationNumber={4}
+        notifications={[
+          { id: 1,type: "success", title: "Booking Confirmed", message: "Your service booking for has been confirmed car Wash for tommorrow at",
+            time: "10:00 AM", minutes:"10h ago", isUnread: true },
+          { id: 2, type: "accepted", title: "Service Request Accepted", message: "Your blumping service has been accepted by a provider", time: "1h ago", isUnread: true },
+          { id: 3, type: "info", title: "Reminder ", message: "Your  home cleaning services is scheduled for today at",
+             minutes:"1h ago", isUnread: true },
+          { id: 4, type: "accepted", title: "Service Completed", }
+        ]}
+      />
       <div className='flex flex-1 overflow-hidden relative'>
         {isExpanded && (
           <div

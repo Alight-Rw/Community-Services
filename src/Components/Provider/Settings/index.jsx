@@ -9,12 +9,21 @@ import SettingProfileSection from "./SettingProfileSection";
 
 export function SettingsProvider() {
   const [isExpanded, setIsExpanded] = useState(false); 
+   
 
   return (
     <div className="flex flex-col h-screen bg-universal overflow-hidden">
      
-      <DashboardNav notificationNumber="22"  />
-
+      <DashboardNav
+        notificationNumber={2}
+        notifications={[
+          { id: 1,type: "success", title: "Booking Creacted", message: "Two clients booked services at",
+            time: "10:00 AM", minutes:"1m ago", isUnread: true },
+          { id: 2, type: "accepted", title: " Completed Services", message: "50 service are completed at", time: "3h ago", isUnread: true },
+          
+          
+        ]}
+      />
       <div className="flex flex-1 overflow-hidden relative">
         
         
