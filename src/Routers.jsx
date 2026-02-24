@@ -10,8 +10,8 @@ import { ShowOuter } from './Components/Client/ShowOuter';
 import { DashboardClientPage } from './Pages/Client/Dashboard';
 
 
-
 import Contact from './Pages/Client/Contact';
+import ConfirmBooking from './Pages/Client/Booking';
 import { RequestedServicesPage } from './Pages/Client/RequestedSevices';
 import { WaitingServicesPage } from './Pages/Client/WaitingServices';
 import { CompletedServicesPage } from './Pages/Client/CompleteServices';
@@ -37,56 +37,19 @@ export function Routers() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path='/'
-          element={<ShowOuter />}
-        >
-          <Route
-            index
-            element={<HomePage />}
-          />
-
-          <Route
-            path='home'
-            element={<HomePage />}
-          />
-          <Route
-            path='available-services'
-            element={<ServicePage />}
-          />
-          <Route
-            path='work-gallery'
-            element={<WorkGallery />}
-          />
-           <Route
-          path='contact-us'
-          element={<Contact/>}
-        />
+        <Route path='/' element={<ShowOuter />} >
+          <Route index element={<HomePage />} />
+          <Route path='home' element={<HomePage />} />
+          <Route path='available-services' element={<ServicePage />} />
+          <Route path='work-gallery' element={<WorkGallery />} />
+          <Route path='contact-us' element={<Contact/>} />
         </Route>
 
-         <Route
-          path='login'
-          element={<Authentication/>}
-        />
-        
-         <Route
-          path='register'
-          element={<Authentication/>}
-        />
-         <Route
-          path='change-password'
-          element={<Authentication/>}
-        />
-
-      
-         <Route
-          path='account-verified'
-          element={<Authentication/>}
-        />
-        <Route
-          path='resend-password'
-          element={<Authentication/>}
-        />
+         <Route path='login' element={<Authentication/>} />
+         <Route path='register' element={<Authentication/>} />
+         <Route path='change-password' element={<Authentication/>} />
+         <Route path='account-verified' element={<Authentication/>} />
+        <Route path='resend-password' element={<Authentication/>} />
 
         <Route path="dashboard" element={<DashboardClientPage/>}/>
         <Route path="available-services" element={<AvailableServices />} />
@@ -95,6 +58,7 @@ export function Routers() {
         <Route path="completed-services" element={<CompletedServicesPage/>}/>
         <Route path="rejected-services" element={<RejectedServicesPage/>}/>
         <Route path="settings" element={<SettingsPage/>}/>
+        <Route path="confirm-booking" element={<ConfirmBooking />} />
 
         <Route path="provider-login" element={<Authentication/>}/>
         <Route path="provider-dashboard" element={<Dashboard/>}/>

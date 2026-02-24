@@ -2,7 +2,7 @@ import { ConfirmBookingIndex } from "../../Components/Client/Dashboard/ConfirmBo
 
  
  
- function ConfirmBookingPage() {
+ function ConfirmBooking() {
     return <ConfirmBookingIndex />
   }
-  export default ConfirmBookingPage
+  export default ConfirmBooking

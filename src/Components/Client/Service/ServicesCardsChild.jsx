@@ -4,15 +4,12 @@ import ServiceButton from "./ServiceButton";
 import { useNavigate } from "react-router-dom";
 
 function ServicesPageChild({ Img, title, ServiceName, description, place, phoneNumber, time, available, price }) {
-  const isAvailable = available === "Service Available";
   const navigate = useNavigate();
+  const isAvailable = available === "Service Available";
 
   const handleBooking = () => {
     if (isAvailable) {
-     
-      navigate("/available-services", { 
-        state: { title, price, Img, ServiceName, description, place, time, phoneNumber } 
-      });
+      navigate(`/confirm-booking`, { state: { title, price, Img, ServiceName, description, place, time, phoneNumber } });
     }
   };
 
