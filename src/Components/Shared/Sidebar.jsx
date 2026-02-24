@@ -27,7 +27,7 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
     { icon: <Settings size={22} />, label: 'Settings', path: '/settings' },
 
     { icon: <LayoutGrid size={22} />, label: 'Dashboard', path: '/provider-dashboard' },
-    { icon: <FiCheckCircle size={22} />, label: 'Available Services', path: '/provider-Available-services' },
+    { icon: <FiCheckCircle size={22} />, label: 'Available Services', path: '/provider-available-services' },
     { icon: <HelpCircle size={22} />, label: 'Requested Services', path: '/provider-requested-services' },
     { icon: <Clock size={22} />, label: 'Waiting Services', path: '/provider-waiting-services' },
     { icon: <CheckCircle2 size={22} />, label: 'Completed Services', path: '/provider-completed-services' },

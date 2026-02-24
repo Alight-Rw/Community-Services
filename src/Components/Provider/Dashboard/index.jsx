@@ -23,7 +23,7 @@ export function DashboardProvider() {
         {isExpanded && (
           <div
             className="fixed inset-0 bg-black/50 z-20 xl:hidden transition-opacity"
-            onClick={() => setIsExpanded(false)}
+            onClick={() => setIsExpanded(true)}
           />
         )}
         <div className="fixed inset-y-0 left-0 z-50 xl:relative">

@@ -18,7 +18,7 @@ export function AvailableServicesProvider() {
         {isExpanded && (
           <div
             className='fixed inset-0 bg-black/50 z-20 xl:hidden transition-opacity'
-            onClick={() => setIsExpanded(false)}
+            onClick={() => setIsExpanded(true)}
           />
         )}
 

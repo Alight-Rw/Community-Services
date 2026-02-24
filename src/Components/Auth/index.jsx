@@ -19,11 +19,9 @@ export function Auth({ pathURL }) {
       
        {pathURL === '/change-password' && (<ChangePassword />)}
        {pathURL === '/resend-password' && (<ResendPassword />)}
-       {pathURL === '/provider' && (<ProviderLoginForm />)}
-
-
-       
+       {pathURL === '/provider-login' && (<ProviderLoginForm />)}       
       </div>
+      
       <AuthLayout />
     </div>
   );
