@@ -22,9 +22,9 @@ function SettingProfileSection() {
             <div className="flex flex-col items-center">
               <div className="relative">
                 <img
-                  src="/image.png"
+                  src="/image.jpg"
                   alt="profile"
-                  className="w-48 h-48 rounded-full border-3 border-secondary object-cover"
+                  className="w-70 h-70 rounded-full  object-cover"
                 />
               </div>
               <button className="text-secondary border-2 border-secondary rounded-xl py-2 px-8 mt-4 font-medium">
@@ -34,7 +34,7 @@ function SettingProfileSection() {
 
            
             <div className="flex-1 w-full">
-              <h1 className="text-2xl font-bold mb-8">Alice Niyomufasha</h1>
+              <h1 className="text-2xl font-bold mb-8">Gedeon Twizerimana</h1>
 
               <div className="space-y-6">
                
@@ -42,7 +42,7 @@ function SettingProfileSection() {
                   <Mail className="text-secondary" size={24} />
                   <div>
                     <p className="text-xs text-hard-gray  font-semibold ">Email</p>
-                    <p className="text-lg sm:flex">jackson74@gmail.com</p>
+                    <p className="text-lg sm:flex">gedeon74@gmail.com</p>
                   </div>
                 </div>
 
