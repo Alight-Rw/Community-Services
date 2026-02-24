@@ -16,6 +16,7 @@ import { FiCheckCircle } from "react-icons/fi";
 const Sidebar = ({ isExpanded, setIsExpanded }) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const isProviderPath = location.pathname.startsWith("/provider-");
 
   const menuItems = [
     { icon: <LayoutGrid size={22} />, label: 'Dashboard', path: '/dashboard' },
@@ -26,15 +27,13 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
     { icon: <Settings size={22} />, label: 'Settings', path: '/settings' },
 
     { icon: <LayoutGrid size={22} />, label: 'Dashboard', path: '/provider-dashboard' },
-    { icon: <FiCheckCircle size={22} />, label: 'Available Services', path: '/provider-Available-services' },
+    { icon: <FiCheckCircle size={22} />, label: 'Available Services', path: '/provider-available-services' },
     { icon: <HelpCircle size={22} />, label: 'Requested Services', path: '/provider-requested-services' },
     { icon: <Clock size={22} />, label: 'Waiting Services', path: '/provider-waiting-services' },
     { icon: <CheckCircle2 size={22} />, label: 'Completed Services', path: '/provider-completed-services' },
     { icon: <XCircle size={22} />, label: 'Rejected Services', path: '/provider-rejected-services' },
     { icon: <Settings size={22} />, label: 'Settings', path: '/provider-settings' },
   ];
-
-  const isProviderPath = location.pathname.startsWith("/provider-");
 
   return (
     <div
@@ -114,7 +113,7 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
               <p className={`text-[11px] text-slate-500 truncate font-medium ${isExpanded ? 'justify-center' : 'hidden'}`}>{isProviderPath ? 'gedeon74@gmail.com...':'niyo.alice@codingsch...'}</p>
             </div >
             <LogOut style={{ cursor: 'pointer' }} className={`text-secondary ${isExpanded ? 'w-5 h-5' : `w-5 h-5`}`}
-              onClick={() => navigate("/login")} />
+              onClick={() => navigate(isProviderPath ? "/provider-login" : "/login")} />
           </div>
 
         </div>

@@ -3,13 +3,8 @@ import { FaShieldAlt, FaBell, FaLock } from "react-icons/fa";
 
 const SettingsCard = () => {
     return (
-        <div className=" bg-gray-100 py-2 px-4 sm:px-6 lg:px-8   " >
-
-
-
+        <div className="py-2 px-4 sm:px-6 lg:px-8   " >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-
                 <div className="bg-white rounded-2xl shadow-sm p-6 border">
                     <div className="flex items-center gap-3 mb-4">
                         <div className="bg-blue-100 p-3 rounded-full">

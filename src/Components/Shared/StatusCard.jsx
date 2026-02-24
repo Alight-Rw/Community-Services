@@ -5,18 +5,16 @@ const StatusCard = () => {
   const [hoveredId, setHoveredId] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
-
-  
   const isProviderPath = location.pathname.startsWith("/provider-");
 
   
   const statusData = [
     
-    { id: "client-1", title: "Available Services", total: 1007, icon: "/images/Available-services.png", trend: "/images/Trends.png", path: "/client-available-services" },
-    { id: "client-2", title: "Requested Services", total: 17, icon: "/images/Requested-services.png", trend: "/images/Trends1.png", path: "/client-requested-services" },
-    { id: "client-3", title: "Waiting Services", total: 1, icon: "/images/Waiting-services.png", trend: "/images/Trends4.png", path: "/client-waiting-services" },
-    { id: "client-4", title: "Completed Services", total: 9, icon: "/images/Completed-services.png", trend: "/images/Trends2.png", path: "/client-completed-services" },
-    { id: "client-5", title: "Rejected Services", total: 2, icon: "/images/Rejected-services.png", trend: "/images/Trends3.png", path: "/client-rejected-services" },
+    { id: "client-1", title: "Available Services", total: 1007, icon: "/images/Available-services.png", trend: "/images/Trends.png", path: "/available-services" },
+    { id: "client-2", title: "Requested Services", total: 17, icon: "/images/Requested-services.png", trend: "/images/Trends1.png", path: "/requested-services" },
+    { id: "client-3", title: "Waiting Services", total: 1, icon: "/images/Waiting-services.png", trend: "/images/Trends4.png", path: "/waiting-services" },
+    { id: "client-4", title: "Completed Services", total: 9, icon: "/images/Completed-services.png", trend: "/images/Trends2.png", path: "/completed-services" },
+    { id: "client-5", title: "Rejected Services", total: 2, icon: "/images/Rejected-services.png", trend: "/images/Trends3.png", path: "/rejected-services" },
 
     { id: "provider-1", title: "Available Services", total: 3, icon: "/images/Available-services.png", trend: "/images/Trends.png", path: "/provider-available-services" },
     { id: "provider-2", title: "Requested Services", total: 309, icon: "/images/Requested-services.png", trend: "/images/Trends1.png", path: "/provider-requested-services" },
