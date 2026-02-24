@@ -26,13 +26,9 @@ export function DashboardProvider() {
             onClick={() => setIsExpanded(false)}
           />
         )}
-
-
         <div className="fixed inset-y-0 left-0 z-50 xl:relative">
           <Sidebar isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
         </div>
-
-
         <main
           className={`
             flex-1 overflow-y-auto  
