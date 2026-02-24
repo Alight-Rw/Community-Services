@@ -1,124 +1,88 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Link } from "lucide-react";
+
 const StatusCard = () => {
   const [hoveredId, setHoveredId] = useState(null);
-   const isHovered = hoveredId === 1;
   const location = useLocation();
   const navigate = useNavigate();
 
+  
+  const isProviderPath = location.pathname.startsWith("/provider-");
+
+  
   const statusData = [
-    { id: 1, title: "Available Services", icon: "/images/Available-services.png", trend: "/images/Trends.png", totalImg: "/images/Total.png", path: "/available-services" },
-   { id: 2, title: "Requested Services", icon: "/images/Requested-services.png", trend: "/images/Trends1.png", totalImg: "/images/Total1.png", path: "/requested-services" },
-    { id: 3, title: "Waiting Services", icon: "/images/Waiting-services.png", trend: "/images/Trends4.png", totalImg: "/images/Total4.png", path: "/waiting-services" },
-    { id: 4, title: "Completed Services", icon: "/images/Completed-services.png", trend: "/images/Trends2.png", totalImg: "/images/Total2.png", path: "/completed-services" },
-    { id: 5, title: "Rejected Services", icon: "/images/Rejected-services.png", trend: "/images/Trends3.png", totalImg: "/images/Total3.png", path: "/rejected-services" },
-
-     { id: 1, title: "Available Services", icon: "/images/Available-services.png", trend: "/images/Trends.png", totalImg: "/images/Total.png", path: "/provider-available-services" },
-   { id: 2, title: "Requested Services", icon: "/images/Requested-services.png", trend: "/images/Trends1.png", totalImg: "/images/Total1.png", path: "/provider-requested-services" },
-    { id: 3, title: "Waiting Services", icon: "/images/Waiting-services.png", trend: "/images/Trends4.png", totalImg: "/images/Total4.png", path: "/provider-waiting-services" },
-    { id: 4, title: "Completed Services", icon: "/images/Completed-services.png", trend: "/images/Trends2.png", totalImg: "/images/Total2.png", path: "/provider-completed-services" },
-    { id: 5, title: "Rejected Services", icon: "/images/Rejected-services.png", trend: "/images/Trends3.png", totalImg: "/images/Total3.png", path: "/provider-rejected-services" }
     
-];
+    { id: "client-1", title: "Available Services", total: 1007, icon: "/images/Available-services.png", trend: "/images/Trends.png", path: "/client-available-services" },
+    { id: "client-2", title: "Requested Services", total: 17, icon: "/images/Requested-services.png", trend: "/images/Trends1.png", path: "/client-requested-services" },
+    { id: "client-3", title: "Waiting Services", total: 1, icon: "/images/Waiting-services.png", trend: "/images/Trends4.png", path: "/client-waiting-services" },
+    { id: "client-4", title: "Completed Services", total: 9, icon: "/images/Completed-services.png", trend: "/images/Trends2.png", path: "/client-completed-services" },
+    { id: "client-5", title: "Rejected Services", total: 2, icon: "/images/Rejected-services.png", trend: "/images/Trends3.png", path: "/client-rejected-services" },
+
+    { id: "provider-1", title: "Available Services", total: 3, icon: "/images/Available-services.png", trend: "/images/Trends.png", path: "/provider-available-services" },
+    { id: "provider-2", title: "Requested Services", total: 309, icon: "/images/Requested-services.png", trend: "/images/Trends1.png", path: "/provider-requested-services" },
+    { id: "provider-3", title: "Waiting Services", total: 42, icon: "/images/Waiting-services.png", trend: "/images/Trends4.png", path: "/provider-waiting-services" },
+    { id: "provider-4", title: "Completed Services", total: 207, icon: "/images/Completed-services.png", trend: "/images/Trends2.png", path: "/provider-completed-services" },
+    { id: "provider-5", title: "Rejected Services", total: 60, icon: "/images/Rejected-services.png", trend: "/images/Trends3.png", path: "/provider-rejected-services" }
+  ];
+
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6   pt-12 pb-3 font-san flex justify-center w-full ">
-     {statusData.map((item) => {
-          const isProviderNav = item.path.startsWith("/provider-");
-          const isProviderPath = location.pathname.startsWith("/provider-");
+   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 
+                gap-6 pt-12 pb-3">
+      {statusData
+        .filter(item =>
+          isProviderPath
+            ? item.path.startsWith("/provider-")
+            : item.path.startsWith("/client-")
+        )
+        .map((item) => {
+          const isHovered = hoveredId === item.id;
 
-          if (isProviderNav && isProviderPath) 
-        return (
-
-          
-          <div
-            key={item.id}
-            onMouseEnter={() => setHoveredId(item.id)}
-            onMouseLeave={() => setHoveredId(null)}
-            onClick={() => navigate(item.path)}
-            className={`relative bg-white rounded-xl shadow-md border-2 
-              ${isHovered ? "border-secondary shadow-lg scale-[1.02]" : "border-universal"} 
-              transition-all duration-300 cursor-pointer h-[210px] flex flex-col justify-end items-center p-4`}
-          >
-            
-            <img
-              src={item.totalImg}
-              alt="total"
-              className="absolute -top-6 -left-4 w-16"
-            />
-
-            
-            <img
-              src={item.trend}
-              alt="trend"
-              className="absolute top-4 right-4 w-10"
-            />
-
-        
-            <div className="flex-1 flex items-center justify-center w-full">
-              <img
-                src={item.icon}
-                alt="icon"
-                className="max-h-[100px] object-contain"
-              />
-            </div>
-
-        
-            <p
-              className={`text-lg font-bold mt-2 transition-colors duration-300 
-                ${isHovered ? "text-secondary" : "text-slate-700"}`}
+          return (
+            <div
+              key={item.path}
+              onMouseEnter={() => setHoveredId(item.id)}
+              onMouseLeave={() => setHoveredId(null)}
+              onClick={() => navigate(item.path)}
+          className={`relative bg-white rounded-xl shadow-md border-2
+  ${isHovered 
+    ? "border-secondary shadow-lg scale-[1.02]" 
+    : "border-secondary/30"} 
+  transition-all duration-300 cursor-pointer h-[210px] 
+  flex flex-col justify-end items-center p-4`}
             >
-              {item.title}
-            </p>
-          </div>
-          
+              
+              <div className="absolute -top-6 -left-4 bg-white text-secondary
+                              w-14 h-14 rounded-lg flex items-center 
+                              justify-center text-lg font-bold shadow-md border-1 border-secondary">
+                {item.total}
+              </div>
 
-        );
-        if (!isProviderNav && !isProviderPath) return(
-         <div
-            key={item.id}
-            onMouseEnter={() => setHoveredId(item.id)}
-            onMouseLeave={() => setHoveredId(null)}
-            onClick={() => navigate(item.path)}
-            className={`relative bg-white rounded-xl shadow-md border-2 
-              ${isHovered ? "border-secondary shadow-lg scale-[1.02]" : "border-universal"} 
-              transition-all duration-300 cursor-pointer h-[210px] flex flex-col justify-end items-center p-4`}
-          >
-            
-            <img
-              src={item.totalImg}
-              alt="total"
-              className="absolute -top-6 -left-4 w-16"
-            />
-
-            
-            <img
-              src={item.trend}
-              alt="trend"
-              className="absolute top-4 right-4 w-10"
-            />
-
-        
-            <div className="flex-1 flex items-center justify-center w-full">
+              
               <img
-                src={item.icon}
-                alt="icon"
-                className="max-h-[100px] object-contain"
+                src={item.trend}
+                alt="trend"
+                className="absolute top-4 right-4 w-10"
               />
-            </div>
 
-        
-            <p
-              className={`text-lg font-bold mt-2 transition-colors duration-300 
-                ${isHovered ? "text-secondary" : "text-slate-700"}`}
-            >
-              {item.title}
-            </p>
-          </div>
-        
-        );
-      })}
-        
+            
+              <div className="flex-1 flex items-center justify-center w-full">
+                <img
+                  src={item.icon}
+                  alt="icon"
+                  className="max-h-[100px] object-contain"
+                />
+              </div>
+
+              
+              <p
+                className={`text-lg font-bold mt-2 transition-colors duration-300 
+                  ${isHovered ? "text-secondary" : "text-slate-700"}`}
+              >
+                {item.title}
+              </p>
+            </div>
+          );
+        })}
     </div>
   );
 };

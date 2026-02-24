@@ -9,7 +9,7 @@ import { WorkGallery } from './Pages/Client/Gallery';
 import { ShowOuter } from './Components/Client/ShowOuter';
 import { DashboardClientPage } from './Pages/Client/Dashboard';
 
-import ConfirmBookingPage from './Pages/Client/Booking';
+
 
 import Contact from './Pages/Client/Contact';
 import { RequestedServicesPage } from './Pages/Client/RequestedSevices';
@@ -19,13 +19,17 @@ import { RejectedServicesPage } from './Pages/Client/RejectedService';
 import { SettingsPage } from './Pages/Client/Setting';
 
 import { Dashboard } from './Pages/Provider/Dashboard';
+import { AvailableServices } from './Pages/Provider/AvailableServices';
+
 import { CompletedServices } from './Pages/Provider/CompleteServices';
 import { RequestedService } from './Pages/Provider/RequestedServices';
 import { RejectedServices } from './Pages/Provider/RejectedServices';
 import { WaitingServices } from './Pages/Provider/WaitingServices';
 import { SettingProvider } from './Pages/Provider/Setting';
 import NotFoundPage from './Components/Shared/NotFoundPage';
-import { AvailableServices } from './Pages/Provider/AvailableServices';
+
+import { AvailableServicesProvider } from './Components/Provider/AvailableServices';
+
 
 
 
@@ -84,21 +88,22 @@ export function Routers() {
           element={<Authentication/>}
         />
 
-        <Route path="/booking" element={<ConfirmBookingPage />} />
+        
         <Route path="/dashboard" element={<DashboardClientPage/>}/>
-        <Route path="/requested-services" element={<RequestedServicesPage/>}/>
-        <Route path="/waiting-services" element={<WaitingServicesPage/>}/>
-        <Route path="/completed-services" element={<CompletedServicesPage/>}/>
-        <Route path="/rejected-services" element={<RejectedServicesPage/>}/>
-        <Route path="/settings" element={<SettingsPage/>}/>
+        <Route path="/available-services" element={<AvailableServices />} />
+        <Route path="/client-requested-services" element={<RequestedServicesPage/>}/>
+        <Route path="/client-waiting-services" element={<WaitingServicesPage/>}/>
+        <Route path="/client-completed-services" element={<CompletedServicesPage/>}/>
+        <Route path="/client-rejected-services" element={<RejectedServicesPage/>}/>
+        <Route path="client-settings" element={<SettingsPage/>}/>
 
         <Route path="provider-login" element={<Authentication/>}/>
-        <Route path="provider-Dashboard" element={<Dashboard/>}/>
+        <Route path="provider-dashboard" element={<Dashboard/>}/>
         <Route path='provider-completed-services' element={<CompletedServices />}/>
         <Route path='provider-Requested-services' element={< RequestedService/>}/>
         <Route path='provider-rejected-services' element={< RejectedServices/>}/>
         <Route path='provider-waiting-services' element={<WaitingServices />}/>
-        <Route path="provider-available-services" element={<AvailableServices/>}/>
+         <Route path="provider-available-services" element={<AvailableServicesProvider/>}/>
         <Route path='provider-settings' element={<SettingProvider />}/>
         <Route path="*" element={<NotFoundPage />} />
         

@@ -50,8 +50,8 @@ export function Dashboard() {
               />
             </div>
 
-            <div className="container">
-              <section>
+            <div>
+              <section className="px-10 lg:px-10 sm:px-10">
                 <StatusCard />
               </section>
 
