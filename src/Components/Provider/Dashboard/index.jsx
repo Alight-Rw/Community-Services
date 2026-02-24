@@ -9,7 +9,6 @@ import RecentServicesTab from "../../../Pages/Provider/RecentServicesTab";
 import AddNewServiceButton from "./AddNewServiceButton";
 import AddNewService from "./AddNewService";
 import { AvailableServicesTable } from "../AvailableServices/AvailableServicesTable";
-import StatusButton from "./StatusesButtons";
 
 export function DashboardProvider() {
   const [visible, setVisible] = useState(false);
@@ -20,7 +19,7 @@ export function DashboardProvider() {
 
   return (
     <div className="flex flex-col h-screen bg-universal overflow-hidden">
-      <DashboardNav />
+      <DashboardNav notificationNumber="22"  />
 
       <div className="flex flex-1 overflow-hidden relative">
         {isExpanded && (
@@ -66,7 +65,7 @@ export function DashboardProvider() {
       </div>
 
       {visible === true && <AddNewService onClick={handleVIsible} />}
-      <StatusButton / >
+    
     </div>
   );
 }

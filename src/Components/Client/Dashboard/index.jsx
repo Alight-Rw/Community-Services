@@ -15,7 +15,7 @@ export function Dashboard() {
   return (
     <div className="flex flex-col h-screen bg-universal overflow-hidden">
 
-      <DashboardNav />
+      <DashboardNav notificationNumber="8" className="py-[2px] px-[6px] "/>
 
       <div className="flex flex-1 overflow-hidden relative">
 

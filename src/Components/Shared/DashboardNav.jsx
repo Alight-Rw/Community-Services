@@ -2,9 +2,7 @@
 import { Sun ,Bell } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 
-const DashboardNav = () => {
-  const location = useLocation()
-  const isProviderPath = location.pathname.startsWith("/provider-");  
+const DashboardNav = ( Props) => {
   return (
     <div className="fixed top-0 left-0 z-50 w-full bg-primary shadow-lg h-20 flex justify-end items-center px-5 lg:px-10 gap-4 lg:gap-3 font-san">
       
@@ -14,8 +12,8 @@ const DashboardNav = () => {
       </button>
 
       <div className="relative p-2 bg-primary rounded-xl hover:bg-universal shadow-sm border border-universal h-10 w-10 cursor-pointer">
-        <span className="absolute top-[2px] right-[4px] text-primary h-auto w-auto bg-dark-red py-[2px] px-[2px] rounded-full text-[10px] font-bold flex items-center justify-center border-2 border-white">
-          22
+        <span className="absolute p-4 top-[2px] right-[4px] text-primary h-auto w-auto bg-dark-red py-[3px] px-[6px] rounded-full  text-[10px] font-bold flex items-center justify-center border-2 border-white">
+           {Props.notificationNumber}
         </span >
          <Bell size={30}  style={{cursor:'pointer'}}/>
       </div>
