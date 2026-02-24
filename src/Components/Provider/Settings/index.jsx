@@ -13,8 +13,16 @@ export function SettingsProvider() {
   return (
     <div className="flex flex-col h-screen bg-universal overflow-hidden">
      
-      <DashboardNav />
-
+     <DashboardNav
+        notificationNumber={2}
+        notifications={[
+          { id: 1,type: "success", title: "Booking Creacted", message: "Two clients booked services at",
+            time: "10:00 AM", minutes:"1m ago", isUnread: true },
+          { id: 2, type: "accepted", title: " Completed Services", message: "50 service are completed at", time: "3h ago", isUnread: true },
+          
+          
+        ]}
+      />
       <div className="flex flex-1 overflow-hidden relative"> {isExpanded && ( <div className="fixed inset-0 bg-black/50 z-20 xl:hidden transition-opacity" onClick={() => setIsExpanded(true)} /> )}
       
         <div className="fixed inset-y-0 left-0 z-50 xl:relative">
