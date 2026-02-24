@@ -12,7 +12,7 @@ export function RejectedSevicesProvider() {
 
   return (
     <div className='flex flex-col h-screen bg-universal overflow-hidden'>
-      <DashboardNav />
+     <DashboardNav notificationNumber="22"  />
 
       <div className='flex flex-1 overflow-hidden relative'>
         {isExpanded && (

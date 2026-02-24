@@ -2,7 +2,9 @@
 import { Sun ,Bell } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 
-const DashboardNav = ( Props) => {
+const DashboardNav = (Props) => {
+  const location = useLocation()
+  const isProviderPath = location.pathname.startsWith("/provider-");  
   return (
     <div className="fixed top-0 left-0 z-50 w-full bg-primary shadow-lg h-20 flex justify-end items-center px-5 lg:px-10 gap-4 lg:gap-3 font-san">
       
