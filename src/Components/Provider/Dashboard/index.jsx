@@ -12,6 +12,7 @@ import AddNewServiceButton from "./AddNewServiceButton";
 export function DashboardProvider() {
   const [visible, setVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(true);
+const handleVIsible = () => setVisible(!visible);
 
   return (
     <div className="flex flex-col h-screen bg-universal overflow-hidden">
