@@ -9,7 +9,6 @@ function ServicesPageChild({ Img, title, ServiceName, description, place, phoneN
 
   const handleBooking = () => {
     if (isAvailable) {
-     
       navigate("/available-services", { 
         state: { title, price, Img, ServiceName, description, place, time, phoneNumber } 
       });
