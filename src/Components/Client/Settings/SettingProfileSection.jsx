@@ -8,7 +8,7 @@ function SettingProfileSection() {
 
   const userData = {
     name: "Alice Niyomufasha",
-    email: "jackson74@gmail.com",
+    email: "niyoalice@gmail.com",
     phone: "+250788888888",
     location: "Kigali, Rwanda",
     image: "/image.png",
