@@ -111,7 +111,7 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
 
           <div className="flex flex-1 items-center justify-between overflow-hidden">
             <div className="overflow-hidden">
-              <p className={`text-[11px] text-slate-500 truncate font-medium ${isExpanded ? 'justify-center' : 'hidden'}`}>niyo.alice@codingsch...</p>
+              <p className={`text-[11px] text-slate-500 truncate font-medium ${isExpanded ? 'justify-center' : 'hidden'}`}>{isProviderPath ? 'gede.twiz@codingsch...':'niyo.alice@codingsch...'}</p>
             </div >
             <LogOut style={{ cursor: 'pointer' }} className={`text-secondary ${isExpanded ? 'w-5 h-5' : `w-5 h-5`}`}
               onClick={() => navigate("/login")} />
