@@ -4,7 +4,8 @@ import { useLocation } from 'react-router-dom';
 
 const DashboardNav = () => {
   const location = useLocation()
-  const isProviderPath = location.pathname.startsWith("/provider-");  
+  const isProviderPath = location.pathname.startsWith("/provider-");
+  console.log('PATH', location.pathname);
   return (
     <div className="fixed top-0 left-0 z-50 w-full bg-primary shadow-lg h-20 flex justify-end items-center px-5 lg:px-10 gap-4 lg:gap-3 font-san">
       
@@ -21,7 +22,10 @@ const DashboardNav = () => {
       </div>
 
       <div className="h-12 w-12 lg:h-12 lg:w-12 rounded-full border-2 border-white shadow-md overflow-hidden bg-universal">
-        <img src={isProviderPath ? "/image.jpg":'image.png'} alt="User profile" className="w-full h-full object-cover"/>
+        { isProviderPath
+          ? ( <img src="/image.jpg" alt="Provider profile" className="w-full h-full object-cover"/> )
+          : ( <img src="/image.png" alt="User profile" className="w-full h-full object-cover"/> )
+        }
       </div>
 
     </div>
