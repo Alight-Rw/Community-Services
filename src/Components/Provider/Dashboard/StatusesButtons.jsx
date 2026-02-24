@@ -3,22 +3,22 @@ import React from "react";
 const StatusButton = ({ type, onClick, isActive = false }) => {
   const variants = {
     waiting: {
-      base: "border-gray-400 text-gray-400 hover:bg-gray-50 px-4",
+      base: "border-gray-400 text-gray-400 hover:bg-hard-gray hover:text-primary px-4",
       active: "bg-gray-400 text-white border-gray-400 cursor-not-allowed",
       label: "Waiting"
     },
     approve: {
-      base: "border-green-500 text-green-500 hover:bg-green-50",
+      base: "border-green-500 text-green-500 hover:bg-green-500  hover:text-primary",
       active: "bg-green-500 text-white border-green-500 cursor-not-allowed",
       label: "Approve"
     },
     complete: {
-      base: "border-blue-500 text-blue-500 hover:bg-blue-50",
+      base: "border-blue-500 text-blue-500 hover:bg-secondary hover:text-primary",
       active: "bg-blue-500 text-white border-blue-500 cursor-not-allowed",
       label: "Complete"
     },
     reject: {
-      base: "border-red-500 text-red-500 hover:bg-red-50",
+      base: "border-red-800 text-red-800 hover:bg-red-800 hover:text-primary",
       active: "bg-red-800/80 text-white border-red-800/30 cursor-not-allowed",
       label: "Reject"
     }
