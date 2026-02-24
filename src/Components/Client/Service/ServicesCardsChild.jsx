@@ -9,7 +9,8 @@ function ServicesPageChild({ Img, title, ServiceName, description, place, phoneN
 
   const handleBooking = () => {
     if (isAvailable) {
-      navigate(`/confirm-booking`, { state: { title, price, Img, ServiceName, description, place, time, phoneNumber } });
+      const slugTitle = title.toLowerCase().replace(/\s+/g, "-");
+      navigate(`/confirm-booking/${slugTitle}`, { state: { title, price, Img, ServiceName, description, place, time, phoneNumber } });
     }
   };
 

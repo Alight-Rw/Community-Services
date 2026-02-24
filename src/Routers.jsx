@@ -58,7 +58,7 @@ export function Routers() {
         <Route path="completed-services" element={<CompletedServicesPage/>}/>
         <Route path="rejected-services" element={<RejectedServicesPage/>}/>
         <Route path="settings" element={<SettingsPage/>}/>
-        <Route path="confirm-booking" element={<ConfirmBooking />} />
+        <Route path="confirm-booking/:slugTitle" element={<ConfirmBooking />} />
 
         <Route path="provider-login" element={<Authentication/>}/>
         <Route path="provider-dashboard" element={<Dashboard/>}/>
