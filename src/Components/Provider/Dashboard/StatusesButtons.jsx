@@ -3,7 +3,7 @@ import React from "react";
 const StatusButton = ({ type, onClick, isActive = false }) => {
   const variants = {
     waiting: {
-      base: "border-gray-400 text-gray-400 hover:bg-gray-50",
+      base: "border-gray-400 text-gray-400 hover:bg-gray-50 px-4",
       active: "bg-gray-400 text-white border-gray-400 cursor-not-allowed",
       label: "Waiting"
     },
@@ -30,11 +30,11 @@ const StatusButton = ({ type, onClick, isActive = false }) => {
     <button
       onClick={onClick}
       disabled={isActive} 
-      className={`
-        flex items-center justify-center 
+      className={`overflow-hidden
+        flex items-center justify-center  
         rounded-full border-2 
         text-[10px] font-bold 
-        w-[75px] h-[28px] 
+        max-w-auto h-[28px] 
         transition-all duration-200 
         ${isActive ? style.active : style.base}
       `}

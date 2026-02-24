@@ -68,7 +68,7 @@ export function WaitingServicesTable({ width }) {
         };
 
         return (
-            <div className="grid grid-cols-2 gap-x-15 gap-y-3 w-fit">
+            <div className="grid grid-cols-2 overflow-hidden gap-2  w-40">
                 {statusList.map((status) => (
                     <StatusButton
                         key={status}

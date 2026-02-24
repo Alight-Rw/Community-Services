@@ -9,6 +9,7 @@ import RecentServicesTab from "../../../Pages/Provider/RecentServicesTab";
 import AddNewServiceButton from "./AddNewServiceButton";
 import AddNewService from "./AddNewService";
 import { AvailableServicesTable } from "../AvailableServices/AvailableServicesTable";
+import StatusButton from "./StatusesButtons";
 
 export function DashboardProvider() {
   const [visible, setVisible] = useState(false);
@@ -65,6 +66,7 @@ export function DashboardProvider() {
       </div>
 
       {visible === true && <AddNewService onClick={handleVIsible} />}
+      <StatusButton / >
     </div>
   );
 }
