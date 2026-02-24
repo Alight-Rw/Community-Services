@@ -2,6 +2,7 @@
 import { Calendar } from 'lucide-react';
 import Table from '../../Shared/Table';
 import Pagination from '../../Shared/Pagination';
+import StatusButton from '../Dashboard/StatusesButtons';
 
 export function WaitingServicesTable({ width }) {
 
@@ -54,14 +55,32 @@ export function WaitingServicesTable({ width }) {
         },
     ]
 
-    const canBook = (service) => {
-        if (service.status === "Waiting") return false;
-        if (service.status === "Waiting") return false;
-        if (service.status === "Waiting") return false;
-        if (service.status === "Waiting") return false;
-        if (service.status === "Waiting") return false;
-        return false;
+   const ActionGrid = ({ currentStatus, onStatusChange }) => {
+        const statusList = ["waiting", "approve", "complete", "reject"];
+
+        const isButtonActive = (btnType) => {
+            const normalizedStatus = currentStatus?.toLowerCase();
+
+            if (normalizedStatus === "approved" && btnType === "approve") return true;
+            if (normalizedStatus === "completed" && btnType === "complete") return true;
+            if (normalizedStatus === "rejected" && btnType === "reject") return true;
+            return normalizedStatus === btnType;
+        };
+
+        return (
+            <div className="grid grid-cols-2 overflow-hidden gap-2  w-40">
+                {statusList.map((status) => (
+                    <StatusButton
+                        key={status}
+                        type={status}
+                        isActive={isButtonActive(status)}
+                        onClick={() => onStatusChange(status)}
+                    />
+                ))}
+            </div>
+        );
     };
+
     const columns = [
         {
             header: "Service Avatar",
@@ -94,7 +113,7 @@ export function WaitingServicesTable({ width }) {
             header: "Request Status",
             accessor: "status",
             render: (row) => (
-                <div className='bg-gray-300  p-2 justify-items-center rounded-full'>
+                <div className='bg-gray-300   p-2 justify-items-center rounded-full'>
                     <p>{row}</p>
                 </div>
             )
@@ -110,23 +129,13 @@ export function WaitingServicesTable({ width }) {
 
         {
             header: "Action",
-            accessor: "id",
-
-            render: (value, row) => {
-                const isBookable = canBook(row);
-                return (
-                    <button
-                        disabled={!isBookable}
-                        className={`flex items-center gap-1 sm:gap-2 px-3 sm:px-4 text-nowrap py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${isBookable
-                            ? "bg-primary border-2 border-secondary text-secondary hover:bg-secondary hover:text-primary cursor-pointer"
-                            : "bg-gray-100 border-2 border-gray-300 text-gray-400 cursor-not-allowed"
-                            }`}
-                    >
-                        <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
-                        Book Now
-                    </button>
-                );
-            },
+            accessor: "status",
+            render: (status, row) => (
+                <ActionGrid
+                    currentStatus={status}
+                    onStatusChange={(newStatus) => console.log(`Updating ID ${row.id} to ${newStatus}`)}
+                />
+            ),
         },
     ];
 

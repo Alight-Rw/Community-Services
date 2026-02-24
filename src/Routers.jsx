@@ -47,7 +47,7 @@ export function Routers() {
             element={<HomePage />}
           />
           <Route
-            path='client-available-services'
+            path='available-services'
             element={<ServicePage />}
           />
           <Route

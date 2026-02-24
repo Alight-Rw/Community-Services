@@ -3,6 +3,7 @@ import React from "react";
 import { Calendar } from "lucide-react";
 import Pagination from "../../Shared/Pagination";
 import Table from "../../Shared/Table";
+import StatusButton from "../Dashboard/StatusesButtons";
 
 export function RequestedSevicesTable({width}) {
   const allServicesData = [
@@ -52,8 +53,33 @@ export function RequestedSevicesTable({width}) {
     },
   ];
 
-  const canBook = (status) => ["Completed", "Rejected"].includes(status);
 
+
+const ActionGrid = ({ currentStatus, onStatusChange }) => {
+  const statusList = ["waiting", "approve", "complete", "reject"];
+
+  const isButtonActive = (btnType) => {
+    const normalizedStatus = currentStatus?.toLowerCase();
+    
+    if (normalizedStatus === "approved" && btnType === "approve") return true;
+    if (normalizedStatus === "completed" && btnType === "complete") return true;
+    if (normalizedStatus === "rejected" && btnType === "reject") return true;
+    return normalizedStatus === btnType;
+  };
+
+  return (
+    <div className="grid grid-cols-2 overflow-hidden gap-2  w-40">
+      {statusList.map((status) => (
+        <StatusButton
+          key={status}
+          type={status}
+          isActive={isButtonActive(status)}
+          onClick={() => onStatusChange(status)}
+        />
+      ))}
+    </div>
+  );
+};
   const statusClasses = {
     Available: "bg-hard-gray text-xs",
     Completed: "bg-small-soft-blue text-sky-blue text-xm ",
@@ -125,25 +151,16 @@ export function RequestedSevicesTable({width}) {
         </p>
       ),
     },
-    {
-      header: "Action",
-      accessor: "status",
-      render: (status) => (
-        <div className="w-[120px] ">
-          <button
-            disabled={!canBook(status)}
-            className={`flex items-center justify-center gap-2 mx-auto px-4 py-1.5 rounded-full border-2 transition-all duration-200 ${
-              canBook(status)
-                ? "border-blue-400 text-secondary hover:bg-secondary hover:text-white"
-                : "border-slate-100 text-slate-200 cursor-not-allowed"
-            }`}
-          >
-            <Calendar size={12} strokeWidth={3} />
-            <span className="text-[9px] font-black tracking-tighter text-nowrap">Book Now</span>
-          </button>
-        </div>
-      ),
-    },
+   {
+  header: "Action",
+  accessor: "status",
+  render: (status, row) => (
+    <ActionGrid 
+      currentStatus={status} 
+      onStatusChange={(newStatus) => console.log(`Updating ID ${row.id} to ${newStatus}`)} 
+    />
+  ),
+},
   ];
 
   return (
