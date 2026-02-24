@@ -12,7 +12,7 @@ import AddNewServiceButton from "./AddNewServiceButton";
 export function DashboardProvider() {
   const [visible, setVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(true);
-const handleVIsible = () => setVisible(!visible);
+  const handleVIsible = () => setVisible(!visible);
 
   return (
     <div className="flex flex-col h-screen bg-universal overflow-hidden">
@@ -20,8 +20,6 @@ const handleVIsible = () => setVisible(!visible);
       <DashboardNav />
 
       <div className="flex flex-1 overflow-hidden relative">
-
-
         {isExpanded && (
           <div
             className="fixed inset-0 bg-black/50 z-20 xl:hidden transition-opacity"
