@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-import StatusCard from "./StatusCard";
-import Paragraphy from "../../Shared/Title";
-
 import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar";
-import { ServiceTable } from "./ServiceTable";
 import ConfirmBooking from "./ConfirmBooking";
 
 export function ConfirmBookingIndex() {
