@@ -1,21 +1,80 @@
-import React from 'react'
+import React, { useState } from "react";
+import { AvailableServicesTable } from "../../Components/Provider/AvailableServices/AvailableServicesTable";
+import { RequestedSevicesTable } from "../../Components/Provider/RequestedSevices/RequestedSevices";
+import { RejectedServicesTable } from "../../Components/Provider/RejectedServices/RejectedServicesTable";
+import { CompletedServicesTable } from "../../Components/Provider/CompletedServices/CompletedServicesTable";
+import { WaitingServicesTable } from "../../Components/Provider/WaitingServices/WaitingServices";
 
-const RecentServicesTab = () => {
+
+export default function RecentServicesTab() {
+  const [active, setActive] = useState("available");
+
   return (
-    <div className=' w-full '>
-     <h1 className="text-secondary font-bold text-5xl mb-3 px-2 ">
-              Recent Activities
-            </h1>
-            <div className="grid grid-cols-5 text-2xl text-secondary ">
-              <h2 className='underline px-9'>Available Services</h2>
-               <h2>Requested Services</h2>
-                <h2>Waiting Services</h2>
-                 <h2>Completed Services</h2>
-                 <h2 className='px-1'>Rejected Services</h2>
-                  
-            </div> 
-    </div>
-  )
-}
+    <div className="p-4">
+      {/* Buttons */}
+      <div className="flex gap-4">
+        <button
+          onClick={() => setActive("available")}
+          className={`px-4 py-2 rounded ${
+            active === "available"
+              ? " text-secondary font-bold border-b-4 border-secondary"
+              : "bg-gray-100 text-secondary hover:bg-gray-200"
+          }`}
+        >
+          Available Services
+        </button>
 
-export default RecentServicesTab
+        <button
+          onClick={() => setActive("requested")}
+          className={`px-4 py-2 rounded ${
+            active === "requested"
+              ? "text-secondary font-bold border-b-4 border-secondary"
+              : "bg-gray-100 text-secondary hover:bg-gray-200"
+          }`}
+        >
+          Requested Services
+        </button>
+         <button
+          onClick={() => setActive("Waiting")}
+          className={`px-4 py-2 rounded ${
+            active === "Waiting"
+              ? " text-secondary font-bold border-b-4 border-secondary"
+              : "bg-gray-100 text-secondary hover:bg-gray-200"
+          }`}
+        >
+          Waiting Services
+        </button>
+         <button
+          onClick={() => setActive("Rejected")}
+          className={`px-4 py-2 rounded ${
+            active === "Rejected"
+              ? " text-secondary font-bold border-b-4 border-secondary"
+              : "bg-gray-100 text-secondary hover:bg-gray-200"
+          }`}
+        >
+          Rejected Services
+        </button>
+         <button
+          onClick={() => setActive("Completed")}
+          className={`px-4 py-2 rounded ${
+            active === "Completed"
+              ? " text-secondary font-bold border-b-4 border-secondary"
+              : "bg-gray-100 text-secondary hover:bg-gray-200"
+          }`}
+        >
+          Completed Services
+        </button>
+      </div>
+
+      {/* Table Rendering */}
+      <div className="mt-6">
+        {active === "available" && <AvailableServicesTable />}
+        {active === "requested" && <RequestedSevicesTable />}
+         {active === "Rejected" && <RejectedServicesTable />}
+        {active === "Completed" && <CompletedServicesTable/>}
+         {active === "Waiting" && <WaitingServicesTable />}
+      
+      </div>
+    </div>
+  );
+}

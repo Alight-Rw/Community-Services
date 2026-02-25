@@ -5,7 +5,7 @@ import Sidebar from "../../Shared/Sidebar";
 import StatusCard from "../../Shared/StatusCard";
 import ServicesStatistics from "../../Shared/ServicesStatics";
 import RecentServicesTab from "../../../Pages/Provider/RecentServicesTab";
-import { AvailableServicesTable } from "../AvailableServices/AvailableServicesTable";
+
 import AddNewService from "./AddNewService";
 import AddNewServiceButton from "./AddNewServiceButton";
 
@@ -49,7 +49,8 @@ export function DashboardProvider() {
               <RecentServicesTab />
             </div>
 
-            <AvailableServicesTable />
+           
+           
           </div>
         </main>
       </div>
