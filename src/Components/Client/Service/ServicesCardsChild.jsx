@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function ServicesPageChild({ Img, title, ServiceName, description, place, phoneNumber, time, available, price }) {
   const navigate = useNavigate();
-  const isAvailable = available === "Service Available";
+  const isAvailable = available === " Available Service";
 
   const handleBooking = () => {
     if (isAvailable) {
@@ -82,7 +82,7 @@ function ServicesPageChild({ Img, title, ServiceName, description, place, phoneN
               <Info size={12} strokeWidth={3} />
             </div>
             <span className="text-[11px] font-bold">
-              {isAvailable ? "Service Available" : "Service Not Available"}
+              {isAvailable ? "  Available Service" : "UnAvailable Service"}
             </span>
           </div>
 
