@@ -11,7 +11,7 @@ export default function RecentServicesTab() {
 
   return (
     <div className="p-4">
-      {/* Buttons */}
+
       <div className="flex gap-4">
         <button
           onClick={() => setActive("available")}
@@ -52,21 +52,24 @@ export default function RecentServicesTab() {
               : "bg-gray-100 text-secondary hover:bg-gray-200"
           }`}
         >
-          Rejected Services
+          
+          CompletedServicesTable
+        
         </button>
          <button
-          onClick={() => setActive("Rejected")}
+          onClick={() => setActive("Completed")}
           className={`px-4 py-2 rounded ${
-            active === "Rejected"
+            active === "Completed"
               ? " text-secondary font-bold border-b-4 border-secondary"
               : "bg-gray-100 text-secondary hover:bg-gray-200"
           }`}
         >
+  
           Rejected Services
+
         </button>
       </div>
 
-      {/* Table Rendering */}
       <div className="mt-6">
         {active === "available" && <AvailableServicesTable />}
         {active === "requested" && <RequestedSevicesTable />}
