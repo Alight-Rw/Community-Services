@@ -55,14 +55,14 @@ export default function RecentServicesTab() {
           Rejected Services
         </button>
          <button
-          onClick={() => setActive("Completed")}
+          onClick={() => setActive("Rejected")}
           className={`px-4 py-2 rounded ${
-            active === "Completed"
+            active === "Rejected"
               ? " text-secondary font-bold border-b-4 border-secondary"
               : "bg-gray-100 text-secondary hover:bg-gray-200"
           }`}
         >
-          Completed Services
+          Rejected Services
         </button>
       </div>
 
@@ -70,9 +70,9 @@ export default function RecentServicesTab() {
       <div className="mt-6">
         {active === "available" && <AvailableServicesTable />}
         {active === "requested" && <RequestedSevicesTable />}
-         {active === "Rejected" && <RejectedServicesTable />}
-        {active === "Completed" && <CompletedServicesTable/>}
          {active === "Waiting" && <WaitingServicesTable />}
+        {active === "Completed" && <CompletedServicesTable/>}
+         {active === "Rejected" && <RejectedServicesTable />}
       
       </div>
     </div>
