@@ -11,14 +11,14 @@ export default function RecentServicesTab() {
 
   return (
     <div className="p-4">
-      {/* Buttons */}
-      <div className="flex gap-4">
+    
+      <div className="flex justify-between gap-4">
         <button
           onClick={() => setActive("available")}
           className={`px-4 py-2 rounded ${
             active === "available"
               ? " text-secondary font-bold border-b-4 border-secondary"
-              : "bg-gray-100 text-secondary hover:bg-gray-200"
+              : " text-secondary "
           }`}
         >
           Available Services
@@ -29,7 +29,7 @@ export default function RecentServicesTab() {
           className={`px-4 py-2 rounded ${
             active === "requested"
               ? "text-secondary font-bold border-b-4 border-secondary"
-              : "bg-gray-100 text-secondary hover:bg-gray-200"
+              : " text-secondary "
           }`}
         >
           Requested Services
@@ -39,7 +39,7 @@ export default function RecentServicesTab() {
           className={`px-4 py-2 rounded ${
             active === "Waiting"
               ? " text-secondary font-bold border-b-4 border-secondary"
-              : "bg-gray-100 text-secondary hover:bg-gray-200"
+              : " text-secondary "
           }`}
         >
           Waiting Services
@@ -49,7 +49,7 @@ export default function RecentServicesTab() {
           className={`px-4 py-2 rounded ${
             active === "Rejected"
               ? " text-secondary font-bold border-b-4 border-secondary"
-              : "bg-gray-100 text-secondary hover:bg-gray-200"
+              : " text-secondary "
           }`}
         >
           Rejected Services
@@ -59,14 +59,14 @@ export default function RecentServicesTab() {
           className={`px-4 py-2 rounded ${
             active === "Completed"
               ? " text-secondary font-bold border-b-4 border-secondary"
-              : "bg-gray-100 text-secondary hover:bg-gray-200"
+              : " text-secondary "
           }`}
         >
           Completed Services
         </button>
       </div>
 
-      {/* Table Rendering */}
+     
       <div className="mt-6">
         {active === "available" && <AvailableServicesTable />}
         {active === "requested" && <RequestedSevicesTable />}
