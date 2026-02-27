@@ -69,7 +69,7 @@ export function WaitingServices({width}) {
                 <img
                     src={value}
                     alt={row.name}
-                    className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg object-cover"
+                    className="w-15 h-15 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg object-cover"
                 />
             ),
         },

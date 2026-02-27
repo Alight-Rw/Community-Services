@@ -71,7 +71,7 @@ export function RequestedSevicesTable({width}) {
           <img
             src={value}
             alt="service"
-            className="w-30 h-24 rounded-xl object-cover shadow-sm border border-slate-100"
+            className="w-15 h-15 rounded-xl object-cover shadow-sm border border-slate-100"
           />
         </div>
       ),
