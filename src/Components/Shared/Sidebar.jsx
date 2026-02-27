@@ -113,7 +113,10 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
               <p className={`text-[11px] text-slate-500 truncate font-medium ${isExpanded ? 'justify-center' : 'hidden'}`}>{isProviderPath ? 'gedeon74@gmail.com...':'niyo.alice@codingsch...'}</p>
             </div >
             <LogOut style={{ cursor: 'pointer' }} className={`text-secondary ${isExpanded ? 'w-5 h-5' : `w-5 h-5`}`}
-              onClick={() => navigate(isProviderPath ? "/provider-login" : "/login")} />
+              onClick={() => {
+                sessionStorage.clear();
+                return navigate(isProviderPath ? "/provider-login" : "/login");
+              }} />
           </div>
 
         </div>
