@@ -21,7 +21,7 @@ const DashboardNav = (Props) => {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0  z-50 w-full bg-primary shadow-lg h-20 flex justify-end items-center px-5 lg:px-10  gap-4 lg:gap-3 font-san ">
+    <div className="fixed top-0 left-0  z-50 w-full bg-primary shadow-lg h-20 flex justify-end items-center px-5 lg:px-12  gap-4 lg:gap-3 font-san ">
       <button className="p-2   bg-primary rounded-xl shadow-sm border border-universal hover:bg-universal h-10 w-10 flex items-center justify-center transition-colors">
         <Sun size={24} />
       </button>
@@ -40,8 +40,8 @@ const DashboardNav = (Props) => {
         </div>
 
         {isOpen && (
-          <div className="absolute -left-21 mt-4 w-[200px] sm:w-[240px] md:w-[260px] md:-left-33 md:-right-0 lg:w-[390px] lg:-left-44  bg-secondary rounded-[20px] shadow-2xl border border-slate-200 overflow-visible animate-in fade-in zoom-in duration-200 origin-top-right">
-            <div className="absolute -top-[7px] left-1/2 -translate-x-1/2 w-20 h-20 bg-secondary rotate-45 transform z-0"></div>
+          <div className="absolute -left-21 mt-4 w-[200px] sm:w-[240px] md:w-[260px] md:-left-33 md:-right-0 lg:w-[390px] lg:-left-65  bg-secondary rounded-[20px] shadow-2xl border border-slate-200 overflow-visible animate-in fade-in zoom-in duration-200 origin-top-right">
+            <div className="absolute -top-[4px] left-5/7 -translate-x-1/2 w-20 h-20 bg-secondary rotate-45 transform z-0"/>
 
             <div className="relative z-10 bg-secondary p-4 flex justify-between items-center rounded-t-[20px]">
               <h3 className="text-primary font-bold text-lg">Notifications</h3>
