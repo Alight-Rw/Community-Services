@@ -80,7 +80,7 @@ const CompletedSevicesTable=({width}) =>{
           <img
             src={value}
             alt="service"
-            className="w-15 h-15 rounded-xl object-cover shadow-sm border border-slate-100"
+            className="w-16 h-16 rounded-xl object-cover shadow-sm border border-slate-100"
           />
         </div>
       ),
