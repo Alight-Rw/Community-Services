@@ -9,7 +9,17 @@ function LoginForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/dashboard");
+    const selectedService = sessionStorage.getItem("SELECTED-SERVICE");
+    
+    if (selectedService) {
+      const serviceData = JSON.parse(selectedService);
+      const slugTitle = serviceData.title.toLowerCase().replace(/\s+/g, "-");
+      return navigate(`/confirm-booking/${slugTitle}`, { state: serviceData });
+    }
+
+    if (selectedService === null) {
+      return navigate('/dashboard');
+    }
   };
 
   return (

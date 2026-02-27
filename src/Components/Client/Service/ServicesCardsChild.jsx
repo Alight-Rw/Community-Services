@@ -9,8 +9,15 @@ function ServicesPageChild({ Img, title, ServiceName, description, place, phoneN
 
   const handleBooking = () => {
     if (isAvailable) {
-      const slugTitle = title.toLowerCase().replace(/\s+/g, "-");
-      navigate(`/confirm-booking/${slugTitle}`, { state: { title, price, Img, ServiceName, description, place, time, phoneNumber } });
+      const serviceData = { title, price, Img, ServiceName, description, place, time, phoneNumber };
+      sessionStorage.setItem("SELECTED-SERVICE", JSON.stringify(serviceData));
+      const isLoggedIn = sessionStorage.getItem("IS_LOGGED-IN");
+
+      if(isLoggedIn === true || isLoggedIn === "true"){
+        const slugTitle = title.toLowerCase().replace(/\s+/g, "-");
+        return navigate(`/confirm-booking/${slugTitle}`, { state: serviceData });
+      }
+      return navigate('/login');
     }
   };
 
