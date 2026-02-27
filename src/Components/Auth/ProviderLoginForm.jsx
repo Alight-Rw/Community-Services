@@ -64,7 +64,7 @@ export function ProviderLoginForm() {
 
         <button
           type="submit"
-          className="bg-blue-700 text-white py-2 rounded-lg w-full hover:bg-blue-800 transition"
+          className="bg-secondary text-white py-2 rounded-lg w-full hover:bg-dark-light-secondary transition"
         >
           Login
         </button>
