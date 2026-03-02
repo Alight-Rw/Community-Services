@@ -1,3 +1,4 @@
+import Pagination from "../../Shared/Pagination";
 import { GalleryImages } from "./GalleryImages";
 
 function splitIntoColumns(items, cols) {
@@ -12,6 +13,7 @@ export default function ShowGallery() {
   const columns = splitIntoColumns(GalleryImages, 3);
 
   return (
+    <>
     <div className="w-full flex flex-col gap-6 p-4 sm:justify-center  sm:flex-row sm:flex-wrap md:flex-nowrap">
       {columns.map((colItems, colIndex) => (
         <div
@@ -29,13 +31,16 @@ export default function ShowGallery() {
               <div className="bg-blue-500/50 absolute bottom-2 left-3 text-white text-[8px] sm:text-[10px] font-sans px-3 py-1.5 rounded-md">
                 <h1>{item.title}</h1>
                 <div>{item.desc}</div>
-                
               </div>
-              <div class="">{item.icon}</div>
             </div>
           ))}
         </div>
       ))}
+       
     </div>
+    <div className="w-full flex justify-end mt-6">
+        <Pagination />
+      </div>
+    </>
   );
 }

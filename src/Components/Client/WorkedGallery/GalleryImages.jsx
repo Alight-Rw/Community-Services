@@ -13,7 +13,7 @@ import Pagination from "../../Shared/Pagination";
   { img: "/images/taxi.jpeg", title:"TAXI MAN" , desc:"safety is more important than hope"},
   { img: "/images/hair-dresser2.jpeg", title:"HAIR STYLE", desc:"A fresh hair, fresh confidence" },
   { img: "/images/teacher.jpeg", title:"TEACHING", desc:"Education is the key to success" },
-  { icon:<Pagination />}
+ 
    
 ];
 
