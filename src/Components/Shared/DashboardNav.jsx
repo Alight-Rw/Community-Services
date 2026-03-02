@@ -2,11 +2,13 @@ import React, { useState, useRef, useEffect } from "react";
 import { Sun, Bell, X } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import NotificationCard from "./NotificationCard";
+import { useNavigate } from "react-router-dom";
 
 const DashboardNav = (Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   const location = useLocation();
+  const navigate = useNavigate()
   const isProviderPath = location.pathname.startsWith("/provider-");
   console.log("PATH", location.pathname);
 
@@ -19,7 +21,7 @@ const DashboardNav = (Props) => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
+ 
   return (
     <div className="fixed top-0 left-0  z-50 w-full bg-primary shadow-lg h-20 flex justify-end items-center px-5 lg:px-12  gap-4 lg:gap-3 font-san ">
       <button className="p-2   bg-primary rounded-xl shadow-sm border border-universal hover:bg-universal h-10 w-10 flex items-center justify-center transition-colors">
@@ -80,6 +82,7 @@ const DashboardNav = (Props) => {
           src={isProviderPath ? "/image.jpg" : "image.png"}
           alt="User profile"
           className="w-full h-full object-cover"
+          onClick={isProviderPath ? ()=>navigate("/provider-settings") : ()=>navigate("/settings") }
         />
       </div>
     </div>

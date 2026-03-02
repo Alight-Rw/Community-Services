@@ -29,7 +29,9 @@ export default function ShowGallery() {
               <div className="bg-blue-500/50 absolute bottom-2 left-3 text-white text-[8px] sm:text-[10px] font-sans px-3 py-1.5 rounded-md">
                 <h1>{item.title}</h1>
                 <div>{item.desc}</div>
+                
               </div>
+              <div class="">{item.icon}</div>
             </div>
           ))}
         </div>

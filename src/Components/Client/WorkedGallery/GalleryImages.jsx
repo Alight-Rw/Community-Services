@@ -1,6 +1,6 @@
+import Pagination from "../../Shared/Pagination";
 
-
-export const GalleryImages = [
+ export  const GalleryImages = [
   { img: "/images/cleaner.jpeg", title:"CLEANING" , desc:"Keeping things clean shows responsability"},
   { img: "/images/plumber2.jpeg", title:"PLUMBING" , desc:"a small leak can sink a great ship"},
   { img: "/images/hair-dresser.jpeg", title:"HAIR DRESSING", desc:"A woman's hair is her crown" },
@@ -13,4 +13,8 @@ export const GalleryImages = [
   { img: "/images/taxi.jpeg", title:"TAXI MAN" , desc:"safety is more important than hope"},
   { img: "/images/hair-dresser2.jpeg", title:"HAIR STYLE", desc:"A fresh hair, fresh confidence" },
   { img: "/images/teacher.jpeg", title:"TEACHING", desc:"Education is the key to success" },
+  { icon:<Pagination />}
+   
 ];
+
+ 

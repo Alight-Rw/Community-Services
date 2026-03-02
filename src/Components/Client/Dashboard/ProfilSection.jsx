@@ -1,7 +1,9 @@
 
 import { FaEdit } from "react-icons/fa"
+import { useNavigate } from "react-router-dom";
 
 export function ProfileSection() {
+  const navigate = useNavigate()
   return (
     <div className="bg-gray-800 p-4 rounded-lg ">
       <img
@@ -21,6 +23,7 @@ export function ProfileSection() {
 
         {/* BUTTON */}
         <button
+         onClick={()=>navigate("/settings")}
           className="mt-3 px-4 py-2 border border-primary rounded-full
           flex items-center gap-2 text-primary w-[168.06px] h-[33.48px]
           justify-center"
