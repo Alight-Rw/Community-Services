@@ -1,5 +1,6 @@
 import { Calendar } from "lucide-react";
 import Table from "../../Shared/Table";
+import Pagination from "../../Shared/Pagination";
 
 export function RejectedServices({ width }) {
 
@@ -132,13 +133,16 @@ export function RejectedServices({ width }) {
     ];
 
     return (
+        <>
         <div className="pr-12">
             <Table
                 columns={columns}
                 data={allServicesData}
                 width={width}
             />
+            <Pagination />
         </div>
+        </>
     );
 }
 
