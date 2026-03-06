@@ -67,6 +67,22 @@ function LoginForm() {
                   placeholder="Password"
                   className="border rounded-lg bg-universal border-primary px-4 py-2 w-full focus:outline-secondary"
                 />
+                <div className="py-5 px-1 flex flex-col gap-5">
+                   <label className="flex items-center gap-2">
+                            <input
+                                type="checkbox"
+                                defaultChecked
+                                className="accent-secondary font-bold w-4 h-4"
+                            />
+                            Remember
+                        </label>
+                  <p>
+                    <span>Forgot password ?</span>
+                    <Link to="/resend-password" className="text-secondary ml-4 border-b-2 border-secondary cursor-pointer">
+                Change password
+              </Link>
+                  </p>
+                </div>
 
                 <button
                   type="button"
