@@ -1,74 +1,94 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { FaEye, FaEyeSlash } from "react-icons/fa"
+/** @format */
+
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { ToastContainer, toast } from 'react-toastify';
+import { APIsRequestService } from '../../Services/APIsRequestService';
+import { encrypt } from '../../Utils/SharedUtils';
 
 export function ProviderLoginForm() {
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [showPassword, setShowPassword] = useState(false)
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+    try {
+      const response = await APIsRequestService.SignInAPI({
+        email: username,
+        password,
+      });
+      const data = await response.json();
 
-    console.log("Username:", username)
-    console.log("Password:", password)
+      if (!response.ok) {
+        return toast.error(data.message);
+      }
 
-    
-    navigate("/provider-dashboard")
-  }
+      localStorage.setItem('token', encrypt(data.data.token));
+      if (data.data.userType === 'provider') {
+        return navigate('/provider-dashboard');
+      }
+
+      return toast.error("Invalid email or password");
+    } catch (error) {
+      console.error('Failed Error:', error);
+    }
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-10">
+    <div className='min-h-screen flex items-center justify-center px-4 py-10'>
+      <ToastContainer />
       <form
-        onSubmit={handleSubmit}
-        className="bg-white p-6 sm:p-8 rounded-xl shadow-lg w-full max-w-md md:max-w-lg space-y-8"
+        onSubmit={handleLogin}
+        className='bg-white p-6 sm:p-8 rounded-xl shadow-lg w-full max-w-md md:max-w-lg space-y-8'
       >
-        <h2 className="text-xl sm:text-2xl font-bold text-center">
+        <h2 className='text-xl sm:text-2xl font-bold text-center'>
           Provider Panel
         </h2>
 
-        <h2 className="font-bold text-xl sm:text-2xl underline decoration-secondary">
+        <h2 className='font-bold text-xl sm:text-2xl underline decoration-secondary'>
           Login
         </h2>
 
         <input
-          type="text"
-          placeholder="Username"
-          className="border rounded-lg px-4 py-2 w-full"
+          type='text'
+          placeholder='Username'
+          className='border rounded-lg px-4 py-2 w-full'
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
         />
 
-        <div className="relative">
+        <div className='relative'>
           <input
-            type={showPassword ? "text" : "password"}
-            placeholder="Password"
-            className="border rounded-lg px-4 py-2 w-full pr-10"
+            type={showPassword ? 'text' : 'password'}
+            placeholder='Password'
+            className='border rounded-lg px-4 py-2 w-full pr-10'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
 
           <button
-            type="button"
+            type='button'
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600"
+            className='absolute right-3 top-1/2 -translate-y-1/2 text-gray-600'
           >
             {showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
           </button>
         </div>
 
         <button
-          type="submit"
-          className="bg-secondary text-white py-2 rounded-lg w-full hover:bg-dark-light-secondary transition"
+          type='submit'
+          className='bg-secondary text-white py-2 rounded-lg w-full hover:bg-dark-light-secondary transition'
         >
           Login
         </button>
       </form>
     </div>
-  )
+  );
 }
