@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ImageLeft from "../../assets/images/paint.png";
+import ImageLeft from "../../Assets/images/paint.png";
 
 
 function VerifyEmailForm() {

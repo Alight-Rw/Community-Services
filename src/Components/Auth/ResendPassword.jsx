@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import ImageLeft from "../../assets/images/paint.png";
+import ImageLeft from "../../Assets/images/paint.png";
 const ResendPassword = () => {
   return (
     <div className="relative w-full h-screen flex items-center justify-center ">

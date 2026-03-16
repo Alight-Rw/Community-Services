@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import ImageLeft from "../../assets/images/paint.png";
+import ImageLeft from "../../Assets/images/paint.png";
 
 function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);

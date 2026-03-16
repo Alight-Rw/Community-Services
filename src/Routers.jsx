@@ -20,6 +20,7 @@ import { SettingsPage } from './Pages/Client/Setting';
 
 import { Dashboard } from './Pages/Provider/Dashboard';
 import { AvailableServices } from './Pages/Provider/AvailableServices';
+import { AvailableServicesProvider } from './Components/Provider/AvailableServices';
 
 import { CompletedServices } from './Pages/Provider/CompleteServices';
 import { RequestedService } from './Pages/Provider/RequestedServices';
@@ -28,7 +29,6 @@ import { WaitingServices } from './Pages/Provider/WaitingServices';
 import { SettingProvider } from './Pages/Provider/Setting';
 import NotFoundPage from './Components/Shared/NotFoundPage';
 
-import { AvailableServicesProvider } from './Components/Provider/AvailableServices';
 
 
 
@@ -45,10 +45,10 @@ export function Routers() {
           <Route path='contact-us' element={<Contact/>} />
         </Route>
 
-         <Route path='login' element={<Authentication/>} />
-         <Route path='register' element={<Authentication/>} />
-         <Route path='change-password' element={<Authentication/>} />
-         <Route path='account-verified' element={<Authentication/>} />
+        <Route path='login' element={<Authentication/>} />
+        <Route path='register' element={<Authentication/>} />
+        <Route path='change-password' element={<Authentication/>} />
+        <Route path='account-verified' element={<Authentication/>} />
         <Route path='resend-password' element={<Authentication/>} />
 
         <Route path="dashboard" element={<DashboardClientPage/>}/>
