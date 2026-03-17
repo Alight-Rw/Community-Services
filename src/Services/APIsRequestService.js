@@ -36,5 +36,9 @@ FiechcategoryAPI:async() =>{
     })
   },
   
-  
+  contactUsAPI:async (data)=>{
+    console.log(data)
+    const headers = AuthHeader('json');
+    return await fetch(`${BASE_URL}/contact/message`, { body:JSON.stringify(data), method: 'POST', headers })
+  }
 }
