@@ -37,12 +37,18 @@ FietchcategoryAPI:async() =>{
     })
   },
   
+
   contactUsAPI:async (data)=>{
    
     const headers = AuthHeader('json');
     return await fetch(`${BASE_URL}/contact/message`, { body:JSON.stringify(data), method: 'POST', headers })
   },
-  
+
+ForgotPasswordAPI: async (data) => {
+    const headers = AuthHeader('json');
+    return await fetch(`${BASE_URL}/auth/forgot-password`, { body: JSON.stringify(data), method: 'POST', headers 
+    });
+  },  
   GetProfileAPI:async() =>{
     const headers = AuthHeader('json');
     return await fetch(`${BASE_URL}/auth/profile`, {  method: 'GET', headers })
