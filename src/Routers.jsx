@@ -49,7 +49,7 @@ export function Routers() {
         <Route path='register' element={<Authentication/>} />
         <Route path='change-password' element={<Authentication/>} />
         <Route path='account-verified' element={<Authentication/>} />
-        <Route path='resend-password' element={<Authentication/>} />
+        <Route path='forgot-password' element={<Authentication/>} />
 
         <Route path="dashboard" element={<DashboardClientPage/>}/>
         <Route path="available-services" element={<AvailableServices />} />
