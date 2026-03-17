@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Home } from "../../Components/Client/Home"
 import { APIsRequestService } from "../../Services/APIsRequestService";
+import { toast } from "react-toastify";
 
 
 export function HomePage(){
@@ -13,13 +14,13 @@ export function HomePage(){
                 const data = await response.json();
 
                 if (!response.ok) {
-                    return console.error('Failed Request:', data.message);
+                    return toast.error('Failed Request:', data.message);
                 }
 
                 setData(data);
-                return console.log('Succeeded Request:', data.message);
+                return toast.success('Succeeded Request:', data.message);
             } catch (error) {
-                console.error('Failed Error:', error);
+               toast.error('Failed Error:', error);
             }
         }
 

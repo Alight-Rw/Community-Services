@@ -20,7 +20,7 @@ function GlobalSearch() {
 
       setCategories(data.data || []);
     } catch (error) {
-      console.log('Fail error', error)
+      toast.error('Fail error', error)
     }
   };
 

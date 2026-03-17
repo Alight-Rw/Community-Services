@@ -35,7 +35,7 @@ export function ProviderLoginForm() {
 
       return toast.error("Invalid email or password");
     } catch (error) {
-      console.error('Failed Error:', error);
+      toast.error('Failed Error:', error);
     }
   };
 

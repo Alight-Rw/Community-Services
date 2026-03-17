@@ -28,7 +28,7 @@ function EditProfileModal({ user, onClose }) {
   };
 
   const handleSave = () => {
-    console.log("Updated:", formData);
+  
     onClose();
   };
 
