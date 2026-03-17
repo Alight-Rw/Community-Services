@@ -12,7 +12,12 @@ export const APIsRequestService = {
     return await fetch(`${BASE_URL}/auth/login`, { body: JSON.stringify(data), method: 'POST', headers })
   },
 
-  LogOutAPI: async () => {
+  SignUpAPI:async (data)=>{
+    console.log(data)
+    const headers = AuthHeader('json');
+    return await fetch(`${BASE_URL}/auth/client-signup`, { body:JSON.stringify(data), method: 'POST', headers })
+  },
+     LogOutAPI: async () => {
     const headers = AuthHeader('json')
     return await fetch(`${BASE_URL}/auth/logout`, { method: 'POST', headers })
 

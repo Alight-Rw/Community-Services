@@ -1,34 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {   Mail, Phone, MapPin, Send} from 'lucide-react';
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { APIsRequestService } from '../../Services/APIsRequestService';
+import { ToastContainer,toast } from 'react-toastify';
 
 export const ContactUs = () => {
 
+    const [fullName,setFullName]=useState('');
+    const[username,setUsername]=useState('');
+    const[subject,setSubject]=useState('');
+    const[message,setMessage]= useState('');
+   
+    const handleContuctUs = async(e)=>{
+        e.preventDefault();
+      
 
+        const response = APIsRequestService.contactUsAPI({
+            fullName,email:username,subject,message
+            
+        })
+
+        const data = await response
+
+        if(!response.OK){
+            return toast.error(data.message)
+        }
+        toast.success(data.message,'You contacted us seccussfully')
+    }
 
 
     return (
         <div className="min-h-screen bg-primary  font-sans p-16 ">
+            <ToastContainer/>
             <div className="max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-3 md:max-w-9xl md:gap-4  lg:gap-8">
 
 
                 <div className="md:col-span-2 border rounded-2xl border-universal p-8 shadow-sm">
-                    <form className="space-y-4">
+                    <form  onSubmit={handleContuctUs} className="space-y-4">
                         <div>
                             <label className="block text-sm font-bold mb-1">Full Name</label>
-                            <input type="text" placeholder="John Doe" className="w-full p-3 bg-soft-gray border border-universal rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" />
+                            <input type="text" placeholder="John Doe" value={fullName} onChange={(e)=>setFullName(e.target.value)} className="w-full p-3 bg-soft-gray border border-universal rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" />
                         </div>
                         <div>
                             <label className="block text-sm font-bold mb-1">Email Address</label>
-                            <input type="email" placeholder="tuyikundejackson74@example.com" className="w-full p-3 bg-soft-gray border border-universal rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" />
+                            <input type="email" placeholder="tuyikundejackson74@example.com" value={username} onChange={(e)=>setUsername(e.target.value)} className="w-full p-3 bg-soft-gray border border-universal rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" />
                         </div>
                         <div>
                             <label className="block text-sm font-bold mb-1">Subject</label>
-                            <input type="text" placeholder="How can we help?" className="w-full p-3 bg-soft-gray border border-universal rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" />
+                            <input type="text" placeholder="How can we help?" value={subject} onChange={(e)=>setSubject(e.target.value)} className="w-full p-3 bg-soft-gray border border-universal rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary" />
                         </div>
                         <div>
                             <label className="block text-sm font-bold mb-1">Message</label>
-                            <textarea rows="5" placeholder="Tell us more about your inquiry..." className="w-full p-3 bg-soft-gray border border-universal rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
+                            <textarea rows="5" placeholder="Tell us more about your inquiry..." value={message} onChange={(e)=>setMessage(e.target.value)}  className="w-full p-3 bg-soft-gray border border-universal rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
                         </div>
                         <button className="w-full bg-secondary hover:bg-sky-blue text-primary font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition">
                             <Send size={18} />
