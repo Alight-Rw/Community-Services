@@ -2,14 +2,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import { APIsRequestService } from "../../Services/APIsRequestService"; 
+import { APIsRequestService } from "../../Services/APIsRequestService";
 import ImageLeft from "../../Assets/images/paint.png";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isSent, setIsSent] = useState(false);
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     setLoading(true);
 
     try {
@@ -21,8 +22,9 @@ const ForgotPassword = () => {
         return toast.error(data.message || "wrong E-mail");
       }
 
+      setIsSent(true);
       toast.success(data.message || "Reset link sent! Check your email.");
-      setEmail(""); 
+      setEmail("");
     } catch (error) {
       console.error("Forgot Password Error:", error);
       toast.error("Connection error. Try again later.");
@@ -33,7 +35,7 @@ const ForgotPassword = () => {
 
   return (
 
-  
+
     <div className="relative w-full h-screen flex items-center justify-center ">
       <ToastContainer />
       <div className="bg-primary w-[90%] max-w-[850px] rounded-2xl shadow-2xl overflow-hidden ">
@@ -85,11 +87,17 @@ const ForgotPassword = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className={`bg-secondary hover:bg-dark-light-secondary text-primary cursor-pointer py-2 rounded-lg font-semibold mt-3 transition-colors ${
-                  loading ? "opacity-50 cursor-not-allowed" : ""
-                }`}
+                className={`bg-secondary hover:bg-dark-light-secondary text-primary cursor-pointer py-2 rounded-lg font-semibold mt-3 transition-colors ${loading ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
               >
-                {loading ? "Sending..." : "Send Verify Email"}
+                {loading ? (
+                  "Sending..."
+                ) : isSent ? (
+                  "Resend Verify Email"
+                ) : (
+                  "Send Verify Email"
+                )}
+
               </button>
             </form>
           </div>
@@ -102,4 +110,3 @@ const ForgotPassword = () => {
 export default ForgotPassword;
 
 
-// Youngboi41233$
