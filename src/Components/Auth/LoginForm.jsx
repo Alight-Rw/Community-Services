@@ -1,5 +1,4 @@
 import { useState } from "react";
-<<<<<<< HEAD
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -48,17 +47,10 @@ function LoginForm() {
 
       
     } catch (error) {
-       console.error('Failed Erroe',error);
+       
     }
   }
 
-=======
-import ImageLeft from "../../Assets/images/paint.png";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router";
-function LoginForm() {
-  const [showPassword, setShowPassword] = useState(false);
->>>>>>> 9addce5 (forgot password)
 
   return (
     <div className="relative w-full h-screen flex items-center justify-center bg-gray-100">
@@ -77,17 +69,6 @@ function LoginForm() {
               {" "}
             </div>
 
-<<<<<<< HEAD
-            
-            <form onSubmit={handleLogin} className="flex flex-col gap-4">
-              
-              <input
-                type="text"
-                placeholder="Username"
-                 value={username}
-                 onChange={(e)=>setUsername(e.target.value)}
-                className="border rounded-lg bg-universal border-primary px-4 py-2 focus:outline-secondary"
-=======
             <div className="flex md:hidden justify-center mb-6">
               <h2 className="text-2xl font-bold text-center">
                 Community Service
@@ -109,20 +90,13 @@ function LoginForm() {
                 type="text"
                 placeholder="Username"
                 className="border rounded-lg border-gray-300 px-4 py-2 focus:outline-blue-500"
->>>>>>> 9addce5 (forgot password)
               />
 
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
-<<<<<<< HEAD
-                  value={password}
-                  onChange={(e)=>setPassword(e.target.value)}
-                  className="border rounded-lg bg-universal border-primary px-4 py-2 w-full focus:outline-secondary"
-=======
                   className="border rounded-lg border-gray-300 px-4 py-2 w-full focus:outline-blue-500"
->>>>>>> 9addce5 (forgot password)
                 />
 
                 <button
