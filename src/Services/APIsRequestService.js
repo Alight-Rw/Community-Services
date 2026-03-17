@@ -1,4 +1,4 @@
-import { LogIn } from "lucide-react";
+
 import { AuthHeader, BASE_URL } from "../Utils/RequestUtils";
 
 export const APIsRequestService = {
@@ -16,5 +16,20 @@ export const APIsRequestService = {
     const headers = AuthHeader('json')
     return await fetch(`${BASE_URL}/auth/logout`, { method: 'POST', headers })
 
-  }
+  },
+  SignUpAPI:async (data)=>{
+    console.log(data)
+    const headers = AuthHeader('json');
+    return await fetch(`${BASE_URL}/auth/client-signup`, { body:JSON.stringify(data), method: 'POST', headers })
+  },
+FiechcategoryAPI:async() =>{
+  
+    const headers = AuthHeader('json');
+    return await fetch(`${BASE_URL}/category/categories`,{
+      method:"GET",
+      headers
+    })
+  },
+  
+  
 }

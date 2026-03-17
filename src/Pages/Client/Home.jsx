@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Home } from "../../Components/Client/Home"
 import { APIsRequestService } from "../../Services/APIsRequestService";
 
+
 export function HomePage(){
     const [data, setData] = useState('');
 
