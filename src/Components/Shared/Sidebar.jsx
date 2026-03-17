@@ -22,19 +22,27 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
 
   const handleLogout = async () => {
     try {
-      const response = await APIsRequestService.LogOutAPI()
+      const response = await APIsRequestService.LogOutAPI();
+      const data = await response.json();
+
       if (!response.ok) {
-        return toast.error(data.message);
+        toast.error(data.message);
+        return;
       }
-    
-      localStorage.removeItem("token");
-      return navigate(isProviderPath ? "/provider-login" : "/login");
+
+      toast.success(data.message);
+
+
+      setTimeout(() => {
+        localStorage.removeItem("token");
+        navigate(isProviderPath ? "/provider-login" : "/login");
+      }, 1500);
 
     } catch (error) {
-      console.error('Failed Error:', error);
+      console.error("Failed Error:", error);
+      toast.error("Logout failed");
     }
-
-  }
+  };
 
   const menuItems = [
     { icon: <LayoutGrid size={22} />, label: 'Dashboard', path: '/dashboard' },
@@ -58,7 +66,7 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
       className={`h-screen  bg-white  border-r border-gray-200 transition-all duration-300 flex flex-col relative 
         ${isExpanded ? 'w-64' : 'w-25 '}`}
     >
-       <ToastContainer />
+      <ToastContainer />
 
       <button
         onClick={() => setIsExpanded(!isExpanded)}
