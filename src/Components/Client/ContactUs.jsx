@@ -14,9 +14,10 @@ export const ContactUs = () => {
     const handleContuctUs = async(e)=>{
         e.preventDefault();
       
-
+         try{
         const response = APIsRequestService.contactUsAPI({
             fullName,email:username,subject,message
+
             
         })
 
@@ -25,8 +26,13 @@ export const ContactUs = () => {
         if(!response.OK){
             return toast.error(data.message)
         }
-        toast.success(data.message,'You contacted us seccussfully')
-    }
+        return toast('Thanks for contact us')
+
+         }catch(error){
+           return toast.error('Fail error:',error)
+        }
+        }
+ 
 
 
     return (
