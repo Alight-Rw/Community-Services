@@ -1,10 +1,15 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import ImageLeft from "../../Assets/images/paint.png";
+import { APIsRequestService } from "../../Services/APIsRequestService";
+
 
 function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
+  const[username,setUsername]=useState('');
+  const[password , setPassword]=useState('');
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -21,6 +26,31 @@ function LoginForm() {
       return navigate('/dashboard');
     }
   };
+  const handleLogin = async (e)=>{
+    e.preventDefault();
+    try {
+      const response = await APIsRequestService.SignInAPI({
+        email:username,
+        password
+      })
+      const data = await response.json();
+
+      if(!response.ok){
+        return toast.error(data.message);
+      }
+      localStorage.setItem('token',data.data.token)
+      if (data.useType==='client'){
+        return navigate('/dashbord')
+      }
+      return toast.error("Invalid email or password");
+
+
+      
+    } catch (error) {
+       console.error('Failed Erroe',error);
+    }
+  }
+
 
   return (
     <div className="relative w-full h-screen flex items-center justify-center">
@@ -53,11 +83,13 @@ function LoginForm() {
             </div>
 
             
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <form onSubmit={handleLogin} className="flex flex-col gap-4">
               
               <input
                 type="text"
                 placeholder="Username"
+                 value={username}
+                 onChange={(e)=>setUsername(e.target.value)}
                 className="border rounded-lg bg-universal border-primary px-4 py-2 focus:outline-secondary"
               />
 
@@ -65,6 +97,8 @@ function LoginForm() {
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
+                  value={password}
+                  onChange={(e)=>setPassword(e.target.value)}
                   className="border rounded-lg bg-universal border-primary px-4 py-2 w-full focus:outline-secondary"
                 />
 
