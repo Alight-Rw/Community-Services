@@ -3,7 +3,7 @@ import AuthLayout from "./AuthLayout";
 import RegisterForm from "./RegisterForm";
 import ChangePassword from "./ChangePassword";
 import AccountVerifiedForm from "./AccountVerifiedForm";
-import ResendPassword from "./ResendPassword";
+import ForgotPassword from "./ForgotPassword";
 
 import { ProviderLoginForm } from "./ProviderLoginForm";
 
@@ -18,7 +18,7 @@ export function Auth({ pathURL }) {
         {pathURL === '/account-verified' && (<AccountVerifiedForm />)}
       
        {pathURL === '/change-password' && (<ChangePassword />)}
-       {pathURL === '/resend-password' && (<ResendPassword />)}
+       {pathURL === '/forgot-password' && (<ForgotPassword />)}
        {pathURL === '/provider-login' && (<ProviderLoginForm />)}       
       </div>
       

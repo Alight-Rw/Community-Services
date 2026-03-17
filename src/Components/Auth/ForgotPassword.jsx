@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import ImageLeft from "../../Assets/images/paint.png";
-const ResendPassword = () => {
+const ForgotPassword = () => {
   return (
     <div className="relative w-full h-screen flex items-center justify-center ">
       <div className="bg-primary w-[90%] max-w-[850px] rounded-2xl shadow-2xl overflow-hidden ">
@@ -48,7 +48,7 @@ const ResendPassword = () => {
                 </Link>
               </p>
               <button className="bg-secondary hover:bg-dark-light-secondary text-primary cursor-pointer py-2 rounded-lg font-semibold mt-3 transition-colors">
-               Resend Verify Email
+               Send Verify Email
               </button>
             </form>
           </div>
@@ -58,4 +58,4 @@ const ResendPassword = () => {
   );
 };
 
-export default ResendPassword;
+export default ForgotPassword;
