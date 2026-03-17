@@ -47,7 +47,7 @@ function LoginForm() {
 
       
     } catch (error) {
-       
+       console.error('Failed Erroe',error);
     }
   }
 
