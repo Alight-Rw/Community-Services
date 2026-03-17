@@ -58,7 +58,7 @@ export function RejectedServices({ width }) {
 
     
     const handleBook = (service) => {
-        console.log("Re-booking service:", service);
+       
 
         alert(`Booking ${service.name}`);
     };
