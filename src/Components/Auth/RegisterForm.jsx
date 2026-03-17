@@ -2,13 +2,50 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import ImageLeft from "../../Assets/images/paint.png";
+import { ToastContainer, toast } from 'react-toastify';
+import { APIsRequestService } from '../../Services/APIsRequestService';
 
 function RegisterForm() {
+  
+  const[firstName,setFirtName]=useState('');
+  const[lastName,setLastName]=useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [repeatPassword, setRepeatPassword] = useState(false);
+  
+  const handleSignUp = async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await APIsRequestService.SignUpAPI({
+      firstName,
+      lastName,
+      email: username,
+      password,
+      confirmPassword: repeatPassword
+    });
+
+    const data = await response.json();
+
+    console.log(data);
+
+    if (!response.ok) {
+      return toast.error(data.message);
+    }
+
+   
+    toast.success(data.message || "Check your email to verify your account");
+ 
+  } catch (error) {
+    console.error("Failed Error:", error);
+    toast.error("Signup failed. Try again.");
+  }
+};
 
   return (
     <div className="relative w-full h-screen flex items-center justify-center">
+      <ToastContainer />
       <div className="bg-primary w-[90%] max-w-[850px] rounded-2xl shadow-2xl overflow-hidden">
         <div className="hidden md:flex justify-center py-6 bg-primary">
           <h2 className="text-2xl font-bold text-center">Community Service</h2>
@@ -34,28 +71,37 @@ function RegisterForm() {
               <span className="text-secondary border-b-2 border-secondary pb-1 cursor-pointer"> Register </span>
             </div>
 
-            <form className="flex flex-col gap-4">
+            <form  onSubmit={handleSignUp} className="flex flex-col gap-4">
               <input
                 type="text"
                 placeholder="FirstName"
+                value={firstName}
+                onChange={(e)=>setFirtName(e.target.value)}
                 className="border rounded-lg bg-universal border-primary px-4 py-2 focus:outline-secondary"
               />
 
               <input
                 type="text"
                 placeholder="LastName"
+                value={lastName}
+                onChange={(e)=>setLastName(e.target.value)}
                 className="border rounded-lg bg-universal border-primary px-4 py-2 focus:outline-secondary"
               />
 
               <input
                 type="email"
                 placeholder="Email"
+                value={username}
+                onChange={(e)=>setUsername(e.target.value)}
+
                 className="border rounded-lg bg-universal border-primary px-4 py-2 focus:outline-secondary"
               />
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
+                  value={password}
+                  onChange={(e)=>setPassword(e.target.value)}
                   className="border rounded-lg bg-universal border-primary px-4 py-2 focus:outline-secondary w-full"
                 />
 
@@ -72,6 +118,8 @@ function RegisterForm() {
                 <input
                   type={repeatPassword ? "text" : "password"}
                   placeholder="Re-enter Password"
+                  value={repeatPassword}
+                  onChange={(e)=>setRepeatPassword(e.target.value)}
                   className="border rounded-lg bg-universal border-primary px-4 py-2 focus:outline-secondary w-full"
                 />
 

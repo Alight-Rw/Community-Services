@@ -1,6 +1,6 @@
-import { decrypt, encrypt, generateDeviceId } from "./sharedUtils";
+import { decrypt, encrypt, generateDeviceId } from "./SharedUtils";
 
-export const BASE_URL = import.meta.env.VITE_SERVER_URL;
+export const BASE_URL = `${import.meta.env.VITE_SERVER_URL}/api/v1`;
 
 export const AuthHeader = (contentType) => {
     let device_id = localStorage.getItem('device');
@@ -13,8 +13,8 @@ export const AuthHeader = (contentType) => {
     }
 
     if (contentType === 'form-data') {
-        return { Authorization: `Bearer ${access_token}`, 'User-Device': decrypt(device_id) }
+        return { Authorization: `Bearer ${decrypt(access_token)}`, 'User-Device': decrypt(device_id) }
     }
 
-    return { Authorization: `Bearer ${access_token}`, 'User-Device': decrypt(device_id), 'Content-Type': 'application/json' };
+    return { Authorization: `Bearer ${decrypt(access_token)}`, 'User-Device': decrypt(device_id), 'Content-Type': 'application/json' };
 };
