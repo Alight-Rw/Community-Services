@@ -35,7 +35,7 @@ function LoginForm() {
               <div className="w-[2px] h-[20px] absolute bg-gray-300 z-10 ml-[-20px] ">
                 {" "}
               </div>
-              <span className="text-gray-500 cursor-pointer">Register</span>
+              <Link to="/register" className="text-gray-500 cursor-pointer">Register</Link>
             </div>
 
             <form className="flex flex-col gap-4">

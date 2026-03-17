@@ -18,7 +18,6 @@ export function HomePage(){
                 }
 
                 setData(data);
-                return toast.success('Succeeded Request:', data.message);
             } catch (error) {
                toast.error('Failed Error:', error);
             }
