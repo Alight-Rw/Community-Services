@@ -1,5 +1,6 @@
 import Logo from "../../Assets/images/Logo.png";
 import { useNavigate, Link, useLocation } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 import {
   LayoutGrid,
   HelpCircle,
@@ -11,12 +12,29 @@ import {
   ChevronRight,
   LogOut,
 } from "lucide-react";
+import { APIsRequestService } from "../../Services/APIsRequestService";
 
 import { FiCheckCircle } from "react-icons/fi";
 const Sidebar = ({ isExpanded, setIsExpanded }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const isProviderPath = location.pathname.startsWith("/provider-");
+
+  const handleLogout = async () => {
+    try {
+      const response = await APIsRequestService.LogOutAPI()
+      if (!response.ok) {
+        return toast.error(data.message);
+      }
+    
+      localStorage.removeItem("token");
+      return navigate(isProviderPath ? "/provider-login" : "/login");
+
+    } catch (error) {
+      console.error('Failed Error:', error);
+    }
+
+  }
 
   const menuItems = [
     { icon: <LayoutGrid size={22} />, label: 'Dashboard', path: '/dashboard' },
@@ -40,7 +58,7 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
       className={`h-screen  bg-white  border-r border-gray-200 transition-all duration-300 flex flex-col relative 
         ${isExpanded ? 'w-64' : 'w-25 '}`}
     >
-
+       <ToastContainer />
 
       <button
         onClick={() => setIsExpanded(!isExpanded)}
@@ -49,7 +67,7 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
         {isExpanded ? <ChevronLeft size={17} /> : <ChevronRight size={17} />}
       </button>
 
-      
+
       <div style={{ cursor: "pointer" }} className="px-1 mb-4 flex">
         <img
           src={Logo}
@@ -110,13 +128,10 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
 
           <div className="flex flex-1 items-center justify-between overflow-hidden">
             <div className="overflow-hidden">
-              <p className={`text-[11px] text-slate-500 truncate font-medium ${isExpanded ? 'justify-center' : 'hidden'}`}>{isProviderPath ? 'gedeon74@gmail.com...':'niyo.alice@codingsch...'}</p>
+              <p className={`text-[11px] text-slate-500 truncate font-medium ${isExpanded ? 'justify-center' : 'hidden'}`}>{isProviderPath ? 'gedeon74@gmail.com...' : 'niyo.alice@codingsch...'}</p>
             </div >
             <LogOut style={{ cursor: 'pointer' }} className={`text-secondary ${isExpanded ? 'w-5 h-5' : `w-5 h-5`}`}
-              onClick={() => {
-                sessionStorage.clear();
-                return navigate(isProviderPath ? "/provider-login" : "/login");
-              }} />
+              onClick={handleLogout} />
           </div>
 
         </div>
