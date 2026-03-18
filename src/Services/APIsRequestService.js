@@ -1,3 +1,5 @@
+
+import { data } from "react-router";
 import { AuthHeader, BASE_URL } from "../Utils/RequestUtils";
 
 export const APIsRequestService = {
@@ -6,14 +8,13 @@ export const APIsRequestService = {
     return await fetch(`${BASE_URL}/api/welcome`, { method: 'GET', headers });
   },
 
-  SignInAPI:async (data)=>{
+  SignInAPI: async (data) => {
     const headers = AuthHeader('json');
-    return await fetch(`${BASE_URL}/auth/login`, { body:JSON.stringify(data), method: 'POST', headers })
+    return await fetch(`${BASE_URL}/auth/login`, { body: JSON.stringify(data), method: 'POST', headers })
   },
-  
 
   SignUpAPI:async (data)=>{
-    console.log(data)
+    
     const headers = AuthHeader('json');
     return await fetch(`${BASE_URL}/auth/client-signup`, { body:JSON.stringify(data), method: 'POST', headers })
   },
@@ -21,5 +22,41 @@ export const APIsRequestService = {
     const headers = AuthHeader('json');
     return await fetch(`${BASE_URL}/service/services`, { method: 'GET', headers });
   },
+     LogOutAPI: async () => {
+    const headers = AuthHeader('json')
+    return await fetch(`${BASE_URL}/auth/logout`, { method: 'POST', headers })
+
+  },
+  SignUpAPI:async (data)=>{
+   
+    const headers = AuthHeader('json');
+    return await fetch(`${BASE_URL}/auth/client-signup`, { body:JSON.stringify(data), method: 'POST', headers })
+  },
+FietchcategoryAPI:async() =>{
   
+    const headers = AuthHeader('json');
+    return await fetch(`${BASE_URL}/category/categories`,{
+      method:"GET",
+      headers
+    })
+  },
+  
+  contactUsAPI:async (data)=>{
+   
+    const headers = AuthHeader('json');
+    return await fetch(`${BASE_URL}/contact/message`, { body:JSON.stringify(data), method: 'POST', headers })
+  },
+  
+  GetProfileAPI:async() =>{
+    const headers = AuthHeader('json');
+    return await fetch(`${BASE_URL}/auth/profile`, {  method: 'GET', headers })
+  },
+
+   GalleryAPI: async () => {
+    const headers = AuthHeader("json");
+    return fetch(`${BASE_URL}/gallery/galleries`, {
+      method: "GET",
+      headers,
+    });
+  }
 }

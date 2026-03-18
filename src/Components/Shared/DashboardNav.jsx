@@ -10,8 +10,7 @@ const DashboardNav = (Props) => {
   const location = useLocation();
   const navigate = useNavigate()
   const isProviderPath = location.pathname.startsWith("/provider-");
-  console.log("PATH", location.pathname);
-
+  
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {

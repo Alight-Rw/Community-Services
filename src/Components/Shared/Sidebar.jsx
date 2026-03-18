@@ -1,5 +1,6 @@
 import Logo from "../../Assets/images/Logo.png";
 import { useNavigate, Link, useLocation } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 import {
   LayoutGrid,
   HelpCircle,
@@ -11,13 +12,43 @@ import {
   ChevronRight,
   LogOut,
 } from "lucide-react";
+import { APIsRequestService } from "../../Services/APIsRequestService";
 
 import { FiCheckCircle } from "react-icons/fi";
+import { useProfile } from "../../Hooks/useProfileHooks";
+
+
 const Sidebar = ({ isExpanded, setIsExpanded }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const isProviderPath = location.pathname.startsWith("/provider-");
 
+  const {data,loading}=useProfile()
+  const email = data?.data?.email
+
+  const handleLogout = async () => {
+    try {
+      const response = await APIsRequestService.LogOutAPI();
+      const data = await response.json();
+
+      if (!response.ok) {
+        toast.error(data.message);
+        return;
+      }
+
+      toast.success(data.message);
+
+
+      setTimeout(() => {
+        localStorage.removeItem("token");
+        navigate(isProviderPath ? "/provider-login" : "/login");
+      }, 1500);
+
+    } catch (error) {
+      console.error("Failed Error:", error);
+      toast.error("Logout failed");
+    }
+  };
   const menuItems = [
     { icon: <LayoutGrid size={22} />, label: 'Dashboard', path: '/dashboard' },
     { icon: <HelpCircle size={22} />, label: 'Requested Services', path: '/requested-services' },
@@ -40,7 +71,7 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
       className={`h-screen  bg-white  border-r border-gray-200 transition-all duration-300 flex flex-col relative 
         ${isExpanded ? 'w-64' : 'w-25 '}`}
     >
-
+      <ToastContainer />
 
       <button
         onClick={() => setIsExpanded(!isExpanded)}
@@ -49,7 +80,7 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
         {isExpanded ? <ChevronLeft size={17} /> : <ChevronRight size={17} />}
       </button>
 
-      
+
       <div style={{ cursor: "pointer" }} className="px-1 mb-4 flex">
         <img
           src={Logo}
@@ -102,7 +133,7 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
 
 
       <div className="p-4 border-t border-gray-100 bg-white ">
-        <div className={`flex items-center gap-3 ${isExpanded ? 'justify-start' : 'justify-center'}`}>
+        <div className={`flex items-center gap-2 ${isExpanded ? 'justify-start' : 'justify-center'}`}>
           <div className="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center font-bold text-xs text-slate-700 shrink-0">
             NA
           </div>
@@ -110,13 +141,10 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
 
           <div className="flex flex-1 items-center justify-between overflow-hidden">
             <div className="overflow-hidden">
-              <p className={`text-[11px] text-slate-500 truncate font-medium ${isExpanded ? 'justify-center' : 'hidden'}`}>{isProviderPath ? 'gedeon74@gmail.com...':'niyo.alice@codingsch...'}</p>
+              <p className={`text-[11px] text-slate-500 truncate font-medium ${isExpanded ? 'justify-center' : 'hidden'}`}>{loading? 'Loading...' :email || "No email"}</p>
             </div >
             <LogOut style={{ cursor: 'pointer' }} className={`text-secondary ${isExpanded ? 'w-5 h-5' : `w-5 h-5`}`}
-              onClick={() => {
-                sessionStorage.clear();
-                return navigate(isProviderPath ? "/provider-login" : "/login");
-              }} />
+              onClick={handleLogout} />
           </div>
 
         </div>
