@@ -1,4 +1,4 @@
-import Logo from "../../Assets/images/Logo.png";
+import Logo from "../../assets/images/Logo.png";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import {
