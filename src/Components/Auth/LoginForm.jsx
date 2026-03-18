@@ -1,7 +1,7 @@
 /** @format */
 
 import { useState } from 'react';
-import ImageLeft from '../../Assets/images/paint.png';
+import ImageLeft from '../../assets/images/paint.png';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { APIsRequestService } from '../../Services/APIsRequestService';
