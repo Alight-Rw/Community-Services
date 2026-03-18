@@ -1,5 +1,5 @@
 
-import { AuthHeader, BASE_URL } from "../Utils/RequestUtils";
+import {  AuthHeader,BASE_URL } from "../Utils/RequestUtils";
 
 export const APIsRequestService = {
   WelcomeAPI: async () => {
@@ -40,14 +40,20 @@ FiechcategoryAPI:async() =>{
    
     const headers = AuthHeader('json');
     return await fetch(`${BASE_URL}/contact/message`, { body:JSON.stringify(data), method: 'POST', headers })
-    return await fetch(`${BASE_URL}/auth/login`, { body:JSON.stringify(data), method: 'POST', headers })
+   
   },
   
-  GalleryAPI: async () => {
-    const headers = AuthHeader('json');
-    return await fetch(`${BASE_URL}/api/gallery`, {
-      method: 'GET',
-      headers
+   GalleryAPI: async () => {
+    const headers = AuthHeader("json");
+    return fetch(`${BASE_URL}/gallery/galleries`, {
+      method: "GET",
+      headers,
     });
-  }
+  },
 }
+
+
+
+
+
+ 
