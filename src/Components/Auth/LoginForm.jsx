@@ -55,6 +55,7 @@ function LoginForm() {
       console.error('Failed Error:', error);
     }
   };
+  
 
   return (
     <div className='relative w-full h-screen flex items-center justify-center bg-gray-100'>

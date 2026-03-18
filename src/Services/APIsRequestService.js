@@ -1,4 +1,5 @@
 
+import { data } from "react-router";
 import { AuthHeader, BASE_URL } from "../Utils/RequestUtils";
 
 export const APIsRequestService = {
@@ -27,7 +28,7 @@ export const APIsRequestService = {
     const headers = AuthHeader('json');
     return await fetch(`${BASE_URL}/auth/client-signup`, { body:JSON.stringify(data), method: 'POST', headers })
   },
-FiechcategoryAPI:async() =>{
+FietchcategoryAPI:async() =>{
   
     const headers = AuthHeader('json');
     return await fetch(`${BASE_URL}/category/categories`,{
@@ -41,6 +42,13 @@ FiechcategoryAPI:async() =>{
     const headers = AuthHeader('json');
     return await fetch(`${BASE_URL}/contact/message`, { body:JSON.stringify(data), method: 'POST', headers })
   },
+<<<<<<< feature-profile
+  
+  GetProfileAPI:async() =>{
+    const headers = AuthHeader('json');
+    return await fetch(`${BASE_URL}/auth/profile`, {  method: 'GET', headers })
+  },
+=======
 
    GalleryAPI: async () => {
     const headers = AuthHeader("json");
@@ -49,4 +57,5 @@ FiechcategoryAPI:async() =>{
       headers,
     });
   }
+>>>>>>> develop
 }
