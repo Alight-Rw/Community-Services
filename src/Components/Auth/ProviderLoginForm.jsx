@@ -27,15 +27,17 @@ export function ProviderLoginForm() {
       if (!response.ok) {
         return toast.error(data.message);
       }
+      toast.success(data.message);
+      setTimeout(() => {
+        localStorage.setItem('token', encrypt(data.data.token));
+        if (data.data.userType === 'provider') {
+          return navigate('/provider-dashboard');
+        }
 
-      localStorage.setItem('token', encrypt(data.data.token));
-      if (data.data.userType === 'provider') {
-        return navigate('/provider-dashboard');
-      }
-
-      return toast.error("Invalid email or password");
+        return toast.error('Invalid email or password');
+      }, 2000);
     } catch (error) {
-      toast.error('Failed Error:', error);
+      console.error('Failed Error:', error);
     }
   };
 
