@@ -22,7 +22,6 @@ export default function ShowGallery() {
   useEffect(() => {
     const fetchGallery = async () => {
       const data = await handlegetGallery();
-      console.log("Gallery data:", data); 
       setGallery(Array.isArray(data) ? data : []);
       setLoading(false);
     };
