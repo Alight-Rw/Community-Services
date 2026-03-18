@@ -15,16 +15,16 @@ import {
 import { APIsRequestService } from "../../Services/APIsRequestService";
 
 import { FiCheckCircle } from "react-icons/fi";
+import { useProfile } from "../../Hooks/useProfileHooks";
 
-import { ProfileUtils } from "../../Utils/ProfileUtils";
+
 const Sidebar = ({ isExpanded, setIsExpanded }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const isProviderPath = location.pathname.startsWith("/provider-");
 
-  const {data}=ProfileUtils()
-  console.log(data)
-  const email = data.data.email
+  const {data,loading}=useProfile()
+  const email = data?.data?.email
 
   const handleLogout = async () => {
     try {
@@ -133,7 +133,7 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
 
 
       <div className="p-4 border-t border-gray-100 bg-white ">
-        <div className={`flex items-center gap-3 ${isExpanded ? 'justify-start' : 'justify-center'}`}>
+        <div className={`flex items-center gap-2 ${isExpanded ? 'justify-start' : 'justify-center'}`}>
           <div className="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center font-bold text-xs text-slate-700 shrink-0">
             NA
           </div>
@@ -141,7 +141,7 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
 
           <div className="flex flex-1 items-center justify-between overflow-hidden">
             <div className="overflow-hidden">
-              <p className={`text-[11px] text-slate-500 truncate font-medium ${isExpanded ? 'justify-center' : 'hidden'}`}>{email}</p>
+              <p className={`text-[11px] text-slate-500 truncate font-medium ${isExpanded ? 'justify-center' : 'hidden'}`}>{loading? 'Loading...' :email || "No email"}</p>
             </div >
             <LogOut style={{ cursor: 'pointer' }} className={`text-secondary ${isExpanded ? 'w-5 h-5' : `w-5 h-5`}`}
               onClick={handleLogout} />
