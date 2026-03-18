@@ -58,4 +58,4 @@ const ResendPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default ResendPassword;
