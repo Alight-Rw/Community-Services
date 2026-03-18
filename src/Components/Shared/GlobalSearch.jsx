@@ -11,7 +11,7 @@ function GlobalSearch() {
 
   const handleGetCategories = async () => {
     try {
-      const response = await APIsRequestService.FiechcategoryAPI();
+      const response = await APIsRequestService.FietchcategoryAPI();
       const data = await response.json();
 
       if (!response.ok) {
