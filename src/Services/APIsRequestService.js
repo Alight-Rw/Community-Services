@@ -40,5 +40,13 @@ FiechcategoryAPI:async() =>{
    
     const headers = AuthHeader('json');
     return await fetch(`${BASE_URL}/contact/message`, { body:JSON.stringify(data), method: 'POST', headers })
+  },
+
+   GalleryAPI: async () => {
+    const headers = AuthHeader("json");
+    return fetch(`${BASE_URL}/gallery/galleries`, {
+      method: "GET",
+      headers,
+    });
   }
 }
