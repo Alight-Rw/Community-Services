@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 function ServicesPageChild({ Img, title, ServiceName, description, place, phoneNumber, time, available, price }) {
   const navigate = useNavigate();
-  const isAvailable = available === " Available Service";
+  const isAvailable = available === true;
+
 
   const handleBooking = () => {
     if (isAvailable) {
