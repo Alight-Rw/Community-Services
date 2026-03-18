@@ -40,7 +40,7 @@ FiechcategoryAPI:async() =>{
    
     const headers = AuthHeader('json');
     return await fetch(`${BASE_URL}/contact/message`, { body:JSON.stringify(data), method: 'POST', headers })
-<<<<<<< HEAD
+
    
   },
   
@@ -53,21 +53,3 @@ FiechcategoryAPI:async() =>{
   },
 }
 
-
-
-
-
- 
-=======
-    return await fetch(`${BASE_URL}/auth/login`, { body:JSON.stringify(data), method: 'POST', headers })
-  },
-  
-  GalleryAPI: async () => {
-    const headers = AuthHeader('json');
-    return await fetch(`${BASE_URL}/api/gallery`, {
-      method: 'GET',
-      headers
-    });
-  }
-}
->>>>>>> 5874bcd (Resolved conflicts)
