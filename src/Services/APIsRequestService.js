@@ -42,13 +42,11 @@ FietchcategoryAPI:async() =>{
     const headers = AuthHeader('json');
     return await fetch(`${BASE_URL}/contact/message`, { body:JSON.stringify(data), method: 'POST', headers })
   },
-<<<<<<< feature-profile
   
   GetProfileAPI:async() =>{
     const headers = AuthHeader('json');
     return await fetch(`${BASE_URL}/auth/profile`, {  method: 'GET', headers })
   },
-=======
 
    GalleryAPI: async () => {
     const headers = AuthHeader("json");
@@ -57,5 +55,4 @@ FietchcategoryAPI:async() =>{
       headers,
     });
   }
->>>>>>> develop
 }
