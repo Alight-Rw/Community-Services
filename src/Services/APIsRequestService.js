@@ -38,6 +38,7 @@ FietchcategoryAPI:async() =>{
   },
   
 
+
   contactUsAPI:async (data)=>{
    
     const headers = AuthHeader('json');
@@ -53,12 +54,17 @@ ForgotPasswordAPI: async (data) => {
     const headers = AuthHeader('json');
     return await fetch(`${BASE_URL}/auth/profile`, {  method: 'GET', headers })
   },
-
    GalleryAPI: async () => {
     const headers = AuthHeader("json");
     return fetch(`${BASE_URL}/gallery/galleries`, {
       method: "GET",
       headers,
     });
-  }
+  },
+ ChangePasswordAPI: async (token, data) => {
+    const headers = AuthHeader('json');
+    headers.Authorization = `Bearer ${token}`
+    return await fetch(`${BASE_URL}/auth/change-password`, { body: JSON.stringify(data), method: 'PATCH', headers })
+ }
+
 }

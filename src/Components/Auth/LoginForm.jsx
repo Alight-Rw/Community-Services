@@ -140,13 +140,10 @@ function LoginForm() {
                 <span>Remember</span>
               </div>
 
-              <p className='text-sm text-gray-500'>
-                Forgot your password?{' '}
-                <Link
-                  to='/forgot-password'
-                  className='text-blue-600 cursor-pointer font-medium'
-                >
-                  Change Password
+              <p className="text-sm text-gray-500">
+                Forgot your password ?{" "}
+                <Link to="/forgot-password"  className="text-blue-600 cursor-pointer font-medium">
+                  Click here
                 </Link>
               </p>
 

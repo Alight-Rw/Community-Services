@@ -42,32 +42,32 @@ export function Routers() {
           <Route path='home' element={<HomePage />} />
           <Route path='available-services' element={<ServicePage />} />
           <Route path='work-gallery' element={<WorkGallery />} />
-          <Route path='contact-us' element={<Contact/>} />
+          <Route path='contact-us' element={<Contact />} />
         </Route>
 
-        <Route path='login' element={<Authentication/>} />
-        <Route path='register' element={<Authentication/>} />
-        <Route path='change-password' element={<Authentication/>} />
-        <Route path='account-verified' element={<Authentication/>} />
-        <Route path='forgot-password' element={<Authentication/>} />
-
-        <Route path="dashboard" element={<DashboardClientPage/>}/>
+        <Route path='login' element={<Authentication />} />
+        <Route path='register' element={<Authentication />} />
+        <Route path='account-verified' element={<Authentication />} />
+        <Route path='forgot-password' element={<Authentication />} />
+        <Route path='change-password/:token' element={<Authentication />} />
+        
+        <Route path="dashboard" element={<DashboardClientPage />} />
         <Route path="available-services" element={<AvailableServices />} />
-        <Route path="requested-services" element={<RequestedServicesPage/>}/>
-        <Route path="waiting-services" element={<WaitingServicesPage/>}/>
-        <Route path="completed-services" element={<CompletedServicesPage/>}/>
-        <Route path="rejected-services" element={<RejectedServicesPage/>}/>
-        <Route path="settings" element={<SettingsPage/>}/>
+        <Route path="requested-services" element={<RequestedServicesPage />} />
+        <Route path="waiting-services" element={<WaitingServicesPage />} />
+        <Route path="completed-services" element={<CompletedServicesPage />} />
+        <Route path="rejected-services" element={<RejectedServicesPage />} />
+        <Route path="settings" element={<SettingsPage />} />
         <Route path="confirm-booking/:slugTitle" element={<ConfirmBooking />} />
 
-        <Route path="provider-login" element={<Authentication/>}/>
-        <Route path="provider-dashboard" element={<Dashboard/>}/>
-        <Route path='provider-completed-services' element={<CompletedServices />}/>
-        <Route path='provider-Requested-services' element={< RequestedService/>}/>
-        <Route path='provider-rejected-services' element={< RejectedServices/>}/>
-        <Route path='provider-waiting-services' element={<WaitingServices />}/>
-         <Route path="provider-available-services" element={<AvailableServicesProvider/>}/>
-        <Route path='provider-settings' element={<SettingProvider />}/>
+        <Route path="provider-login" element={<Authentication />} />
+        <Route path="provider-dashboard" element={<Dashboard />} />
+        <Route path='provider-completed-services' element={<CompletedServices />} />
+        <Route path='provider-Requested-services' element={< RequestedService />} />
+        <Route path='provider-rejected-services' element={< RejectedServices />} />
+        <Route path='provider-waiting-services' element={<WaitingServices />} />
+        <Route path="provider-available-services" element={<AvailableServicesProvider />} />
+        <Route path='provider-settings' element={<SettingProvider />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>

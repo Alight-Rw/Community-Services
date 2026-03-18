@@ -27,7 +27,7 @@ const ForgotPassword = () => {
       setEmail("");
     } catch (error) {
       console.error("Forgot Password Error:", error);
-      toast.error("Connection error. Try again later.");
+      toast.error("Connection error. Try again later.", error);
     } finally {
       setLoading(false);
     }
