@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import ImageLeft from "../../Assets/images/paint.png";
-import { ToastContainer, toast } from 'react-toastify';
-import { APIsRequestService } from '../../Services/APIsRequestService';
+import ImageLeft from "../../assets/images/paint.png";
 
 function RegisterForm() {
   

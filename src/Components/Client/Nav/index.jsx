@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import Logo from "../../../Assets/images/Logo.png";
+import Logo from "../../../assets/images/Logo.png";
 import { NavLink } from "react-router-dom";
 
 export function NavigationBar() {

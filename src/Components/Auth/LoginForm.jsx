@@ -1,7 +1,8 @@
 import { useState } from "react";
-import ImageLeft from "../../Assets/images/paint.png";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router";
+import ImageLeft from "../../assets/images/paint.png";
+
 function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
 

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
-import ImageLeft from "../../Assets/images/paint.png";
-const ForgotPassword = () => {
+import ImageLeft from "../../assets/images/paint.png";
+const ResendPassword = () => {
   return (
     <div className="relative w-full h-screen flex items-center justify-center ">
       <div className="bg-primary w-[90%] max-w-[850px] rounded-2xl shadow-2xl overflow-hidden ">
