@@ -62,9 +62,7 @@ function SettingProfileSection() {
                   className="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-secondary object-cover"
                 />
 
-                <button className="text-secondary border border-secondary rounded-lg py-1.5 px-4 mt-3 text-sm md:text-base">
-                  Change Photo
-                </button>
+             
               </div>
 
            
