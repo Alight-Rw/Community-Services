@@ -3,7 +3,7 @@ import { MapPin, Phone, Clock, Star, Info, Banknote } from "lucide-react";
 import ServiceButton from "./ServiceButton";
 import { useNavigate } from "react-router-dom";
 
-function ServicesPageChild({ Img, title, ServiceName, description, place, phoneNumber, time, available, price }) {
+function ServicesPageChild({ Img, title, ServiceName, description, place, phoneNumber, time,to, available, price }) {
   const navigate = useNavigate();
   const isAvailable = available === true;
 
@@ -66,11 +66,11 @@ function ServicesPageChild({ Img, title, ServiceName, description, place, phoneN
             </div>
             <div className="flex items-center gap-3">
               <Clock size={14} />
-              <span className="text-[11px]">{time}</span>
+              <span className="text-[11px]">{time} - {to}</span>
             </div>
             <div className="flex items-center gap-3 text-sm font-bold text-secondary pt-2">
               <Banknote size={18} />
-              <span>{price}</span>
+              <span>{price} Rwf</span>
             </div>
           </div>
 

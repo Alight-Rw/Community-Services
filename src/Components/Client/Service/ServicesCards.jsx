@@ -21,12 +21,14 @@ useEffect(()=>{
   }
   fecthServices()
 },[])
+const defaultPhoneNumber='+2507xxxxxxxxx'
+const defaultLocation="Musanze"
 
 
   return (
     <div className=" min-h-screen py-12 px-6 md:px-12 lg:px-20">
     <ToastContainer />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 ">
         {items?.data?.map((item, index) => (
           <ServicesPageChild
             key={index}
@@ -34,9 +36,10 @@ useEffect(()=>{
             title={item.name}
             ServiceName={item?.category?.categoryName}
             description={item.description}
-            place={item.place}
-            phoneNumber={item.phoneNumber}
-            time={item.time}
+            place={item.providerId.location || defaultLocation}
+            phoneNumber={item.providerId.number || defaultPhoneNumber }
+            time={item.timeFrom}
+            to={item.timeTo}
             price={item.price}
             available={item.isActive}
 
