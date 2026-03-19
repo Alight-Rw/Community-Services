@@ -35,7 +35,7 @@ function EditProfileModal({ user, onClose }) {
       }
 
       toast.success("Edit profile done successfully");
-     
+
 
     } catch (error) {
       toast.error("Failed error");
@@ -60,7 +60,7 @@ function EditProfileModal({ user, onClose }) {
   };
 
   return (
-    <form onSubmit={handleEditProfile}   className="flex flex-col md:flex-row gap-8 md:gap-12 bg-primary">
+    <form onSubmit={handleEditProfile} className="flex flex-col md:flex-row gap-8 md:gap-12 bg-primary">
       <ToastContainer />
 
       <div className="flex flex-col items-center md:w-1/3">
@@ -142,8 +142,10 @@ function EditProfileModal({ user, onClose }) {
 
           <button
             type="button"
-           
-             onClick={() => window.location.reload()}
+            onClick={() => {
+              onClose();              
+              window.location.reload(); 
+            }}
             className="flex-1 bg-universal hover:bg-gray-300 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition"
           >
             <X size={18} />
