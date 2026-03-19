@@ -1,5 +1,5 @@
 
-import { data } from "react-router";
+
 import { AuthHeader, BASE_URL } from "../Utils/RequestUtils";
 
 export const APIsRequestService = {
@@ -27,11 +27,7 @@ export const APIsRequestService = {
     return await fetch(`${BASE_URL}/auth/logout`, { method: 'POST', headers })
 
   },
-  SignUpAPI:async (data)=>{
-   
-    const headers = AuthHeader('json');
-    return await fetch(`${BASE_URL}/auth/client-signup`, { body:JSON.stringify(data), method: 'POST', headers })
-  },
+  
 FietchcategoryAPI:async() =>{
   
     const headers = AuthHeader('json');
