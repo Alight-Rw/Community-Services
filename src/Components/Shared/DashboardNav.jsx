@@ -3,6 +3,8 @@ import { Sun, Bell, X } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import NotificationCard from "./NotificationCard";
 import { useNavigate } from "react-router-dom";
+import { useProfile } from "../../Hooks/useProfileHooks";
+
 
 const DashboardNav = (Props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +21,11 @@ const DashboardNav = (Props) => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+  const { data, loading } = useProfile();
+
+    const userData = {
+    image: data?.data?.avatar || "/image.png",
+  };
 
   return (
     <div className="fixed top-0 left-0  z-50 w-full bg-primary shadow-lg h-20 flex justify-end items-center px-5 lg:px-12  gap-4 lg:gap-3 font-san ">
@@ -77,7 +84,7 @@ const DashboardNav = (Props) => {
 
       <div className="h-10 w-10 lg:h-12 lg:w-12  rounded-full border-2 border-primary shadow-md overflow-hidden bg-universal">
         <img
-          src={isProviderPath ? "/image.jpg" : "image.png"}
+          src={userData.image}
           alt="User profile"
           className="w-full h-full object-cover"
           onClick={isProviderPath ? () => navigate("/provider-settings") : () => navigate("/settings")}

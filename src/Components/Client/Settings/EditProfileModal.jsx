@@ -74,7 +74,7 @@ function EditProfileModal({ user, onClose }) {
           className="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-sky-blue"
         />
 
-        <label className="mt-4 cursor-pointer text-sky-blue border border-sky-blue px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary transition">
+          <label className="mt-4 cursor-pointer text-sky-blue border border-sky-blue px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary transition">
           Change Photo
           <input
             type="file"
