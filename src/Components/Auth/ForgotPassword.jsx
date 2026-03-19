@@ -26,10 +26,9 @@ const ForgotPassword = () => {
       toast.success(data.message || "Reset link sent! Check your email.");
       setEmail("");
     } catch (error) {
-      console.error("Forgot Password Error:", error);
-      toast.error("Connection error. Try again later.", error);
-    } finally {
-      setLoading(false);
+      console.error(error);
+      toast.error( error);
+    
     }
   };
 
