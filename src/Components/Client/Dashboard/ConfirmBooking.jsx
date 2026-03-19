@@ -47,7 +47,7 @@ const ConfirmBooking = () => {
                   <Phone size={16} /> {state.phoneNumber}
                 </div>
                 <div className="flex items-center gap-3 text-sm ">
-                  <Clock size={16} /> {state.time}
+                  <Clock size={16} /> {state.time} - {state.to}
                 </div>
                 <div className="flex items-center gap-3 text-sm font-bold text-secondary pt-2">
                   <Banknote size={18} />
