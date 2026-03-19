@@ -26,19 +26,23 @@ function EditProfileModal({ user, onClose }) {
         location: formData.location,
         name: formData.name,
       });
-     
+
 
       const data = await response.json();
-     
+
       if (!response.ok) {
         return toast.error(data.message);
       }
 
-      toast.success("Edit profile done successfully");
+      toast.success(data.message);
 
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
 
     } catch (error) {
-      toast.error("Failed error");
+      toast.error(data.message);
     }
   };
 
@@ -140,12 +144,10 @@ function EditProfileModal({ user, onClose }) {
             Save Changes
           </button>
 
+
           <button
             type="button"
-            onClick={() => {
-              onClose();              
-              window.location.reload(); 
-            }}
+            onClick={onClose}
             className="flex-1 bg-universal hover:bg-gray-300 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition"
           >
             <X size={18} />
