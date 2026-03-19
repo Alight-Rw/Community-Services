@@ -1,13 +1,51 @@
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { APIsRequestService } from "../../Services/APIsRequestService";
 import ImageLeft from "../../Assets/images/paint.png";
-const ChangePassword = () => {
+const ChangePassword = ({ token }) => {
+  const navigate = useNavigate();
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChangePassword = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    if (!password) {
+      setIsSubmitting(false);
+      return toast.error("Please enter a new password.");
+    }
+    if (password !== confirmPassword) {
+      setIsSubmitting(false);
+      return toast.error("Passwords do not match!");
+    }
+  
+      try {
+        const response = await APIsRequestService.ChangePasswordAPI(token, { newPassword: password, confirmPassword });
+        const data = await response.json();
+  
+        if (!response.ok) {
+          setIsSubmitting(false);
+          return toast.error(data.message);
+        }
+  
+        setTimeout(() => { navigate('/login')}, 3000);
+        setIsSubmitting(false);
+        return toast.success(data?.message);
+      } catch (error) {
+        console.error('Failed Error:', error);
+      }
+    };
+
   return (
     <div className="relative w-full h-screen flex items-center justify-center">
+      <ToastContainer />
       <div className="bg-primary w-[90%] max-w-[850px] rounded-2xl shadow-2xl overflow-hidden">
         <div className="hidden md:flex justify-center py-6 bg-primary">
           <h2 className="text-2xl font-bold text-center">Community Service</h2>
@@ -35,11 +73,14 @@ const ChangePassword = () => {
                 Register
               </Link>
             </div>
-            <form className="flex flex-col gap-4">
+            <form className="flex flex-col gap-4" onSubmit={handleChangePassword}>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="New Password"
+                  autocomplete="new-password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="border rounded-lg bg-universal border-primary text-base px-4 py-3 mt-6 w-full focus:outline-secondary"
                 />
                 <button
@@ -59,6 +100,9 @@ const ChangePassword = () => {
                 <input
                   type={showConfirmPassword ? "text" : "password"}
                   placeholder="Confirm New Password"
+                  autoComplete="new-password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                   className="border rounded-lg bg-universal border-primary text-base px-4 py-3 mt-3 w-full focus:outline-secondary"
                 />
                 <button
@@ -74,7 +118,7 @@ const ChangePassword = () => {
                 </button>
               </div>
               <p className="text-sm text-gray-500 my-4">
-                Already remember account?
+                Already remember account ?{" "}
                 <Link
                   to="/login"
                   className="text-secondary cursor-pointer font-medium hover:underline"
@@ -82,8 +126,12 @@ const ChangePassword = () => {
                   Login
                 </Link>
               </p>
-              <button className="bg-secondary hover:bg-dark-light-secondary text-primary cursor-pointer py-2 rounded-lg font-semibold mt-2 transition-colors">
-                Change Password
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="bg-secondary hover:bg-dark-light-secondary text-primary cursor-pointer py-2 rounded-lg font-semibold mt-2 transition-colors disabled:opacity-50"
+              >
+                {isSubmitting ? "Processing..." : "Change Password"}
               </button>
             </form>
           </div>
