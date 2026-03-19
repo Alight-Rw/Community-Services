@@ -26,10 +26,10 @@ function EditProfileModal({ user, onClose }) {
         location: formData.location,
         name: formData.name,
       });
-      console.log(formData)
+     
 
       const data = await response.json();
-      console.log(data)
+     
       if (!response.ok) {
         return toast.error(data.message);
       }
