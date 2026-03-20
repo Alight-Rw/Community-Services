@@ -60,10 +60,6 @@ export function ServiceTable({ role }) {
     featchLastService()
   }, [])
 
-
-
-  console.log(allServicesData)
-
   const canBook = (service) => {
     if (service.isActive === true) return true;
     return false;
