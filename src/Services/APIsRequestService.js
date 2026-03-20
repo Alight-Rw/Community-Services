@@ -1,5 +1,4 @@
 
-import { data } from "react-router";
 import { AuthHeader, BASE_URL } from "../Utils/RequestUtils";
 
 export const APIsRequestService = {
@@ -77,6 +76,23 @@ export const APIsRequestService = {
       method: 'GET',
       headers
     });
+ }, 
+ 
+  EditProfileAPI: async (data) => {
+    const headers = AuthHeader("form-data");
+    const formData = new FormData();
+    formData.append('name', data.name);
+    formData.append('email', data.email);
+    formData.append('phone', data.phone);
+    formData.append('location', data.location);
+    data.avatar && formData.append('avatar', data.avatar);
 
-  }
+    return fetch(`${BASE_URL}/auth/edit-profile`, {
+      body: formData,
+      method: "PATCH",
+      headers,
+    });
+  },
+
 }
+

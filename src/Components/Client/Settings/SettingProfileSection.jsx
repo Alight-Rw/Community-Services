@@ -2,17 +2,33 @@ import { useState } from "react";
 import { MapPin, Phone, Mail, User } from "lucide-react";
 import { FaEdit } from "react-icons/fa";
 import EditProfileModal from "./EditProfileModal";
+import { useProfile } from "../../../Hooks/useProfileHooks";
 
 function SettingProfileSection() {
   const [isEditing, setIsEditing] = useState(false);
+  const { data, loading } = useProfile();
 
+  
   const userData = {
-    name: "Alice Niyomufasha",
-    email: "niyoalice@gmail.com",
-    phone: "+250788888888",
-    location: "Kigali, Rwanda",
-    image: "/image.png",
+    name:
+      data?.data?.firstName && data?.data?.lastName
+        ? `${data.data.firstName} ${data.data.lastName}`
+        : "—",
+    email: data?.data?.email || "—",
+    phone: data?.data?.phone || "—",
+    location: data?.data?.location || "—",
+    image: data?.data?.avatar || "/image.png",
   };
+
+  if (loading) {
+    return (
+      <div className="w-full pr-3 pt-10">
+        <div className="border border-hard-gray rounded-[20px] p-10 w-full bg-primary">
+          <p>Loading profile...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full pr-3 pt-10">
@@ -20,12 +36,16 @@ function SettingProfileSection() {
 
         {isEditing ? (
           <EditProfileModal
-            user={userData}
+            user={{
+              ...data.data, 
+              name: userData.name,
+              image: userData.image,
+            }}
             onClose={() => setIsEditing(false)}
           />
         ) : (
           <>
-            {/* Premium Badge */}
+           
             <div className="absolute top-2 right-4">
               <span className="bg-small-soft-blue text-sky-blue text-xs md:text-sm font-bold px-3 py-1 rounded-full">
                 Premium
@@ -34,7 +54,7 @@ function SettingProfileSection() {
 
             <div className="flex flex-col md:flex-row gap-6 md:gap-16 items-start">
 
-              {/* Image */}
+             
               <div className="flex flex-col items-center">
                 <img
                   src={userData.image}
@@ -42,12 +62,10 @@ function SettingProfileSection() {
                   className="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-secondary object-cover"
                 />
 
-                <button className="text-secondary border border-secondary rounded-lg py-1.5 px-4 mt-3 text-sm md:text-base">
-                  Change Photo
-                </button>
+             
               </div>
 
-              {/* Infos */}
+           
               <div className="flex-1 w-full">
                 <h1 className="text-lg md:text-2xl font-bold mb-6">
                   {userData.name}
@@ -98,12 +116,17 @@ function SettingProfileSection() {
                         Member Since
                       </p>
                       <p className="text-sm md:text-lg">
-                        January 2024
+                        {data?.data?.createdAt
+                          ? new Date(data.data.createdAt).toLocaleDateString("en-US", {
+                              month: "long",
+                              year: "numeric",
+                            })
+                          : "—"}
                       </p>
                     </div>
                   </div>
 
-                  {/* Edit Button */}
+                 
                   <button
                     onClick={() => setIsEditing(true)}
                     className="w-full bg-sky-blue text-primary py-2 md:py-4 rounded-lg flex items-center justify-center gap-2 font-semibold text-sm md:text-lg hover:opacity-90 transition"
