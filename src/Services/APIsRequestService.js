@@ -12,62 +12,70 @@ export const APIsRequestService = {
     return await fetch(`${BASE_URL}/auth/login`, { body: JSON.stringify(data), method: 'POST', headers })
   },
 
-  SignUpAPI:async (data)=>{
-    
+  SignUpAPI: async (data) => {
+
     const headers = AuthHeader('json');
-    return await fetch(`${BASE_URL}/auth/client-signup`, { body:JSON.stringify(data), method: 'POST', headers })
+    return await fetch(`${BASE_URL}/auth/client-signup`, { body: JSON.stringify(data), method: 'POST', headers })
   },
-   GetServicesAPI: async () => {
+  GetServicesAPI: async () => {
     const headers = AuthHeader('json');
     return await fetch(`${BASE_URL}/service/services`, { method: 'GET', headers });
   },
-     LogOutAPI: async () => {
+  LogOutAPI: async () => {
     const headers = AuthHeader('json')
     return await fetch(`${BASE_URL}/auth/logout`, { method: 'POST', headers })
 
   },
-  SignUpAPI:async (data)=>{
-   
+  SignUpAPI: async (data) => {
+
     const headers = AuthHeader('json');
-    return await fetch(`${BASE_URL}/auth/client-signup`, { body:JSON.stringify(data), method: 'POST', headers })
+    return await fetch(`${BASE_URL}/auth/client-signup`, { body: JSON.stringify(data), method: 'POST', headers })
   },
-FietchcategoryAPI:async() =>{
-  
+  FietchcategoryAPI: async () => {
+
     const headers = AuthHeader('json');
-    return await fetch(`${BASE_URL}/category/categories`,{
-      method:"GET",
+    return await fetch(`${BASE_URL}/category/categories`, {
+      method: "GET",
       headers
     })
   },
-  
 
 
-  contactUsAPI:async (data)=>{
-   
+
+  contactUsAPI: async (data) => {
+
     const headers = AuthHeader('json');
-    return await fetch(`${BASE_URL}/contact/message`, { body:JSON.stringify(data), method: 'POST', headers })
+    return await fetch(`${BASE_URL}/contact/message`, { body: JSON.stringify(data), method: 'POST', headers })
   },
 
-ForgotPasswordAPI: async (data) => {
+  ForgotPasswordAPI: async (data) => {
     const headers = AuthHeader('json');
-    return await fetch(`${BASE_URL}/auth/forgot-password`, { body: JSON.stringify(data), method: 'POST', headers 
+    return await fetch(`${BASE_URL}/auth/forgot-password`, {
+      body: JSON.stringify(data), method: 'POST', headers
     });
-  },  
-  GetProfileAPI:async() =>{
-    const headers = AuthHeader('json');
-    return await fetch(`${BASE_URL}/auth/profile`, {  method: 'GET', headers })
   },
-   GalleryAPI: async () => {
+  GetProfileAPI: async () => {
+    const headers = AuthHeader('json');
+    return await fetch(`${BASE_URL}/auth/profile`, { method: 'GET', headers })
+  },
+  GalleryAPI: async () => {
     const headers = AuthHeader("json");
     return fetch(`${BASE_URL}/gallery/galleries`, {
       method: "GET",
       headers,
     });
   },
- ChangePasswordAPI: async (token, data) => {
+  ChangePasswordAPI: async (token, data) => {
     const headers = AuthHeader('json');
     headers.Authorization = `Bearer ${token}`
     return await fetch(`${BASE_URL}/auth/change-password`, { body: JSON.stringify(data), method: 'PATCH', headers })
+  },
+  GetLastServicesAPI: async () => {
+    const headers = AuthHeader('json');
+    return fetch(`${BASE_URL}/service/last-services`, {
+      method: 'GET',
+      headers
+    });
  }, 
  
   EditProfileAPI: async (data) => {
@@ -87,3 +95,4 @@ ForgotPasswordAPI: async (data) => {
   },
 
 }
+
