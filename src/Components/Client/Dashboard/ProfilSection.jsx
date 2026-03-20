@@ -16,11 +16,14 @@ export function ProfileSection() {
 
   return (
     <div className="bg-gray-800 p-4 rounded-lg">
-      <img
+      <div className=" flex justify-between items-center rounded-full mb-2 w-full">
+        <img
         src={user?.avatar || placeholder.avatar}
         alt="profile"
-        className="mx-auto rounded-full mb-2 w-[125px]"
+        className="mx-auto rounded-full w-[125px] h-[125px]"
       />
+      </div>
+      
 
       <div className="flex flex-col items-center">
         <h4 className="text-primary">
