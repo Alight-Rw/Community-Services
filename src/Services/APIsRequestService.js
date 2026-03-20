@@ -1,5 +1,4 @@
 
-import { data } from "react-router";
 import { AuthHeader, BASE_URL } from "../Utils/RequestUtils";
 
 export const APIsRequestService = {

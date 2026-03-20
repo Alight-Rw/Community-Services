@@ -7,20 +7,21 @@ function EditProfileModal({ user, onClose }) {
 
 
 
-  const [formData, setFormData] = useState({
-    name: user.name,
-    email: user.email,
-    phone: user.phone,
-    location: user.location,
-    image: user.image,
-  });
+ const [formData, setFormData] = useState({
+  name: user.name,
+  email: user.email,
+  phone: user.phone,
+  location: user.location,
+  image: user.image,  
+  file: null           
+});
 
   const handleEditProfile = async (e) => {
     e.preventDefault();
 
     try {
       const response = await APIsRequestService.EditProfileAPI({
-        avatar: formData.image,
+        avatar: formData.file,
         email: formData.email,
         phone: formData.phone,
         location: formData.location,
@@ -54,14 +55,16 @@ function EditProfileModal({ user, onClose }) {
   };
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setFormData({
-        ...formData,
-        image: URL.createObjectURL(file),
-      });
-    }
-  };
+  const file = e.target.files[0];
+
+  if (file) {
+    setFormData({
+      ...formData,
+      image: URL.createObjectURL(file), 
+      file: file                        
+    });
+  }
+};
 
   return (
     <form onSubmit={handleEditProfile} className="flex flex-col md:flex-row gap-8 md:gap-12 bg-primary">
