@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useGetClientRequestedServices, useGetService } from "../../Hooks/useGetClientRequestedHooks";
+import { countAvailableService, countRequestByStatus } from "../../Utils/requestedServiceUtils";
 
 const StatusCard = () => {
   const [hoveredId, setHoveredId] = useState(null);
@@ -7,11 +9,26 @@ const StatusCard = () => {
   const navigate = useNavigate();
   const isProviderPath = location.pathname.startsWith("/provider-");
 
+  const { data}=useGetClientRequestedServices({status:'all'})
+  const statusCounts = countRequestByStatus(data.data)
+
+  
+ const { items } = useGetService();
+const availableCount = countAvailableService(items.data);
+  
+
+   const statistic={
+    requestedService:statusCounts.all,
+     waited: statusCounts.waitting,
+     approved : statusCounts.approved,
+     completed:statusCounts.completed,
+     rejected:statusCounts.rejected
+   }
   const statusData = [
     {
       id: "client-1",
       title: "Available Services",
-      total: 1007,
+      total: availableCount,
       icon: "/images/Available-services.png",
       trend: "/images/Trends.png",
       path: "/available-services",
@@ -19,7 +36,7 @@ const StatusCard = () => {
     {
       id: "client-2",
       title: "Requested Services",
-      total: 17,
+      total: statistic.requestedService, 
       icon: "/images/Requested-services.png",
       trend: "/images/Trends1.png",
       path: "/requested-services",
@@ -27,7 +44,7 @@ const StatusCard = () => {
     {
       id: "client-3",
       title: "Waiting Services",
-      total: 1,
+      total: statistic.waited,
       icon: "/images/Waiting-services.png",
       trend: "/images/Trends4.png",
       path: "/waiting-services",
@@ -35,7 +52,7 @@ const StatusCard = () => {
     {
       id: "client-4",
       title: "Completed Services",
-      total: 9,
+      total: statistic.completed,
       icon: "/images/Completed-services.png",
       trend: "/images/Trends2.png",
       path: "/completed-services",
@@ -43,52 +60,12 @@ const StatusCard = () => {
     {
       id: "client-5",
       title: "Rejected Services",
-      total: 2,
+      total: statistic.rejected,
       icon: "/images/Rejected-services.png",
       trend: "/images/Trends3.png",
       path: "/rejected-services",
     },
 
-    {
-      id: "provider-1",
-      title: "Available Services",
-      total: 3,
-      icon: "/images/Available-services.png",
-      trend: "/images/Trends.png",
-      path: "/provider-available-services",
-    },
-    {
-      id: "provider-2",
-      title: "Requested Services",
-      total: 309,
-      icon: "/images/Requested-services.png",
-      trend: "/images/Trends1.png",
-      path: "/provider-requested-services",
-    },
-    {
-      id: "provider-3",
-      title: "Waiting Services",
-      total: 42,
-      icon: "/images/Waiting-services.png",
-      trend: "/images/Trends4.png",
-      path: "/provider-waiting-services",
-    },
-    {
-      id: "provider-4",
-      title: "Completed Services",
-      total: 207,
-      icon: "/images/Completed-services.png",
-      trend: "/images/Trends2.png",
-      path: "/provider-completed-services",
-    },
-    {
-      id: "provider-5",
-      title: "Rejected Services",
-      total: 60,
-      icon: "/images/Rejected-services.png",
-      trend: "/images/Trends3.png",
-      path: "/provider-rejected-services",
-    },
   ];
 
   return (
