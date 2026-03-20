@@ -72,7 +72,7 @@ export const APIsRequestService = {
   },
   GetLastServicesAPI: async () => {
     const headers = AuthHeader('json');
-    return fetch(`${BASE_URL}/last-services`, {
+    return fetch(`${BASE_URL}/service/last-services`, {
       method: 'GET',
       headers
     });
