@@ -87,24 +87,7 @@ export function ServiceTable({ role }) {
               <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
               Book Now
             </button>
-          );
-        if (role === "provider")
-          return (
-            <>
-              <div className="grid grid-cols-2 gap-3">
-                <button className="flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-4 text-nowrap py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all bg-primary border-2 border-secondary text-secondary hover:bg-secondary hover:text-primary cursor-pointer">
-                  <MdEdit className="w-3 h-3 sm:w-4 sm:h-4" />
-                  Edit
-                </button>
-
-                <button className="flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-4 text-nowrap py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all bg-primary border-4 border-red-800 text-red-800 hover:bg-secondary hover:text-white cursor-pointer">
-                  <RiDeleteBin6Line className="w-3 h-3 sm:w-4 sm:h-4 text-red-500" />
-                  Delete
-                </button>
-              </div>
-            </>
-          );
-      },
+          );}
     },
   ];
 
