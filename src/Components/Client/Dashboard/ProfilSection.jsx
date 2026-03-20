@@ -13,11 +13,15 @@ export function ProfileSection() {
     lastName: "Last Name",
     email: "email@example.com",
   };
+  const userData = {
+   
+    image: data?.data?.avatar || "/image.png",
+  };
 
   return (
     <div className="bg-gray-800 p-4 rounded-lg">
       <img
-        src={user?.avatar || placeholder.avatar}
+        src={userData.image}
         alt="profile"
         className="mx-auto rounded-full mb-2 w-[125px]"
       />
