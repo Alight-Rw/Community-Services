@@ -94,5 +94,22 @@ export const APIsRequestService = {
     });
   },
 
+  GetRequestedServicesAPI: async (status) => {
+  const headers = AuthHeader('json');
+
+  return await fetch(
+    `${BASE_URL}/request-service/client-get-requested-services/${status}`,
+    {
+      method: "GET",
+      headers,
+    }
+  );
 }
+
+}
+
+ 
+ 
+
+ 
 

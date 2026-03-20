@@ -3,7 +3,6 @@ import { ArrowLeft, MapPin, Phone, Clock, Star, Info, Banknote } from 'lucide-re
 
 import BookingSystem from './BookingSystem';
 import DashboardNav from '../../Shared/DashboardNav';
-
 const ConfirmBooking = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -23,11 +22,11 @@ const ConfirmBooking = () => {
           <div className="flex flex-col lg:flex-row gap-8 items-start justify-center ">
             <div className="  lg:w-[700px] lg:h-[800px] bg-primary rounded-[30px] p-6 shadow-sm border border-universal ">
               <img src={state.Img} className="w-full h-68 object-cover rounded-2xl mb-4" alt="" />
-              
+
               <div className="flex justify-between items-start mb-2">
                 <h2 className="text-lg font-bold">{state.title}</h2>
                 <div className="flex items-center gap-1 shrink-0">
-                  {[1, 2, 3, 4].map((i) => ( <Star key={i} size={12} fill="#FFC107" color="#FFC107" /> ))}
+                  {[1, 2, 3, 4].map((i) => (<Star key={i} size={12} fill="#FFC107" color="#FFC107" />))}
                   <Star size={12} color="#D1D5DB" />
                   <span className="text-[10px] text-hard-gray font-medium ml-1">4.8 (267 reviews)</span>
                 </div>
@@ -38,7 +37,7 @@ const ConfirmBooking = () => {
               </span>
 
               <p className="text-xs text-hard-gray leading-relaxed mb-6">{state.description}</p>
-              
+
               <div className="space-y-3 mb-6 border-b border-universal pb-6">
                 <div className="flex items-center gap-3 text-sm ">
                   <MapPin size={16} /> {state.place}
@@ -56,7 +55,7 @@ const ConfirmBooking = () => {
               </div>
 
               <div className="bg-small-soft-green text-glass-green p-3 rounded-xl flex items-center gap-2 mb-6 ">
-                <Info size={16} /> 
+                <Info size={16} />
                 <span className="text-xs font-bold">Service Available</span>
               </div>
 
@@ -65,11 +64,11 @@ const ConfirmBooking = () => {
               </button>
             </div>
 
-            
+
             <div className="flex-1 w-full space-y-6">
               <BookingSystem />
             </div>
-              
+
           </div>
         </div>
       </div>
