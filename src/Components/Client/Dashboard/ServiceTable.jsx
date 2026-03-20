@@ -10,37 +10,6 @@ import { toast } from "react-toastify";
 export function ServiceTable({ role }) {
 
   const [allServicesData, setAllServicesData] = useState([])
-  // const allServicesData = [
-
-
-  //   {
-  //     id: 13,
-  //     image: "/images/dec.png",
-  //     name: "K.C Decorators Group",
-  //     location: "KG 8 St Remera-Kabeza",
-  //     contact: "+250788888888",
-  //     hours: "08:00AM - 17:00PM",
-  //     status: "Available"
-  //   },
-  //   {
-  //     id: 14,
-  //     image: "/images/car-wash.png",
-  //     name: "Sparkle Auto Wash",
-  //     location: "KK 25 Rd, Gisozi",
-  //     contact: "+250788333333",
-  //     hours: "06:00AM - 20:00PM",
-  //     status: "Completed"
-  //   },
-  //   {
-  //     id: 15,
-  //     image: "/images/sewer.png",
-  //     name: "Quality Sewing Services",
-  //     location: "NY 8 Rd, Nyamirambo",
-  //     contact: "+250788222222",
-  //     hours: "09:00AM - 18:00PM",
-  //     status: "Waiting"
-  //   },
-  // ];
 
   useEffect(() => {
     const featchLastService = async () => {
