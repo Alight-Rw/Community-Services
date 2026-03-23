@@ -1,84 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Calendar } from "lucide-react";
 import Pagination from "../../Shared/Pagination";
 import Table from "../../Shared/Table";
+import { useGetClientRequestedServices } from "../../../Hooks/useGetClientRequestedHooks";
 
 const CompletedSevicesTable=({width}) =>{
-    const ServicesData = [
-    {
-      id: 17,
-      image: "/Service.png",
-      name: "Premium Car Service",
-      location: "KG 15 Ave, Kigali",
-      contact: "+250788555555",
-      hours: "08:00AM - 18:00PM",
-      status: "Completed",
-      requestNotes:
-        "Please schedule the service for Friday morning and call before arrival.",
-      rejectionNotes:"N/A"
-        
-    },
-    {
-      id: 15,
-      image: "/images/sewer.png",
-      name: "Quality Sewing Services",
-      location: "NY 8 Rd, Nyamirambo",
-      contact: "+250788222222",
-      hours: "09:00AM - 18:00PM",
-      status: "Completed",
-      requestNotes:
-        "Please schedule the service for Friday morning and call before arrival.",
-      rejectionNotes: "N/A",
-    },
-    {
-      id: 14,
-      image: "/images/car-wash.png",
-      name: "Sparkle Auto Wash",
-      location: "KK 25 Rd, Gisozi",
-      contact: "+250788333333",
-      hours: "06:00AM - 20:00PM",
-      status: "Completed",
-      requestNotes:
-        "Please schedule the service for Friday morning and call before arrival.",
-      rejectionNotes:"N/A"
-        
-    },
-    {
-      id: 13,
-      image: "/images/dec.png",
-      name: "K.C Decorators Group",
-      location: "KG 8 St Remera-Kabeza",
-      contact: "+250788888888",
-      hours: "08:00AM - 17:00PM",
-      status: "Completed",
-      requestNotes:
-        "Please schedule the service for Friday morning and call before arrival.",
-      rejectionNotes: "N/A",
-    },
-  ];
-     
-  const statusClasses = {
-    Available: "bg-hard-gray text-xs",
-    Completed: "bg-small-soft-blue text-sky-blue text-xm ",
-    Rejected: "bg-red-200/50 text-red-300 text-sm",
-    Waiting: "bg-hard-gray/50 text-xs",
-    Approved: "bg-soft-green text-hard-green text-xs",
-  };
 
-    const canBook = (service) => {
-        if (service.status === "Completed") return false;
+
+   const{data,loading}=useGetClientRequestedServices({status:"Completed"});
+   const completedServices = data.data
+
+   console.log(completedServices)
+    const canBook = (status) => {
+        if (status === "Completed") return true;
         return false;
     };
-
+    
+    const statusClasses={
+          Completed: "bg-small-soft-blue text-sky-blue text-xm "
+    }
+ 
   const columns = [
     {
       header: "Service Avatar",
-      accessor: "image",
+      accessor: "serviceId",
       render: (value) => (
         <div className="w-[100px]"> 
           <img
-            src={value}
+            src={value.avatar}
             alt="service"
             className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg object-cover"
           />
@@ -87,8 +37,8 @@ const CompletedSevicesTable=({width}) =>{
     },
     {
       header: "Service Name" ,
-      accessor: "name",
-      render: (value) => <span className="font-bold text-slate-600 block      whitespace-nowrap ">{value}</span>,
+      accessor: "serviceId",
+      render: (value) => <span className="font-bold text-slate-600 block      whitespace-nowrap ">{value.name}</span>,
     },
     {
       header: "Service Location",
@@ -130,7 +80,7 @@ const CompletedSevicesTable=({width}) =>{
       accessor: "rejectionNotes",
       render: (value) => (
         <p className="font-medium text-slate-400 text-xs leading-relaxed ">
-          {value === "N/A" ? "N/A" : value}
+          {value || "N/A"}
         </p>
       ),
     },
@@ -156,10 +106,14 @@ const CompletedSevicesTable=({width}) =>{
   ];
 
   return (
-    <>
-      <Table columns={columns} data={ServicesData} width={width}/>
-      <Pagination />
-    </>
-  ) 
+  <>
+    {loading ? (
+      <p>Loading...</p>
+    ) : (
+      <Table columns={columns} data={completedServices} width={width} />
+    )}
+    <Pagination />
+  </>
+);
 }
 export default CompletedSevicesTable
