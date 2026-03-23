@@ -2,57 +2,13 @@
 import { Calendar } from 'lucide-react';
 import Table from '../../Shared/Table';
 import Pagination from '../../Shared/Pagination';
+import { useGetClientRequestedServices } from '../../../Hooks/useGetClientRequestedHooks';
 
-export function WaitingServices({width}) {
+export function WaitingServices({ width }) {
 
-    const allServicesData = [
-        {
-            id: 6,
-            image: "/images/dec.png",
-            name: "K.C Decorators Group",
-            location: "KG 8 St Remera-Kabeza",
-            contact: "+250788888888",
-            hours: "08:00AM - 17:00PM",
-            status: "Waiting",
-            requestnotes: "Please schedule the servicefor Friday morning and call before arrival.",
-            rejection: "N/A"
-
-        },
-        {
-            id: 7,
-            image: "/images/car-wash.png",
-            name: "Sparkle Auto Wash",
-            location: "KK 25 Rd, Gisozi",
-            contact: "+250788333333",
-            hours: "06:00AM - 20:00PM",
-            status: "Waiting",
-            requestnotes: "Please schedule the servicefor Friday morning and call before arrival.",
-            rejection: "N/A"
-        },
-        {
-            id: 8,
-      image: "/images/sewer.png",
-      name: "Quality Sewing Services",
-      location: "NY 8 Rd, Nyamirambo",
-      contact: "+250788222222",
-      hours: "09:00AM - 18:00PM",
-      status:"Waiting",
-            requestnotes: "Please schedule the servicefor Friday morning and call before arrival.",
-            rejection: "N/A"
-        },
-        
-{
-            id: 9,
-            image: "/ServicesImage/ServiceImg1.png",
-            name: "Car Auto Repair LTD",
-            location: "KG 9 Avenue, Kigali",
-            contact: "+250788888888",
-            hours: "08:00AM - 18:00PM",
-            status: "Waiting",
-            requestnotes: "Please schedule the servicefor Friday morning and call before arrival.",
-            rejection: "N/A"
-        },
-    ]
+    const { data, loading } = useGetClientRequestedServices({ status: "Waitting" })
+    const waitingServices = data.data
+    console.log(waitingServices)
 
     const canBook = (service) => {
         if (service.status === "Waiting") return false;
@@ -65,10 +21,10 @@ export function WaitingServices({width}) {
     const columns = [
         {
             header: "Service Avatar",
-            accessor: "image",
+            accessor: "serviceId",
             render: (value, row) => (
                 <img
-                    src={value}
+                    src={value.avatar}
                     alt={row.name}
                     className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg object-cover"
                 />
@@ -76,7 +32,8 @@ export function WaitingServices({width}) {
         },
         {
             header: "Service Name",
-            accessor: "name",
+            accessor: "serviceId",
+            render: (serviceId) => serviceId?.name,
         },
         {
             header: "Service Location",
@@ -84,33 +41,41 @@ export function WaitingServices({width}) {
         },
         {
             header: "Service Contacts",
-            accessor: "contact",
+            accessor: "providerId",
+            render: (value) => value.phone ||"0787684171"
+        
         },
-        {
-            header: "Service Hours",
-            accessor: "hours",
+{
+    header: "Service Hours",
+        accessor: "providerId",
+          render:(value)=>value.time ||"15:00h-18:00h"
         },
-          {
-            header: "Request Status",
-            accessor: "status",
-            render:(row)=>(
+{
+    header: "Request Status",
+        accessor: "status",
+            render: (row) => (
                 <div className='bg-gray-300  p-2 justify-items-center rounded-full w-full'>
                     <p>{row}</p>
                 </div>
             )
-        },
-        {
-            header: "Request Notes",
-            accessor: "requestnotes"
-        },
-        {
-            header: "Rejection Notes",
-            accessor: "rejection"
-        },
+},
+{
+    header: "Request Notes",
+        accessor: "requestnotes ",
+            render: (value) => value?.requestnotes || "N/A"
 
-        {
-            header: "Action",
-            accessor: "id",
+
+},
+{
+    header: "Rejection Notes",
+        accessor: "rejection",
+            render: (value) => value?.rejection || "N/A"
+
+},
+
+{
+    header: "Action",
+        accessor: "id",
 
             render: (value, row) => {
                 const isBookable = canBook(row);
@@ -130,19 +95,25 @@ export function WaitingServices({width}) {
         },
     ];
 
-    return (
-        
-            <div className='pr-12'>
+return (
 
-                <Table
-                    columns={columns}
-                    data={allServicesData}
-                    width={width}
-                />
-                <Pagination />
-            </div>
-        
-    )
+    <div className='pr-12'>
+        {loading ? (
+            <p>Loading....</p>
+        ) : (
+            <Table
+                columns={columns}
+                data={waitingServices}
+                width={width}
+            />
+        )
+
+        }
+
+        <Pagination />
+    </div>
+
+)
 }
 
 
