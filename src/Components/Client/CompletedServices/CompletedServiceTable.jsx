@@ -11,7 +11,6 @@ const CompletedSevicesTable=({width}) =>{
    const{data,loading}=useGetClientRequestedServices({status:"Completed"});
    const completedServices = data.data
 
-   console.log(completedServices)
     const canBook = (status) => {
         if (status === "Completed") return true;
         return false;
@@ -52,11 +51,13 @@ const CompletedSevicesTable=({width}) =>{
     },
     {
       header: "Service Hours",
-      accessor: "hours",
-      render: (value) => <span className="font-bold text-slate-500 block ">{value}</span>,
+      accessor: "serviceId",
+      render: (value) => <span className="font-bold text-slate-500 block ">{value.timeFrom && value.timeTo
+      ?`${value.timeFrom}-${value.timeTo}`
+       :"N/A"}</span>,
     },
     {
-      header: "Request Status",
+      header: "service Status",
       accessor: "status",
       render: (value) => (
         <div className="flex justify-center w-[100px]">
@@ -67,8 +68,8 @@ const CompletedSevicesTable=({width}) =>{
       ),
     },
     {
-      header: "Request Notes",
-      accessor: "requestNotes",
+      header: "Completed Notes",
+      accessor: "completedNotes",
       render: (value) => (
         <p className="font-medium text-slate-500 text-xs leading-relaxed ">
           {value}
@@ -76,8 +77,8 @@ const CompletedSevicesTable=({width}) =>{
       ),
     },
     {
-      header: "Rejection Notes",
-      accessor: "rejectionNotes",
+      header: "Completed Notes",
+      accessor: "completedNotes",
       render: (value) => (
         <p className="font-medium text-slate-400 text-xs leading-relaxed ">
           {value || "N/A"}
