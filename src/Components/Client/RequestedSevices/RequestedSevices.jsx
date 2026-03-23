@@ -1,62 +1,17 @@
-import React from "react";
 
 import { Calendar } from "lucide-react";
 import Pagination from "../../Shared/Pagination";
 import Table from "../../Shared/Table";
+import { useProfile } from "../../../Hooks/useProfileHooks";
 
-export function RequestedSevicesTable({width}) {
-  const allServicesData = [
-    {
-      id: 13,
-      image: "ServicesImage/ServiceImg1.png",
-      name: "Car Auto Repair LTD",
-      location: "KG 9 Avenue, Kigali",
-      contact: "+250788888888",
-      hours: "08:00AM - 18:00PM",
-      status: "Waiting",
-      requestedNotes: "Please schedule the service for Friday morning and call before arrival.",
-      rejectedNotes: "N/A",
-    },
-    {
-      id: 14,
-      image: "/images/sewer.png",
-      name: "Jany Sewing Solutions",
-      location: "KK 3 Rd, Kimihurura",
-      contact: "+250788888888",
-      hours: "08:00AM - 20:00PM",
-      status: "Approved",
-      requestedNotes: "Please schedule the service for Friday morning and call before arrival.",
-      rejectedNotes: "Request declined due to unavailable time slot on the selected date.",
-    },
-    {
-      id: 15,
-      image: "/images/car-wash.png",
-      name: "Car Wash Enterprise",
-      location: "NY 12 Rd, Rebero",
-      contact: "+250788888888",
-      hours: "06:00AM - 00:00AM",
-      status: "Completed",
-      requestedNotes: "Please schedule the service for Friday morning and call before arrival.",
-      rejectedNotes: "Request declined due to unavailable time slot on the selected date.",
-    },
-    {
-      id: 16,
-      image: "/images/dec.png",
-      name: "K.C Decorators Group",
-      location: "KG 8 St Remera-Kabeza",
-      contact: "+250788888888",
-      hours: "08:00AM - 17:00PM",
-      status: "Rejected",
-      requestedNotes: "Please schedule the service for Friday morning and call before arrival.",
-      rejectedNotes: "Request declined due to unavailable time slot on the selected date.",
-    },
-  ];
+export function RequestedSevicesTable({ width }) {
+  const { dat, loading, error } = useProfile();
 
   const canBook = (status) => ["Completed", "Rejected"].includes(status);
 
   const statusClasses = {
     Available: "bg-hard-gray text-xs",
-    Completed: "bg-small-soft-blue text-sky-blue text-xm ",
+    Completed: "bg-small-soft-blue text-sky-blue text-xm",
     Rejected: "bg-red-200/50 text-red-300 text-sm",
     Waiting: "bg-hard-gray/50 text-xs",
     Approved: "bg-soft-green text-hard-green text-xs",
@@ -67,9 +22,9 @@ export function RequestedSevicesTable({width}) {
       header: "Service Avatar",
       accessor: "image",
       render: (value) => (
-        <div className="w-[100px]"> 
+        <div className="w-[100px]">
           <img
-            src={value}
+            src={value || "/default-service.png"}
             alt="service"
             className="w-16 h-16 rounded-xl object-cover shadow-sm border border-slate-100"
           />
@@ -77,9 +32,9 @@ export function RequestedSevicesTable({width}) {
       ),
     },
     {
-      header: "Service Name" ,
+      header: "Service Name",
       accessor: "name",
-      render: (value) => <span className="font-bold text-slate-600 block      whitespace-nowrap ">{value}</span>,
+      render: (value) => <span className="font-bold text-slate-600 block whitespace-nowrap">{value}</span>,
     },
     {
       header: "Service Location",
@@ -89,19 +44,19 @@ export function RequestedSevicesTable({width}) {
     {
       header: "Service Contacts",
       accessor: "contact",
-      render: (value) => <span className="font-bold text-slate-500 block ">{value}</span>,
+      render: (value) => <span className="font-bold text-slate-500 block">{value}</span>,
     },
     {
       header: "Service Hours",
       accessor: "hours",
-      render: (value) => <span className="font-bold text-slate-500 block ">{value}</span>,
+      render: (value) => <span className="font-bold text-slate-500 block">{value}</span>,
     },
     {
       header: "Request Status",
       accessor: "status",
       render: (value) => (
         <div className="flex justify-center w-[100px]">
-          <span className={`px-4 py-1 rounded-full font-black tracking-tight whitespace-nowrap ${statusClasses[value]}`}>
+          <span className={`px-4 py-1 rounded-full font-black tracking-tight whitespace-nowrap ${statusClasses[value] || "bg-gray-100"}`}>
             {value}
           </span>
         </div>
@@ -110,26 +65,18 @@ export function RequestedSevicesTable({width}) {
     {
       header: "Request Notes",
       accessor: "requestedNotes",
-      render: (value) => (
-        <p className="font-medium text-slate-500 text-xs leading-relaxed ">
-          {value}
-        </p>
-      ),
+      render: (value) => <p className="font-medium text-slate-500 text-xs leading-relaxed">{value || "No notes"}</p>,
     },
     {
       header: "Rejection Notes",
       accessor: "rejectedNotes",
-      render: (value) => (
-        <p className="font-medium text-slate-400 text-xs leading-relaxed ">
-          {value === "N/A" ? "N/A" : value}
-        </p>
-      ),
+      render: (value) => <p className="font-medium text-slate-400 text-xs leading-relaxed">{value === "N/A" || !value ? "N/A" : value}</p>,
     },
     {
       header: "Action",
       accessor: "status",
       render: (status) => (
-        <div className="w-[120px] ">
+        <div className="w-[120px]">
           <button
             disabled={!canBook(status)}
             className={`flex items-center justify-center gap-2 mx-auto px-4 py-1.5 rounded-full border-2 transition-all duration-200 ${
@@ -146,13 +93,16 @@ export function RequestedSevicesTable({width}) {
     },
   ];
 
+  
+  const allServicesData = dat?.data?.requestedServices || [];
+
+  if (loading) return <div className="p-10 text-center font-bold">...</div>;
+  if (error) return <p className="text-red-500 p-10 text-center">: {error}</p>;
+
   return (
     <>
-      <Table columns={columns} data={allServicesData} width={width}/>
+      <Table columns={columns} data={allServicesData} width={width} />
       <Pagination />
     </>
-  )
-
-
-  
+  );
 }
