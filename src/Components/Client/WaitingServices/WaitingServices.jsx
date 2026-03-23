@@ -8,7 +8,6 @@ export function WaitingServices({ width }) {
 
     const { data, loading } = useGetClientRequestedServices({ status: "Waitting" })
     const waitingServices = data.data
-    console.log(waitingServices)
 
     const canBook = (service) => {
         if (service.status === "Waiting") return false;
