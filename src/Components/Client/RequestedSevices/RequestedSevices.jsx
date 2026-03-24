@@ -8,8 +8,7 @@ import { useGetClientRequestedServices } from "../../../Hooks/useGetClientReques
 export function RequestedSevicesTable({width}) {
  
  const{data,loading}=useGetClientRequestedServices({status:"all"})
-  const requestedServices=data.data
-  console.log(data)
+  const requestedServices=data?.data || []
 
   const canBook = (status) => ["Completed", "Rejected"].includes(status);
 
@@ -113,12 +112,8 @@ export function RequestedSevicesTable({width}) {
 
   return (
     <>
-     {loading?(
-        <p>Loading.....</p>
-     ):(
-      <Table columns={columns} data={requestedServices || []} width={width}/>
-     )
-     }
+     
+      <Table columns={columns} data={requestedServices} width={width} loading={loading}/>
      
       <Pagination />
     </>

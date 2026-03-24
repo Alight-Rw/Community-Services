@@ -5,6 +5,7 @@ import ActionButtons from "../Dashboard/EditAndDeleteButton";
 import AddNewService from "../Dashboard/AddNewService";
 import ConfirmDelete from "../Dashboard/ConfirmDelete";
 import { APIsRequestService } from "../../../Services/APIsRequestService";
+import { useGetService } from "../../../Hooks/useGetClientRequestedHooks";
 
 export function AvailableServicesTable({ width }) {
   const [services, setServices] = useState([]);
@@ -32,22 +33,9 @@ export function AvailableServicesTable({ width }) {
 
   const handleCancelDelete = () => setDeletingService(null);
 
-  useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        const response = await APIsRequestService.GetServicesAPI();
-        const data = await response.json();
-       
-        setServices(data.data ||[])
-      } catch (err) {
-        console.error("Failed to fetch services:", err);
-        setServices([])
-      }finally{
-        setLoading(false)
-      }
-    };
-    fetchServices();
-  }, []);
+  const {data}= useGetService()
+  setServices(data)
+
 
   const columns = [
     {

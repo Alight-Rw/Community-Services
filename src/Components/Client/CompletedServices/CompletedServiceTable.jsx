@@ -9,7 +9,7 @@ const CompletedSevicesTable=({width}) =>{
 
 
    const{data,loading}=useGetClientRequestedServices({status:"Completed"});
-   const completedServices = data.data
+   const completedServices = data?.data || []
 
     const canBook = (status) => {
         if (status === "Completed") return true;
@@ -108,11 +108,9 @@ const CompletedSevicesTable=({width}) =>{
 
   return (
   <>
-    {loading ? (
-      <p>Loading...</p>
-    ) : (
-      <Table columns={columns} data={completedServices} width={width} />
-    )}
+   
+      <Table columns={columns} data={completedServices} width={width} loading={loading}/>
+    
     <Pagination />
   </>
 );

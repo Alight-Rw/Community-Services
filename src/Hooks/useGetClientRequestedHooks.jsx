@@ -33,11 +33,42 @@ export const useGetClientRequestedServices = ({ status }) => {
 };
 
 
+export const useGetProviderRequestedServices = ({ status }) => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const getRequestedServices = async () => {
+      try {
+        setLoading(true);
+
+        const response = await APIsRequestService.GetProviderRequestedServicesAPI(status)
+        const result = await response.json();
+
+        if (!response.ok) {
+          return toast.error(result.message);
+        }
+
+        setData(result);
+      } catch (err) {
+        console.log(err)
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getRequestedServices();
+  }, []);
+
+  return { data, loading };
+};
+
+
 export const useGetService = () => {
   const [items, setItems] = useState([])
 
 
-  useEffect(() => {
+  useEffect(() => { 
     const fecthServices = async () => {
       const response = await APIsRequestService.GetServicesAPI()
       const data = await response.json()
@@ -45,7 +76,6 @@ export const useGetService = () => {
         return toast.error(data.message)
       }
       setItems(data)
-      return toast.success(data.message)
     }
     fecthServices()
   }, [])
