@@ -27,7 +27,7 @@ export const APIsRequestService = {
     return await fetch(`${BASE_URL}/auth/logout`, { method: 'POST', headers })
 
   },
- 
+
   FietchcategoryAPI: async () => {
 
     const headers = AuthHeader('json');
@@ -73,8 +73,8 @@ export const APIsRequestService = {
       method: 'GET',
       headers
     });
- }, 
- 
+  },
+
   EditProfileAPI: async (data) => {
     const headers = AuthHeader("form-data");
     const formData = new FormData();
@@ -92,41 +92,40 @@ export const APIsRequestService = {
   },
 
   GetRequestedServicesAPI: async (status) => {
-  const headers = AuthHeader('json');
+    const headers = AuthHeader('json');
 
-  return await fetch(
-    `${BASE_URL}/request-service/client-get-requested-services/${status}`,
-    {
-      method: "GET",
+    return await fetch(
+      `${BASE_URL}/request-service/client-get-requested-services/${status}`,
+      {
+        method: "GET",
+        headers,
+      }
+    );
+  },
+  createServiceAPI: async (data) => {
+    const formData = new FormData();
+
+    formData.append("avatar", data.avatar);
+    formData.append("name", data.name);
+    formData.append("description", data.description);
+    formData.append("price", data.price);
+    formData.append("category", data.category);
+    formData.append("location", data.location)
+    formData.append("timeFrom", data.timeFrom);
+    formData.append("timeTo", data.timeTo);
+
+    const headers = AuthHeader("form-data");
+    return fetch(`${BASE_URL}/service/create`, {
+      method: "POST",
+      body: formData,
       headers,
-    }
-  );
-},
- createServiceAPI: async (data) => {
-  const formData = new FormData();
 
-  formData.append("avatar", data.avatar); 
-   formData.append("name", data.name);
-  formData.append("description", data.description);
-  formData.append("price", data.price);
-  formData.append("category", data.category);
-  formData.append("location",data.location)
-  formData.append("timeFrom", data.timeFrom);
-  formData.append("timeTo", data.timeTo);
-  
-  const headers = AuthHeader("form-data");
-  return fetch(`${BASE_URL}/service/create`, {
-    method: "POST",
-    body: formData,
-    headers,
+    });
 
-  });
-
- }
+  },
 
 }
 
- 
- 
 
- 
+
+
