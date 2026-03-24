@@ -26,11 +26,7 @@ export const APIsRequestService = {
     return await fetch(`${BASE_URL}/auth/logout`, { method: 'POST', headers })
 
   },
-  SignUpAPI: async (data) => {
-
-    const headers = AuthHeader('json');
-    return await fetch(`${BASE_URL}/auth/client-signup`, { body: JSON.stringify(data), method: 'POST', headers })
-  },
+ 
   FietchcategoryAPI: async () => {
 
     const headers = AuthHeader('json');
@@ -104,7 +100,28 @@ export const APIsRequestService = {
       headers,
     }
   );
-}
+},
+ createServiceAPI: async (data) => {
+  const formData = new FormData();
+
+  formData.append("avatar", data.avatar); 
+   formData.append("name", data.name);
+  formData.append("description", data.description);
+  formData.append("price", data.price);
+  formData.append("category", data.category);
+  formData.append("location",data.location)
+  formData.append("timeFrom", data.timeFrom);
+  formData.append("timeTo", data.timeTo);
+  
+  const headers = AuthHeader("form-data");
+  return fetch(`${BASE_URL}/service/create`, {
+    method: "POST",
+    body: formData,
+    headers,
+
+  });
+
+ }
 
 }
 
@@ -112,4 +129,3 @@ export const APIsRequestService = {
  
 
  
-
