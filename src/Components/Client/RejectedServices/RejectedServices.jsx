@@ -1,57 +1,14 @@
 import { Calendar } from "lucide-react";
 import Table from "../../Shared/Table";
 import Pagination from "../../Shared/Pagination";
+import { useGetClientRequestedServices } from "../../../Hooks/useGetClientRequestedHooks";
 
 export function RejectedServices({ width }) {
 
-    const allServicesData = [
-        {
-            id: 13,
-            image: "/images/repair.png",
-            name: "Car Auto Repair LTD",
-            location: "KG 9 Avenue, Kigali",
-            contact: "+250788888888",
-            hours: "08:00AM - 18:00PM",
-            status: "Rejected",
-            RequestNotes: "Please schedule the service for Friday morning and call before arrival.",
-            RejectionNotes: "Request declined due to unavailable time slot on the selected date."
-        },
-        {
-            id: 14,
-            image: "/images/sewer.png",
-            name: "Quality Sewing Services",
-            location: "NY 8 Rd, Nyamirambo",
-            contact: "+250788222222",
-            hours: "09:00AM - 18:00PM",
-            status: "Rejected",
-            RequestNotes: "Please schedule the service for Friday morning and call before arrival.",
-            RejectionNotes: "Request declined due to unavailable time slot on the selected date."
-        },
-        {
-            id: 15,
-            image: "/images/car-wash.png",
-            name: "Sparkle Auto Wash",
-            location: "KK 25 Rd, Gisozi",
-            contact: "+250788333333",
-            hours: "06:00AM - 20:00PM",
-            status: "Rejected",
-            RequestNotes: "Please schedule the service for Friday morning and call before arrival.",
-            RejectionNotes: "Request declined due to unavailable time slot on the selected date."
-        },
-        {
-            id: 16,
-            image: "/images/dec.png",
-            name: "K.C Decorators Group",
-            location: "KG 8 St Remera-Kabeza",
-            contact: "+250788866666",
-            hours: "08:00AM - 17:00PM",
-            status: "Rejected",
-            RequestNotes: "Please schedule the service for Friday morning and call before arrival.",
-            RejectionNotes: "Request declined due to unavailable time slot on the selected date."
-        },
-    ];
+    const {data}= useGetClientRequestedServices({status:"Rejected"})
+    const requestedServices = data?.data || []
 
-   
+   console.log(requestedServices)
     const canBook = (service) => {
         return service.status === "Rejected";
     };
@@ -66,10 +23,10 @@ export function RejectedServices({ width }) {
     const columns = [
         {
             header: "Service Avatar",
-            accessor: "image",
+            accessor: "serviceId",
             render: (value, row) => (
                 <img
-                    src={value}
+                    src={value.avatar}
                     alt={row.name}
                     className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg object-cover"
                 />
@@ -77,20 +34,25 @@ export function RejectedServices({ width }) {
         },
         {
             header: "Service Name",
-            accessor: "name",
+            accessor:"serviceId",
+            render:(serviceId)=>serviceId?.name || "-",
         },
         {
             header: "Service Location",
             accessor: "location",
         },
         {
-            header: "Service Contacts",
-            accessor: "contact",
-        },
-        {
-            header: "Service Hours",
-            accessor: "hours",
-        },
+  header: "Service Contacts",
+  accessor: "contact",
+ 
+},
+   {
+  header: "Service Hours",
+  accessor: "serviceId",
+  render: (value) => {
+    return `${value.timeFrom} - ${value.timeTo}`;
+  },
+},
         {
             header: "Rejection Status",
             accessor: "status",
@@ -102,11 +64,15 @@ export function RejectedServices({ width }) {
         },
         {
             header: "Request Notes",
-            accessor: "RequestNotes",
+            accessor: "requestNote",
+          render:(value)=>{
+            return `${value.requestNote}`
+          }
         },
         {
             header: "Rejection Notes",
             accessor: "RejectionNotes",
+             render:(value)=>value?.RejectionNotes || "N/A",
         },
         {
             header: "Action",
@@ -135,14 +101,14 @@ export function RejectedServices({ width }) {
     return (
         <>
         <div className="pr-12">
-            <Table
+                 <Table
                 columns={columns}
-                data={allServicesData}
+                data={requestedServices}
                 width={width}
             />
-            <Pagination />
+             <Pagination />
+           
         </div>
         </>
     );
 }
-
