@@ -1,14 +1,32 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Upload, X } from "lucide-react";
+import { APIsRequestService } from "../../../Services/APIsRequestService";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function AddNewService({
   onClick,
   initialData = {},
-  onSave,
+
   isEditMode = false,
 }) {
   const inputClass =
     "w-full mt-1 px-4 py-2.5 rounded-full border border-hard-gray bg-primary text-hard-gray text-sm placeholder-hard-gray outline-none focus:border-2 focus:border-sky-blue";
+  const [loading, setLoading] = useState(false);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await APIsRequestService.FietchcategoryAPI();
+        const data = await response.json();
+       
+        setCategories(data.data);
+      } catch (err) {
+        console.error("Failed to fetch categories:", err);
+      }
+    };
+    fetchCategories();
+  }, []);
 
   const [formData, setFormData] = useState({
     name: initialData.name || "",
@@ -17,29 +35,69 @@ export default function AddNewService({
     location: initialData.location || "",
     contact: initialData.contact || "",
     email: initialData.email || "",
-    hoursFrom: initialData.hours?.split(" - ")[0] || "",
-    hoursTo: initialData.hours?.split(" - ")[1] || "",
-    notes: initialData.requestnotes || "",
+    timeFrom: initialData.hours?.split(" - ")[0] || "",
+    timeTo: initialData.hours?.split(" - ")[1] || "",
+    description: initialData.requestnotes || "",
+    isActive: true,
+    avatar: null,
   });
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = () => {
-    const updated = {
-      ...initialData,
-      name: formData.name,
-      location: formData.location,
-      contact: formData.contact,
-      hours: `${formData.hoursFrom} - ${formData.hoursTo}`,
-      requestnotes: formData.notes,
-    };
-    onSave?.(updated);
+  const handleFileChange = (e) => {
+    setFormData((prev) => ({ ...prev, avatar: e.target.files[0] }));
+  };
+
+  const handleSubmit = async () => {
+  
+    if (
+      !formData.name ||
+      !formData.category ||
+      !formData.price ||
+      !formData.location ||
+      !formData.timeFrom ||
+      !formData.timeTo ||
+      !formData.description ||
+      !formData.avatar
+    ) {
+      return toast.error("Please fill all required fields!");
+    }
+    setLoading(true);
+    try {
+      const response = await APIsRequestService.createServiceAPI(formData);
+     const data=await response.json()
+      if (!response.ok) {
+        return toast.error(data.message);
+      }
+      toast.success(data.message || "service created successfully");
+       setFormData({
+        name: "",
+        category: "",
+        price: "",
+        location: "",
+        contact: "",
+        email: "",
+        timeFrom: "",
+        timeTo: "",
+        description: "",
+        isActive: true,
+        avatar: null,
+      });
+      onClick?.()
+      window.location.reload()
+    } catch (error) {
+      toast.error("something went wrong!");
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="fixed inset-0 px-[100px] bg-black/40 flex justify-center items-center z-50 p-4 overflow-y-auto">
+      <ToastContainer />
       <div className="bg-primary w-full rounded-2xl p-6 relative shadow-2xl">
         <button
           onClick={onClick}
@@ -78,10 +136,11 @@ export default function AddNewService({
                 className={inputClass}
               >
                 <option value="">Select Category</option>
-                <option>Cleaning</option>
-                <option>Plumbing</option>
-                <option>Electrical</option>
-                <option>Gardening</option>
+                {categories.map((cat) => (
+                  <option key={cat._id} value={cat._id}>
+                    {cat.categoryName}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
@@ -150,9 +209,9 @@ export default function AddNewService({
                 Service From<span className="text-red-500">*</span>
               </label>
               <input
-                name="hoursFrom"
-                type="text"
-                value={formData.hoursFrom}
+                name="timeFrom"
+                type="time"
+                value={formData.timeFrom}
                 onChange={handleChange}
                 placeholder="eg,. 08:00 AM"
                 className={inputClass}
@@ -163,9 +222,9 @@ export default function AddNewService({
                 Service To<span className="text-red-500">*</span>
               </label>
               <input
-                name="hoursTo"
-                type="text"
-                value={formData.hoursTo}
+                name="timeTo"
+                type="time"
+                value={formData.timeTo}
                 onChange={handleChange}
                 placeholder="eg,. 17:00 PM"
                 className={inputClass}
@@ -174,11 +233,13 @@ export default function AddNewService({
           </div>
 
           <div>
-            <label className="text-sm font-semibold text-gray-800">Notes</label>
+            <label className="text-sm font-semibold text-gray-800">
+              Description
+            </label>
             <textarea
-              name="notes"
+              name="description"
               rows="4"
-              value={formData.notes}
+              value={formData.description}
               onChange={handleChange}
               placeholder="eg,. This service comes to help the community..."
               className="w-full mt-1 px-5 py-3 rounded-2xl border border-gray-200 bg-primary text-gray-400 text-sm placeholder-gray-400 outline-none focus:ring-2 focus:ring-sky-blue resize-none"
@@ -191,9 +252,25 @@ export default function AddNewService({
             </label>
             <label className="w-[350px] md:w-[580px] border border-gray-200 rounded-2xl py-5 flex flex-col items-center justify-center text-gray-400 cursor-pointer hover:bg-gray-50">
               <Upload size={26} className="text-gray-500 mb-2" />
-              <p className="text-sm text-gray-500">Click to upload image</p>
-              <p className="text-xs text-gray-400">PNG, JPG, GIF up to 10MB</p>
-              <input type="file" accept="image/*" className="hidden" />
+              {formData.avatar ? (
+                <p className="text-sm text-green-500 font-semibold">
+                  {formData.avatar.name}
+                </p>
+              ) : (
+                <>
+                  <p className="text-sm text-gray-500">Click to upload image</p>
+                  <p className="text-xs text-gray-400">
+                    PNG, JPG, GIF up to 10MB
+                  </p>
+                </>
+              )}
+
+              <input
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={handleFileChange}
+              />
             </label>
           </div>
 
@@ -208,9 +285,14 @@ export default function AddNewService({
             <button
               type="button"
               onClick={handleSubmit}
-              className="w-70 md:w-100 py-3 rounded-full bg-sky-blue text-white font-bold text-sm hover:bg-secondary"
+              disabled={loading}
+              className="w-70 md:w-100 py-3 rounded-full bg-sky-blue text-white font-bold text-sm hover:bg-secondary disabled:opacity-50"
             >
-              {isEditMode ? "Save Changes" : "Create Service"}
+              {loading
+                ? "Creating..."
+                : isEditMode
+                  ? "Save Changes"
+                  : "Create Service"}
             </button>
           </div>
         </div>
