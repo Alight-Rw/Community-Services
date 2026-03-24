@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaShieldAlt, FaBell, FaLock } from "react-icons/fa";
 
 const SettingsCard = () => {
+    const [showModal, setShowModal] = useState(false);
+    const handleDeleteAccount = () => {
+        console.log("Account deleted!");
+        setShowModal(false);
+    };
     return (
         <div className="py-2 px-4 sm:px-6 lg:px-8   " >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -88,7 +93,10 @@ const SettingsCard = () => {
                     These actions cannot be undone. Please proceed with caution.
                 </p>
 
-                <button className="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-xl font-semibold transition w-full sm:w-auto">
+               <button 
+                    onClick={() => setShowModal(true)} 
+                    className="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-xl font-semibold transition w-full sm:w-auto"
+                >
                     Delete Account
                 </button>
             </div>
