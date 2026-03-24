@@ -3,54 +3,13 @@ import React from "react";
 import { Calendar } from "lucide-react";
 import Pagination from "../../Shared/Pagination";
 import Table from "../../Shared/Table";
+import { useGetClientRequestedServices } from "../../../Hooks/useGetClientRequestedHooks";
 
 export function RequestedSevicesTable({width}) {
-  const allServicesData = [
-    {
-      id: 13,
-      image: "ServicesImage/ServiceImg1.png",
-      name: "Car Auto Repair LTD",
-      location: "KG 9 Avenue, Kigali",
-      contact: "+250788888888",
-      hours: "08:00AM - 18:00PM",
-      status: "Waiting",
-      requestedNotes: "Please schedule the service for Friday morning and call before arrival.",
-      rejectedNotes: "N/A",
-    },
-    {
-      id: 14,
-      image: "/images/sewer.png",
-      name: "Jany Sewing Solutions",
-      location: "KK 3 Rd, Kimihurura",
-      contact: "+250788888888",
-      hours: "08:00AM - 20:00PM",
-      status: "Approved",
-      requestedNotes: "Please schedule the service for Friday morning and call before arrival.",
-      rejectedNotes: "Request declined due to unavailable time slot on the selected date.",
-    },
-    {
-      id: 15,
-      image: "/images/car-wash.png",
-      name: "Car Wash Enterprise",
-      location: "NY 12 Rd, Rebero",
-      contact: "+250788888888",
-      hours: "06:00AM - 00:00AM",
-      status: "Completed",
-      requestedNotes: "Please schedule the service for Friday morning and call before arrival.",
-      rejectedNotes: "Request declined due to unavailable time slot on the selected date.",
-    },
-    {
-      id: 16,
-      image: "/images/dec.png",
-      name: "K.C Decorators Group",
-      location: "KG 8 St Remera-Kabeza",
-      contact: "+250788888888",
-      hours: "08:00AM - 17:00PM",
-      status: "Rejected",
-      requestedNotes: "Please schedule the service for Friday morning and call before arrival.",
-      rejectedNotes: "Request declined due to unavailable time slot on the selected date.",
-    },
-  ];
+ 
+ const{data,loading}=useGetClientRequestedServices({status:"all"})
+  const requestedServices=data.data
+  console.log(data)
 
   const canBook = (status) => ["Completed", "Rejected"].includes(status);
 
@@ -65,11 +24,11 @@ export function RequestedSevicesTable({width}) {
   const columns = [
     {
       header: "Service Avatar",
-      accessor: "image",
+      accessor: "serviceId",
       render: (value) => (
         <div className="w-[100px]"> 
           <img
-            src={value}
+            src={value.avatar}
             alt="service"
             className="w-16 h-16 rounded-xl object-cover shadow-sm border border-slate-100"
           />
@@ -78,8 +37,8 @@ export function RequestedSevicesTable({width}) {
     },
     {
       header: "Service Name" ,
-      accessor: "name",
-      render: (value) => <span className="font-bold text-slate-600 block      whitespace-nowrap ">{value}</span>,
+      accessor: "serviceId",
+      render: (value) => <span className="font-bold text-slate-600 block      whitespace-nowrap ">{value.name}</span>,
     },
     {
       header: "Service Location",
@@ -88,13 +47,19 @@ export function RequestedSevicesTable({width}) {
     },
     {
       header: "Service Contacts",
-      accessor: "contact",
-      render: (value) => <span className="font-bold text-slate-500 block ">{value}</span>,
+      providerId:"phone",
+      render: (value) => (
+      <span className="font-bold text-slate-500 block ${phone}">{value || "078xxxxxxxxx"}</span>
+    ),
     },
     {
       header: "Service Hours",
-      accessor: "hours",
-      render: (value) => <span className="font-bold text-slate-500 block ">{value}</span>,
+      accessor: "serviceId",
+      render: (value) => (
+      <span className="font-bold text-slate-500 block ${hour}">{value.timeFrom&&value.timeTo
+       ?`${value.timeFrom}-${value.timeTo}`
+        :"N/A"}</span>
+    ),
     },
     {
       header: "Request Status",
@@ -112,7 +77,7 @@ export function RequestedSevicesTable({width}) {
       accessor: "requestedNotes",
       render: (value) => (
         <p className="font-medium text-slate-500 text-xs leading-relaxed ">
-          {value}
+          {value || "7hoo,19hoo" }
         </p>
       ),
     },
@@ -121,7 +86,7 @@ export function RequestedSevicesTable({width}) {
       accessor: "rejectedNotes",
       render: (value) => (
         <p className="font-medium text-slate-400 text-xs leading-relaxed ">
-          {value === "N/A" ? "N/A" : value}
+          {value || "N/A"}
         </p>
       ),
     },
@@ -148,7 +113,13 @@ export function RequestedSevicesTable({width}) {
 
   return (
     <>
-      <Table columns={columns} data={allServicesData} width={width}/>
+     {loading?(
+        <p>Loading.....</p>
+     ):(
+      <Table columns={columns} data={requestedServices || []} width={width}/>
+     )
+     }
+     
       <Pagination />
     </>
   )
