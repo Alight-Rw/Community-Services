@@ -18,7 +18,7 @@ function ServicesPage() {
             ServiceName={item?.category?.categoryName}
             description={item.description}
             place={item.providerId.location || defaultLocation}
-            phoneNumber={item.providerId.number || defaultPhoneNumber }
+            phoneNumber={item.providerId.phone || defaultPhoneNumber }
             time={item.timeFrom}
             to={item.timeTo}
             price={item.price}
