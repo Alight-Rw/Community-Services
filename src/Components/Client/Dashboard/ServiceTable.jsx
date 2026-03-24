@@ -19,7 +19,6 @@ export function ServiceTable({ role }) {
         if (!response.ok) {
           return toast.error(data.message)
         }
-        toast.success(data.message)
         setAllServicesData(data?.data)
       } catch (error) {
         return toast.error(error)
