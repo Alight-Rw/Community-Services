@@ -1,14 +1,21 @@
-import { useState, useEffect } from "react";
-import Table from "../../Shared/Table";
-import Pagination from "../../Shared/Pagination";
-import ActionButtons from "../Dashboard/EditAndDeleteButton";
-import AddNewService from "../Dashboard/AddNewService";
-import ConfirmDelete from "../Dashboard/ConfirmDelete";
-import { APIsRequestService } from "../../../Services/APIsRequestService";
+
+
+
+import { useState } from 'react';
+import Table from '../../Shared/Table';
+import Pagination from '../../Shared/Pagination';
+import ActionButtons from '../Dashboard/EditAndDeleteButton';
+import AddNewService from '../Dashboard/AddNewService';
+import ConfirmDelete from '../Dashboard/ConfirmDelete';
 
 export function AvailableServicesTable({ width }) {
-  const [services, setServices] = useState([]);
-  const [loading, setLoading] = useState(true);
+
+    const [services, setServices] = useState([
+        { id: 6, image: "/images/dec.png", name: "K.C Decorators Group", location: "KG 8 St Remera-Kabeza", contact: "+250788888888", hours: "08:00AM - 17:00PM", requestnotes: "Please schedule the service for Friday morning and call before arrival.", rejection: "N/A" },
+        { id: 7, image: "/images/car-wash.png", name: "Sparkle Auto Wash", location: "KK 25 Rd, Gisozi", contact: "+250788333333", hours: "06:00AM - 20:00PM", requestnotes: "Please schedule the service for Friday morning and call before arrival.", rejection: "N/A" },
+        { id: 8, image: "/images/sewer.png", name: "Quality Sewing Services", location: "NY 8 Rd, Nyamirambo", contact: "+250788222222", hours: "09:00AM - 18:00PM", requestnotes: "Please schedule the service for Friday morning and call before arrival.", rejection: "N/A" },
+        { id: 9, image: "/ServicesImage/ServiceImg1.png", name: "Car Auto Repair LTD", location: "KG 9 Avenue, Kigali", contact: "+250788888888", hours: "08:00AM - 18:00PM", requestnotes: "Please schedule the service for Friday morning and call before arrival.", rejection: "N/A" },
+    ]);
 
   const [editingService, setEditingService] = useState(null);
   const [deletingService, setDeletingService] = useState(null);
@@ -30,24 +37,7 @@ export function AvailableServicesTable({ width }) {
     setDeletingService(null);
   };
 
-  const handleCancelDelete = () => setDeletingService(null);
-
-  useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        const response = await APIsRequestService.GetServicesAPI();
-        const data = await response.json();
-       
-        setServices(data.data ||[])
-      } catch (err) {
-        console.error("Failed to fetch services:", err);
-        setServices([])
-      }finally{
-        setLoading(false)
-      }
-    };
-    fetchServices();
-  }, []);
+    const handleCancelDelete = () => setDeletingService(null);
 
   const columns = [
     {
