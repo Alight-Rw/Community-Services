@@ -5,10 +5,10 @@ import { useGetClientRequestedServices } from "../../../Hooks/useGetClientReques
 
 export function RejectedServices({ width }) {
 
-    const {data,loading}= useGetClientRequestedServices({status:"Rejected"})
-    const requestedServices = data.data
+    const {data}= useGetClientRequestedServices({status:"Rejected"})
+    const requestedServices = data?.data || []
 
-   
+   console.log(requestedServices)
     const canBook = (service) => {
         return service.status === "Rejected";
     };
@@ -42,13 +42,17 @@ export function RejectedServices({ width }) {
             accessor: "location",
         },
         {
-            header: "Service Contacts",
-            accessor: "contact",
-        },
-        {
-            header: "Service Hours",
-            accessor: "hours",
-        },
+  header: "Service Contacts",
+  accessor: "contact",
+ 
+},
+   {
+  header: "Service Hours",
+  accessor: "serviceId",
+  render: (value) => {
+    return `${value.timeFrom} - ${value.timeTo}`;
+  },
+},
         {
             header: "Rejection Status",
             accessor: "status",
@@ -60,8 +64,10 @@ export function RejectedServices({ width }) {
         },
         {
             header: "Request Notes",
-            accessor: "RequestNotes",
-          render:(value)=>value?.RequestNotes || "N/A",
+            accessor: "requestNote",
+          render:(value)=>{
+            return `${value.requestNote}`
+          }
         },
         {
             header: "Rejection Notes",
@@ -95,18 +101,11 @@ export function RejectedServices({ width }) {
     return (
         <>
         <div className="pr-12">
-            {loading ? (
-                <p>Loading.....</p>
-            ):(
                  <Table
                 columns={columns}
                 data={requestedServices}
                 width={width}
             />
-           
-            )
-
-            }
              <Pagination />
            
         </div>
