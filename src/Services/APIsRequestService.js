@@ -101,6 +101,19 @@ export const APIsRequestService = {
     }
   );
 },
+
+  GetProviderRequestedServicesAPI: async (status) => {
+  const headers = AuthHeader('json');
+
+  return await fetch(
+    `${BASE_URL}/request-service/provider-get-requested-services/${status}`,
+    {
+      method: "GET",
+      headers,
+    }
+  );
+},
+
  createServiceAPI: async (data) => {
   const formData = new FormData();
 

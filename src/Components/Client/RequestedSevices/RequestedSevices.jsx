@@ -1,23 +1,30 @@
-import React from "react";
+/** @format */
 
+import React from "react";
 import { Calendar } from "lucide-react";
 import Pagination from "../../Shared/Pagination";
 import Table from "../../Shared/Table";
 import { useGetClientRequestedServices } from "../../../Hooks/useGetClientRequestedHooks";
 
-export function RequestedSevicesTable({width}) {
- 
- const{data,loading}=useGetClientRequestedServices({status:"all"})
-  const requestedServices=data?.data || []
+export function RequestedSevicesTable({ width }) {
+  const { data, loading } = useGetClientRequestedServices({ status: "all" });
+  const requestedServices = data?.data || [];
 
-  const canBook = (status) => ["Completed", "Rejected"].includes(status);
+
+  const normalizeStatus = (status) => {
+    if (!status) return "";
+    if (status === "Waitting") return "Waiting"; 
+    return status;
+  };
+
+  const isDisabled = (status) =>
+    ["approved", "Waiting"].includes(normalizeStatus(status));
 
   const statusClasses = {
-    Available: "bg-hard-gray text-xs",
-    Completed: "bg-small-soft-blue text-sky-blue text-xm ",
-    Rejected: "bg-red-200/50 text-red-300 text-sm",
-    Waiting: "bg-hard-gray/50 text-xs",
-    Approved: "bg-soft-green text-hard-green text-xs",
+    Waiting: "bg-gray-300 text-gray-500 text-xs",
+    Approved: "bg-green-100 text-green-600 text-xs",
+    completed: "bg-small-soft-blue  text-sky-blue",
+    Rejected: "bg-red-100 text-red-500 text-xs",
   };
 
   const columns = [
@@ -25,9 +32,9 @@ export function RequestedSevicesTable({width}) {
       header: "Service Avatar",
       accessor: "serviceId",
       render: (value) => (
-        <div className="w-[100px]"> 
+        <div className="w-[100px]">
           <img
-            src={value.avatar}
+            src={value?.avatar}
             alt="service"
             className="w-16 h-16 rounded-xl object-cover shadow-sm border border-slate-100"
           />
@@ -35,56 +42,74 @@ export function RequestedSevicesTable({width}) {
       ),
     },
     {
-      header: "Service Name" ,
+      header: "Service Name",
       accessor: "serviceId",
-      render: (value) => <span className="font-bold text-slate-600 block      whitespace-nowrap ">{value.name}</span>,
+      render: (value) => (
+        <span className="font-bold text-slate-600 whitespace-nowrap">
+          {value?.name}
+        </span>
+      ),
     },
     {
       header: "Service Location",
       accessor: "location",
-      render: (value) => <span className="font-medium text-slate-400 leading-tight block w-24">{value}</span>,
+      render: (value) => (
+        <span className="font-medium text-slate-400 w-24 block">
+          {value}
+        </span>
+      ),
     },
     {
       header: "Service Contacts",
-      providerId:"phone",
+      accessor: "providerId",
       render: (value) => (
-      <span className="font-bold text-slate-500 block ${phone}">{value || "078xxxxxxxxx"}</span>
-    ),
+        <span className="font-bold text-slate-500">
+          {value?.phone || "07XXXXXXXX"}
+        </span>
+      ),
     },
     {
       header: "Service Hours",
       accessor: "serviceId",
       render: (value) => (
-      <span className="font-bold text-slate-500 block ${hour}">{value.timeFrom&&value.timeTo
-       ?`${value.timeFrom}-${value.timeTo}`
-        :"N/A"}</span>
-    ),
+        <span>
+          {value?.timeFrom} - {value?.timeTo}
+        </span>
+      ),
     },
     {
       header: "Request Status",
       accessor: "status",
+      render: (value) => {
+        const status = normalizeStatus(value);
+
+        return (
+          <div className="flex justify-center w-[100px]">
+            <span
+              className={`px-4 py-1 rounded-full font-semibold whitespace-nowrap ${
+                statusClasses[status] 
+              }`}
+            >
+              {status}
+            </span>
+          </div>
+        );
+      },
+    },
+    {
+      header: "Request Notes",
+      accessor: "requestNote",
       render: (value) => (
-        <div className="flex justify-center w-[100px]">
-          <span className={`px-4 py-1 rounded-full font-black tracking-tight whitespace-nowrap ${statusClasses[value]}`}>
-            {value}
-          </span>
+        <div className="w-[200px]">
+          <p>{value || "N/A"}</p>
         </div>
       ),
     },
     {
-      header: "Request Notes",
-      accessor: "requestedNotes",
-      render: (value) => (
-        <p className="font-medium text-slate-500 text-xs leading-relaxed ">
-          {value || "7hoo,19hoo" }
-        </p>
-      ),
-    },
-    {
       header: "Rejection Notes",
-      accessor: "rejectedNotes",
+      accessor: "rejectionNote", 
       render: (value) => (
-        <p className="font-medium text-slate-400 text-xs leading-relaxed ">
+        <p className="text-xs text-slate-400">
           {value || "N/A"}
         </p>
       ),
@@ -92,33 +117,39 @@ export function RequestedSevicesTable({width}) {
     {
       header: "Action",
       accessor: "status",
-      render: (status) => (
-        <div className="w-[120px] ">
-          <button
-            disabled={!canBook(status)}
-            className={`flex items-center justify-center gap-2 mx-auto px-4 py-1.5 rounded-full border-2 transition-all duration-200 ${
-              canBook(status)
-                ? "border-blue-400 text-secondary hover:bg-secondary hover:text-white"
-                : "border-slate-100 text-slate-200 cursor-not-allowed"
-            }`}
-          >
-            <Calendar size={12} strokeWidth={3} />
-            <span className="text-[9px] font-black tracking-tighter text-nowrap">Book Now</span>
-          </button>
-        </div>
-      ),
+      render: (status) => {
+        const disabled = isDisabled(status);
+
+        return (
+          <div className="w-[120px]">
+            <button
+              disabled={disabled}
+              className={`flex items-center justify-center gap-2 mx-auto px-4 py-1.5 rounded-full border-2 transition-all duration-200 ${
+                !disabled
+                  ? "border-blue-400 text-blue-500 hover:bg-blue-500 hover:text-white"
+                  : "border-gray-200 text-gray-300 cursor-not-allowed"
+              }`}
+            >
+              <Calendar size={12} strokeWidth={3} />
+              <span className="text-[10px] font-bold whitespace-nowrap">
+                Book Now
+              </span>
+            </button>
+          </div>
+        );
+      },
     },
   ];
 
   return (
     <>
-     
-      <Table columns={columns} data={requestedServices} width={width} loading={loading}/>
-     
+      <Table
+        columns={columns}
+        data={requestedServices}
+        width={width}
+        loading={loading}
+      />
       <Pagination />
     </>
-  )
-
-
-  
+  );
 }

@@ -34,7 +34,8 @@ export function WaitingServices({ width }) {
     },
     {
       header: 'Service Location',
-      accessor: 'location',
+      accessor: 'providerId',
+      render: (value) => value.location || '0787684171',
     },
     {
       header: 'Service Contacts',
@@ -99,15 +100,14 @@ export function WaitingServices({ width }) {
 
   return (
     <div className='pr-12'>
-      {loading ? (
-        <p>Loading....</p>
-      ) : (
+     
         <Table
           columns={columns}
           data={waitingServices}
           width={width}
+          loading={loading}
         />
-      )}
+      
 
       <Pagination />
     </div>
