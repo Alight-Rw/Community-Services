@@ -34,8 +34,23 @@ export function AvailableServicesTable({ width }) {
   const handleCancelDelete = () => setDeletingService(null);
 
   const {data}= useGetService()
-  setServices(data)
 
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await APIsRequestService.GetServicesAPI();
+        const data = await response.json();
+       
+        setServices(data.data ||[])
+      } catch (err) {
+        console.error("Failed to fetch services:", err);
+        setServices([])
+      }finally{
+        setLoading(false)
+      }
+    };
+    fetchServices();
+  }, []);
 
   const columns = [
     {
@@ -51,14 +66,38 @@ export function AvailableServicesTable({ width }) {
     },
     { header: "Service Name", accessor: "name" },
     { header: "Service Location", accessor: "location" },
-    { header: "Service Contacts", accessor: "phone"},
+    {
+      header: "Service Contacts",
+      accessor: "providerId",
+      render: (value) => (
+        <span className="font-bold text-slate-500">
+          {value?.phone || "07XXXXXXXX"}
+        </span>
+      ),
+    },
       {
     header: "Service Hours",
     render: (_, row) => `${row.timeFrom} - ${row.timeTo}`, 
   },
-  {header:"requestNote" ,accessor:"description"},
+  {
+      header: "Request Notes",
+      accessor: "description",
+      render: (value) => (
+        <div className="w-[200px]">
+          <p>{value || "N/A"}</p>
+        </div>
+      ),
+    },
 
-    { header: "Rejection Notes", accessor: "rejection" },
+     {
+      header: "Rejection Notes",
+      accessor: "rejectionNote", 
+      render: (value) => (
+        <p className="text-xs text-slate-400">
+          {value || "N/A"}
+        </p>
+      ),
+    },
     {
       header: "Action",
       accessor: "id",
