@@ -8,16 +8,16 @@ import { useGetClientRequestedServices } from "../../../Hooks/useGetClientReques
 const CompletedSevicesTable=({width}) =>{
 
 
-   const{data,loading}=useGetClientRequestedServices({status:"Completed"});
+   const{data,loading}=useGetClientRequestedServices({status:"completed"});
    const completedServices = data?.data || []
-
+  
     const canBook = (status) => {
-        if (status === "Completed") return true;
+        if (status === "completed") return true;
         return false;
     };
     
     const statusClasses={
-          Completed: "bg-small-soft-blue text-sky-blue text-xm "
+          completed: "bg-small-soft-blue text-sky-blue text-xm "
     }
  
   const columns = [
@@ -44,10 +44,10 @@ const CompletedSevicesTable=({width}) =>{
       accessor: "location",
       render: (value) => <span className="font-medium text-slate-400 leading-tight block w-24">{value}</span>,
     },
-    {
-      header: "Service Contacts",
-      accessor: "contact",
-      render: (value) => <span className="font-bold text-slate-500 block ">{value}</span>,
+     {
+      header: 'Service Contacts',
+      accessor: 'providerId',
+      render: (value) => value.phone || '07XXXXXX',
     },
     {
       header: "Service Hours",
@@ -67,24 +67,21 @@ const CompletedSevicesTable=({width}) =>{
         </div>
       ),
     },
-    {
-      header: "Completed Notes",
-      accessor: "completedNotes",
+     {
+      header: 'Request Notes',
+      accessor: 'requestNote',
       render: (value) => (
-        <p className="font-medium text-slate-500 text-xs leading-relaxed ">
-          {value}
-        </p>
-      ),
+        <div className='w-[200px]'>
+            <p>{value || 'N/A'}</p>
+        </div>
+      )
     },
     {
-      header: "Completed Notes",
-      accessor: "completedNotes",
-      render: (value) => (
-        <p className="font-medium text-slate-400 text-xs leading-relaxed ">
-          {value || "N/A"}
-        </p>
-      ),
+      header: 'Rejection Notes',
+      accessor: 'rejection',
+      render: (value) => value?.rejection || 'N/A',
     },
+
     {
       header: "Action",
       accessor: "status",
