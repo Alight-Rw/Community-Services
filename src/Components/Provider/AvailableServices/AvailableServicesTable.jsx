@@ -17,87 +17,87 @@ export function AvailableServicesTable({ width }) {
         { id: 9, image: "/ServicesImage/ServiceImg1.png", name: "Car Auto Repair LTD", location: "KG 9 Avenue, Kigali", contact: "+250788888888", hours: "08:00AM - 18:00PM", requestnotes: "Please schedule the service for Friday morning and call before arrival.", rejection: "N/A" },
     ]);
 
-  const [editingService, setEditingService] = useState(null);
-  const [deletingService, setDeletingService] = useState(null);
+    const [editingService, setEditingService] = useState(null);
+    const [deletingService, setDeletingService] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const handleEdit = (row) => setEditingService(row);
+    const handleCloseModal = () => setEditingService(null);
 
-  const handleEdit = (row) => setEditingService(row);
-  const handleCloseModal = () => setEditingService(null);
+    const handleSave = (updatedData) => {
+        setServices((prev) =>
+            prev.map((s) => (s.id === updatedData.id ? { ...s, ...updatedData } : s)),
+        );
+        setEditingService(null);
+    };
 
-  const handleSave = (updatedData) => {
-    setServices((prev) =>
-      prev.map((s) => (s.id === updatedData.id ? { ...s, ...updatedData } : s)),
-    );
-    setEditingService(null);
-  };
+    const handleDelete = (row) => setDeletingService(row);
 
-  const handleDelete = (row) => setDeletingService(row);
-
-  const handleConfirmDelete = () => {
-    setServices((prev) => prev.filter((s) => s._id !== deletingService._id));
-    setDeletingService(null);
-  };
+    const handleConfirmDelete = () => {
+        setServices((prev) => prev.filter((s) => s._id !== deletingService._id));
+        setDeletingService(null);
+    };
 
     const handleCancelDelete = () => setDeletingService(null);
 
-  const columns = [
-    {
-      header: "Service Avatar",
-      accessor: "avatar",
-      render: (value, row) => (
-        <img
-          src={value}
-          alt={row.name}
-          className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg object-cover"
-        />
-      ),
-    },
-    { header: "Service Name", accessor: "name" },
-    { header: "Service Location", accessor: "location" },
-    { header: "Service Contacts", accessor: "phone"},
-      {
-    header: "Service Hours",
-    render: (_, row) => `${row.timeFrom} - ${row.timeTo}`, 
-  },
-  {header:"requestNote" ,accessor:"description"},
+    const columns = [
+        {
+            header: "Service Avatar",
+            accessor: "avatar",
+            render: (value, row) => (
+                <img
+                    src={value}
+                    alt={row.name}
+                    className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg object-cover"
+                />
+            ),
+        },
+        { header: "Service Name", accessor: "name" },
+        { header: "Service Location", accessor: "location" },
+        { header: "Service Contacts", accessor: "phone" },
+        {
+            header: "Service Hours",
+            render: (_, row) => `${row.timeFrom} - ${row.timeTo}`,
+        },
+        { header: "requestNote", accessor: "description" },
 
-    { header: "Rejection Notes", accessor: "rejection" },
-    {
-      header: "Action",
-      accessor: "id",
-      render: (value, row) => (
-        <ActionButtons
-          onEdit={() => handleEdit(row)}
-          onDelete={() => handleDelete(row)}
-        />
-      ),
-    },
-  ];
-if(loading){
-    <p>Loading services...</p>
-}
-  return (
-    <>
-      <Table columns={columns} data={services} width={width} />
-      <div className="px-1">
-        <Pagination />
-      </div>
+        { header: "Rejection Notes", accessor: "rejection" },
+        {
+            header: "Action",
+            accessor: "id",
+            render: (value, row) => (
+                <ActionButtons
+                    onEdit={() => handleEdit(row)}
+                    onDelete={() => handleDelete(row)}
+                />
+            ),
+        },
+    ];
+    if (loading) {
+        <p>Loading services...</p>
+    }
+    return (
+        <>
+            <Table columns={columns} data={services} width={width} />
+            <div className="px-1">
+                <Pagination />
+            </div>
 
-      {editingService && (
-        <AddNewService
-          onClick={handleCloseModal}
-          initialData={editingService}
-          onSave={handleSave}
-          isEditMode={true}
-        />
-      )}
+            {editingService && (
+                <AddNewService
+                    onClick={handleCloseModal}
+                    initialData={editingService}
+                    onSave={handleSave}
+                    isEditMode={true}
+                />
+            )}
 
-      {deletingService && (
-        <ConfirmDelete
-          serviceName={deletingService.name}
-          onConfirm={handleConfirmDelete}
-          onCancel={handleCancelDelete}
-        />
-      )}
-    </>
-  );
+            {deletingService && (
+                <ConfirmDelete
+                    serviceName={deletingService.name}
+                    onConfirm={handleConfirmDelete}
+                    onCancel={handleCancelDelete}
+                />
+            )}
+        </>
+    );
 }
