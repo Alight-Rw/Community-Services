@@ -134,7 +134,17 @@ export const APIsRequestService = {
 
   });
 
- }
+ },
+
+ requestedServicesIP: async (data) => {
+  const headers = AuthHeader('json');
+
+  return await fetch(`${BASE_URL}/request-service`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(data) 
+  });
+}
 
 }
 
