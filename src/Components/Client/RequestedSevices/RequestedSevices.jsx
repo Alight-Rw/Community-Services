@@ -47,13 +47,19 @@ export function RequestedSevicesTable({width}) {
     },
     {
       header: "Service Contacts",
-      accessor: "contact",
-      render: (value) => <span className="font-bold text-slate-500 block ">{value}</span>,
+      providerId:"phone",
+      render: (value) => (
+      <span className="font-bold text-slate-500 block ${phone}">{value || "078xxxxxxxxx"}</span>
+    ),
     },
     {
       header: "Service Hours",
-      accessor: "hours",
-      render: (value) => <span className="font-bold text-slate-500 block ">{value}</span>,
+      accessor: "serviceId",
+      render: (value) => (
+      <span className="font-bold text-slate-500 block ${hour}">{value.timeFrom&&value.timeTo
+       ?`${value.timeFrom}-${value.timeTo}`
+        :"N/A"}</span>
+    ),
     },
     {
       header: "Request Status",
@@ -71,7 +77,7 @@ export function RequestedSevicesTable({width}) {
       accessor: "requestedNotes",
       render: (value) => (
         <p className="font-medium text-slate-500 text-xs leading-relaxed ">
-          {value || "N/A" }
+          {value || "7hoo,19hoo" }
         </p>
       ),
     },
