@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
-import { useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, Clock, MapPin, User, Mail, Phone, MessageSquare, CheckCircle, Loader2, X } from 'lucide-react';
 import { useRequestService } from '../../../Hooks/requestServices';
 import { ToastContainer } from 'react-toastify';
@@ -79,9 +79,9 @@ const ConfirmationModal = ({ isOpen, isLoading, selectedDate, selectedTime, onCl
 const BookingSystem = ({ serviceData }) => {
   const navigate = useNavigate();
   const { requestService } = useRequestService();
- 
 
- 
+
+
   const [serviceId, setServiceId] = useState('');
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date(2026, 1, 17));
@@ -89,7 +89,7 @@ const BookingSystem = ({ serviceData }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
- 
+
   const [location, setLocation] = useState('');
   const [requestNote, setRequestNote] = useState('');
   const [fullName, setFullName] = useState('');
@@ -98,7 +98,7 @@ const BookingSystem = ({ serviceData }) => {
 
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const years = Array.from({ length: 10 }, (_, i) => new Date().getFullYear() + i);
-  
+
   const daysInMonth = useMemo(() => {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
@@ -113,15 +113,18 @@ const BookingSystem = ({ serviceData }) => {
   const isSelected = (day) => day === selectedDate.getDate() &&
     selectedDate.getMonth() === currentDate.getMonth() &&
     selectedDate.getFullYear() === currentDate.getFullYear();
-
   const handleConfirmBooking = async () => {
-    console.log('LOGS', serviceData)
-  
-    setModalOpen(true);
+    console.log('LOGS', serviceData);
+
+    if (!selectedDate || !selectedTime) {
+      toast.error("Please select date and time");
+      return;
+    }
+
     setIsLoading(true);
 
     const bookingData = {
-      serviceId:serviceData?._id,
+      serviceId: serviceData._id,
       Date: selectedDate.toISOString().split('T')[0],
       time: selectedTime,
       location,
@@ -131,8 +134,13 @@ const BookingSystem = ({ serviceData }) => {
       phone
     };
 
-    await requestService(bookingData);
+    const result = await requestService(bookingData);
+
     setIsLoading(false);
+
+    if (result?.success) {
+      setModalOpen(true);
+    }
   };
 
   const handleCloseModal = () => {
@@ -154,7 +162,7 @@ const BookingSystem = ({ serviceData }) => {
 
       <div className="max-w-8xl mx-auto p-4 bg-primary p-10 space-y-20 px-componentPadding">
 
-  
+
         <section className="border border-universal rounded-2xl p-6 shadow-sm">
           <div className="flex items-center gap-2 mb-6 font-bold">
             <CalendarIcon size={18} /> <span>Select Date</span>
@@ -178,7 +186,7 @@ const BookingSystem = ({ serviceData }) => {
           </div>
 
           <div className="grid grid-cols-7 gap-1 text-center mb-4">
-            {['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(d => <div key={d} className="text-xs font-semibold text-hard-gray py-2">{d}</div>)}
+            {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(d => <div key={d} className="text-xs font-semibold text-hard-gray py-2">{d}</div>)}
             {daysInMonth.map((day, idx) => (
               <div key={idx} className="aspect-square flex items-center justify-center">
                 {day && (
@@ -216,7 +224,7 @@ const BookingSystem = ({ serviceData }) => {
           </div>
         </section>
 
-  
+
         <section className="max-w-8xl border border-universal rounded-2xl p-6 shadow-sm space-y-5">
           <div className="space-y-2">
             <label className="text-xs font-bold flex items-center gap-2"><MapPin size={14} /> Service Location</label>
@@ -247,8 +255,20 @@ const BookingSystem = ({ serviceData }) => {
           </div>
 
           <div className="flex gap-4 pt-4">
-            <button onClick={() => navigate('/available-services')} className="flex-1 py-4 border border-universal rounded-2xl font-bold text-sm hover:universal transition-colors">Cancel</button>
-            <button onClick={handleConfirmBooking} className="flex-1 py-4 bg-secondary text-primary rounded-2xl font-bold text-sm hover:bg-sky-blue shadow-xl shadow-soft-small-soft-blue transition-all">Confirm Booking</button>
+            <button
+              onClick={() => navigate('/available-services')}
+              className="flex-1 py-4 border border-universal rounded-2xl font-bold text-sm hover:universal transition-colors"
+            >
+              Cancel
+            </button>
+
+            <button
+              onClick={handleConfirmBooking}
+              disabled={isLoading}
+              className="flex-1 py-4 bg-secondary text-primary rounded-2xl font-bold text-sm hover:bg-sky-blue shadow-xl shadow-soft-small-soft-blue transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isLoading ? "Booking..." : "Confirm Booking"}
+            </button>
           </div>
         </section>
       </div>

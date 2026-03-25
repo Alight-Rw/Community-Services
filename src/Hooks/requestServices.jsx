@@ -1,5 +1,5 @@
-import { APIsRequestService } from "../Services/APIsRequestService";
 import { toast } from "react-toastify";
+import { APIsRequestService } from "../Services/APIsRequestService";
 
 export const useRequestService = () => {
 
@@ -7,16 +7,20 @@ export const useRequestService = () => {
     try {
       const response = await APIsRequestService.requestedServicesIP(requestServiceData);
       const data = await response.json();
-      console.log(data)
+
+      console.log(data);
+
       if (!response.ok) {
         toast.error(data.message || "Request failed");
-        return;
+        return { success: false, data }; 
       }
 
-      toast.success(data.message || "Success");
+     
+      return { success: true, data }; 
 
     } catch (error) {
       toast.error("Something went wrong");
+      return { success: false };
     }
   };
 
