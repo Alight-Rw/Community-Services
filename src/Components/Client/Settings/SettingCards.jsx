@@ -1,10 +1,43 @@
 import React from "react";
+import { useNavigate } from "react-router";
+import { toast, ToastContainer } from "react-toastify";
 import { FaShieldAlt, FaBell, FaLock } from "react-icons/fa";
+import { APIsRequestService } from "../../../Services/APIsRequestService";
 
 const SettingsCard = () => {
+const navigate = useNavigate();
+    const handleDeleteAccount = async () => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete your account?"
+    );
+
+    if (!confirmDelete) return;
+
+    try {
+      const response = await APIsRequestService.DeleteAccountAPI();
+      const data = await response.json();
+
+      if (!response.ok) {
+        return toast.error(data.message);
+      }
+
+      toast.success(data.message);
+      localStorage.removeItem("token");
+      sessionStorage.clear();
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
+
+    } catch (error) {
+      console.error(error);
+      toast.error(error.message);
+    }
+  };
+
     return (
         <div className="py-10 pr-3 " >
-
+<ToastContainer />
 
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -93,7 +126,8 @@ const SettingsCard = () => {
                     These actions cannot be undone. Please proceed with caution.
                 </p>
 
-                <button className="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-xl font-semibold transition w-full sm:w-auto">
+                <button onClick={handleDeleteAccount}
+                className="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-xl font-semibold transition w-full sm:w-auto">
                     Delete Account
                 </button>
             </div>
