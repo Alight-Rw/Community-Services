@@ -3,6 +3,7 @@ import { ArrowLeft, MapPin, Phone, Clock, Star, Info, Banknote } from 'lucide-re
 
 import BookingSystem from './BookingSystem';
 import DashboardNav from '../../Shared/DashboardNav';
+
 const ConfirmBooking = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const ConfirmBooking = () => {
 
           <div className="flex flex-col lg:flex-row gap-8 items-start justify-center ">
             <div className="  lg:w-[700px] lg:h-[800px] bg-primary rounded-[30px] p-6 shadow-sm border border-universal ">
-              <img src={state.Img} className="w-full h-68 object-cover rounded-2xl mb-4" alt="" />
+              <img src={state.avatar} className="w-full h-68 object-cover rounded-2xl mb-4" alt="" />
 
               <div className="flex justify-between items-start mb-2">
                 <h2 className="text-lg font-bold">{state.title}</h2>
@@ -33,20 +34,20 @@ const ConfirmBooking = () => {
               </div>
 
               <span className="inline-block bg-small-soft-blue text-sky-blue text-xs font-bold px-3 py-1 rounded-lg mb-4">
-                {state.ServiceName}
+                {state.name}
               </span>
 
               <p className="text-xs text-hard-gray leading-relaxed mb-6">{state.description}</p>
 
               <div className="space-y-3 mb-6 border-b border-universal pb-6">
                 <div className="flex items-center gap-3 text-sm ">
-                  <MapPin size={16} /> {state.place}
+                  <MapPin size={16} /> {state.location}
                 </div>
                 <div className="flex items-center gap-3 text-sm ">
-                  <Phone size={16} /> {state.phoneNumber}
+                  <Phone size={16} /> {state.providerId.phone}
                 </div>
                 <div className="flex items-center gap-3 text-sm ">
-                  <Clock size={16} /> {state.time} - {state.to}
+                  <Clock size={16} /> {state.timeFrom} - {state.timeTo}
                 </div>
                 <div className="flex items-center gap-3 text-sm font-bold text-secondary pt-2">
                   <Banknote size={18} />
@@ -63,10 +64,8 @@ const ConfirmBooking = () => {
                 <ArrowLeft size={18} /> Back to Services
               </button>
             </div>
-
-
             <div className="flex-1 w-full space-y-6">
-              <BookingSystem />
+              <BookingSystem serviceData={state} />
             </div>
 
           </div>

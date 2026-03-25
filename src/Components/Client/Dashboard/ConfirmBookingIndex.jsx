@@ -25,8 +25,6 @@ export function ConfirmBookingIndex() {
         <div className="fixed inset-y-0 left-0 z-60 xl:relative">
           <Sidebar isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
         </div>
-
-
         <main
           className={`
             flex-1 overflow-y-auto  
@@ -35,13 +33,8 @@ export function ConfirmBookingIndex() {
           `}
         >
           <div className="max-w-[1600px] mx-auto py-20 md:space-y-10">
-
-
             <div className="container">
-             
              <ConfirmBooking />
-             
-             
             </div>
           </div>
         </main>
