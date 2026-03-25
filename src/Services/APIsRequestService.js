@@ -144,11 +144,32 @@ export const APIsRequestService = {
     headers,
     body: JSON.stringify(data) 
   });
+},
+  editServiceAPI: async (id, data) => {
+  const formData = new FormData();
+
+  if (data.avatar) {
+    formData.append("avatar", data.avatar);
+  }
+  formData.append("name", data.name);
+  formData.append("description", data.description);
+  formData.append("price", data.price);
+  formData.append("category", data.category);
+  formData.append("location", data.location);
+  formData.append("timeFrom", data.timeFrom);
+  formData.append("timeTo", data.timeTo);
+
+  const headers = AuthHeader("form-data");
+  return fetch(`${BASE_URL}/service/${id}`, {
+    method: "PATCH",
+    body: formData,
+    headers,
+  });
 }
 
 }
 
- 
+
  
 
  
