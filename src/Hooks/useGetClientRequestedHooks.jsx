@@ -44,7 +44,6 @@ export const useGetProviderRequestedServices = ({ status }) => {
 
         const response = await APIsRequestService.GetProviderRequestedServicesAPI(status)
         const result = await response.json();
-
         if (!response.ok) {
           return toast.error(result.message);
         }
@@ -58,7 +57,7 @@ export const useGetProviderRequestedServices = ({ status }) => {
     };
 
     getRequestedServices();
-  }, []);
+  }, [status]);
 
   return { data, loading };
 };
@@ -68,7 +67,7 @@ export const useGetService = () => {
   const [items, setItems] = useState([])
 
 
-  useEffect(() => { 
+  useEffect(() => {
     const fecthServices = async () => {
       const response = await APIsRequestService.GetServicesAPI()
       const data = await response.json()
@@ -79,5 +78,5 @@ export const useGetService = () => {
     }
     fecthServices()
   }, [])
-  return {items}
+  return { items }
 }

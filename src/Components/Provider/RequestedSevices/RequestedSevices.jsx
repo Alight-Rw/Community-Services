@@ -1,59 +1,29 @@
-import React from "react";
-
+import React, { useState } from "react";
 import { Calendar } from "lucide-react";
 import Pagination from "../../Shared/Pagination";
 import Table from "../../Shared/Table";
 import StatusButton from "../Dashboard/StatusesButtons";
 
+import { useGetProviderRequestedServices } from "../../../Hooks/useGetClientRequestedHooks";
+
+
 export function RequestedSevicesTable({width}) {
-  const allServicesData = [
-    {
-      id: 13,
-      image: "ServicesImage/ServiceImg1.png",
-      name: "Car Auto Repair LTD",
-      location: "KG 9 Avenue, Kigali",
-      contact: "+250788888888",
-      hours: "08:00AM - 18:00PM",
-      status: "Waiting",
-      requestedNotes: "Please schedule the service for Friday morning and call before arrival.",
-      rejectedNotes: "N/A",
-    },
-    {
-      id: 14,
-      image: "/images/sewer.png",
-      name: "Jany Sewing Solutions",
-      location: "KK 3 Rd, Kimihurura",
-      contact: "+250788888888",
-      hours: "08:00AM - 20:00PM",
-      status: "Approved",
-      requestedNotes: "Please schedule the service for Friday morning and call before arrival.",
-      rejectedNotes: "Request declined due to unavailable time slot on the selected date.",
-    },
-    {
-      id: 15,
-      image: "/images/car-wash.png",
-      name: "Car Wash Enterprise",
-      location: "NY 12 Rd, Rebero",
-      contact: "+250788888888",
-      hours: "06:00AM - 00:00AM",
-      status: "Completed",
-      requestedNotes: "Please schedule the service for Friday morning and call before arrival.",
-      rejectedNotes: "Request declined due to unavailable time slot on the selected date.",
-    },
-    {
-      id: 16,
-      image: "/images/dec.png",
-      name: "K.C Decorators Group",
-      location: "KG 8 St Remera-Kabeza",
-      contact: "+250788888888",
-      hours: "08:00AM - 17:00PM",
-      status: "Rejected",
-      requestedNotes: "Please schedule the service for Friday morning and call before arrival.",
-      rejectedNotes: "Request declined due to unavailable time slot on the selected date.",
-    },
-  ];
-
-
+  // 
+const { data, loading } = useGetProviderRequestedServices({
+    status: 'all',
+  });
+  const RequestedServices = data?.data?.map((item) => ({
+  id: item._id,
+  image: item.serviceId?.avatar,
+  name: item.serviceId?.name,
+  location: item.location,
+  contact: item.phone||"078XXXXXXXX",
+  hours: item.hours||"19:00h-10:00h",
+  status: item.status==="Waitting"?"Waitting": item.status,
+  requestedNotes: item.requestNote,
+  rejectedNotes: item.rejectionNote || "N/A",
+})) || [];
+  console.log(data)
 
 const ActionGrid = ({ currentStatus, onStatusChange }) => {
   const statusList = ["waiting", "approve", "complete", "reject"];
@@ -165,7 +135,8 @@ const ActionGrid = ({ currentStatus, onStatusChange }) => {
 
   return (
     <>
-      <Table columns={columns} data={allServicesData} width={width}/>
+      <Table columns={columns} data={RequestedServices} width={width}
+      loading={loading}/>
        <div className='px-1'>
       <Pagination />
       </div>
