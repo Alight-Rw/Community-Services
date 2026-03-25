@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, Clock, MapPin, User, Mail, Phone, MessageSquare, CheckCircle, Loader2, X } from 'lucide-react';
 import { useRequestService } from '../../../Hooks/requestServices';
 import { ToastContainer } from 'react-toastify';
@@ -76,10 +76,10 @@ const ConfirmationModal = ({ isOpen, isLoading, selectedDate, selectedTime, onCl
   );
 };
 
-const BookingSystem = () => {
+const BookingSystem = ({ serviceData }) => {
   const navigate = useNavigate();
   const { requestService } = useRequestService();
-  const { slugTitle } = useParams();
+ 
 
  
   const [serviceId, setServiceId] = useState('');
@@ -95,10 +95,6 @@ const BookingSystem = () => {
   const [fullName, setFullName] = useState('');
   const [username, setUsername] = useState('');
   const [phone, setPhone] = useState('');
-
-  useEffect(() => {
-    if (slugTitle) setServiceId(slugTitle);
-  }, [slugTitle]);
 
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const years = Array.from({ length: 10 }, (_, i) => new Date().getFullYear() + i);
@@ -119,16 +115,13 @@ const BookingSystem = () => {
     selectedDate.getFullYear() === currentDate.getFullYear();
 
   const handleConfirmBooking = async () => {
-    if (!serviceId) {
-      alert("Service ID missing");
-      return;
-    }
-
+    console.log('LOGS', serviceData)
+  
     setModalOpen(true);
     setIsLoading(true);
 
     const bookingData = {
-      serviceId,
+      serviceId:serviceData?._id,
       Date: selectedDate.toISOString().split('T')[0],
       time: selectedTime,
       location,
@@ -161,7 +154,7 @@ const BookingSystem = () => {
 
       <div className="max-w-8xl mx-auto p-4 bg-primary p-10 space-y-20 px-componentPadding">
 
-        {/* Date Section */}
+  
         <section className="border border-universal rounded-2xl p-6 shadow-sm">
           <div className="flex items-center gap-2 mb-6 font-bold">
             <CalendarIcon size={18} /> <span>Select Date</span>
@@ -202,10 +195,9 @@ const BookingSystem = () => {
 
           <div className="bg-small-soft-blue text-secondary p-3 rounded-xl text-xs font-medium border border-soft-small-soft-blue">
             Selected Date: {selectedDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
-          </div>
+          </div>setServiceId
         </section>
 
-        {/* Time Section */}
         <section className="border border-universal rounded-2xl p-6 shadow-sm">
           <div className="flex items-center gap-2 mb-4 font-bold text-gray-800">
             <Clock size={18} /> <span>Select Time (08:00 AM - 18:00 PM)</span>
@@ -224,7 +216,7 @@ const BookingSystem = () => {
           </div>
         </section>
 
-        {/* Form Section */}
+  
         <section className="max-w-8xl border border-universal rounded-2xl p-6 shadow-sm space-y-5">
           <div className="space-y-2">
             <label className="text-xs font-bold flex items-center gap-2"><MapPin size={14} /> Service Location</label>

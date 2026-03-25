@@ -21,3 +21,11 @@ export const generateDeviceId = () => {
   localStorage.setItem("device", encrypt(deviceId));
   return deviceId;
 };
+
+export const getRandomRating = () => {
+  return (Math.random() * 1.5 + 3.5).toFixed(1);
+};
+
+export const getRandomReviews = () => {
+  return Math.floor(Math.random() * 500) + 50;
+};

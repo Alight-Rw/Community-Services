@@ -16,41 +16,33 @@ function LoginForm() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    const selectedService = sessionStorage.getItem('SELECTED-SERVICE');
+    const selectedService = localStorage.getItem('SELECTED-SERVICE');
 
     try {
-      const response = await APIsRequestService.SignInAPI({
-        email: username,
-        password,
-      });
+      const response = await APIsRequestService.SignInAPI({ email: username, password, });
       const data = await response.json();
 
       if (!response.ok) {
         return toast.error(data.message);
       }
+
+      localStorage.setItem('token', encrypt(data.data.token));
+      localStorage.setItem("IS_LOGGED-IN", true);
       toast.success(data.message);
 
       setTimeout(() => {
         try {
-          localStorage.setItem('token', encrypt(data.data.token));
-
           if (selectedService) {
             const serviceData = JSON.parse(selectedService);
-            const slugTitle = serviceData.title
-              .toLowerCase()
-              .replace(/\s+/g, '-');
-
-            navigate(`/confirm-booking/${slugTitle}`, {
-              state: serviceData,
-            });
+            const slugName = serviceData.name.toLowerCase().replace(/\s+/g, '-');
+            navigate(`/confirm-booking/${slugName}`, { state: serviceData, });
           } else {
             navigate('/dashboard');
           }
         } catch (error) {
           console.error('Navigation error:', error);
         }
-      }, 2000);
+      }, 1000);
     } catch (error) {
       console.error('Failed Error:', error);
     }
