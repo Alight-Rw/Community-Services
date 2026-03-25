@@ -3,9 +3,9 @@ import { toast } from "react-toastify";
 
 export const useRequestService = () => {
 
-  const requestService = async (payload) => {
+  const requestService = async (requestServiceData) => {
     try {
-      const response = await APIsRequestService.requestedServicesIP(payload);
+      const response = await APIsRequestService.requestedServicesIP(requestServiceData);
       const data = await response.json();
       console.log(data)
       if (!response.ok) {
