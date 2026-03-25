@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Upload, X } from "lucide-react";
 import { APIsRequestService } from "../../../Services/APIsRequestService";
 import { toast, ToastContainer } from "react-toastify";
@@ -10,7 +10,7 @@ export default function AddNewService({
   isEditMode = false,
 }) {
   const inputClass =
-    "w-full mt-1 px-4 py-2.5 rounded-full border border-hard-gray bg-primary text-hard-gray text-sm placeholder-hard-gray outline-none focus:border-2 focus:border-sky-blue";
+    "w-full mt-1 px-4 py-2.5 rounded-full border border-hard-gray bg-primary  text-sm placeholder-hard-gray outline-none focus:border-2 focus:border-sky-blue";
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
 
@@ -19,7 +19,7 @@ export default function AddNewService({
       try {
         const response = await APIsRequestService.FietchcategoryAPI();
         const data = await response.json();
-       
+
         setCategories(data.data);
       } catch (err) {
         console.error("Failed to fetch categories:", err);
@@ -35,8 +35,8 @@ export default function AddNewService({
     location: initialData.location || "",
     contact: initialData.contact || "",
     email: initialData.email || "",
-    timeFrom: initialData.hours?.split(" - ")[0] || "",
-    timeTo: initialData.hours?.split(" - ")[1] || "",
+    timeFrom: initialData.timeFrom || "",
+    timeTo: initialData.timeTo || "",
     description: initialData.requestnotes || "",
     isActive: true,
     avatar: null,
@@ -51,7 +51,6 @@ export default function AddNewService({
   };
 
   const handleSubmit = async () => {
-  
     if (
       !formData.name ||
       !formData.category ||
@@ -60,19 +59,32 @@ export default function AddNewService({
       !formData.timeFrom ||
       !formData.timeTo ||
       !formData.description ||
-      !formData.avatar
+      (!isEditMode && !formData.avatar)
     ) {
       return toast.error("Please fill all required fields!");
     }
     setLoading(true);
     try {
-      const response = await APIsRequestService.createServiceAPI(formData);
-     const data=await response.json()
+      let response;
+      if (isEditMode) {
+        response = await APIsRequestService.editServiceAPI(
+          initialData._id,
+          formData,
+        );
+      } else {
+        response = await APIsRequestService.createServiceAPI(formData);
+      }
+      const data = await response.json();
       if (!response.ok) {
         return toast.error(data.message);
       }
-      toast.success(data.message || "service created successfully");
-       setFormData({
+      toast.success(
+        data.message ||
+          (isEditMode
+            ? "Service Updated successfully"
+            : "Service Created Successfully"),
+      );
+      setFormData({
         name: "",
         category: "",
         price: "",
@@ -85,8 +97,8 @@ export default function AddNewService({
         isActive: true,
         avatar: null,
       });
-      onClick?.()
-      window.location.reload()
+      onClick?.();
+      window.location.reload();
     } catch (error) {
       toast.error("something went wrong!");
       console.log(error);
@@ -116,7 +128,7 @@ export default function AddNewService({
               <label className="text-sm font-semibold text-gray-800">
                 Service Name<span className="text-red-500">*</span>
               </label>
-              <input
+              <input 
                 name="name"
                 type="text"
                 value={formData.name}
@@ -289,10 +301,7 @@ export default function AddNewService({
               className="w-70 md:w-100 py-3 rounded-full bg-sky-blue text-white font-bold text-sm hover:bg-secondary disabled:opacity-50"
             >
               {loading
-                ? "Creating..."
-                : isEditMode
-                  ? "Save Changes"
-                  : "Create Service"}
+                ? (isEditMode? "Saving...": "Creating..."):( isEditMode? "Save Changes": "Create Service")}
             </button>
           </div>
         </div>
