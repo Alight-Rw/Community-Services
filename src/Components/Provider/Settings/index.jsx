@@ -1,41 +1,52 @@
 import React, { useState } from "react";
 import Paragraphy from "../../Shared/Title";
 import DashboardNav from "../../Shared/DashboardNav";
-import Sidebar from "../../Shared/Sidebar"; 
-import SettingsCard from "./SettingCards";
+import Sidebar from "../../Shared/Sidebar";
 import SettingProfileSection from "./SettingProfileSection";
-
-
+import SettingsCard from "./SettingCards";
 
 export function SettingsProvider() {
   const [isExpanded, setIsExpanded] = useState(true); 
 
   return (
     <div className="flex flex-col h-screen bg-universal overflow-hidden">
-     
-     <DashboardNav
-        notificationNumber={2}
+      <DashboardNav
+        notificationNumber={4}
         notifications={[
-          { id: 1,type: "success", title: "Booking Creacted", message: "Two clients booked services at",
-            time: "10:00 AM", minutes:"1m ago", isUnread: true },
-          { id: 2, type: "accepted", title: " Completed Services", message: "50 service are completed at", time: "3h ago", isUnread: true },
-          
-          
+          { id: 1,type: "success", title: "Booking Confirmed", message: "Your service booking for has been confirmed car Wash for tommorrow at",
+            time: "10:00 AM", minutes:"10h ago", isUnread: true },
+          { id: 2, type: "accepted", title: "Service Request Accepted", message: "Your blumping service has been accepted by a provider", time: "1h ago", isUnread: true },
+          { id: 3, type: "info", title: "Reminder ", message: "Your  home cleaning services is scheduled for today at",
+             minutes:"1h ago", isUnread: true },
+          { id: 4, type: "accepted", title: "Service Completed", }
         ]}
       />
-      <div className="flex flex-1 overflow-hidden relative"> {isExpanded && ( <div className="fixed inset-0 bg-black/50 z-20 xl:hidden transition-opacity" onClick={() => setIsExpanded(true)} /> )}
-      
+      <div className="flex flex-1 overflow-hidden relative">
+        {isExpanded && (
+          <div
+            className="fixed inset-0 bg-black/50 z-20 xl:hidden transition-opacity"
+            onClick={() => setIsExpanded(true)}
+          />
+        )}
+
         <div className="fixed inset-y-0 left-0 z-50 xl:relative">
           <Sidebar isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
         </div>
 
-        <main className={` flex-1 overflow-y-auto transition-all duration-300 ease-in-out ${!isExpanded ? "ml-25 sm:33 md:ml-35 lg:ml-30 w-full xl:ml-11" : "ml-0"} /* Avoid going behind sidebar when collapsed */ `} >
+        <main className="flex-1 pl-20 md:pl-20 overflow-y-auto transition-all duration-300">
           <div className="max-w-[1600px] not-[]:mx-auto py-20 md:space-y-10 ">
-            <div className="px-4 lg:px-7">
-              <Paragraphy highlight={"Account Settings"} description={"Quick Manage and update your personal account information settings"} />
-             </div>
-             <SettingProfileSection />
-            <SettingsCard />
+            <div className="px-8 md:px-0 **:md:space-y-1 ">
+              <Paragraphy
+                highlight={"Account Settings"}
+                description={
+                  "Quick Manage and update your personal account information settings"
+                }
+              />
+            </div>
+            <div className="ml-8 md:ml-0">
+              <SettingProfileSection />
+              <SettingsCard />
+            </div>
           </div>
         </main>
       </div>

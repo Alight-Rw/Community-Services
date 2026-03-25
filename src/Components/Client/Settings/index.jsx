@@ -3,7 +3,6 @@ import Paragraphy from "../../Shared/Title";
 import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar";
 import SettingProfileSection from "./SettingProfileSection";
-import { SettingsPage } from "../../../Pages/Client/Setting";
 import SettingsCard from "./SettingCards";
 
 export function Settings() {
