@@ -1,101 +1,58 @@
-import React from "react";
 
-import { Calendar } from "lucide-react";
 import Pagination from "../../Shared/Pagination";
 import Table from "../../Shared/Table";
 import StatusButton from "../Dashboard/StatusesButtons";
 
-export function RequestedSevicesTable({width}) {
-  const allServicesData = [
-    {
-      id: 13,
-      image: "ServicesImage/ServiceImg1.png",
-      name: "Car Auto Repair LTD",
-      location: "KG 9 Avenue, Kigali",
-      contact: "+250788888888",
-      hours: "08:00AM - 18:00PM",
-      status: "Waiting",
-      requestedNotes: "Please schedule the service for Friday morning and call before arrival.",
-      rejectedNotes: "N/A",
-    },
-    {
-      id: 14,
-      image: "/images/sewer.png",
-      name: "Jany Sewing Solutions",
-      location: "KK 3 Rd, Kimihurura",
-      contact: "+250788888888",
-      hours: "08:00AM - 20:00PM",
-      status: "Approved",
-      requestedNotes: "Please schedule the service for Friday morning and call before arrival.",
-      rejectedNotes: "Request declined due to unavailable time slot on the selected date.",
-    },
-    {
-      id: 15,
-      image: "/images/car-wash.png",
-      name: "Car Wash Enterprise",
-      location: "NY 12 Rd, Rebero",
-      contact: "+250788888888",
-      hours: "06:00AM - 00:00AM",
-      status: "Completed",
-      requestedNotes: "Please schedule the service for Friday morning and call before arrival.",
-      rejectedNotes: "Request declined due to unavailable time slot on the selected date.",
-    },
-    {
-      id: 16,
-      image: "/images/dec.png",
-      name: "K.C Decorators Group",
-      location: "KG 8 St Remera-Kabeza",
-      contact: "+250788888888",
-      hours: "08:00AM - 17:00PM",
-      status: "Rejected",
-      requestedNotes: "Please schedule the service for Friday morning and call before arrival.",
-      rejectedNotes: "Request declined due to unavailable time slot on the selected date.",
-    },
-  ];
+import { useGetProviderRequestedServices } from "../../../Hooks/useGetClientRequestedHooks";
 
 
+export function RequestedSevicesTable({ width }) {
 
-const ActionGrid = ({ currentStatus, onStatusChange }) => {
-  const statusList = ["waiting", "approve", "complete", "reject"];
+  const { data, loading } = useGetProviderRequestedServices({
+    status: 'all',
+  });
+  const RequestedServices = data?.data
+  const ActionGrid = ({ currentStatus, onStatusChange }) => {
+    const statusList = ["waiting", "approve", "complete", "reject"];
 
-  const isButtonActive = (btnType) => {
-    const normalizedStatus = currentStatus?.toLowerCase();
-    
-    if (normalizedStatus === "approved" && btnType === "approve") return true;
-    if (normalizedStatus === "completed" && btnType === "complete") return true;
-    if (normalizedStatus === "rejected" && btnType === "reject") return true;
-    return normalizedStatus === btnType;
+    const isButtonActive = (btnType) => {
+      const normalizedStatus = currentStatus?.toLowerCase();
+
+      if (normalizedStatus === "approved" && btnType === "approve") return true;
+      if (normalizedStatus === "completed" && btnType === "complete") return true;
+      if (normalizedStatus === "rejected" && btnType === "reject") return true;
+      return normalizedStatus === btnType;
+    };
+
+    return (
+      <div className="grid grid-cols-2 overflow-hidden gap-2  w-40">
+        {statusList.map((status) => (
+          <StatusButton
+            key={status}
+            type={status}
+            isActive={isButtonActive(status)}
+            onClick={() => onStatusChange(status)}
+          />
+        ))}
+      </div>
+    );
   };
-
-  return (
-    <div className="grid grid-cols-2 overflow-hidden gap-2  w-40">
-      {statusList.map((status) => (
-        <StatusButton
-          key={status}
-          type={status}
-          isActive={isButtonActive(status)}
-          onClick={() => onStatusChange(status)}
-        />
-      ))}
-    </div>
-  );
-};
   const statusClasses = {
     Available: "bg-hard-gray text-xs",
-    Completed: "bg-small-soft-blue text-sky-blue text-xm ",
+    completed: "bg-small-soft-blue text-sky-blue text-xm ",
     Rejected: "bg-red-200/50 text-red-300 text-sm",
-    Waiting: "bg-hard-gray/50 text-xs",
+    Waitting: "bg-hard-gray/50 text-xs",
     Approved: "bg-soft-green text-hard-green text-xs",
   };
 
   const columns = [
     {
       header: "Service Avatar",
-      accessor: "image",
+      accessor: "serviceId",
       render: (value) => (
-        <div className="w-[100px]"> 
+        <div className="w-[100px]">
           <img
-            src={value}
+            src={value.avatar}
             alt="service"
             className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg object-cover"
           />
@@ -103,9 +60,9 @@ const ActionGrid = ({ currentStatus, onStatusChange }) => {
       ),
     },
     {
-      header: "Service Name" ,
-      accessor: "name",
-      render: (value) => <span className="font-bold text-slate-600 block      whitespace-nowrap ">{value}</span>,
+      header: "Service Name",
+      accessor: "serviceId",
+      render: (value) => <span className="font-bold text-slate-600 block      whitespace-nowrap ">{value.name}</span>,
     },
     {
       header: "Service Location",
@@ -114,13 +71,17 @@ const ActionGrid = ({ currentStatus, onStatusChange }) => {
     },
     {
       header: "Service Contacts",
-      accessor: "contact",
-      render: (value) => <span className="font-bold text-slate-500 block ">{value}</span>,
+      accessor: "providerId",
+      render: (value) => <span className="font-bold text-slate-500 block ">{value.phone || "07XXXXXXX"}</span>,
     },
     {
-      header: "Service Hours",
-      accessor: "hours",
-      render: (value) => <span className="font-bold text-slate-500 block ">{value}</span>,
+      header: 'Service Hours',
+      accessor: 'serviceId',
+      render: (value, row) => (
+        <span>
+          {row.serviceId?.timeFrom} - {row.serviceId?.timeTo}
+        </span>
+      ),
     },
     {
       header: "Request Status",
@@ -134,44 +95,42 @@ const ActionGrid = ({ currentStatus, onStatusChange }) => {
       ),
     },
     {
-      header: "Request Notes",
-      accessor: "requestedNotes",
+      header: 'Request Notes',
+      accessor: 'requestNote',
       render: (value) => (
-        <p className="font-medium text-slate-500 text-xs leading-relaxed ">
-          {value}
-        </p>
-      ),
+        <div className='w-[200px]'>
+          <p>{value || 'N/A'}</p>
+        </div>
+      )
     },
     {
-      header: "Rejection Notes",
-      accessor: "rejectedNotes",
-      render: (value) => (
-        <p className="font-medium text-slate-400 text-xs leading-relaxed ">
-          {value === "N/A" ? "N/A" : value}
-        </p>
+      header: 'Rejection Notes',
+      accessor: 'rejection',
+      render: (value) => value?.rejection || 'N/A',
+    },
+
+    {
+      header: "Action",
+      accessor: "status",
+      render: (status, row) => (
+        <ActionGrid
+          currentStatus={status}
+          onStatusChange={(newStatus) => console.log(`Updating ID ${row.id} to ${newStatus}`)}
+        />
       ),
     },
-   {
-  header: "Action",
-  accessor: "status",
-  render: (status, row) => (
-    <ActionGrid 
-      currentStatus={status} 
-      onStatusChange={(newStatus) => console.log(`Updating ID ${row.id} to ${newStatus}`)} 
-    />
-  ),
-},
   ];
 
   return (
     <>
-      <Table columns={columns} data={allServicesData} width={width}/>
-       <div className='px-1'>
-      <Pagination />
+      <Table columns={columns} data={RequestedServices} width={width}
+        loading={loading} />
+      <div className='px-1'>
+        <Pagination />
       </div>
     </>
   )
 
 
-  
+
 }
