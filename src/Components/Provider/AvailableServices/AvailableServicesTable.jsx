@@ -5,7 +5,6 @@ import ActionButtons from "../Dashboard/EditAndDeleteButton";
 import AddNewService from "../Dashboard/AddNewService";
 import ConfirmDelete from "../Dashboard/ConfirmDelete";
 import { APIsRequestService } from "../../../Services/APIsRequestService";
-// import { useGetService } from "../../../Hooks/useGetClientRequestedHooks";
 
 export function AvailableServicesTable({ width }) {
   const [services, setServices] = useState([]);
@@ -17,12 +16,6 @@ export function AvailableServicesTable({ width }) {
   const handleEdit = (row) => setEditingService(row);
   const handleCloseModal = () => setEditingService(null);
 
-  // const handleSave = (updatedData) => {
-  //   setServices((prev) =>
-  //     prev.map((s) => (s.id === updatedData.id ? { ...s, ...updatedData } : s)),
-  //   );
-  //   setEditingService(null);
-  // };
 
   const handleDelete = (row) => setDeletingService(row);
 
@@ -32,8 +25,6 @@ export function AvailableServicesTable({ width }) {
   };
 
   const handleCancelDelete = () => setDeletingService(null);
-
-  // const {data}= useGetService()
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -123,7 +114,6 @@ if(loading){
         <AddNewService
           onClick={handleCloseModal}
           initialData={editingService}
-          // onSave={handleSave}
           isEditMode={true}
         />
       )}
@@ -133,6 +123,7 @@ if(loading){
           serviceName={deletingService.name}
           onConfirm={handleConfirmDelete}
           onCancel={handleCancelDelete}
+          title="Delete Service?"
         />
       )}
     </>
