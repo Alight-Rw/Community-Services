@@ -111,13 +111,9 @@ export function CompletedServicesTable({ width }) {
     return (
 
         <>
-            {loading ? (
-                <p>Loading.....</p>
-            ) : (
-                <Table columns={columns} data={CompletedServices} width={width} />
-            )
-
-            }
+          
+                <Table columns={columns} data={CompletedServices} width={width} loading={loading}/>
+          
             <div className='px-1'>
                 <Pagination />
             </div>

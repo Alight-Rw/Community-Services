@@ -9,58 +9,8 @@ import { useGetProviderRequestedServices } from '../../../Hooks/useGetClientRequ
 
 export function RejectedServicesTable({ width }) {
 
-    // const allServicesData = [
-    //     {
-    //         id: 6,
-    //         image: "/images/dec.png",
-    //         name: "K.C Decorators Group",
-    //         location: "KG 8 St Remera-Kabeza",
-    //         contact: "+250788888888",
-    //         hours: "08:00AM - 17:00PM",
-    //         status: "Rejected",
-    //         requestnotes: "Please schedule the servicefor Friday morning and call before arrival.",
-    //         rejection: "N/A"
-
-    //     },
-    //     {
-    //         id: 7,
-    //         image: "/images/car-wash.png",
-    //         name: "Sparkle Auto Wash",
-    //         location: "KK 25 Rd, Gisozi",
-    //         contact: "+250788333333",
-    //         hours: "06:00AM - 20:00PM",
-    //         status: "Rejected",
-    //         requestnotes: "Please schedule the servicefor Friday morning and call before arrival.",
-    //         rejection: "N/A"
-    //     },
-    //     {
-    //         id: 8,
-    //         image: "/images/sewer.png",
-    //         name: "Quality Sewing Services",
-    //         location: "NY 8 Rd, Nyamirambo",
-    //         contact: "+250788222222",
-    //         hours: "09:00AM - 18:00PM",
-    //         status: "Rejected",
-    //         requestnotes: "Please schedule the servicefor Friday morning and call before arrival.",
-    //         rejection: "N/A"
-    //     },
-
-    //     {
-    //         id: 9,
-    //         image: "/ServicesImage/ServiceImg1.png",
-    //         name: "Car Auto Repair LTD",
-    //         location: "KG 9 Avenue, Kigali",
-    //         contact: "+250788888888",
-    //         hours: "08:00AM - 18:00PM",
-    //         status: "Rejected",
-    //         requestnotes: "Please schedule the servicefor Friday morning and call before arrival.",
-    //         rejection: "N/A"
-    //     },
-    // ]
     const { data, loading } = useGetProviderRequestedServices({ status: "rejected" });
     const rejectedServices = data?.data || []
-
-    console.log("FULL RESPONSE:", data);
 
     const ActionGrid = ({ currentStatus, onStatusChange }) => {
         const statusList = ["waiting", "approve", "complete", "reject"];
@@ -171,15 +121,9 @@ export function RejectedServicesTable({ width }) {
     return (
 
         <>
-            {loading ? (
-                <p>Loading....</p>
-            ) : (
+            
                 <Table columns={columns} data={rejectedServices || {}} width={width}
                     loading={loading} />
-            )
-
-            }
-
 
             <div className='px-1'>
                 <Pagination />

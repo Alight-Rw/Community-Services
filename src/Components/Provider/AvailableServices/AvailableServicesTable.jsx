@@ -100,12 +100,10 @@ export function AvailableServicesTable({ width }) {
       ),
     },
   ];
-if(loading){
-   return <p>Loading services...</p>
-}
+
   return (
     <>
-      <Table columns={columns} data={services} width={width} />
+      <Table columns={columns} data={services} width={width} loading={loading}/>
       <div className="px-1">
         <Pagination />
       </div>
