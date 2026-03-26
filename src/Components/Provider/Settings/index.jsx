@@ -5,6 +5,7 @@ import Sidebar from "../../Shared/Sidebar";
 import SettingProfileSection from "./SettingProfileSection";
 import SettingsCard from "../../Client/Settings/SettingCards";
 
+
 export function SettingsProvider() {
   const [isExpanded, setIsExpanded] = useState(true); 
 

@@ -1,7 +1,7 @@
 import { X } from "lucide-react";
 import { MdQuestionMark } from "react-icons/md";
 
-export default function ConfirmDelete({ onConfirm, onCancel, serviceName }) {
+export default function ConfirmDelete({ onConfirm, onCancel, serviceName , title}) {
   return (
     <div className="fixed inset-0 bg-black/40 flex justify-center items-center z-50 p-4">
       <div className="bg-white rounded-2xl p-6 shadow-2xl w-full max-w-md relative">
@@ -18,7 +18,7 @@ export default function ConfirmDelete({ onConfirm, onCancel, serviceName }) {
             </span>
           </div>
 
-          <h2 className="text-xl font-bold text-gray-900">Delete Service?</h2>
+          <h2 className="text-xl font-bold text-gray-900">{title}</h2>
           <p className="text-sm text-gray-500">
             Are you sure you want to delete <span className="font-semibold text-gray-800">"{serviceName}"</span>? This action cannot be undone.
           </p>
