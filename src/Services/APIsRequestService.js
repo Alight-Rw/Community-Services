@@ -165,11 +165,21 @@ export const APIsRequestService = {
     body: formData,
     headers,
   });
-}
+},
+ DeleteAccountAPI: async () => {
+  const headers = AuthHeader('json');
+
+  return await fetch(`${BASE_URL}/auth/delete-account`, {
+    method: "DELETE",
+    headers,
+  });
+},
 
 }
 
 
+
+ 
  
 
  
