@@ -5,43 +5,45 @@ import { toast, ToastContainer } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { APIsRequestService } from "../../Services/APIsRequestService";
 import ImageLeft from "../../Assets/images/paint.png";
+import Spinner from "../Shared/Loader";
+
 const ChangePassword = ({ token }) => {
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+    const [loading, setLoading] = useState(false);
 
   const handleChangePassword = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
+     setLoading(true);
 
     if (!password) {
-      setIsSubmitting(false);
+       setLoading(false);
       return toast.error("Please enter a new password.");
     }
     if (password !== confirmPassword) {
-      setIsSubmitting(false);
+       setLoading(false);
       return toast.error("Passwords do not match!");
     }
-  
-      try {
-        const response = await APIsRequestService.ChangePasswordAPI(token, { newPassword: password, confirmPassword });
-        const data = await response.json();
-  
-        if (!response.ok) {
-          setIsSubmitting(false);
-          return toast.error(data.message);
-        }
-  
-        setTimeout(() => { navigate('/login')}, 3000);
-        setIsSubmitting(false);
-        return toast.success(data?.message);
-      } catch (error) {
-        console.error('Failed Error:', error);
+
+    try {
+      const response = await APIsRequestService.ChangePasswordAPI(token, { newPassword: password, confirmPassword });
+      const data = await response.json();
+
+      if (!response.ok) {
+         setLoading(false);
+        return toast.error(data.message);
       }
-    };
+
+      setTimeout(() => { navigate('/login') }, 3000);
+       setLoading(false);
+      return toast.success(data?.message);
+    } catch (error) {
+      console.error('Failed Error:', error);
+    }
+  };
 
   return (
     <div className="relative w-full h-screen flex items-center justify-center">
@@ -128,10 +130,17 @@ const ChangePassword = ({ token }) => {
               </p>
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className="bg-secondary hover:bg-dark-light-secondary text-primary cursor-pointer py-2 rounded-lg font-semibold mt-2 transition-colors disabled:opacity-50"
+                disabled={loading}
+                className="w-full flex items-center justify-center gap-2 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-all disabled:opacity-50"
               >
-                {isSubmitting ? "Processing..." : "Change Password"}
+                {loading ? (
+                  <>
+                    <Spinner size={16} color="#ffffff" />
+                    <span>change password...</span>
+                  </>
+                ) : (
+                  <span>reset password</span>
+                )}
               </button>
             </form>
           </div>

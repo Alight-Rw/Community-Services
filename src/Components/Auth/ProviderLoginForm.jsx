@@ -6,6 +6,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import { APIsRequestService } from '../../Services/APIsRequestService';
 import { encrypt } from '../../Utils/SharedUtils';
+import Spinner from '../Shared/Loader';
 
 export function ProviderLoginForm() {
   const navigate = useNavigate();
@@ -13,10 +14,11 @@ export function ProviderLoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+   const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+       setLoading(true);
     try {
       const response = await APIsRequestService.SignInAPI({
         email: username,
@@ -25,6 +27,7 @@ export function ProviderLoginForm() {
       const data = await response.json();
 
       if (!response.ok) {
+          setLoading(false);
         return toast.error(data.message);
       }
       toast.success(data.message);
@@ -37,6 +40,7 @@ export function ProviderLoginForm() {
         return toast.error('Invalid email or password');
       }, 2000);
     } catch (error) {
+        setLoading(false);
       console.error('Failed Error:', error);
     }
   };
@@ -85,10 +89,18 @@ export function ProviderLoginForm() {
         </div>
 
         <button
-          type='submit'
-          className='bg-secondary text-white py-2 rounded-lg w-full hover:bg-dark-light-secondary transition'
+          type="submit"
+          disabled={loading}
+          className="w-full flex items-center justify-center gap-2 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-all disabled:opacity-50"
         >
-          Login
+          {loading ? (
+            <>
+              <Spinner size={16} color="#ffffff" />
+              <span>Logging in...</span>
+            </>
+          ) : (
+            <span>Login</span>
+          )}
         </button>
       </form>
     </div>
