@@ -1,3 +1,4 @@
+
 /** @format */
 
 import { useState } from 'react';
@@ -81,7 +82,7 @@ function LoginForm() {
             </div>
 
             <div className='flex justify-center gap-20 mb-6 font-semibold'>
-              <span className='text-blue-600 border-b-2 border-blue-600 pb-1 cursor-pointer'>
+              <span className='text-secondary  border-b-2 border-secondary  pb-1 cursor-pointer'>
                 Login
               </span>
               <div className='w-[2px] h-[20px] absolute bg-gray-300 z-10 ml-[-20px] '>
@@ -137,7 +138,7 @@ function LoginForm() {
 
               <p className="text-sm text-gray-500">
                 Forgot your password ?{" "}
-                <Link to="/forgot-password"  className="text-blue-600 cursor-pointer font-medium">
+                <Link to="/forgot-password"  className="text-secondary  cursor-pointer font-medium">
                   Click here
                 </Link>
               </p>
@@ -145,7 +146,7 @@ function LoginForm() {
              <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-2 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-all disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-2 bg-secondary text-white py-2 rounded-lg hover:bg-blue-700 transition-all disabled:opacity-50"
               >
                 {loading ? (
                   <>

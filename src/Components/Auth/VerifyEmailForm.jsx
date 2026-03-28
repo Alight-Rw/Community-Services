@@ -1,8 +1,9 @@
 import { useState } from "react";
 import ImageLeft from "../../Assets/images/paint.png";
-
+import Spinner from "../Shared/Loader";
 
 function VerifyEmailForm() {
+   const [loading, setLoading] = useState(false);
 
   return (
     <div className="relative w-full h-screen flex items-center justify-center">
@@ -51,8 +52,19 @@ function VerifyEmailForm() {
                 </span>
               </p>
 
-              <button className="bg-secondary hover:bg-dark-light-secondary text-primary cursor-pointer py-2 rounded-lg font-semibold mt-2 ">
-                Resend Verify Email
+               <button
+                type="submit"
+                disabled={loading}
+                className="w-full flex items-center justify-center gap-2 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-all disabled:opacity-50"
+              >
+                {loading ? (
+                  <>
+                    <Spinner size={16} color="#ffffff" />
+                    <span>Send Verify Link...</span>
+                  </>
+                ) : (
+                  <span>Verify Account</span>
+                )}
               </button>
             </form>
           </div>

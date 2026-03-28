@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { APIsRequestService } from "../../Services/APIsRequestService";
 import ImageLeft from "../../Assets/images/paint.png";
+import Spinner from "../Shared/Loader";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -25,10 +26,12 @@ const ForgotPassword = () => {
       setIsSent(true);
       toast.success(data.message || "Reset link sent! Check your email.");
       setEmail("");
+      
     } catch (error) {
+      setLoading(false);
       console.error(error);
-      toast.error( error);
-    
+      toast.error(error);
+
     }
   };
 
@@ -86,17 +89,17 @@ const ForgotPassword = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className={`bg-secondary hover:bg-dark-light-secondary text-primary cursor-pointer py-2 rounded-lg font-semibold mt-3 transition-colors ${loading ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
+                className="w-full flex items-center justify-center gap-2 bg-secondary text-white py-2 rounded-lg hover:bg-secondary/70 transition-all disabled:opacity-50"
               >
+           
                 {loading ? (
-                  "Sending..."
-                ) : isSent ? (
-                  "Resend Verify Email"
+                  <>
+                    <Spinner size={16} color="#ffffff" />
+                    <span>Sending Link...</span>
+                  </>
                 ) : (
-                  "Send Verify Email"
+                  <span>send verify link</span>
                 )}
-
               </button>
             </form>
           </div>
@@ -107,5 +110,3 @@ const ForgotPassword = () => {
 };
 
 export default ForgotPassword;
-
-

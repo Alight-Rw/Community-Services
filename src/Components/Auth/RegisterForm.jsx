@@ -4,7 +4,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import ImageLeft from "../../Assets/images/paint.png";
 import { ToastContainer, toast } from 'react-toastify';
 import { APIsRequestService } from '../../Services/APIsRequestService';
-
+import Spinner from "../Shared/Loader";
 function RegisterForm() {
   
   const[firstName,setFirtName]=useState('');
@@ -13,10 +13,11 @@ function RegisterForm() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [repeatPassword, setRepeatPassword] = useState(false);
-  
+     const [loading, setLoading] = useState(false);
+
   const handleSignUp = async (e) => {
   e.preventDefault();
-
+     setLoading(true);
   try {
     const response = await APIsRequestService.SignUpAPI({
       firstName,
@@ -30,6 +31,7 @@ function RegisterForm() {
 
    
     if (!response.ok) {
+        setLoading(false);
       return toast.error(data.message);
     }
 
@@ -37,7 +39,7 @@ function RegisterForm() {
     toast.success(data.message || "Check your email to verify your account");
  
   } catch (error) {
-    console.error("Failed Error:", error);
+      setLoading(false);
     toast.error("Signup failed. Try again.");
   }
 };
@@ -131,7 +133,21 @@ function RegisterForm() {
                 </button>
               </div>
 
-              <button className="bg-secondary hover:bg-dark-light-secondary text-primary cursor-pointer py-2 rounded-lg font-semibold mt-2 "> Sign Up </button>
+              <button
+                type="submit"
+                disabled={loading}
+                className="bg-secondary hover:bg-dark-light-secondary text-primary cursor-pointer py-2 rounded-lg font-semibold mt-2 ">
+              
+           
+                {loading ? (
+                  <>
+                    <Spinner size={16} color="#ffffff" />
+                    <span>Sign in...</span>
+                  </>
+                ) : (
+                  <span>Sign Up</span>
+                )}
+              </button>
             </form>
           </div>
         </div>
