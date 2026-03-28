@@ -7,12 +7,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { APIsRequestService } from '../../Services/APIsRequestService';
 import { ToastContainer, toast } from 'react-toastify';
 import { encrypt } from '../../Utils/SharedUtils';
-
+import Spinner from '../Shared/Loader';
 function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,8 +22,9 @@ function LoginForm() {
     try {
       const response = await APIsRequestService.SignInAPI({ email: username, password, });
       const data = await response.json();
-
+       setLoading(true);
       if (!response.ok) {
+        setLoading(false);
         return toast.error(data.message);
       }
 
@@ -44,6 +46,7 @@ function LoginForm() {
         }
       }, 1000);
     } catch (error) {
+        setLoading(false);
       console.error('Failed Error:', error);
     }
   };
@@ -139,9 +142,21 @@ function LoginForm() {
                 </Link>
               </p>
 
-              <button className='bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold mt-2'>
-                Login
+             <button
+                type="submit"
+                disabled={loading}
+                className="w-full flex items-center justify-center gap-2 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-all disabled:opacity-50"
+              >
+                {loading ? (
+                  <>
+                    <Spinner size={16} color="#ffffff" />
+                    <span>Logging in...</span>
+                  </>
+                ) : (
+                  <span>Login</span>
+                )}
               </button>
+
             </form>
           </div>
         </div>
