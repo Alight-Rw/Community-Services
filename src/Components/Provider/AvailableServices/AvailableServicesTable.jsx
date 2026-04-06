@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { toast, ToastContainer } from "react-toastify";
 import Table from "../../Shared/Table";
 import Pagination from "../../Shared/Pagination";
 import ActionButtons from "../Dashboard/EditAndDeleteButton";
@@ -13,30 +14,59 @@ export function AvailableServicesTable({ width }) {
   const [editingService, setEditingService] = useState(null);
   const [deletingService, setDeletingService] = useState(null);
 
+  const [isDeleting, setIsDeleting] = useState(false);
   const handleEdit = (row) => setEditingService(row);
   const handleCloseModal = () => setEditingService(null);
 
 
   const handleDelete = (row) => setDeletingService(row);
+const handleConfirmDelete = async () => {
+    if (!deletingService?._id) return;
 
-  const handleConfirmDelete = () => {
-    setServices((prev) => prev.filter((s) => s._id !== deletingService._id));
-    setDeletingService(null);
+  
+    setIsDeleting(true); 
+
+    try {
+      const response = await APIsRequestService.DeleteServiceAPI(deletingService._id);
+      const data = await response.json();
+
+      if (!response.ok) {
+        
+        setIsDeleting(false); 
+        return toast.error(data.message );
+      }
+
+      
+      toast.success(data.message);
+      setServices((prev) => prev.filter((s) => s._id !== deletingService._id));
+      
+      setDeletingService(null);
+      setIsDeleting(false); 
+
+    } catch (error) {
+      
+      console.error(error);
+      toast.error(error.message);
+      setIsDeleting(false); 
+    }
   };
 
-  const handleCancelDelete = () => setDeletingService(null);
+ const handleCancelDelete = () => {
+  if (isDeleting) return; 
+  setDeletingService(null);
+};
 
   useEffect(() => {
     const fetchServices = async () => {
       try {
         const response = await APIsRequestService.GetServicesAPI();
         const data = await response.json();
-       
-        setServices(data.data ||[])
+
+        setServices(data.data || [])
       } catch (err) {
         console.error("Failed to fetch services:", err);
         setServices([])
-      }finally{
+      } finally {
         setLoading(false)
       }
     };
@@ -66,11 +96,11 @@ export function AvailableServicesTable({ width }) {
         </span>
       ),
     },
-      {
-    header: "Service Hours",
-    render: (_, row) => `${row.timeFrom} - ${row.timeTo}`, 
-  },
-  {
+    {
+      header: "Service Hours",
+      render: (_, row) => `${row.timeFrom} - ${row.timeTo}`,
+    },
+    {
       header: "Request Notes",
       accessor: "description",
       render: (value) => (
@@ -80,9 +110,9 @@ export function AvailableServicesTable({ width }) {
       ),
     },
 
-     {
+    {
       header: "Rejection Notes",
-      accessor: "rejectionNote", 
+      accessor: "rejectionNote",
       render: (value) => (
         <p className="text-xs text-slate-400">
           {value || "N/A"}
@@ -103,7 +133,9 @@ export function AvailableServicesTable({ width }) {
 
   return (
     <>
-      <Table columns={columns} data={services} width={width} loading={loading}/>
+    <ToastContainer />
+      <Table columns={columns} data={services} width={width} loading={loading} />
+
       <div className="px-1">
         <Pagination />
       </div>
@@ -115,13 +147,14 @@ export function AvailableServicesTable({ width }) {
           isEditMode={true}
         />
       )}
-
       {deletingService && (
         <ConfirmDelete
           serviceName={deletingService.name}
           onConfirm={handleConfirmDelete}
           onCancel={handleCancelDelete}
           title="Delete Service?"
+          isLoading={isDeleting}
+          disabled={isDeleting}
         />
       )}
     </>
