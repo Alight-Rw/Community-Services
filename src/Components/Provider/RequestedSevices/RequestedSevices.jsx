@@ -1,42 +1,55 @@
-
+import React, { useState } from "react";
 import Pagination from "../../Shared/Pagination";
 import Table from "../../Shared/Table";
 import StatusButton from "../Dashboard/StatusesButtons";
-
-import { useGetProviderRequestedServices } from "../../../Hooks/useGetProviderRequestedHooks";
-
+import StatusNoteModal from "../../Shared/StatusNotesPopUp";
+import { handleUpdateStatuses } from "../../../Hooks/UpdateStatusHooks";
+import { useGetProviderRequestedServices } from "../../../Hooks/useGetClientRequestedHooks";
 
 export function RequestedSevicesTable({ width }) {
-
-  const { data, loading } = useGetProviderRequestedServices({
-    status: 'all',
+  const { data, loading, refetch } = useGetProviderRequestedServices({
+    status: "all",
   });
-  const RequestedServices = data?.data || []
-  const ActionGrid = ({ currentStatus, onStatusChange }) => {
+
+  const RequestedServices = data?.data || [];
+
+  
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedRow, setSelectedRow] = useState(null);
+  const [selectedStatus, setSelectedStatus] = useState(null);
+
+ 
+  const ActionGrid = ({ currentStatus, row }) => {
     const statusList = ["waiting", "approve", "complete", "reject"];
 
     const isButtonActive = (btnType) => {
       const normalizedStatus = currentStatus?.toLowerCase();
-
       if (normalizedStatus === "approved" && btnType === "approve") return true;
       if (normalizedStatus === "completed" && btnType === "complete") return true;
       if (normalizedStatus === "rejected" && btnType === "reject") return true;
       return normalizedStatus === btnType;
     };
 
+    const handleButtonClick = (status) => {
+      setSelectedRow(row);
+      setSelectedStatus(status);
+      setModalOpen(true); 
+    };
+
     return (
-      <div className="grid grid-cols-2 overflow-hidden gap-2  w-40">
+      <div className="grid grid-cols-2 overflow-hidden gap-2 w-40">
         {statusList.map((status) => (
           <StatusButton
             key={status}
             type={status}
             isActive={isButtonActive(status)}
-            onClick={() => onStatusChange(status)}
+            onClick={() => handleButtonClick(status)}
           />
         ))}
       </div>
     );
   };
+
   const statusClasses = {
     Available: "bg-hard-gray text-xs",
     completed: "bg-small-soft-blue text-sky-blue text-xm ",
@@ -45,6 +58,7 @@ export function RequestedSevicesTable({ width }) {
     Approved: "bg-soft-green text-hard-green text-xs",
   };
 
+  // 🔹 Table columns
   const columns = [
     {
       header: "Service Avatar",
@@ -62,7 +76,9 @@ export function RequestedSevicesTable({ width }) {
     {
       header: "Service Name",
       accessor: "serviceId",
-      render: (value) => <span className="font-bold text-slate-600 block      whitespace-nowrap ">{value.name}</span>,
+      render: (value) => (
+        <span className="font-bold text-slate-600 block whitespace-nowrap">{value.name}</span>
+      ),
     },
     {
       header: "Service Location",
@@ -72,16 +88,12 @@ export function RequestedSevicesTable({ width }) {
     {
       header: "Service Contacts",
       accessor: "providerId",
-      render: (value) => <span className="font-bold text-slate-500 block ">{value.phone || "07XXXXXXX"}</span>,
+      render: (value) => <span className="font-bold text-slate-500 block">{value.phone || "07XXXXXXX"}</span>,
     },
     {
-      header: 'Service Hours',
-      accessor: 'serviceId',
-      render: (value, row) => (
-        <span>
-          {row.serviceId?.timeFrom} - {row.serviceId?.timeTo}
-        </span>
-      ),
+      header: "Service Hours",
+      accessor: "serviceId",
+      render: (value, row) => <span>{row.serviceId?.timeFrom} - {row.serviceId?.timeTo}</span>,
     },
     {
       header: "Request Status",
@@ -95,42 +107,44 @@ export function RequestedSevicesTable({ width }) {
       ),
     },
     {
-      header: 'Request Notes',
-      accessor: 'requestNote',
+      header: "Request Notes",
+      accessor: "requestNote",
       render: (value) => (
-        <div className='w-[200px]'>
-          <p>{value || 'N/A'}</p>
+        <div className="w-[200px]">
+          <p>{value || "N/A"}</p>
         </div>
-      )
+      ),
     },
     {
-      header: 'Rejection Notes',
-      accessor: 'rejection',
-      render: (value) => value?.rejection || 'N/A',
+      header: "Rejection Notes",
+      accessor: "rejection",
+      render: (value) => value?.rejection || "N/A",
     },
-
     {
       header: "Action",
       accessor: "status",
-      render: (status, row) => (
-        <ActionGrid
-          currentStatus={status}
-          onStatusChange={(newStatus) => console.log(`Updating ID ${row.id} to ${newStatus}`)}
-        />
-      ),
+      render: (status, row) => <ActionGrid currentStatus={status} row={row} />,
     },
   ];
 
   return (
     <>
-      <Table columns={columns} data={RequestedServices} width={width}
-        loading={loading} />
-      <div className='px-1'>
+      <Table columns={columns} data={RequestedServices} width={width} loading={loading} />
+      <div className="px-1">
         <Pagination />
       </div>
+
+      
+      <StatusNoteModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        statusLabel={selectedStatus}
+        onSubmit={(note) => {
+          
+          handleUpdateStatuses(null, selectedRow._id, selectedStatus, refetch);
+          setModalOpen(false);
+        }}
+      />
     </>
-  )
-
-
-
+  );
 }
