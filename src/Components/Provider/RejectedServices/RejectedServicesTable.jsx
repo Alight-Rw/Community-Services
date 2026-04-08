@@ -4,7 +4,7 @@ import Pagination from '../../Shared/Pagination';
 import StatusButton from '../Dashboard/StatusesButtons';
 import StatusNoteModal from "../../Shared/StatusNotesPopUp";
 import { handleUpdateStatuses } from "../../../Hooks/UpdateStatusHooks";
-import { useGetProviderRequestedServices } from "../../../Hooks/useGetClientRequestedHooks";
+import { useGetProviderRequestedServices } from "../../../Hooks/useGetProviderRequestedHooks";
 
 export function RejectedServicesTable({ width }) {
   
