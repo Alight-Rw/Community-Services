@@ -59,7 +59,7 @@ const handleConfirmDelete = async () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await APIsRequestService.GetServicesAPI();
+        const response = await APIsRequestService.GetProviderServicesAPI();
         const data = await response.json();
 
         setServices(data.data || [])

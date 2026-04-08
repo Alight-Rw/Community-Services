@@ -3,7 +3,7 @@ import { Calendar } from 'lucide-react';
 import Table from '../../Shared/Table';
 import Pagination from '../../Shared/Pagination';
 import StatusButton from '../Dashboard/StatusesButtons';
-import { useGetProviderRequestedServices } from '../../../Hooks/useGetClientRequestedHooks';
+import { useGetProviderRequestedServices } from '../../../Hooks/useGetProviderRequestedHooks';
 
 export function WaitingServicesTable({ width }) {
 

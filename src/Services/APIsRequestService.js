@@ -21,6 +21,10 @@ export const APIsRequestService = {
     const headers = AuthHeader('json');
     return await fetch(`${BASE_URL}/service/services`, { method: 'GET', headers });
   },
+   GetProviderServicesAPI: async () => {
+    const headers = AuthHeader('json');
+    return await fetch(`${BASE_URL}/service/provider-services`, { method: 'GET', headers });
+  },
   LogOutAPI: async () => {
     const headers = AuthHeader('json')
     return await fetch(`${BASE_URL}/auth/logout`, { method: 'POST', headers })

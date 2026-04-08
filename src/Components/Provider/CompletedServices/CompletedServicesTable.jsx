@@ -3,14 +3,14 @@ import { Calendar } from 'lucide-react';
 import Table from '../../Shared/Table';
 import Pagination from '../../Shared/Pagination';
 import StatusButton from '../Dashboard/StatusesButtons';
-import { useGetProviderRequestedServices } from '../../../Hooks/useGetClientRequestedHooks';
+import { useGetProviderRequestedServices } from '../../../Hooks/useGetProviderRequestedHooks';
 
 export function CompletedServicesTable({ width }) {
 
     const { data, loading } = useGetProviderRequestedServices({
         status: 'completed',
     });
-    const CompletedServices = data?.data
+    const CompletedServices = data?.data || []
     const ActionGrid = ({ currentStatus, onStatusChange }) => {
         const statusList = ["waiting", "approve", "complete", "reject"];
 

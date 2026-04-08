@@ -3,7 +3,7 @@ import Pagination from "../../Shared/Pagination";
 import Table from "../../Shared/Table";
 import StatusButton from "../Dashboard/StatusesButtons";
 
-import { useGetProviderRequestedServices } from "../../../Hooks/useGetClientRequestedHooks";
+import { useGetProviderRequestedServices } from "../../../Hooks/useGetProviderRequestedHooks";
 
 
 export function RequestedSevicesTable({ width }) {
@@ -11,7 +11,7 @@ export function RequestedSevicesTable({ width }) {
   const { data, loading } = useGetProviderRequestedServices({
     status: 'all',
   });
-  const RequestedServices = data?.data
+  const RequestedServices = data?.data || []
   const ActionGrid = ({ currentStatus, onStatusChange }) => {
     const statusList = ["waiting", "approve", "complete", "reject"];
 
