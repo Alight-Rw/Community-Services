@@ -4,7 +4,7 @@ import Table from "../../Shared/Table";
 import StatusButton from "../Dashboard/StatusesButtons";
 import StatusNoteModal from "../../Shared/StatusNotesPopUp";
 import { handleUpdateStatuses } from "../../../Hooks/UpdateStatusHooks";
-import { useGetProviderRequestedServices } from "../../../Hooks/useGetClientRequestedHooks";
+import { useGetProviderRequestedServices } from "../../../Hooks/useGetProviderRequestedHooks";
 
 export function RequestedSevicesTable({ width }) {
   const { data, loading, refetch } = useGetProviderRequestedServices({

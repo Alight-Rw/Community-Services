@@ -187,6 +187,34 @@ DeleteServiceAPI: async (id) => {
   });
 },
 
+UpdateStatusAPI: async (id, status, note) => {
+    const headers = AuthHeader('json');
+    
+    const payload = { status };
+    if (status === "Rejected") {
+      payload.rejectionNote = note;
+    } else {
+      payload.requestNote = note;
+    }
+
+    const response = await fetch(`${BASE_URL}/request-service/${id}`, {
+      method: "PUT",
+      headers,
+      body: JSON.stringify(payload) 
+    });
+
+    const contentType = response.headers.get("content-type");
+    if (!response.ok) {
+      if (contentType && contentType.includes("application/json")) {
+        const result = await response.json();
+        throw new Error(result.error || result.message || "Server Error");
+      } else {
+        throw new Error(`Server Error: ${response.status} ${response.statusText}`);
+      }
+    }
+
+    return await response.json();
+  }
 }
 
 
