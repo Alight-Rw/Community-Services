@@ -175,6 +175,14 @@ export const APIsRequestService = {
   });
 },
 
+DeleteServiceAPI: async (id) => {
+  const headers = AuthHeader('json');
+  return await fetch(`${BASE_URL}/service/${id}`, {
+    method: "DELETE",
+    headers,
+  });
+},
+
 }
 
 
