@@ -33,6 +33,7 @@ export function ProviderLoginForm() {
       toast.success(data.message);
       setTimeout(() => {
         localStorage.setItem('token', encrypt(data.data.token));
+        localStorage.setItem("IS_LOGGED-IN", true);
         if (data.data.userType === 'provider') {
           return navigate('/provider-dashboard');
         }

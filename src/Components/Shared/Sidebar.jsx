@@ -41,6 +41,7 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
 
       setTimeout(() => {
         localStorage.removeItem("token");
+        localStorage.removeItem("IS_LOGGED-IN");
         navigate(isProviderPath ? "/provider-login" : "/login");
       }, 1500);
 
