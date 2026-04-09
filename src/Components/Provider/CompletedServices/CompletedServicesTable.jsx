@@ -1,126 +1,157 @@
-
-import { Calendar } from 'lucide-react';
+import React, { useState } from "react";
 import Table from '../../Shared/Table';
 import Pagination from '../../Shared/Pagination';
 import StatusButton from '../Dashboard/StatusesButtons';
-import { useGetProviderRequestedServices } from '../../../Hooks/useGetProviderRequestedHooks';
+import StatusNoteModal from "../../Shared/StatusNotesPopUp";
+import { handleUpdateStatuses } from "../../../Hooks/UpdateStatusHooks";
+import { useGetProviderRequestedServices } from "../../../Hooks/useGetProviderRequestedHooks";
 
 export function CompletedServicesTable({ width }) {
+ 
+  const { data, loading, refetch } = useGetProviderRequestedServices({
+    status: 'Completed',
+  });
 
-    const { data, loading } = useGetProviderRequestedServices({
-        status: 'completed',
-    });
-    const CompletedServices = data?.data || []
-    const ActionGrid = ({ currentStatus, onStatusChange }) => {
-        const statusList = ["waiting", "approve", "complete", "reject"];
+  const CompletedServices = data?.data || [];
 
-        const isButtonActive = (btnType) => {
-            const normalizedStatus = currentStatus?.toLowerCase();
+  
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedRow, setSelectedRow] = useState(null);
+  const [selectedStatus, setSelectedStatus] = useState(null);
 
-            if (normalizedStatus === "approved" && btnType === "approve") return true;
-            if (normalizedStatus === "completed" && btnType === "complete") return true;
-            if (normalizedStatus === "rejected" && btnType === "reject") return true;
-            return normalizedStatus === btnType;
-        };
 
-        return (
-            <div className="grid grid-cols-2    overflow-hidden gap-2  w-40">
-                {statusList.map((status) => (
-                    <StatusButton
-                        key={status}
-                        type={status}
-                        isActive={isButtonActive(status)}
-                        onClick={() => onStatusChange(status)}
-                    />
-                ))}
-            </div>
-        );
+  const ActionGrid = ({ currentStatus, row }) => {
+    const statusList = ["waiting", "approve", "complete", "reject"];
+
+    const isButtonActive = (btnType) => {
+      const normalizedStatus = currentStatus?.toLowerCase();
+      
+      if (normalizedStatus === "approved" && btnType === "approve") return true;
+      if (normalizedStatus === "completed" && btnType === "complete") return true;
+      if (normalizedStatus === "rejected" && btnType === "reject") return true;
+      if (normalizedStatus === "waitting" && btnType === "waiting") return true;
+      return normalizedStatus === btnType;
     };
 
-
-    const columns = [
-        {
-            header: "Service Avatar",
-            accessor: "serviceId",
-            render: (value, row) => (
-                <img
-                    src={value.avatar}
-                    alt={row.name}
-                    className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg object-cover"
-                />
-            ),
-        },
-        {
-            header: 'Service Name',
-            accessor: 'serviceId',
-            render: (serviceId) => serviceId?.name || '-',
-        },
-        {
-            header: 'Service Location',
-            accessor: 'location',
-        },
-
-        {
-            header: 'Service Contacts',
-            accessor: 'providerId',
-            render: (value) => value.phone || '0787684171',
-        },
-        {
-            header: 'Service Hours',
-            accessor: 'serviceId',
-            render: (value) => {
-                return `${value.timeFrom} - ${value.timeTo}`;
-            },
-        },
-        {
-            header: "Completed Status",
-            accessor: "status",
-            render: (row) => (
-                <div className='bg-small-soft-blue p-2 rounded-[20px] text-center text-sky-blue'>
-                    <p>{row}</p>
-                </div>
-            )
-        },
-        {
-            header: 'Completed Notes',
-            accessor: 'requestNote',
-            render: (value) => (
-                <div className='w-[200px]'>
-                    <p>{value || 'N/A'}</p>
-                </div>
-            ),
-        },
-        {
-            header: 'Completed Notes',
-            accessor: 'CompletedNotes',
-            render: (value) => value?.CompletedNotes || 'N/A',
-        },
-
-        {
-            header: "Action",
-            accessor: "status",
-            render: (status, row) => (
-                <ActionGrid
-                    currentStatus={status}
-                    onStatusChange={(newStatus) => console.log(`Updating ID ${row.id} to ${newStatus}`)}
-                />
-            ),
-        },
-    ];
+    const handleButtonClick = (status) => {
+      setSelectedRow(row);
+      setSelectedStatus(status);
+      setModalOpen(true);
+    };
 
     return (
+      <div className="grid grid-cols-2 overflow-hidden gap-2 w-40">
+        {statusList.map((status) => (
+          <StatusButton
+            key={status}
+            type={status}
+            isActive={isButtonActive(status)}
+            onClick={() => handleButtonClick(status)}
+          />
+        ))}
+      </div>
+    );
+  };
 
-        <>
-          
-                <Table columns={columns} data={CompletedServices} width={width} loading={loading}/>
-          
-            <div className='px-1'>
-                <Pagination />
-            </div>
 
+  const columns = [
+    {
+      header: "Service Avatar",
+      accessor: "serviceId",
+      render: (value) => (
+        <img
+          src={value?.avatar}
+          alt="service"
+          className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg object-cover"
+        />
+      ),
+    },
+    {
+      header: 'Service Name',
+      accessor: 'serviceId',
+      render: (serviceId) => serviceId?.name || '-',
+    },
+    {
+      header: 'Service Location',
+      accessor: 'location',
+    },
+    {
+      header: 'Service Contacts',
+      accessor: 'providerId',
+      render: (value) => (
+        <span className="font-bold text-slate-500 block">
+          {value?.phone || 'N/A'}
+        </span>
+      ),
+    },
+    {
+      header: 'Service Hours',
+      accessor: 'serviceId',
+      render: (value) => `${value?.timeFrom || ''} - ${value?.timeTo || ''}`,
+    },
+    {
+      header: "Completed Status",
+      accessor: "status",
+      render: (status) => (
+        <div className='bg-small-soft-blue px-4 py-1 rounded-full text-center text-sky-blue font-bold whitespace-nowrap'>
+          <p>{status}</p>
+        </div>
+      )
+    },
+    {
+      header: 'Request Notes',
+      accessor: 'requestNote',
+      render: (value) => (
+        <div className='w-[150px] truncate'>
+          <p title={value} className="text-sm text-slate-600">
+            {value || 'N/A'}
+          </p>
+        </div>
+      ),
+    },
+    {
+      header: 'Rejection Notes',
+      accessor: 'rejectionNote',
+      render: (value) => (
+        <div className='w-[150px] truncate'>
+          <p title={value} className='text-sm text-red-400 italic'>
+            {value || 'N/A'}
+          </p>
+        </div>
+      ),
+    },
+    {
+      header: "Action",
+      accessor: "status",
+      render: (status, row) => <ActionGrid currentStatus={status} row={row} />,
+    },
+  ];
 
-        </>
+  return (
+    <>
+   
+      <Table 
+        columns={columns} 
+        data={CompletedServices} 
+        width={width} 
+        loading={loading} 
+      />
+      
+      <div className='px-1'>
+        <Pagination />
+      </div>
 
-
-    )
+     
+      <StatusNoteModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        statusLabel={selectedStatus}
+        onSubmit={(note) => {
+        
+          handleUpdateStatuses(null, selectedRow._id, selectedStatus, refetch, note);
+          setModalOpen(false);
+        }}
+      />
+    </>
+  );
 }
