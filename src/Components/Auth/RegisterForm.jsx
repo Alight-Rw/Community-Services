@@ -78,7 +78,7 @@ function RegisterForm() {
                 placeholder="FirstName"
                 value={firstName}
                 onChange={(e)=>setFirtName(e.target.value)}
-                className="border rounded-lg bg-universal border-primary px-4 py-2 focus:outline-secondary"
+                className="border rounded-lg  border-gray-300 px-4 py-2 focus:outline-secondary"
               />
 
               <input
@@ -86,7 +86,7 @@ function RegisterForm() {
                 placeholder="LastName"
                 value={lastName}
                 onChange={(e)=>setLastName(e.target.value)}
-                className="border rounded-lg bg-universal border-primary px-4 py-2 focus:outline-secondary"
+                className="border rounded-lg border-gray-300 px-4 py-2 focus:outline-secondary"
               />
 
               <input
@@ -95,7 +95,7 @@ function RegisterForm() {
                 value={username}
                 onChange={(e)=>setUsername(e.target.value)}
 
-                className="border rounded-lg bg-universal border-primary px-4 py-2 focus:outline-secondary"
+                className="border rounded-lg border-gray-300 px-4 py-2 focus:outline-secondary"
               />
               <div className="relative">
                 <input
@@ -103,7 +103,7 @@ function RegisterForm() {
                   placeholder="Password"
                   value={password}
                   onChange={(e)=>setPassword(e.target.value)}
-                  className="border rounded-lg bg-universal border-primary px-4 py-2 focus:outline-secondary w-full"
+                  className="border rounded-lg border-gray-300 px-4 py-2 focus:outline-secondary w-full"
                 />
 
                 <button
@@ -121,7 +121,7 @@ function RegisterForm() {
                   placeholder="Re-enter Password"
                   value={repeatPassword}
                   onChange={(e)=>setRepeatPassword(e.target.value)}
-                  className="border rounded-lg bg-universal border-primary px-4 py-2 focus:outline-secondary w-full"
+                  className="border rounded-lg border-gray-300 px-4 py-2 focus:outline-secondary w-full"
                 />
 
                 <button

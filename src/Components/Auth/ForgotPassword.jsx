@@ -74,7 +74,7 @@ const ForgotPassword = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="border rounded-lg bg-universal border-primary px-4 py-3 my-4 focus:outline-secondary"
+                className="border rounded-lg border-hard-gray px-4 py-3 my-4 focus:outline-secondary"
               />
 
               <p className="text-sm text-gray-500 my-2">

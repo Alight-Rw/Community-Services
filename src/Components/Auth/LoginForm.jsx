@@ -54,7 +54,7 @@ function LoginForm() {
   
 
   return (
-    <div className='relative w-full h-screen flex items-center justify-center bg-gray-100'>
+    <div className='relative w-full h-screen flex items-center justify-center '>
       <ToastContainer />
       <div className='bg-white w-[90%] max-w-[850px] rounded-2xl shadow-2xl overflow-hidden'>
         <div className='hidden md:flex justify-center py-6 bg-white'>
