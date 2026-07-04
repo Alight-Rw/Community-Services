@@ -214,7 +214,16 @@ UpdateStatusAPI: async (id, status, note) => {
     }
 
     return await response.json();
-  }
+  },
+
+
+VerifyAccountAPI: async (token) => {
+  const headers = AuthHeader('json');
+  return await fetch(`${BASE_URL}/auth/verify-account/${token}`, {
+    method: 'GET', 
+    headers
+  });
+},
 }
 
 

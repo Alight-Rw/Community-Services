@@ -154,6 +154,7 @@ export function Routers() {
           />
         </Route>
 
+      <Route path="/*" element={<Authentication />} />
         <Route
           path='*'
           element={<NotFoundPage />}
