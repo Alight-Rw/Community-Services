@@ -1,4 +1,3 @@
-
 /** @format */
 
 import { useState } from 'react';
@@ -9,6 +8,7 @@ import { APIsRequestService } from '../../Services/APIsRequestService';
 import { ToastContainer, toast } from 'react-toastify';
 import { encrypt } from '../../Utils/SharedUtils';
 import Spinner from '../Shared/Loader';
+
 function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
@@ -18,27 +18,29 @@ function LoginForm() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const selectedService = localStorage.getItem('SELECTED-SERVICE');
 
     try {
-      const response = await APIsRequestService.SignInAPI({ email: username, password, });
+      const response = await APIsRequestService.SignInAPI({ email: username, password });
       const data = await response.json();
-       setLoading(true);
+         
       if (!response.ok) {
         setLoading(false);
-        return toast.error(data.message);
+      
+        return toast.error(data.message|| data.error || 'Login failed');
       }
 
       localStorage.setItem('token', encrypt(data.data.token));
       localStorage.setItem("IS_LOGGED-IN", true);
-      toast.success(data.message);
+      toast.success(data.message || 'Login successful!');
 
       setTimeout(() => {
         try {
           if (selectedService) {
             const serviceData = JSON.parse(selectedService);
             const slugName = serviceData.name.toLowerCase().replace(/\s+/g, '-');
-            navigate(`/confirm-booking/${slugName}`, { state: serviceData, });
+            navigate(`/confirm-booking/${slugName}`, { state: serviceData });
           } else {
             navigate('/dashboard');
           }
@@ -47,12 +49,12 @@ function LoginForm() {
         }
       }, 1000);
     } catch (error) {
-        setLoading(false);
+      setLoading(false);
+      toast.error('An unexpected error occurred. Please try again.');
       console.error('Failed Error:', error);
     }
   };
   
-
   return (
     <div className='relative w-full h-screen flex items-center justify-center '>
       <ToastContainer />
@@ -101,34 +103,40 @@ function LoginForm() {
               className='flex flex-col gap-4'
               onSubmit={handleLogin}
             >
-              <input
-                type='text'
-                placeholder='Username'
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                className='border rounded-lg border-gray-300 px-4 py-2 focus:outline-blue-500'
-              />
-
-              <div className='relative'>
+              <div>
                 <input
-                  type={showPassword ? 'text' : 'password'}
-                  placeholder='Password'
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className='border rounded-lg border-gray-300 px-4 py-2 w-full focus:outline-blue-500'
+                  type='email'
+                  placeholder='Email'
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  className='border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-blue-500'
+                  required
                 />
+              </div>
 
-                <button
-                  type='button'
-                  onClick={() => setShowPassword(!showPassword)}
-                  className='absolute right-3 top-2.5 text-gray-500'
-                >
-                  {showPassword ? (
-                    <FaEyeSlash size={18} />
-                  ) : (
-                    <FaEye size={18} />
-                  )}
-                </button>
+              <div>
+                <div className='relative'>
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder='Password'
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className='border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-blue-500'
+                    required
+                  />
+
+                  <button
+                    type='button'
+                    onClick={() => setShowPassword(!showPassword)}
+                    className='absolute right-3 top-2.5 text-gray-500'
+                  >
+                    {showPassword ? (
+                      <FaEyeSlash size={18} />
+                    ) : (
+                      <FaEye size={18} />
+                    )}
+                  </button>
+                </div>
               </div>
 
               <div className='flex items-center gap-2 text-sm'>
@@ -143,7 +151,7 @@ function LoginForm() {
                 </Link>
               </p>
 
-             <button
+              <button
                 type="submit"
                 disabled={loading}
                 className="w-full flex items-center justify-center gap-2 bg-secondary text-white py-2 rounded-lg hover:bg-blue-700 transition-all disabled:opacity-50"
