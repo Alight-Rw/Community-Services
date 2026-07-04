@@ -40,6 +40,18 @@ export const APIsRequestService = {
     })
   },
 
+ SerchServiceAPI: async (search) => {
+  const headers = AuthHeader("json");
+
+  return fetch(
+    `${BASE_URL}/service/search?search=${encodeURIComponent(search)}`,
+    {
+      method: "GET",
+      headers,
+    }
+  );
+},
+
 
 
   contactUsAPI: async (data) => {

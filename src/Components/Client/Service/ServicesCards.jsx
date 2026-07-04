@@ -8,6 +8,7 @@ import { useGetService } from "../../../Hooks/useGetClientRequestedHooks";
 
 function ServicesPage() {
   const {items,loading} = useGetService()
+  console.log(items)
   
 
   return (
