@@ -20,17 +20,16 @@ const ForgotPassword = () => {
 
       if (!response.ok) {
         setLoading(false);
-        return toast.error(data.message || "wrong E-mail");
+        return toast.error(data.error);
       }
 
       setIsSent(true);
-      toast.success(data.message || "Reset link sent! Check your email.");
+      toast.success(data.message);
       setEmail("");
       
     } catch (error) {
       setLoading(false);
-      console.error(error);
-      toast.error(error);
+      toast.error(error.message);
 
     }
   };

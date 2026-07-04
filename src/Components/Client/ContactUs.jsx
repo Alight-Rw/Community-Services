@@ -30,7 +30,7 @@ export const ContactUs = () => {
       if (!response.ok) {
         setLoading(false);
       
-        return toast.error(data.message ||data.error || 'Failed to send message. Try again.');
+        return toast.error(data.error);
       }
 
       setLoading(false);
@@ -38,10 +38,10 @@ export const ContactUs = () => {
       setUsername('');
       setSubject('');
       setMessage('');
-      return toast.success(data.message || data.error || 'Thanks for contacting us');
+      return toast.success(data.message);
     } catch (error) {
       setLoading(false);
-      return toast.error('An unexpected error occurred');
+      return toast.error(error.message);
     }
   };
 

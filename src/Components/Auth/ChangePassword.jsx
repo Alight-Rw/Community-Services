@@ -30,18 +30,17 @@ const ChangePassword = ({ token }) => {
       if (!response.ok) {
         setLoading(false);
         
-        return toast.error(data.message || "Password change failed");
+        return toast.error(data.error);
       }
 
-      toast.success(data?.message || "Password changed successfully!");
+      toast.success(data?.message);
       setTimeout(() => { 
         setLoading(false);
         navigate('/login'); 
       }, 3000);
     } catch (error) {
       setLoading(false);
-      toast.error("An unexpected error occurred. Please try again.");
-      console.error('Failed Error:', error);
+      toast.error(error.message);
     }
   };
 

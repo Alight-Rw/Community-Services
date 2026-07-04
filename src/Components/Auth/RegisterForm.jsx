@@ -56,11 +56,11 @@ function RegisterForm() {
           return; 
         }
 
-        return toast.error(data.message || data.error || "Signup failed");
+        return toast.error(data.error);
       }
 
       setLoading(false);
-      toast.success(data.message || "Check your email to verify your account.");
+      toast.success(data.message);
 
       setFirtName("");
       setLastName("");
@@ -70,7 +70,7 @@ function RegisterForm() {
       setErrors({});
     } catch (error) {
       setLoading(false);
-      toast.error("Signup failed. Try again.");
+      toast.error(error.message);
     }
   };
 
