@@ -21,7 +21,7 @@ function GlobalSearch() {
       return toast.error('Please enter a service name or location');
     }
 
-     navigate(`/single-service?search=${encodeURIComponent(searchName)}`);
+    navigate(`/single-service?search=${encodeURIComponent(searchName)}`);
   };
 
   const handleSearchLocation = () => {
@@ -29,7 +29,11 @@ function GlobalSearch() {
       return toast.error('Please enter a service name or location');
     }
 
-     navigate(`/single-service?search=${encodeURIComponent(searchLocation)}`);
+    navigate(`/single-service?search=${encodeURIComponent(searchLocation)}`);
+  };
+
+  const handleGetServiceByCategory = (category) => {
+    navigate(`/available-services?category=${encodeURIComponent(category)}`);
   };
 
   const handleGetCategories = async () => {
@@ -63,13 +67,9 @@ function GlobalSearch() {
             className='w-full flex items-center gap-2 px-4 bg-secondary text-white rounded-full h-12 cursor-pointer hover:bg-opacity-90 transition-all'
           >
             <Menu size={18} />
-           <input
-              type="text"
-              readOnly
-              value={selectedCategory}
-              placeholder="ALL CATEGORIES"
-              className="bg-transparent outline-none text-xs font-bold uppercase placeholder:text-gray-100 w-full cursor-pointer"
-            />
+            <h6 className='w-full cursor-pointer font-bold uppercase pl-3'>
+              ALL CATEGORIES
+            </h6>
             <ChevronDown
               size={16}
               className={`transition-transform ${
@@ -79,16 +79,16 @@ function GlobalSearch() {
           </div>
 
           {isDropdownOpen && (
-            <ul className='absolute top-14 left-0 w-full bg-white border border-gray-200 rounded-xl shadow-xl z-50 py-2 max-h-60 overflow-y-auto'>
+            <ul className='absolute top-14 flex flex-col gap-2 py-5 left-0 w-full bg-white border border-gray-200 rounded-xl shadow-xl z-50 max-h-60 overflow-y-auto'>
               {categories.length > 0 ? (
                 categories.map((cat) => (
                   <li
                     key={cat._id}
                     onClick={() => {
-                      setSelectedCategory(cat.categoryName);
+                      handleGetServiceByCategory(cat.categoryName);
                       setIsDropdownOpen(false);
                     }}
-                    className='px-4 h-12 flex items-center text-sm text-black hover:bg-blue-50 hover:text-secondary cursor-pointer transition-colors'
+                    className='hover:bg-gray-200 py-2 rounded-2xl px-5'
                   >
                     {cat.categoryName}
                   </li>
@@ -127,12 +127,12 @@ function GlobalSearch() {
           <input
             type='text'
             value={searchLocation}
-              onChange={(e) => setSearchLocation(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  handleSearchLocation();
-                }
-              }}
+            onChange={(e) => setSearchLocation(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                handleSearchLocation();
+              }
+            }}
             placeholder='Location'
             className='w-full bg-transparent outline-none text-gray-700 text-sm px-2'
           />
