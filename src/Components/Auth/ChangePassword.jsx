@@ -83,7 +83,7 @@ const ChangePassword = ({ token }) => {
                     autoComplete="new-password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="border border-primary rounded-lg bg-universal text-base px-4 py-3 mt-6 w-full focus:outline-secondary"
+                    className="border border-gray-300  rounded-lg text-base px-4 py-3 mt-6 w-full focus:outline-secondary"
                     required
                   />
                   <button
@@ -108,7 +108,7 @@ const ChangePassword = ({ token }) => {
                     autoComplete="new-password"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="border border-primary rounded-lg bg-universal text-base px-4 py-3 mt-3 w-full focus:outline-secondary"
+                    className="border border-gray-300 rounded-lg text-base px-4 py-3 mt-3 w-full focus:outline-secondary"
                     required
                   />
                   <button
