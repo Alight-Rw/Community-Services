@@ -1,5 +1,3 @@
-import { useParams } from 'react-router-dom';
-
 import LoginForm from "./LoginForm";
 import AuthLayout from "./AuthLayout";
 import RegisterForm from "./RegisterForm";
@@ -9,18 +7,32 @@ import AccountVerifiedForm from "./AccountVerifiedForm";
 import { ProviderLoginForm } from "./ProviderLoginForm";
 
 export function Auth({ pathURL }) {
-  const { token } = useParams();
+  
+ 
+  const extractToken = (path, baseRoute) => {
+    if (path && path.startsWith(baseRoute)) {
+      return path.replace(baseRoute, "");
+    }
+    return null;
+  };
 
   return (
     <div>
       <div className="absolute z-10 w-full">
-        {pathURL === '/register' && (<RegisterForm />)}
-        {pathURL === '/login' && (<LoginForm />)}
-        {pathURL === '/account-verified' && (<AccountVerifiedForm />)}
+        {pathURL === '/register' && <RegisterForm />}
+        {pathURL === '/login' && <LoginForm />}
+        {pathURL === '/forgot-password' && <ForgotPassword />}
+        {pathURL === '/provider-login' && <ProviderLoginForm />}    
+        
       
-       {pathURL === '/forgot-password' && (<ForgotPassword />)}
-       {pathURL === '/provider-login' && (<ProviderLoginForm />)}    
-       {pathURL === `/change-password/${token}` && (<ChangePassword token={token} />)}   
+        {pathURL?.startsWith('/account-verified/') && (
+          <AccountVerifiedForm token={extractToken(pathURL, '/account-verified/')} />
+        )}
+      
+      
+        {pathURL?.startsWith('/change-password/') && (
+          <ChangePassword token={extractToken(pathURL, '/change-password/')} />
+        )}   
       </div>
       
       <AuthLayout />
