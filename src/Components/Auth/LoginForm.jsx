@@ -28,12 +28,12 @@ function LoginForm() {
       if (!response.ok) {
         setLoading(false);
       
-        return toast.error(data.message|| data.error || 'Login failed');
+        return toast.error(data.error);
       }
 
       localStorage.setItem('token', encrypt(data.data.token));
       localStorage.setItem("IS_LOGGED-IN", true);
-      toast.success(data.message || 'Login successful!');
+      toast.success(data.message);
 
       setTimeout(() => {
         try {
@@ -45,13 +45,13 @@ function LoginForm() {
             navigate('/dashboard');
           }
         } catch (error) {
-          console.error('Navigation error:', error);
+          toast.error(data.error);
         }
       }, 1000);
     } catch (error) {
       setLoading(false);
-      toast.error('An unexpected error occurred. Please try again.');
-      console.error('Failed Error:', error);
+      toast.error(error.message);
+     
     }
   };
   

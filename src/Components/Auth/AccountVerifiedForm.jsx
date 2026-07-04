@@ -21,11 +21,11 @@ const AccountVerifiedForm = ({ token }) => {
         } else {
           const data = await response.json();
           setStatus("error");
-          setErrorMessage(data.message || "Verification failed. The link may have expired.");
+          setErrorMessage(data.error);
         }
       } catch (error) {
         setStatus("error");
-        setErrorMessage("A network error occurred. Please try again.");
+        setErrorMessage(error.message);
       }
     };
 

@@ -29,15 +29,15 @@ export function ProviderLoginForm() {
 
       if (!response.ok) {
         setLoading(false);
-        return toast.error(data.message || data.error || 'Login failed');
+        return toast.error(data.error);
       }
       
       if (data.data?.userType !== 'provider') {
         setLoading(false);
-        return toast.error( data.error ||'Access denied. This panel is for providers only.');
+        return toast.error(data.error);
       }
 
-      toast.success(data.message ||data.error || 'Login successful!');
+      toast.success(data.error);
       
       setTimeout(() => {
         localStorage.setItem('token', encrypt(data.data.token));
@@ -47,8 +47,7 @@ export function ProviderLoginForm() {
 
     } catch (error) {
       setLoading(false);
-      toast.error('An unexpected error occurred. Please try again.');
-      console.error('Failed Error:', error);
+      toast.error(error.message);
     }
   };
 
