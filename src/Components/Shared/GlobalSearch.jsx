@@ -25,12 +25,14 @@ function GlobalSearch() {
   };
 
   const handleSearchLocation = () => {
-    if (!searchLocation.trim()) {
-      return toast.error('Please enter a service name or location');
-    }
+  if (!searchLocation.trim()) {
+    return toast.error("Please enter a location");
+  }
 
-    navigate(`/single-service?search=${encodeURIComponent(searchLocation)}`);
-  };
+  navigate(
+    `/available-services?location=${encodeURIComponent(searchLocation)}`
+  );
+};
 
   const handleGetServiceByCategory = (category) => {
     navigate(`/available-services?category=${encodeURIComponent(category)}`);
