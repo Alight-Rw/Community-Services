@@ -32,6 +32,7 @@ import {
   ProtectedRoute,
   ProtectedProviderRoute,
 } from '../src/middlewares/authMiddleware';
+import SingleService from './Pages/Client/singleService';
 
 export function Routers() {
   return (
@@ -48,6 +49,10 @@ export function Routers() {
           <Route
             path='home'
             element={<HomePage />}
+          />
+           <Route
+            path='single-service'
+            element={<SingleService />}
           />
           <Route
             path='available-services'
