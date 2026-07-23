@@ -1,3 +1,4 @@
+/** @format */
 
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -13,35 +14,33 @@ const ChangePassword = ({ token }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChangePassword = async (e) => {
     e.preventDefault();
-     setLoading(true);
-
-    if (!password) {
-       setLoading(false);
-      return toast.error("Please enter a new password.");
-    }
-    if (password !== confirmPassword) {
-       setLoading(false);
-      return toast.error("Passwords do not match!");
-    }
+    setLoading(true);
 
     try {
-      const response = await APIsRequestService.ChangePasswordAPI(token, { newPassword: password, confirmPassword });
+      const response = await APIsRequestService.ChangePasswordAPI(token, { 
+        newPassword: password, 
+        confirmPassword 
+      });
       const data = await response.json();
 
       if (!response.ok) {
-         setLoading(false);
-        return toast.error(data.message);
+        setLoading(false);
+        
+        return toast.error(data.error);
       }
 
-      setTimeout(() => { navigate('/login') }, 3000);
-       setLoading(false);
-      return toast.success(data?.message);
+      toast.success(data?.message);
+      setTimeout(() => { 
+        setLoading(false);
+        navigate('/login'); 
+      }, 3000);
     } catch (error) {
-      console.error('Failed Error:', error);
+      setLoading(false);
+      toast.error(error.message);
     }
   };
 
@@ -76,49 +75,56 @@ const ChangePassword = ({ token }) => {
               </Link>
             </div>
             <form className="flex flex-col gap-4" onSubmit={handleChangePassword}>
-              <div className="relative">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="New Password"
-                  autocomplete="new-password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="border rounded-lg bg-universal border-primary text-base px-4 py-3 mt-6 w-full focus:outline-secondary"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-9.5"
-                >
-                  {showPassword ? (
-                    <FaEyeSlash size={22} color="gray" />
-                  ) : (
-                    <FaEye size={22} color="gray" />
-                  )}
-                </button>
+              <div>
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="New Password"
+                    autoComplete="new-password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="border border-gray-300  rounded-lg text-base px-4 py-3 mt-6 w-full focus:outline-secondary"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-9.5"
+                  >
+                    {showPassword ? (
+                      <FaEyeSlash size={22} color="gray" />
+                    ) : (
+                      <FaEye size={22} color="gray" />
+                    )}
+                  </button>
+                </div>
               </div>
 
-              <div className="relative">
-                <input
-                  type={showConfirmPassword ? "text" : "password"}
-                  placeholder="Confirm New Password"
-                  autoComplete="new-password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="border rounded-lg bg-universal border-primary text-base px-4 py-3 mt-3 w-full focus:outline-secondary"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-6.5"
-                >
-                  {showConfirmPassword ? (
-                    <FaEyeSlash size={22} color="gray" />
-                  ) : (
-                    <FaEye size={22} color="gray" />
-                  )}
-                </button>
+              <div>
+                <div className="relative">
+                  <input
+                    type={showConfirmPassword ? "text" : "password"}
+                    placeholder="Confirm New Password"
+                    autoComplete="new-password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    className="border border-gray-300 rounded-lg text-base px-4 py-3 mt-3 w-full focus:outline-secondary"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className="absolute right-3 top-6.5"
+                  >
+                    {showConfirmPassword ? (
+                      <FaEyeSlash size={22} color="gray" />
+                    ) : (
+                      <FaEye size={22} color="gray" />
+                    )}
+                  </button>
+                </div>
               </div>
+
               <p className="text-sm text-gray-500 my-4">
                 Already remember account ?{" "}
                 <Link
