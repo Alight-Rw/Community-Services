@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Upload, X } from "lucide-react";
 import { APIsRequestService } from "../../../Services/APIsRequestService";
 import { toast, ToastContainer } from "react-toastify";
+import { normalizeCollectionResponse } from "../../../Utils/collectionUtils";
 
 export default function AddNewService({
   onClick,
@@ -19,8 +20,8 @@ export default function AddNewService({
       try {
         const response = await APIsRequestService.FietchcategoryAPI();
         const data = await response.json();
-
-        setCategories(data.data);
+        const normalized = normalizeCollectionResponse(data);
+        setCategories(normalized.items);
       } catch (err) {
         console.error("Failed to fetch categories:", err);
       }

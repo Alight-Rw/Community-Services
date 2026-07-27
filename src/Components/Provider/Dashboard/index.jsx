@@ -15,7 +15,7 @@ export function DashboardProvider() {
   const handleVIsible = () => setVisible(!visible);
 
   return (
-    <div className="flex flex-col h-screen bg-universal overflow-hidden">
+    <div className="dashboard-shell flex flex-col h-screen bg-small-soft-gray overflow-hidden">
       <DashboardNav
         notificationNumber={2}
         notifications={[

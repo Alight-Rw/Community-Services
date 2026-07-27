@@ -1,15 +1,26 @@
 /** @format */
 
+import { useEffect, useState } from 'react';
 import { Calendar } from 'lucide-react';
 import Table from '../../Shared/Table';
 import Pagination from '../../Shared/Pagination';
 import { useGetClientRequestedServices } from '../../../Hooks/useGetClientRequestedHooks';
 
-export function RejectedServices({ width }) {
-  const { data, loading } = useGetClientRequestedServices({
+export function RejectedServices({ width, search = '' }) {
+  const [page, setPage] = useState(1);
+  const limit = 4;
+  const { data, loading, error } = useGetClientRequestedServices({
     status: 'Rejected',
+    page,
+    limit,
+    search,
   });
   const rejectedServices = data?.data || [];
+  const pagination = data?.pagination;
+
+  useEffect(() => {
+    setPage(1);
+  }, [search]);
 
 
   const canBook = (service) => {
@@ -109,8 +120,15 @@ export function RejectedServices({ width }) {
           data={rejectedServices}
           width={width}
           loading={loading}
+          error={error}
         />
-        <Pagination />
+        <Pagination
+          currentPage={pagination?.currentPage || page}
+          totalPages={pagination?.totalPages || 1}
+          totalRecords={pagination?.totalRecords}
+          onPageChange={setPage}
+          loading={loading}
+        />
       </div>
     </>
   );

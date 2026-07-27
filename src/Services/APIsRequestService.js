@@ -1,6 +1,21 @@
 
 import { AuthHeader, BASE_URL } from "../Utils/RequestUtils";
 
+const buildQueryString = (params = {}) => {
+  const query = new URLSearchParams();
+
+  Object.entries(params).forEach(([key, value]) => {
+    if (value === undefined || value === null || value === "") {
+      return;
+    }
+
+    query.set(key, value);
+  });
+
+  const queryString = query.toString();
+  return queryString ? `?${queryString}` : "";
+};
+
 export const APIsRequestService = {
   WelcomeAPI: async () => {
     const headers = AuthHeader('json');
@@ -17,13 +32,13 @@ export const APIsRequestService = {
     const headers = AuthHeader('json');
     return await fetch(`${BASE_URL}/auth/client-signup`, { body: JSON.stringify(data), method: 'POST', headers })
   },
-  GetServicesAPI: async () => {
+  GetServicesAPI: async (params = {}) => {
     const headers = AuthHeader('json');
-    return await fetch(`${BASE_URL}/service/services`, { method: 'GET', headers });
+    return await fetch(`${BASE_URL}/service/services${buildQueryString(params)}`, { method: 'GET', headers });
   },
-   GetProviderServicesAPI: async () => {
+   GetProviderServicesAPI: async (params = {}) => {
     const headers = AuthHeader('json');
-    return await fetch(`${BASE_URL}/service/provider-services`, { method: 'GET', headers });
+    return await fetch(`${BASE_URL}/service/provider-services${buildQueryString(params)}`, { method: 'GET', headers });
   },
   LogOutAPI: async () => {
     const headers = AuthHeader('json')
@@ -31,20 +46,23 @@ export const APIsRequestService = {
 
   },
  
-  FietchcategoryAPI: async () => {
+  FietchcategoryAPI: async (params = {}) => {
 
     const headers = AuthHeader('json');
-    return await fetch(`${BASE_URL}/category/categories`, {
+    return await fetch(`${BASE_URL}/category/categories${buildQueryString(params)}`, {
       method: "GET",
       headers
     })
   },
 
- SerchServiceAPI: async (search) => {
+ SerchServiceAPI: async (search, params = {}) => {
   const headers = AuthHeader("json");
+  const searchParams = typeof search === "object" && search !== null
+    ? search
+    : { ...params, search };
 
   return fetch(
-    `${BASE_URL}/service/search?search=${encodeURIComponent(search)}`,
+    `${BASE_URL}/service/search${buildQueryString(searchParams)}`,
     {
       method: "GET",
       headers,
@@ -70,9 +88,9 @@ export const APIsRequestService = {
     const headers = AuthHeader('json');
     return await fetch(`${BASE_URL}/auth/profile`, { method: 'GET', headers })
   },
-  GalleryAPI: async () => {
+  GalleryAPI: async (params = {}) => {
     const headers = AuthHeader("json");
-    return fetch(`${BASE_URL}/gallery/galleries`, {
+    return fetch(`${BASE_URL}/gallery/galleries${buildQueryString(params)}`, {
       method: "GET",
       headers,
     });
@@ -82,11 +100,11 @@ export const APIsRequestService = {
     headers.Authorization = `Bearer ${token}`
     return await fetch(`${BASE_URL}/auth/change-password`, { body: JSON.stringify(data), method: 'PATCH', headers })
   },
-  GetLastServicesAPI: async () => {
+  GetLastServicesAPI: async (params = {}) => {
     const headers = AuthHeader('json');
-    return fetch(`${BASE_URL}/service/last-services`, {
+    return fetch(`${BASE_URL}/service/last-services${buildQueryString(params)}`, {
       method: 'GET',
-      headers
+      headers,
     });
  }, 
  
@@ -106,11 +124,11 @@ export const APIsRequestService = {
     });
   },
 
-  GetRequestedServicesAPI: async (status) => {
+  GetRequestedServicesAPI: async (status, params = {}) => {
   const headers = AuthHeader('json');
 
   return await fetch(
-    `${BASE_URL}/request-service/client-get-requested-services/${status}`,
+    `${BASE_URL}/request-service/client-get-requested-services/${status}${buildQueryString(params)}`,
     {
       method: "GET",
       headers,
@@ -118,11 +136,11 @@ export const APIsRequestService = {
   );
 },
 
-  GetProviderRequestedServicesAPI: async (status) => {
+  GetProviderRequestedServicesAPI: async (status, params = {}) => {
   const headers = AuthHeader('json');
 
   return await fetch(
-    `${BASE_URL}/request-service/provider-get-requested-services/${status}`,
+    `${BASE_URL}/request-service/provider-get-requested-services/${status}${buildQueryString(params)}`,
     {
       method: "GET",
       headers,

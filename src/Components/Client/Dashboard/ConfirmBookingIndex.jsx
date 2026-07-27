@@ -7,7 +7,7 @@ export function ConfirmBookingIndex() {
   const [isExpanded, setIsExpanded] = useState(true);
 
   return (
-    <div className="flex flex-col h-screen bg-universal overflow-hidden">
+    <div className="dashboard-shell flex flex-col h-screen bg-small-soft-gray overflow-hidden">
 
       <DashboardNav />
 
@@ -34,7 +34,7 @@ export function ConfirmBookingIndex() {
         >
           <div className="max-w-[1600px] mx-auto py-20 md:space-y-10">
             <div className="container">
-             <ConfirmBooking />
+              <ConfirmBooking />
             </div>
           </div>
         </main>

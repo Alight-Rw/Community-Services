@@ -6,10 +6,15 @@ import ActionButtons from "../Dashboard/EditAndDeleteButton";
 import AddNewService from "../Dashboard/AddNewService";
 import ConfirmDelete from "../Dashboard/ConfirmDelete";
 import { APIsRequestService } from "../../../Services/APIsRequestService";
+import { normalizeCollectionResponse } from "../../../Utils/collectionUtils";
 
-export function AvailableServicesTable({ width }) {
+export function AvailableServicesTable({ width, search = "" }) {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [page, setPage] = useState(1);
+  const limit = 4;
+  const [pagination, setPagination] = useState(null);
 
   const [editingService, setEditingService] = useState(null);
   const [deletingService, setDeletingService] = useState(null);
@@ -51,27 +56,45 @@ const handleConfirmDelete = async () => {
     }
   };
 
- const handleCancelDelete = () => {
+  const handleCancelDelete = () => {
   if (isDeleting) return; 
   setDeletingService(null);
 };
 
   useEffect(() => {
+    setPage(1);
+  }, [search]);
+
+  useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await APIsRequestService.GetProviderServicesAPI();
+        setLoading(true);
+        setError("");
+        const response = await APIsRequestService.GetProviderServicesAPI({
+          page,
+          limit,
+          search,
+        });
         const data = await response.json();
 
-        setServices(data.data || [])
+        if (!response.ok) {
+          setError(data.message || "Failed to fetch services");
+          return toast.error(data.message || "Failed to fetch services");
+        }
+
+        const normalized = normalizeCollectionResponse(data);
+        setServices(normalized.items || []);
+        setPagination(normalized.pagination);
       } catch (err) {
         console.error("Failed to fetch services:", err);
+        setError(err.message);
         setServices([])
       } finally {
         setLoading(false)
       }
     };
     fetchServices();
-  }, []);
+  }, [page, limit, search]);
 
   const columns = [
     {
@@ -134,10 +157,16 @@ const handleConfirmDelete = async () => {
   return (
     <>
     <ToastContainer />
-      <Table columns={columns} data={services} width={width} loading={loading} />
+      <Table columns={columns} data={services} width={width} loading={loading} error={error} />
 
       <div className="px-1">
-        <Pagination />
+        <Pagination
+          currentPage={pagination?.currentPage || page}
+          totalPages={pagination?.totalPages || 1}
+          totalRecords={pagination?.totalRecords}
+          onPageChange={setPage}
+          loading={loading}
+        />
       </div>
 
       {editingService && (

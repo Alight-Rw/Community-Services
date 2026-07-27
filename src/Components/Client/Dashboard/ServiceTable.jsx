@@ -1,32 +1,48 @@
 import { Calendar } from "lucide-react";
 import Table from "../../Shared/Table";
-import { MdEdit } from "react-icons/md";
-import { RiDeleteBin6Line } from "react-icons/ri";
+import Pagination from "../../Shared/Pagination";
 import { useEffect, useState } from "react";
 import { APIsRequestService } from "../../../Services/APIsRequestService";
 import { toast } from "react-toastify";
+import { normalizeCollectionResponse } from "../../../Utils/collectionUtils";
 
 
 export function ServiceTable({ role }) {
 
-  const [allServicesData, setAllServicesData] = useState([])
+  const [allServicesData, setAllServicesData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [page, setPage] = useState(1);
+  const limit = 4;
+  const [pagination, setPagination] = useState(null);
 
   useEffect(() => {
     const featchLastService = async () => {
       try {
-        const response = await APIsRequestService.GetLastServicesAPI()
-        const data = await response.json()
+        setLoading(true);
+        setError("");
+        const response = await APIsRequestService.GetLastServicesAPI({
+          page,
+          limit,
+        });
+        const data = await response.json();
         if (!response.ok) {
+          setError(data.message || "Failed to fetch services");
           return toast.error(data.message)
         }
-        setAllServicesData(data?.data)
+        const normalized = normalizeCollectionResponse(data);
+        setAllServicesData(normalized.items);
+        setPagination(normalized.pagination);
       } catch (error) {
+        setError(error.message);
         return toast.error(error)
+      } finally {
+        setLoading(false);
       }
 
     }
     featchLastService()
-  }, [])
+  }, [page, limit])
 
   const canBook = (service) => {
     if (service.isActive === true) return true;
@@ -95,7 +111,16 @@ export function ServiceTable({ role }) {
       <Table
         columns={columns}
         data={allServicesData}
+        loading={loading}
+        error={error}
 
+      />
+      <Pagination
+        currentPage={pagination?.currentPage || page}
+        totalPages={pagination?.totalPages || 1}
+        totalRecords={pagination?.totalRecords}
+        onPageChange={setPage}
+        loading={loading}
       />
     </div>
   );

@@ -18,20 +18,32 @@ function splitIntoColumns(items = [], cols) {
 export default function ShowGallery() {
   const [gallery, setGallery] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [page, setPage] = useState(1);
+  const limit = 8;
+  const [pagination, setPagination] = useState(null);
 
   useEffect(() => {
     const fetchGallery = async () => {
-      const data = await handlegetGallery();
-      setGallery(Array.isArray(data) ? data : []);
+      setLoading(true);
+      setError("");
+
+      const data = await handlegetGallery({ page, limit });
+      setGallery(Array.isArray(data.items) ? data.items : []);
+      setPagination(data.pagination);
       setLoading(false);
     };
     fetchGallery();
-  }, []);
+  }, [page, limit]);
 
   const columns = splitIntoColumns(gallery, 3);
 
   if (loading) {
     return <div className="text-center p-5">Loading gallery...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center p-5 text-red-500">{error}</div>;
   }
 
   if (gallery.length === 0) {
@@ -65,7 +77,12 @@ export default function ShowGallery() {
         ))}
       </div>
 
-      <Pagination />
+      <Pagination
+        currentPage={pagination?.currentPage || page}
+        totalPages={pagination?.totalPages || 1}
+        totalRecords={pagination?.totalRecords}
+        onPageChange={setPage}
+      />
     </>
   );
 }
