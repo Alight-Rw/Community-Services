@@ -1,14 +1,26 @@
 /** @format */
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Calendar } from "lucide-react";
 import Pagination from "../../Shared/Pagination";
 import Table from "../../Shared/Table";
 import { useGetClientRequestedServices } from "../../../Hooks/useGetClientRequestedHooks";
 
-export function RequestedSevicesTable({ width }) {
-  const { data, loading } = useGetClientRequestedServices({ status: "all" });
+export function RequestedSevicesTable({ width, search = "" }) {
+  const [page, setPage] = useState(1);
+  const limit = 4;
+  const { data, loading, error } = useGetClientRequestedServices({
+    status: "all",
+    page,
+    limit,
+    search,
+  });
   const requestedServices = data?.data || [];
+  const pagination = data?.pagination;
+
+  useEffect(() => {
+    setPage(1);
+  }, [search]);
 
 
   const normalizeStatus = (status) => {
@@ -148,8 +160,15 @@ export function RequestedSevicesTable({ width }) {
         data={requestedServices}
         width={width}
         loading={loading}
+        error={error}
       />
-      <Pagination />
+      <Pagination
+        currentPage={pagination?.currentPage || page}
+        totalPages={pagination?.totalPages || 1}
+        totalRecords={pagination?.totalRecords}
+        onPageChange={setPage}
+        loading={loading}
+      />
     </>
   );
 }

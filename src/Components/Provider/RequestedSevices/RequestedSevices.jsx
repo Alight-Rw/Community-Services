@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Pagination from "../../Shared/Pagination";
 import Table from "../../Shared/Table";
 import StatusButton from "../Dashboard/StatusesButtons";
@@ -6,17 +6,27 @@ import StatusNoteModal from "../../Shared/StatusNotesPopUp";
 import { handleUpdateStatuses } from "../../../Hooks/UpdateStatusHooks";
 import { useGetProviderRequestedServices } from "../../../Hooks/useGetProviderRequestedHooks";
 
-export function RequestedSevicesTable({ width }) {
-  const { data, loading, refetch } = useGetProviderRequestedServices({
+export function RequestedSevicesTable({ width, search = "" }) {
+  const [page, setPage] = useState(1);
+  const limit = 4;
+  const { data, loading, error, refetch } = useGetProviderRequestedServices({
     status: "all",
+    page,
+    limit,
+    search,
   });
 
   const RequestedServices = data?.data || [];
+  const pagination = data?.pagination;
 
   
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
   const [selectedStatus, setSelectedStatus] = useState(null);
+
+  useEffect(() => {
+    setPage(1);
+  }, [search]);
 
  
   const ActionGrid = ({ currentStatus, row }) => {
@@ -129,9 +139,15 @@ export function RequestedSevicesTable({ width }) {
 
   return (
     <>
-      <Table columns={columns} data={RequestedServices} width={width} loading={loading} />
+      <Table columns={columns} data={RequestedServices} width={width} loading={loading} error={error} />
       <div className="px-1">
-        <Pagination />
+        <Pagination
+          currentPage={pagination?.currentPage || page}
+          totalPages={pagination?.totalPages || 1}
+          totalRecords={pagination?.totalRecords}
+          onPageChange={setPage}
+          loading={loading}
+        />
       </div>
 
       

@@ -8,7 +8,7 @@ function AddNewServiceButton({ onClick }) {
         onClick={onClick}
         className="
           flex items-center gap-2
-          bg-secondary hover:bg-blue-700
+          bg-secondary hover:brightness-95
           text-white
           px-3
           h-9 sm:h-10

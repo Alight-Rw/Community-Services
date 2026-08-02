@@ -1,47 +1,112 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-const Pagination = () => {
-  const [page, setPage] = useState(2);
-  const totalPages = 8;
+const buildVisiblePages = (currentPage, totalPages) => {
+  if (totalPages <= 7) {
+    return Array.from({ length: totalPages }, (_, index) => index + 1);
+  }
 
-  const handlePrev = () => {
-    if (page > 1) setPage(page - 1);
-  };
+  const pages = [1];
+  const startPage = Math.max(2, currentPage - 1);
+  const endPage = Math.min(totalPages - 1, currentPage + 1);
 
-  const handleNext = () => {
-    if (page < totalPages) setPage(page + 1);
-  };
+  if (startPage > 2) {
+    pages.push("left-ellipsis");
+  }
+
+  for (let page = startPage; page <= endPage; page += 1) {
+    pages.push(page);
+  }
+
+  if (endPage < totalPages - 1) {
+    pages.push("right-ellipsis");
+  }
+
+  pages.push(totalPages);
+
+  return pages;
+};
+
+const Pagination = ({
+  currentPage: controlledPage,
+  totalPages = 1,
+  totalRecords,
+  onPageChange,
+  loading = false,
+}) => {
+  const [internalPage, setInternalPage] = useState(1);
+
+  const currentPage = controlledPage ?? internalPage;
+  const effectiveTotalPages = Math.max(totalPages || 1, 1);
+  const handlePageChange = onPageChange || setInternalPage;
+  const visiblePages = useMemo(
+    () => buildVisiblePages(currentPage, effectiveTotalPages),
+    [currentPage, effectiveTotalPages],
+  );
+
+  if (effectiveTotalPages <= 1) {
+    return null;
+  }
 
   return (
-    <div className=" flex justify-end pr-1 md:pr-6">
-      <div className="flex items-center gap-4 bg-transparent p-4 rounded-2xl ">
-        
+    <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between py-4">
+      <div className="text-sm font-medium text-gray-500 space-y-1">
+        <div>
+          Page {currentPage} of {effectiveTotalPages}
+        </div>
+        <div>
+          {typeof totalRecords === "number"
+            ? `${totalRecords} total records`
+            : "Pagination"}
+        </div>
+      </div>
+
+      <div className="flex items-center gap-3 flex-wrap justify-end">
         <button
-          onClick={handlePrev}
+          onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
+          disabled={loading || currentPage <= 1}
           className={`p-3 rounded-xl transition ${
-            page > 1 ? "bg-secondary text-white hover:bg-secondary" : "bg-gray-200 hover:bg-gray-300"
+            currentPage > 1 && !loading
+              ? "bg-secondary text-white hover:bg-secondary"
+              : "bg-gray-200 text-gray-400 cursor-not-allowed"
           }`}
         >
           <FaChevronLeft />
         </button>
 
-        <div
-  className={`px-6 py-2 rounded-xl text-lg font-semibold border transition bg-secondary${
-    page > 1
-      ? "text-secondary border-gray-300"
-      : "text-black border-gray-300"
-  }`}
->
-
-          {page.toString().padStart(2, "0")}
+        <div className="flex items-center gap-2 flex-wrap">
+          {visiblePages.map((pageItem) =>
+            typeof pageItem === "number" ? (
+              <button
+                key={pageItem}
+                onClick={() => handlePageChange(pageItem)}
+                disabled={loading}
+                className={`min-w-10 px-4 py-2 rounded-xl text-sm font-semibold border transition ${
+                  pageItem === currentPage
+                    ? "bg-secondary text-white border-secondary"
+                    : "bg-white text-gray-700 border-gray-300 hover:border-secondary"
+                } ${loading ? "opacity-60 cursor-not-allowed" : ""}`}
+              >
+                {pageItem}
+              </button>
+            ) : (
+              <span
+                key={pageItem}
+                className="px-2 text-gray-400 select-none"
+              >
+                ...
+              </span>
+            ),
+          )}
         </div>
 
-        
         <button
-          onClick={handleNext}
+          onClick={() => handlePageChange(Math.min(currentPage + 1, effectiveTotalPages))}
+          disabled={loading || currentPage >= effectiveTotalPages}
           className={`p-3 rounded-xl transition ${
-            page < totalPages ? "bg-secondary text-white hover:secondary" : "bg-gray-200 hover:bg-gray-300"
+            currentPage < effectiveTotalPages && !loading
+              ? "bg-secondary text-white hover:bg-secondary"
+              : "bg-gray-200 text-gray-400 cursor-not-allowed"
           }`}
         >
           <FaChevronRight />

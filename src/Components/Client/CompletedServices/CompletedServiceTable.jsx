@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Calendar } from "lucide-react";
 import Pagination from "../../Shared/Pagination";
 import Table from "../../Shared/Table";
 import { useGetClientRequestedServices } from "../../../Hooks/useGetClientRequestedHooks";
 
-const CompletedSevicesTable=({width}) =>{
+const CompletedSevicesTable=({width, search = ""}) =>{
+   const [page, setPage] = useState(1);
+   const limit = 4;
+   const {data,loading,error}=useGetClientRequestedServices({status:"completed", page, limit, search});
+   const completedServices = data?.data || [];
+   const pagination = data?.pagination;
 
-
-   const{data,loading}=useGetClientRequestedServices({status:"completed"});
-   const completedServices = data?.data || []
+   useEffect(() => {
+    setPage(1);
+   }, [search]);
   
     const canBook = (status) => {
         if (status === "completed") return true;
@@ -106,9 +111,15 @@ const CompletedSevicesTable=({width}) =>{
   return (
   <>
    
-      <Table columns={columns} data={completedServices} width={width} loading={loading}/>
+      <Table columns={columns} data={completedServices} width={width} loading={loading} error={error}/>
     
-    <Pagination />
+    <Pagination
+      currentPage={pagination?.currentPage || page}
+      totalPages={pagination?.totalPages || 1}
+      totalRecords={pagination?.totalRecords}
+      onPageChange={setPage}
+      loading={loading}
+    />
   </>
 );
 }

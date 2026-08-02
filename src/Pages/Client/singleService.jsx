@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
-import DefaultImage from "../../../public/ServicesImage/ServiceImg4.png";
+const DefaultImage = "/ServicesImage/ServiceImg4.png";
 import {
   MapPin,
   Phone,
@@ -20,6 +20,7 @@ import {
 } from "react-router-dom";
 import { APIsRequestService } from "../../Services/APIsRequestService";
 import { toast } from "react-toastify";
+import { normalizeCollectionResponse } from "../../Utils/collectionUtils";
 
 export default function SingleService() {
   const navigate = useNavigate();
@@ -48,12 +49,14 @@ export default function SingleService() {
         return;
       }
 
-      if (result.data.length === 0) {
+      const normalized = normalizeCollectionResponse(result);
+
+      if (normalized.items.length === 0) {
         setService(null);
         return;
       }
 
-      setService(result.data[0]);
+      setService(normalized.items[0]);
     } catch (error) {
       console.error(error);
       toast.error("Failed to fetch service");

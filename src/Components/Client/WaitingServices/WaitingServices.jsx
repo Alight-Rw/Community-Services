@@ -1,15 +1,26 @@
 /** @format */
 
+import { useEffect, useState } from 'react';
 import { Calendar } from 'lucide-react';
 import Table from '../../Shared/Table';
 import Pagination from '../../Shared/Pagination';
 import { useGetClientRequestedServices } from '../../../Hooks/useGetClientRequestedHooks';
 
-export function WaitingServices({ width }) {
-  const { data, loading } = useGetClientRequestedServices({
+export function WaitingServices({ width, search = '' }) {
+  const [page, setPage] = useState(1);
+  const limit = 4;
+  const { data, loading, error } = useGetClientRequestedServices({
     status: 'Waitting',
+    page,
+    limit,
+    search,
   });
-  const waitingServices = data?.data || []
+  const waitingServices = data?.data || [];
+  const pagination = data?.pagination;
+
+  useEffect(() => {
+    setPage(1);
+  }, [search]);
 
   const canBook = (service) => {
     if (service.status === 'Waiting') return false;
@@ -106,10 +117,17 @@ export function WaitingServices({ width }) {
           data={waitingServices}
           width={width}
           loading={loading}
+          error={error}
         />
       
 
-      <Pagination />
+      <Pagination
+        currentPage={pagination?.currentPage || page}
+        totalPages={pagination?.totalPages || 1}
+        totalRecords={pagination?.totalRecords}
+        onPageChange={setPage}
+        loading={loading}
+      />
     </div>
   );
 }

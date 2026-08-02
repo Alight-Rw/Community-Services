@@ -69,14 +69,14 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
 
   return (
     <div
-      className={`h-screen  bg-white  border-r border-gray-200 transition-all duration-300 flex flex-col relative 
+      className={`h-screen bg-[var(--dashboard-sidebar)] text-[var(--dashboard-text)] border-r border-[var(--dashboard-border)] transition-all duration-300 flex flex-col relative
         ${isExpanded ? 'w-64' : 'w-25 '}`}
     >
       <ToastContainer />
 
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        style={{ cursor: 'pointer' }} className=" absolute -right-0 top-5  border border-gray-200 rounded-full p-1 text-blue-500 hover:bg-blue-50 z-50 shadow-sm"
+        style={{ cursor: 'pointer' }} className="absolute -right-0 top-5 border dashboard-border rounded-full p-1 text-secondary dashboard-hover z-50 shadow-sm bg-[var(--dashboard-surface)]"
       >
         {isExpanded ? <ChevronLeft size={17} /> : <ChevronRight size={17} />}
       </button>
@@ -106,8 +106,8 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
               to={item.path}
               className={`flex items-center gap-4 p-3 rounded-xl cursor-pointer transition-colors no-underline
                 ${isActive
-                  ? 'bg-blue-500 text-white shadow-md shadow-blue-100'
-                  : 'text-slate-600 hover:bg-gray-50'}`}
+                  ? 'bg-secondary text-white shadow-md'
+                  : 'dashboard-muted dashboard-hover'}`}
             >
               <div className="shrink-0">{item.icon}</div>
               {isExpanded && <span className="text-sm font-medium whitespace-nowrap">{item.label}</span>}
@@ -120,8 +120,8 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
               to={item.path}
               className={`flex items-center gap-4 p-3 rounded-xl cursor-pointer transition-colors no-underline
                 ${isActive
-                  ? 'bg-blue-500 text-white shadow-md shadow-blue-100'
-                  : 'text-slate-600 hover:bg-gray-50'}`}
+                  ? 'bg-secondary text-white shadow-md'
+                  : 'dashboard-muted dashboard-hover'}`}
             >
               <div className="shrink-0">{item.icon}</div>
               {isExpanded && <span className="text-sm font-medium whitespace-nowrap">{item.label}</span>}
@@ -133,16 +133,16 @@ const Sidebar = ({ isExpanded, setIsExpanded }) => {
 
 
 
-      <div className="p-4 border-t border-gray-100 bg-white ">
+      <div className="p-4 border-t dashboard-border bg-[var(--dashboard-sidebar)]">
         <div className={`flex items-center gap-2 ${isExpanded ? 'justify-start' : 'justify-center'}`}>
-          <div className="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center font-bold text-xs text-slate-700 shrink-0">
+          <div className="w-10 h-10 rounded-full bg-[var(--dashboard-surface-strong)] border dashboard-border flex items-center justify-center font-bold text-xs text-[var(--dashboard-text)] shrink-0">
             NA
           </div>
 
 
           <div className="flex flex-1 items-center justify-between overflow-hidden">
             <div className="overflow-hidden">
-              <p className={`text-[11px] text-slate-500 truncate font-medium ${isExpanded ? 'justify-center' : 'hidden'}`}>{loading? 'Loading...' :email || "No email"}</p>
+              <p className={`text-[11px] dashboard-muted truncate font-medium ${isExpanded ? 'justify-center' : 'hidden'}`}>{loading? 'Loading...' :email || "No email"}</p>
             </div >
             <LogOut style={{ cursor: 'pointer' }} className={`text-secondary ${isExpanded ? 'w-5 h-5' : `w-5 h-5`}`}
               onClick={handleLogout} />

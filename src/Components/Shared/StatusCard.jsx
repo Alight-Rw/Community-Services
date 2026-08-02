@@ -78,9 +78,9 @@ const availableCount = countAvailableService(items.data);
               onMouseEnter={() => setHoveredId(item.id)}
               onMouseLeave={() => setHoveredId(null)}
               onClick={() => navigate(item.path)}
-              className={`relative bg-white rounded-xl shadow-md border-2 ${ isHovered ? "border-secondary shadow-lg scale-[1.02]" : "border-secondary/30" } transition-all duration-300 cursor-pointer h-[210px] flex flex-col justify-end items-center p-4`}
+              className={`relative dashboard-panel rounded-xl border-2 ${ isHovered ? "border-secondary scale-[1.02]" : "border-[var(--dashboard-border)]" } transition-all duration-300 cursor-pointer h-[210px] flex flex-col justify-end items-center p-4`}
             >
-              <div className="absolute -top-6 -left-4 bg-white text-secondary w-14 h-14 rounded-lg flex items-center justify-center text-lg font-bold shadow-md border-1 border-secondary" >
+              <div className="absolute -top-6 -left-4 bg-[var(--dashboard-surface)] text-secondary w-14 h-14 rounded-lg flex items-center justify-center text-lg font-bold shadow-md border border-secondary" >
                 {item.total}
               </div>
 
@@ -90,7 +90,7 @@ const availableCount = countAvailableService(items.data);
                 <img src={item.icon} alt="icon" className="max-h-[100px] object-contain" />
               </div>
 
-              <p className={`text-lg font-bold mt-2 transition-colors duration-300 ${isHovered ? "text-secondary" : "text-slate-700"}`} >
+              <p className={`text-lg font-bold mt-2 transition-colors duration-300 ${isHovered ? "text-secondary" : "text-[var(--dashboard-text)]"}`} >
                 {item.title}
               </p>
             </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Table from '../../Shared/Table';
 import Pagination from '../../Shared/Pagination';
 import StatusButton from '../Dashboard/StatusesButtons';
@@ -6,17 +6,27 @@ import StatusNoteModal from "../../Shared/StatusNotesPopUp";
 import { handleUpdateStatuses } from "../../../Hooks/UpdateStatusHooks";
 import { useGetProviderRequestedServices } from "../../../Hooks/useGetProviderRequestedHooks";
 
-export function WaitingServicesTable({ width }) {
+export function WaitingServicesTable({ width, search = "" }) {
+    const [page, setPage] = useState(1);
+    const limit = 4;
 
-    const { data, loading, refetch } = useGetProviderRequestedServices({
+    const { data, loading, error, refetch } = useGetProviderRequestedServices({
         status: 'Waitting',
+        page,
+        limit,
+        search,
     });
     
     const waitingRequestedServices = data?.data || [];
+    const pagination = data?.pagination;
 
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedRow, setSelectedRow] = useState(null);
     const [selectedStatus, setSelectedStatus] = useState(null);
+
+    useEffect(() => {
+        setPage(1);
+    }, [search]);
 
     const ActionGrid = ({ currentStatus, row }) => {
         const statusList = ["waiting", "approve", "complete", "reject"];
@@ -145,10 +155,17 @@ export function WaitingServicesTable({ width }) {
                 data={waitingRequestedServices} 
                 width={width} 
                 loading={loading}
+                error={error}
             />
 
             <div className='px-1'>
-                <Pagination />
+                <Pagination
+                    currentPage={pagination?.currentPage || page}
+                    totalPages={pagination?.totalPages || 1}
+                    totalRecords={pagination?.totalRecords}
+                    onPageChange={setPage}
+                    loading={loading}
+                />
             </div>
 
             <StatusNoteModal
