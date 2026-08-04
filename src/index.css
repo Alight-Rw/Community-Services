@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+
+.scrollbar-hidden {
+  overflow-x: auto;
+  -ms-overflow-style: none;       
+  scrollbar-width: none;          
+  cursor: grab;                  
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;                  
+}
+
+
+.scrollbar-hidden.dragging {
+  cursor: grabbing;               
+  user-select: none;              
+}

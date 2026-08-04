@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import Paragraphy from "../../Shared/Title";
 import DashboardNav from "../../Shared/DashboardNav";
 import Sidebar from "../../Shared/Sidebar";
-import { RejectedServices, } from "./RejectedServices";
+import { RejectedServices } from "./RejectedServices";
 import DashboardSearch from "../../Shared/DashboardSearch";
 import { useDebouncedValue } from "../../../Hooks/useDebouncedValue";
+import { useDragScroll } from "../../../Hooks/useDragScroll";
 
 export function RejectedSevices() {
   const [isExpanded, setIsExpanded] = useState(true);
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebouncedValue(search, 300);
+  
+  const dragScroll = useDragScroll(); 
 
   return (
     <div className="dashboard-shell flex flex-col h-screen bg-small-soft-gray overflow-hidden">
@@ -49,6 +52,7 @@ export function RejectedSevices() {
               }
             />
           </div>
+          
           <div className='px-8 md:px-0 md:pr-12 py-10 w-[350px] md:w-full'>
             <DashboardSearch
               value={search}
@@ -56,11 +60,15 @@ export function RejectedSevices() {
               placeholder="Search rejected services..."
             />
           </div>
-          <div className='ml-8 md:ml-0 overflow-y-auto'>
-            <RejectedServices
-              width={isExpanded == true ? '1530px' : '1680px'}
-              search={debouncedSearch}
-            />
+          
+        
+          <div className='px-8 md:px-0 md:pr-12 w-[350px] md:w-full'>
+            <div className='overflow-x-auto scrollbar-hidden' {...dragScroll}>
+              <RejectedServices
+                width={isExpanded == true ? '1530px' : '1680px'}
+                search={debouncedSearch}
+              />
+            </div>
           </div>
         </main>
       </div>

@@ -1,5 +1,3 @@
-
-
 import React, { useState } from 'react';
 import Paragraphy from '../../Shared/Title';
 import DashboardNav from '../../Shared/DashboardNav';
@@ -7,11 +5,14 @@ import Sidebar from '../../Shared/Sidebar';
 import DashboardSearch from '../../Shared/DashboardSearch';
 import { AvailableServicesTable } from './AvailableServicesTable';
 import { useDebouncedValue } from '../../../Hooks/useDebouncedValue';
+import { useDragScroll } from '../../../Hooks/useDragScroll'; // <-- Import the hook
 
 export function AvailableServicesProvider() {
   const [isExpanded, setIsExpanded] = useState(true);
   const [search, setSearch] = useState('');
   const debouncedSearch = useDebouncedValue(search, 300);
+  
+  const dragScroll = useDragScroll(); 
 
   return (
     <div className='dashboard-shell flex flex-col h-screen bg-small-soft-gray overflow-hidden'>
@@ -23,8 +24,6 @@ export function AvailableServicesProvider() {
             time: "10:00 AM", minutes: "1m ago", isUnread: true
           },
           { id: 2, type: "accepted", title: " Completed Services", message: "50 service are completed at", time: "3h ago", isUnread: true },
-
-
         ]}
       />
       <div className='flex flex-1 overflow-hidden relative'>
@@ -59,11 +58,18 @@ export function AvailableServicesProvider() {
               placeholder='Search provider services...'
             />
           </div>
-          <div className='ml-8 md:ml-0 overflow-y-auto'>
-            <AvailableServicesTable
-              width={isExpanded == true ? '1530px' : '1680px'}
-              search={debouncedSearch}
-            />
+          
+         
+          <div className='px-8 md:px-0 md:pr-12 w-[350px] md:w-full'>
+            <div 
+              className='overflow-x-auto scrollbar-hidden' 
+              {...dragScroll} 
+            >
+              <AvailableServicesTable
+                width={isExpanded == true ? '1530px' : '1680px'}
+                search={debouncedSearch}
+              />
+            </div>
           </div>
         </main>
       </div>
