@@ -1,5 +1,3 @@
-
-
 import React, { useState } from 'react';
 import Paragraphy from '../../Shared/Title';
 import DashboardNav from '../../Shared/DashboardNav';
@@ -7,11 +5,15 @@ import Sidebar from '../../Shared/Sidebar';
 import DashboardSearch from '../../Shared/DashboardSearch';
 import { RequestedSevicesTable } from './RequestedSevices';
 import { useDebouncedValue } from '../../../Hooks/useDebouncedValue';
+import { useDragScroll } from '../../../Hooks/useDragScroll';
 
 export function RequestedSevicesProvider() {
   const [isExpanded, setIsExpanded] = useState(true);
   const [search, setSearch] = useState('');
   const debouncedSearch = useDebouncedValue(search, 300);
+  
+ 
+  const dragScroll = useDragScroll();
 
   return (
     <div className='dashboard-shell flex flex-col h-screen bg-small-soft-gray overflow-hidden'>
@@ -19,12 +21,10 @@ export function RequestedSevicesProvider() {
         notificationNumber={2}
         notifications={[
           {
-            id: 1, type: "success", title: "Booking Creacted", message: "Two clients booked services at",
+            id: 1, type: "success", title: "Booking Created", message: "Two clients booked services at",
             time: "10:00 AM", minutes: "1m ago", isUnread: true
           },
-          { id: 2, type: "accepted", title: " Completed Services", message: "50 service are completed at", time: "3h ago", isUnread: true },
-
-
+          { id: 2, type: "accepted", title: "Completed Services", message: "50 service are completed at", time: "3h ago", isUnread: true },
         ]}
       />
       <div className='flex flex-1 overflow-hidden relative'>
@@ -43,7 +43,7 @@ export function RequestedSevicesProvider() {
         </div>
 
         <main className='flex-1 pl-20 overflow-y-auto transition-all duration-300'>
-          <div className='px-8 md:px-0 pt-20 md:space-y-1 '>
+          <div className='px-8 md:px-0 pt-20 md:space-y-1'>
             <Paragraphy
               highlight={'Requested Services'}
               description={
@@ -59,11 +59,18 @@ export function RequestedSevicesProvider() {
               placeholder='Search provider requests...'
             />
           </div>
-          <div className='ml-8 md:ml-0 overflow-y-auto'>
-            <RequestedSevicesTable
-              width={isExpanded == true ? '1530px' : '1680px'}
-              search={debouncedSearch}
-            />
+
+          
+          <div className='px-8 md:px-0 md:pr-12 w-[350px] md:w-full'>
+            <div 
+              className='overflow-x-auto scrollbar-hidden' 
+              {...dragScroll} 
+            >
+              <RequestedSevicesTable
+                width={isExpanded ? '1530px' : '1680px'}
+                search={debouncedSearch}
+              />
+            </div>
           </div>
         </main>
       </div>
